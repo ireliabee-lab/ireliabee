@@ -1,0 +1,766 @@
+{
+  "version": 1,
+  "id": "speech-language",
+  "name": "Speech and language science",
+  "description": "Words and sources for studying fluency, stuttering and speech production with corpora, annotation and speech technology.",
+  "terms": [
+    {
+      "id": "fluency",
+      "term": "Fluency",
+      "group": "Speech and language science",
+      "definition": "The smooth, continuous and effortless flow of speech, judged by its rate, rhythm and the absence of breaks.",
+      "example": "We treat fluency as more than the absence of stutters: rate and effort matter too.",
+      "misuse": "In language teaching fluency often means general proficiency; in speech science it means the flow of speech itself.",
+      "when": "Use it for the overall quality of speech flow, before you move to counting specific breaks.",
+      "related": ["disfluency", "speech-rate", "stuttering", "construct"]
+    },
+    {
+      "id": "disfluency",
+      "term": "Disfluency",
+      "group": "Speech and language science",
+      "definition": "Any break in the forward flow of speech, such as a pause, a filler, a repetition or a restart.",
+      "example": "Each word in the transcript is labelled as fluent or as one type of disfluency.",
+      "misuse": "Not a synonym for stuttering: everyone produces disfluencies, and most are typical.",
+      "when": "Use it as the umbrella word, then say which type you mean.",
+      "related": ["typical-disfluency", "stuttering-like-disfluency", "stuttering", "fluency"]
+    },
+    {
+      "id": "stuttering",
+      "term": "Stuttering",
+      "group": "Speech and language science",
+      "definition": "A condition in which the flow of speech is interrupted by repetitions, prolongations or blocks, often with tension and effects on how a person feels about speaking.",
+      "example": "Our participants are adults who stutter, recruited through a clinic and a self-help group.",
+      "misuse": "Not only what a listener hears: the speaker's experience, including avoidance and anticipation, is part of it.",
+      "when": "Use it for the condition; use disfluency counts for what you measured in a sample.",
+      "related": ["stammering", "developmental-stuttering", "covert-stuttering", "stuttering-like-disfluency"]
+    },
+    {
+      "id": "stammering",
+      "term": "Stammering",
+      "group": "Speech and language science",
+      "definition": "The word used for stuttering in British and Irish English; the two words name the same condition.",
+      "example": "The UK charity uses stammering, so our information sheet does too.",
+      "misuse": "It is not a milder or different condition from stuttering.",
+      "when": "Use the word your participants and readers use, and say once that the two are the same.",
+      "related": ["stuttering"]
+    },
+    {
+      "id": "developmental-stuttering",
+      "term": "Developmental stuttering",
+      "group": "Speech and language science",
+      "definition": "Stuttering that begins in childhood during speech and language development, as opposed to stuttering that starts after a brain injury or illness.",
+      "example": "All adults in the sample reported developmental stuttering that began before age seven.",
+      "misuse": "Do not assume every adult who stutters has the developmental kind; ask and record onset.",
+      "when": "Use it in inclusion criteria and when comparing your sample with other studies.",
+      "related": ["stuttering", "sample", "population"]
+    },
+    {
+      "id": "cluttering",
+      "term": "Cluttering",
+      "group": "Speech and language science",
+      "definition": "A fluency disorder in which speech is too fast or irregular in rate, so words run together or become hard to follow.",
+      "example": "Two speakers were excluded because the clinician judged their main difficulty to be cluttering.",
+      "misuse": "Not another word for stuttering; the two can occur together but are different.",
+      "when": "Use it when screening participants or when a corpus mixes fluency disorders.",
+      "related": ["stuttering", "speech-rate", "fluency"]
+    },
+    {
+      "id": "typical-disfluency",
+      "term": "Typical disfluency",
+      "group": "Speech and language science",
+      "definition": "A break in speech that all speakers produce, such as a filler, a revision or a repeated phrase.",
+      "example": "Speakers who stutter also produced many typical disfluencies, so we analysed the two classes apart.",
+      "misuse": "Not a sign of stuttering on its own; some schemes call these other disfluencies.",
+      "when": "Use it to separate ordinary hesitations from stuttering-like events in your coding.",
+      "related": ["disfluency", "stuttering-like-disfluency", "interjection", "revision", "phrase-repetition"]
+    },
+    {
+      "id": "stuttering-like-disfluency",
+      "term": "Stuttering-like disfluency",
+      "group": "Speech and language science",
+      "definition": "A disfluency type more typical of stuttering: part-word repetitions, single-syllable word repetitions, prolongations and blocks.",
+      "example": "The outcome was the proportion of words with a stuttering-like disfluency.",
+      "misuse": "Coding schemes differ on which types count, especially whole-word repetitions, so state yours.",
+      "when": "Use it when your analysis targets stuttering rather than all hesitations.",
+      "related": ["part-word-repetition", "whole-word-repetition", "prolongation", "block", "typical-disfluency"]
+    },
+    {
+      "id": "part-word-repetition",
+      "term": "Part-word repetition",
+      "group": "Speech and language science",
+      "definition": "Repeating a sound or syllable at the start of a word before the word is completed, as in b-b-boy.",
+      "example": "Part-word repetitions were the most frequent event type on content words.",
+      "misuse": "Not the same as repeating the whole word, which many schemes code differently.",
+      "when": "Use it when coding or reporting event types.",
+      "related": ["stuttering-like-disfluency", "whole-word-repetition", "syllable"]
+    },
+    {
+      "id": "whole-word-repetition",
+      "term": "Whole-word repetition",
+      "group": "Speech and language science",
+      "definition": "Repeating a complete word, as in I-I-I want.",
+      "example": "We followed the scheme that counts single-syllable word repetitions as stuttering-like and longer ones as typical.",
+      "misuse": "Researchers disagree on whether these count as stuttering, so never report them without your rule.",
+      "when": "Use it when coding, and explain how you classified it.",
+      "related": ["part-word-repetition", "phrase-repetition", "stuttering-like-disfluency", "annotation-scheme"]
+    },
+    {
+      "id": "phrase-repetition",
+      "term": "Phrase repetition",
+      "group": "Speech and language science",
+      "definition": "Repeating a group of words, as in I want, I want to go.",
+      "example": "Phrase repetitions were coded as typical disfluencies.",
+      "misuse": "Not a stuttering-like event in most schemes.",
+      "when": "Use it when separating typical from stuttering-like repetitions.",
+      "related": ["typical-disfluency", "whole-word-repetition"]
+    },
+    {
+      "id": "prolongation",
+      "term": "Prolongation",
+      "group": "Speech and language science",
+      "definition": "Stretching a sound for longer than normal when emphasis is not the goal, as in sssometimes.",
+      "example": "Annotators agreed less on prolongations than on repetitions.",
+      "misuse": "A long vowel used for emphasis or to hold the floor is not a stuttering prolongation.",
+      "when": "Use it for audible stretched sounds; use block for silent stoppages.",
+      "related": ["block", "stuttering-like-disfluency"]
+    },
+    {
+      "id": "block",
+      "term": "Block",
+      "group": "Speech and language science",
+      "definition": "A stoppage in which the speaker cannot start or continue a sound, often silent and with visible tension.",
+      "example": "Blocks are hard to detect from audio alone because many are silent.",
+      "misuse": "Not the same as an ordinary pause for thought; a block involves a stuck attempt to speak.",
+      "when": "Use it when coding stoppages, and say whether you had video.",
+      "related": ["prolongation", "stuttering-like-disfluency", "secondary-behaviours"]
+    },
+    {
+      "id": "interjection",
+      "term": "Interjection",
+      "group": "Speech and language science",
+      "definition": "An inserted sound or word such as um, uh or like that does not add to the message; filled pause is a common name for um and uh.",
+      "example": "Interjections were counted separately from stuttering-like events.",
+      "misuse": "Some stuttering datasets group interjections with stuttering events; check the label definitions.",
+      "when": "Use it when coding fillers.",
+      "related": ["typical-disfluency", "disfluency"]
+    },
+    {
+      "id": "revision",
+      "term": "Revision",
+      "group": "Speech and language science",
+      "definition": "A change of wording or grammar partway through an utterance, as in I went, I was going.",
+      "example": "Revisions increased with utterance length in both groups.",
+      "misuse": "Not a stuttering event; it reflects replanning.",
+      "when": "Use it when coding self-corrections.",
+      "related": ["typical-disfluency", "utterance"]
+    },
+    {
+      "id": "anticipation",
+      "term": "Anticipation",
+      "group": "Speech and language science",
+      "definition": "A speaker's sense, before speaking, that they are about to stutter on an upcoming word or sound.",
+      "example": "Anticipation may lead a speaker to swap a word, so the stutter never appears in the transcript.",
+      "misuse": "It cannot be read from a recording; you need self-report.",
+      "when": "Use it when discussing what disfluency counts miss.",
+      "related": ["covert-stuttering", "stuttering", "measurement-error"]
+    },
+    {
+      "id": "covert-stuttering",
+      "term": "Covert stuttering",
+      "group": "Speech and language science",
+      "definition": "Stuttering that a person hides, or tries to hide, by avoiding or substituting words and situations.",
+      "example": "A low count of stuttered syllables does not rule out covert stuttering.",
+      "misuse": "Not the same as mild stuttering; the speaker may be working hard to sound fluent.",
+      "when": "Use it when interpreting low disfluency counts or designing self-report measures.",
+      "related": ["anticipation", "stuttering", "stuttering-severity"]
+    },
+    {
+      "id": "secondary-behaviours",
+      "term": "Secondary behaviours",
+      "group": "Speech and language science",
+      "definition": "Movements or sounds that accompany moments of stuttering, such as eye blinks, head movements or facial tension.",
+      "example": "We could not code secondary behaviours because the corpus is audio only.",
+      "misuse": "Not the stutter itself, and not visible in audio data.",
+      "when": "Use it when a measure or a limitation concerns what happens beyond the sound.",
+      "related": ["block", "stuttering-severity", "limitation"]
+    },
+    {
+      "id": "stuttering-severity",
+      "term": "Stuttering severity",
+      "group": "Speech and language science",
+      "definition": "How strongly stuttering affects a person's speech, usually rated from frequency, duration and physical signs of events.",
+      "example": "We report severity so readers can compare our sample with other studies.",
+      "misuse": "Severity from a speech sample does not capture how much stuttering affects a person's life.",
+      "when": "Use it to describe a sample or as a covariate, naming the instrument used.",
+      "related": ["percent-syllables-stuttered", "ssi-4", "covert-stuttering"]
+    },
+    {
+      "id": "percent-syllables-stuttered",
+      "term": "Percent syllables stuttered",
+      "group": "Speech and language science",
+      "definition": "The number of stuttered syllables divided by the total syllables spoken, times 100; often written %SS.",
+      "example": "Mean %SS in the reading task was lower than in conversation.",
+      "misuse": "It depends on the speaking task and on who counts, so it is not a fixed trait of a person.",
+      "when": "Use it as a frequency measure, reporting the task, sample length and counter.",
+      "related": ["stuttering-severity", "syllable", "inter-rater-reliability", "speech-sample"]
+    },
+    {
+      "id": "ssi-4",
+      "term": "SSI-4",
+      "group": "Speech and language science",
+      "definition": "The Stuttering Severity Instrument, fourth edition, by Glyndon Riley: a published, norm-referenced test that scores frequency, duration, physical concomitants and naturalness of speech.",
+      "example": "Participants' severity ranged from mild to severe on the SSI-4.",
+      "misuse": "It is a licensed clinical test; you cannot compute an SSI-4 score from a corpus without following its procedure.",
+      "when": "Use it when describing participant severity with a standard instrument.",
+      "related": ["stuttering-severity", "percent-syllables-stuttered", "construct-validity"]
+    },
+    {
+      "id": "speech-sample",
+      "term": "Speech sample",
+      "group": "Speech and language science",
+      "definition": "A recording of a person speaking in a stated task, such as conversation, monologue or reading aloud.",
+      "example": "Each speaker gave a five-minute conversational sample and a reading sample.",
+      "misuse": "Samples from different tasks are not interchangeable; stuttering varies with task and situation.",
+      "when": "Use it when describing data collection, always naming the task.",
+      "related": ["speech-corpus", "percent-syllables-stuttered", "sample"]
+    },
+    {
+      "id": "surprisal",
+      "term": "Surprisal",
+      "group": "Speech and language science",
+      "definition": "How unexpected a word is in its context, measured as the negative log probability of the word given the words before it.",
+      "example": "We test whether words with higher surprisal are more likely to be stuttered.",
+      "misuse": "Surprisal depends on the language model that estimates it; it is not a property of the word alone.",
+      "when": "Use it when predictability in context is your predictor, and name the model and context length.",
+      "related": ["language-model", "word-predictability", "lexical-frequency", "operationalise"]
+    },
+    {
+      "id": "word-predictability",
+      "term": "Word predictability",
+      "group": "Speech and language science",
+      "definition": "How easy a word is to guess from its context, measured by people guessing (cloze) or by a language model.",
+      "example": "Human cloze scores and model surprisal were correlated but not identical.",
+      "misuse": "Not the same as frequency: a rare word can be very predictable in the right sentence.",
+      "when": "Use it as the general idea; use surprisal for the model-based measure.",
+      "related": ["surprisal", "lexical-frequency", "proxy"]
+    },
+    {
+      "id": "lexical-frequency",
+      "term": "Lexical frequency",
+      "group": "Speech and language science",
+      "definition": "How often a word occurs in a large reference corpus, usually on a log scale.",
+      "example": "We control for lexical frequency so that surprisal effects are not just frequency effects.",
+      "misuse": "Frequency depends on the reference corpus; spoken and written counts can differ.",
+      "when": "Use it as a control variable or predictor, naming the corpus it came from.",
+      "related": ["surprisal", "word-predictability", "control-variable", "confound"]
+    },
+    {
+      "id": "content-and-function-words",
+      "term": "Content and function words",
+      "group": "Speech and language science",
+      "definition": "Content words carry meaning (nouns, verbs, adjectives); function words carry grammar (articles, pronouns, prepositions).",
+      "example": "Word class may confound surprisal, because function words are both frequent and predictable.",
+      "misuse": "Not a neutral split: word class is tied to length, frequency and position.",
+      "when": "Use it as a control or grouping factor in word-level analyses.",
+      "related": ["lexical-frequency", "loci-of-stuttering", "confound"]
+    },
+    {
+      "id": "loci-of-stuttering",
+      "term": "Loci of stuttering",
+      "group": "Speech and language science",
+      "definition": "Where in speech stuttering tends to occur, such as at word onsets or at the start of utterances.",
+      "example": "Utterance position is a known locus, so we include it as a predictor.",
+      "misuse": "A locus is a pattern across events, not a rule for any single word.",
+      "when": "Use it when choosing control variables for word-level models.",
+      "related": ["content-and-function-words", "utterance", "control-variable"]
+    },
+    {
+      "id": "syllable",
+      "term": "Syllable",
+      "group": "Speech and language science",
+      "definition": "A unit of speech built around a vowel sound, the usual counting unit for speech rate and %SS.",
+      "example": "Syllables were counted from the intended words, not the repeated sounds.",
+      "misuse": "Syllable counts from spelling can differ from spoken syllables; say how you counted.",
+      "when": "Use it when defining rates and frequency measures.",
+      "related": ["percent-syllables-stuttered", "speech-rate", "articulation-rate"]
+    },
+    {
+      "id": "speech-rate",
+      "term": "Speech rate",
+      "group": "Speech and language science",
+      "definition": "Syllables or words spoken per unit of time, including pauses and disfluencies.",
+      "example": "Speech rate was lower in the stuttering group, partly because of time spent in blocks.",
+      "misuse": "Not the same as articulation rate; disfluent time lowers speech rate directly.",
+      "when": "Use it for overall pace.",
+      "related": ["articulation-rate", "syllable", "fluency"]
+    },
+    {
+      "id": "articulation-rate",
+      "term": "Articulation rate",
+      "group": "Speech and language science",
+      "definition": "Syllables per second measured over fluent stretches only, excluding pauses and disfluent time.",
+      "example": "Articulation rate did not differ between groups once disfluent time was removed.",
+      "misuse": "Reporting it without saying what you excluded makes it impossible to compare.",
+      "when": "Use it when you want pace separate from disfluency.",
+      "related": ["speech-rate", "syllable", "forced-alignment"]
+    },
+    {
+      "id": "utterance",
+      "term": "Utterance",
+      "group": "Speech and language science",
+      "definition": "A stretch of speech treated as one unit, usually bounded by pauses, turn changes or intonation.",
+      "example": "Surprisal was computed with the previous utterances as context.",
+      "misuse": "Utterance boundaries depend on transcription rules; they are not given by the audio.",
+      "when": "Use it when segmenting speech and when defining context windows.",
+      "related": ["transcription", "chat-format", "loci-of-stuttering"]
+    },
+    {
+      "id": "speech-corpus",
+      "term": "Speech corpus",
+      "group": "Speech and language science",
+      "definition": "A structured collection of speech recordings with transcripts and information about the speakers.",
+      "example": "We use two corpora: clinical interviews from FluencyBank and podcast clips from SEP-28k.",
+      "misuse": "A corpus is not a random sample of speakers; say how it was collected.",
+      "when": "Use it when describing data sources.",
+      "related": ["speech-sample", "sampling-bias", "clinical-data-access"]
+    },
+    {
+      "id": "clinical-data-access",
+      "term": "Clinical data access",
+      "group": "Speech and language science",
+      "definition": "The rules that control who may obtain speech data from clinical groups, such as approved-researcher status and a ban on sharing it further.",
+      "example": "The FluencyBank research data need approved access, so we cannot post audio with our code.",
+      "misuse": "Being able to download data once does not permit sharing, publishing clips or feeding them into other models.",
+      "when": "Use it when planning data management, ethics applications and what you can release.",
+      "related": ["speech-corpus", "informed-consent", "data-protection", "open-data"]
+    },
+    {
+      "id": "transcription",
+      "term": "Transcription",
+      "group": "Speech and language science",
+      "definition": "Writing down what was said in a recording according to a stated set of conventions.",
+      "example": "Transcription followed CHAT, with disfluencies marked on the word they affected.",
+      "misuse": "A transcript is an interpretation, not a copy of the audio.",
+      "when": "Use it for the process and its rules.",
+      "related": ["verbatim-transcript", "chat-format", "annotation"]
+    },
+    {
+      "id": "verbatim-transcript",
+      "term": "Verbatim transcript",
+      "group": "Speech and language science",
+      "definition": "A transcript that keeps every sound spoken, including fillers, repetitions and false starts.",
+      "example": "Most speech recognisers produce clean text, not a verbatim transcript, so repetitions disappear.",
+      "misuse": "A clean transcript that removes disfluencies cannot be used to count them.",
+      "when": "Use it when disfluencies are data, not noise.",
+      "related": ["transcription", "intended-speech", "asr"]
+    },
+    {
+      "id": "intended-speech",
+      "term": "Intended speech",
+      "group": "Speech and language science",
+      "definition": "The words a speaker meant to say, with disfluencies removed.",
+      "example": "We score recognition errors against the intended speech, so a repetition is not an error.",
+      "misuse": "Not the same as a verbatim transcript; choose which one fits the task.",
+      "when": "Use it when evaluating speech recognition for people who stutter.",
+      "related": ["verbatim-transcript", "word-error-rate", "asr"]
+    },
+    {
+      "id": "chat-format",
+      "term": "CHAT",
+      "group": "Speech and language science",
+      "definition": "Codes for the Human Analysis of Transcripts: the transcription format used by TalkBank, with codes for pauses, repetitions and other disfluencies.",
+      "example": "The corpus transcripts are in CHAT, so we used CLAN to extract the codes.",
+      "misuse": "CHAT is a format with many optional codes; not every corpus uses the fluency codes.",
+      "when": "Use it when working with TalkBank data or describing your transcription rules.",
+      "related": ["clan", "transcription", "annotation-scheme"]
+    },
+    {
+      "id": "clan",
+      "term": "CLAN",
+      "group": "Speech and language science",
+      "definition": "The free TalkBank program for editing CHAT transcripts and running analyses on them.",
+      "example": "We used CLAN to count disfluency codes per speaker.",
+      "misuse": "Not a statistics package; export counts and model them elsewhere.",
+      "when": "Use it when processing CHAT files.",
+      "related": ["chat-format", "transcription"]
+    },
+    {
+      "id": "annotation",
+      "term": "Annotation",
+      "group": "Speech and language science",
+      "definition": "Adding labels to speech or text, such as marking each word's disfluency type or timing.",
+      "example": "Three annotators labelled each clip, and we kept labels chosen by at least two.",
+      "misuse": "Annotations are judgements with error, not facts about the audio.",
+      "when": "Use it for the labelling step and the labels it produces.",
+      "related": ["annotation-scheme", "inter-rater-reliability", "ground-truth", "cohens-kappa"]
+    },
+    {
+      "id": "annotation-scheme",
+      "term": "Annotation scheme",
+      "group": "Speech and language science",
+      "definition": "The written rules that say which labels exist and how to decide between them.",
+      "example": "Our scheme maps SEP-28k's five event types onto the FluencyBank categories.",
+      "misuse": "Two datasets with the same label names may use different schemes.",
+      "when": "Use it when comparing or merging labelled datasets.",
+      "related": ["annotation", "operationalise", "construct-validity"]
+    },
+    {
+      "id": "cohens-kappa",
+      "term": "Cohen's kappa",
+      "group": "Speech and language science",
+      "definition": "A statistic for agreement between two raters on categories that corrects for agreement expected by chance.",
+      "example": "Agreement on event type was moderate, with kappa lower for blocks than for repetitions.",
+      "misuse": "Raw percent agreement can look high when one category is very common; kappa exists to correct this.",
+      "when": "Use it to report reliability of categorical labels from two raters.",
+      "related": ["inter-rater-reliability", "intra-rater-reliability", "annotation"]
+    },
+    {
+      "id": "intra-rater-reliability",
+      "term": "Intra-rater reliability",
+      "group": "Speech and language science",
+      "definition": "How consistently the same person labels the same material when they do it again later.",
+      "example": "The first author recoded 10% of samples after a month to check intra-rater reliability.",
+      "misuse": "Not a substitute for agreement between different raters.",
+      "when": "Use it alongside inter-rater reliability when one person did most of the coding.",
+      "related": ["inter-rater-reliability", "cohens-kappa", "reliability"]
+    },
+    {
+      "id": "forced-alignment",
+      "term": "Forced alignment",
+      "group": "Speech and language science",
+      "definition": "Automatically finding where each word and sound in a known transcript occurs in the audio.",
+      "example": "We ran forced alignment to get start and end times for every word.",
+      "misuse": "Aligners assume the transcript matches the audio; disfluent speech often breaks this and needs checking.",
+      "when": "Use it when you need word timings from a transcript you already have.",
+      "related": ["word-timestamps", "transcription", "articulation-rate"]
+    },
+    {
+      "id": "word-timestamps",
+      "term": "Word timestamps",
+      "group": "Speech and language science",
+      "definition": "The start and end times of each word in a recording.",
+      "example": "FluencyBank Timestamped gives word timestamps and a disfluency label for each word.",
+      "misuse": "Timestamps from automatic tools have errors; say whether they were checked by hand.",
+      "when": "Use it when linking word-level predictors to events in the audio.",
+      "related": ["forced-alignment", "annotation"]
+    },
+    {
+      "id": "mixed-effects-model",
+      "term": "Mixed-effects model",
+      "group": "Speech and language science",
+      "definition": "A regression model with fixed effects for predictors and random effects for grouping factors such as speakers and words.",
+      "example": "We fit a logistic mixed-effects model with random intercepts for speaker.",
+      "misuse": "Treating thousands of words from a few speakers as independent overstates certainty; random effects address this.",
+      "when": "Use it when each speaker contributes many observations.",
+      "related": ["regression", "standard-error", "sample"]
+    },
+    {
+      "id": "asr",
+      "term": "Automatic speech recognition",
+      "group": "Speech and language science",
+      "definition": "Software that turns spoken audio into text; often shortened to ASR.",
+      "example": "ASR error rates were much higher on stuttered speech than on fluent speech.",
+      "misuse": "ASR output is not a verbatim transcript; many systems drop fillers and repetitions.",
+      "when": "Use it for speech-to-text systems.",
+      "related": ["word-error-rate", "verbatim-transcript", "intended-speech"]
+    },
+    {
+      "id": "word-error-rate",
+      "term": "Word error rate",
+      "group": "Speech and language science",
+      "definition": "Substitutions, deletions and insertions needed to turn a system's output into the reference transcript, divided by the number of reference words.",
+      "example": "We report word error rate against both verbatim and intended references.",
+      "misuse": "It depends on the reference and text normalisation, and can exceed 100%.",
+      "when": "Use it to evaluate speech recognition, stating the reference and normalisation.",
+      "related": ["asr", "intended-speech", "metric"]
+    },
+    {
+      "id": "disfluency-detection",
+      "term": "Disfluency detection",
+      "group": "Speech and language science",
+      "definition": "Automatically finding disfluencies, and often their type, in audio or text.",
+      "example": "The SEP-28k clips were built to train and test stuttering event detection.",
+      "misuse": "A detector trained on one dataset's labels learns that scheme, not stuttering in general.",
+      "when": "Use it for the machine-learning task, not for human coding.",
+      "related": ["annotation-scheme", "asr", "ground-truth"]
+    },
+    {
+      "id": "language-model",
+      "term": "Language model",
+      "group": "Speech and language science",
+      "definition": "A model that gives a probability for each possible next word or token given the ones before it.",
+      "example": "Surprisal came from a pretrained language model run over the transcripts.",
+      "misuse": "A model trained on written text may predict spoken, disfluent language poorly.",
+      "when": "Use it when explaining where probability-based measures come from.",
+      "related": ["surprisal", "word-predictability", "model"]
+    }
+  ],
+  "resources": [
+    {
+      "title": "TalkBank",
+      "by": "Brian MacWhinney and TalkBank, Carnegie Mellon University",
+      "url": "https://talkbank.org/",
+      "kind": "guide",
+      "level": 1,
+      "why": "The home of FluencyBank, the CHAT format and CLAN."
+    },
+    {
+      "title": "FluencyBank",
+      "by": "TalkBank",
+      "url": "https://talkbank.org/fluency/",
+      "kind": "dataset",
+      "level": 1,
+      "why": "Shared data on fluency and stuttering, with an open teaching section and approved-access research data."
+    },
+    {
+      "title": "FluencyBank corpora index",
+      "by": "TalkBank",
+      "url": "https://talkbank.org/fluency/access/",
+      "kind": "dataset",
+      "level": 3,
+      "why": "Lists each corpus with ages, size, media and whether it is open or password protected."
+    },
+    {
+      "title": "TalkBank ground rules",
+      "by": "TalkBank",
+      "url": "https://talkbank.org/0share/rules.html",
+      "kind": "guide",
+      "level": 3,
+      "why": "What you must cite and what you may not share when using clinical speech data."
+    },
+    {
+      "title": "TalkBank data access levels",
+      "by": "TalkBank",
+      "url": "https://talkbank.org/0share/access.html",
+      "kind": "guide",
+      "level": 3,
+      "why": "Explains the four access levels and why FluencyBank needs approved access."
+    },
+    {
+      "title": "FluencyBank Timestamped: An Updated Data Set for Disfluency Detection and Automatic Intended Speech Recognition",
+      "by": "Amrit Romana, Minxue Niu, Matthew Perez and Emily Mower Provost (JSLHR, 2024)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12379651/",
+      "kind": "paper",
+      "level": 1,
+      "why": "Describes the word timestamps and word-level disfluency labels added to FluencyBank; open access."
+    },
+    {
+      "title": "SEP-28k: Stuttering Events in Podcasts dataset",
+      "by": "Apple",
+      "url": "https://github.com/apple/ml-stuttering-events-dataset",
+      "kind": "dataset",
+      "level": 3,
+      "why": "About 28,000 three-second podcast clips, each labelled for stuttering event types by three annotators."
+    },
+    {
+      "title": "SEP-28k: A Dataset for Stuttering Event Detection From Podcasts With People Who Stutter",
+      "by": "Colin Lea, Vikramjit Mitra, Aparna Joshi, Sachin Kajarekar and Jeffrey P. Bigham (ICASSP 2021)",
+      "url": "https://arxiv.org/abs/2102.12394",
+      "kind": "paper",
+      "level": 1,
+      "why": "The paper behind SEP-28k: how clips were chosen and labelled, and baseline detection results."
+    },
+    {
+      "title": "CHAT manual",
+      "by": "Brian MacWhinney",
+      "url": "https://talkbank.org/0info/manuals/CHAT.pdf",
+      "kind": "guide",
+      "level": 3,
+      "why": "The transcription rules for TalkBank data, including a chapter on disfluency transcription."
+    },
+    {
+      "title": "CLAN",
+      "by": "TalkBank",
+      "url": "https://dali.talkbank.org/clan/",
+      "kind": "tool",
+      "level": 3,
+      "why": "Free program for editing and analysing CHAT transcripts; it runs only on your own computer."
+    },
+    {
+      "title": "Praat",
+      "by": "Paul Boersma, David Weenink and Anastasia Shchupak, University of Amsterdam",
+      "url": "https://www.fon.hum.uva.nl/praat/",
+      "kind": "tool",
+      "level": 3,
+      "why": "The standard free program for looking at, measuring and annotating speech."
+    },
+    {
+      "title": "Montreal Forced Aligner",
+      "by": "Montreal Corpus Tools",
+      "url": "https://montreal-forced-aligner.readthedocs.io/",
+      "kind": "tool",
+      "level": 3,
+      "why": "Open-source forced alignment of speech with transcripts."
+    },
+    {
+      "title": "ELAN",
+      "by": "The Language Archive, Max Planck Institute for Psycholinguistics",
+      "url": "https://archive.mpi.nl/tla/elan",
+      "kind": "tool",
+      "level": 3,
+      "why": "Free annotation tool for audio and video with multiple time-aligned tiers."
+    },
+    {
+      "title": "Whisper",
+      "by": "OpenAI",
+      "url": "https://github.com/openai/whisper",
+      "kind": "tool",
+      "level": 3,
+      "why": "Open speech recognition model, widely used as a baseline ASR system."
+    },
+    {
+      "title": "jiwer",
+      "by": "Jitsi",
+      "url": "https://github.com/jitsi/jiwer",
+      "kind": "tool",
+      "level": 4,
+      "why": "Python library for computing word error rate and related measures."
+    },
+    {
+      "title": "minicons",
+      "by": "Kanishka Misra",
+      "url": "https://github.com/kanishkamisra/minicons",
+      "kind": "tool",
+      "level": 3,
+      "why": "Python library for getting token surprisal and log probabilities from language models."
+    },
+    {
+      "title": "Stuttering, Cluttering, and Fluency (Practice Portal)",
+      "by": "American Speech-Language-Hearing Association",
+      "url": "https://www.asha.org/practice-portal/clinical-topics/fluency-disorders/",
+      "kind": "guide",
+      "level": 1,
+      "why": "Clinical definitions of typical disfluency, blocks, prolongations, covert stuttering and secondary behaviours."
+    },
+    {
+      "title": "SSI-4: Stuttering Severity Instrument, Fourth Edition (paid test)",
+      "by": "Glyndon D. Riley",
+      "url": "https://www.wpspublish.com/ssi-4-stuttering-severity-instrument-fourth-edition",
+      "kind": "guide",
+      "level": 4,
+      "why": "The publisher's page for a widely used severity measure you may see reported in papers."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "sl-1",
+      "level": 1,
+      "title": "Reading a fluency paper",
+      "minutes": 40,
+      "pillar": "read",
+      "why": "Fluency papers use event labels, speaking tasks and severity measures that change what a result means, so you need to find them before you trust a number.",
+      "read": [
+        {
+          "title": "FluencyBank Timestamped: An Updated Data Set for Disfluency Detection and Automatic Intended Speech Recognition",
+          "by": "Amrit Romana, Minxue Niu, Matthew Perez and Emily Mower Provost",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12379651/"
+        },
+        {
+          "title": "SEP-28k: A Dataset for Stuttering Event Detection From Podcasts With People Who Stutter",
+          "by": "Colin Lea, Vikramjit Mitra, Aparna Joshi, Sachin Kajarekar and Jeffrey P. Bigham",
+          "url": "https://arxiv.org/abs/2102.12394"
+        },
+        {
+          "title": "Stuttering, Cluttering, and Fluency (Practice Portal)",
+          "by": "American Speech-Language-Hearing Association",
+          "url": "https://www.asha.org/practice-portal/clinical-topics/fluency-disorders/"
+        }
+      ],
+      "do": "Read the two dataset papers with three passes. For each, write a paper card that also records: who the speakers are, the speaking task, the list of disfluency labels, and how many people labelled each item.",
+      "speak": "In two minutes, explain how the two datasets differ in speakers, speech type and labels, and why that matters if you use both.",
+      "check": "Which label types appear in one dataset but not the other, and which labels share a name but may mean different things?",
+      "terms": ["disfluency", "stuttering-like-disfluency", "typical-disfluency", "annotation-scheme", "speech-sample", "speech-corpus"],
+      "skills": ["three-pass-reading", "paper-cards", "critical-appraisal"]
+    },
+    {
+      "id": "sl-2",
+      "level": 3,
+      "title": "Speech corpora, consent and access rules",
+      "minutes": 45,
+      "pillar": "operate",
+      "why": "Clinical speech is identifiable personal data; the access terms decide what you can store, share and publish, and breaking them can end a project.",
+      "read": [
+        {
+          "title": "TalkBank ground rules",
+          "by": "TalkBank",
+          "url": "https://talkbank.org/0share/rules.html"
+        },
+        {
+          "title": "TalkBank data access levels",
+          "by": "TalkBank",
+          "url": "https://talkbank.org/0share/access.html"
+        },
+        {
+          "title": "FluencyBank corpora index",
+          "by": "TalkBank",
+          "url": "https://talkbank.org/fluency/access/"
+        },
+        {
+          "title": "SEP-28k: Stuttering Events in Podcasts dataset",
+          "by": "Apple",
+          "url": "https://github.com/apple/ml-stuttering-events-dataset"
+        }
+      ],
+      "do": "For each dataset you plan to use, write one row in a data plan: access level, who approved you, licence, what must be cited, where the data will be stored, and what you may and may not release (audio, transcripts, derived features, trained models). Note anything you are unsure of and ask the data owner.",
+      "speak": "Explain to a supervisor in one minute what you can put in a public code repository and what must stay on your own machine, and why.",
+      "check": "Could anything you plan to publish, such as example clips or a model trained on the data, break the access terms?",
+      "terms": ["clinical-data-access", "informed-consent", "data-protection", "data-management-plan", "open-data", "speech-corpus"],
+      "skills": ["data-management", "ethics-process"]
+    },
+    {
+      "id": "sl-3",
+      "level": 3,
+      "title": "Annotation, alignment and reliability",
+      "minutes": 60,
+      "pillar": "do",
+      "why": "A word-level analysis is only as good as its labels and timings, and both come with error you must measure.",
+      "read": [
+        {
+          "title": "CHAT manual",
+          "by": "Brian MacWhinney",
+          "url": "https://talkbank.org/0info/manuals/CHAT.pdf"
+        },
+        {
+          "title": "Montreal Forced Aligner",
+          "by": "Montreal Corpus Tools",
+          "url": "https://montreal-forced-aligner.readthedocs.io/"
+        },
+        {
+          "title": "Praat",
+          "by": "Paul Boersma, David Weenink and Anastasia Shchupak",
+          "url": "https://www.fon.hum.uva.nl/praat/"
+        }
+      ],
+      "do": "Take five minutes of disfluent speech. Label each disfluency with your scheme, then ask a second person to label the same stretch without seeing yours. Compute percent agreement and Cohen's kappa by event type. Check twenty word timings by eye in Praat and note where alignment failed.",
+      "speak": "Report your agreement results in three sentences, naming the event type with the lowest agreement and one reason why.",
+      "check": "Which event types did you and the second rater disagree on most, and how would you change the scheme to fix it?",
+      "terms": ["annotation", "annotation-scheme", "inter-rater-reliability", "cohens-kappa", "forced-alignment", "word-timestamps"],
+      "skills": ["operationalising-constructs", "reproducible-pipeline", "data-analysis"]
+    },
+    {
+      "id": "sl-4",
+      "level": 4,
+      "title": "Reporting disfluency results",
+      "minutes": 45,
+      "pillar": "write",
+      "why": "Readers can only compare your result with others if you report the sample, the scheme, the measures and the uncertainty in full.",
+      "read": [
+        {
+          "title": "FluencyBank Timestamped: An Updated Data Set for Disfluency Detection and Automatic Intended Speech Recognition",
+          "by": "Amrit Romana, Minxue Niu, Matthew Perez and Emily Mower Provost",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12379651/"
+        },
+        {
+          "title": "Ten simple rules for structuring papers",
+          "by": "Brett Mensh and Konrad Kording",
+          "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619"
+        }
+      ],
+      "do": "Write the methods and results paragraphs for a word-level analysis of surprisal and disfluency. Include: speakers and severity, speaking task, annotation scheme and reliability, how surprisal was computed (model and context), controls such as frequency and position, the model with random effects for speaker, and the effect with a confidence interval.",
+      "speak": "Give your main result as a spoken sentence with the size of the effect, its uncertainty and one limitation.",
+      "check": "Could a reader recompute your disfluency measure and your surprisal values from what you wrote?",
+      "terms": ["surprisal", "lexical-frequency", "mixed-effects-model", "effect-size", "confidence-interval", "limitation"],
+      "skills": ["structuring-a-paper", "hedging-claims", "figure-design"]
+    }
+  ]
+}

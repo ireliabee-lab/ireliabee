@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-show-reminder"
+description = "Enables the show_reminder command without any pre-configured scope."
+commands.allow = ["show_reminder"]
+
+[[permission]]
+identifier = "deny-show-reminder"
+description = "Denies the show_reminder command without any pre-configured scope."
+commands.deny = ["show_reminder"]

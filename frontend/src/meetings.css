@@ -1,0 +1,130 @@
+/* ── Your own meetings (MeetingForm, the calendar and Idea board notes) ────── */
+.mt-form { width: min(620px, 94vw); max-height: 88vh; overflow-y: auto; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; }
+.mt-form > * { flex-shrink: 0; }
+.mt-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.mt-head strong { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; }
+.mt-input {
+  width: 100%; min-width: 0; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border-light);
+  background: var(--surface); color: var(--text); font: inherit; font-size: 14px;
+}
+.mt-input:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+textarea.mt-input { resize: vertical; line-height: 1.5; }
+.mt-big { font-size: 16px; font-weight: 600; }
+.mt-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+.mt-person { grid-template-columns: 1fr 1fr auto; align-items: center; }
+.mt-add { align-self: flex-start; display: inline-flex; align-items: center; gap: 5px; padding: 4px 8px; border: 0; border-radius: 7px;
+  background: transparent; color: var(--primary); font: inherit; font-size: 13px; cursor: pointer; }
+.mt-add:hover { background: rgba(var(--accent-rgb), 0.1); }
+.mt-reminders { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.mt-reminders li { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.mt-reminders select { width: auto; }
+.mt-chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 9px; border-radius: 999px; font-size: 12.5px; cursor: pointer;
+  border: 1px solid var(--border-light); color: var(--muted); user-select: none; }
+.mt-chip input { position: absolute; opacity: 0; pointer-events: none; }
+.mt-chip.on { color: var(--primary); border-color: rgba(var(--accent-rgb), 0.5); background: rgba(var(--accent-rgb), 0.1); }
+.mt-chip.soon { opacity: 0.55; cursor: not-allowed; }
+.mt-chip:focus-within { outline: 2px solid var(--primary); outline-offset: 1px; }
+.mt-small { font-size: 12px; margin: 2px 0 0; }
+.mt-actions { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+.cal-topics { margin: 4px 0 0; padding-left: 16px; font-size: 13px; color: var(--muted); }
+.cal-own { color: var(--primary); }
+.cal-later-label { margin-top: 18px; }
+/* The date on an Idea board note that is a meeting. */
+.sticky-meeting { position: absolute; left: 10px; bottom: 8px; display: inline-flex; align-items: center; gap: 4px; max-width: calc(100% - 40px);
+  padding: 2px 8px; border-radius: 999px; border: 0; background: rgba(0, 0, 0, 0.1); color: inherit; font-size: 11.5px; font-weight: 600;
+  cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sticky-meeting:hover { background: rgba(0, 0, 0, 0.18); }
+/* Email and text reminders: what they cost and what they will say. */
+.mt-remote { display: flex; flex-direction: column; gap: 6px; }
+.mt-cost { color: var(--text); line-height: 1.5; }
+.mt-cost svg { display: inline-block; vertical-align: -1px; margin-right: 4px; color: var(--primary); }
+.mt-preview { margin: 0; padding: 10px 12px; border-radius: 8px; border: 1px dashed var(--border-light); background: var(--surface); }
+.mt-preview figcaption { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.mt-preview-subject { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.mt-preview pre { margin: 0; white-space: pre-wrap; font: inherit; font-size: 13px; line-height: 1.5; }
+/* Settings: the number text reminders go to. */
+.phone-settings { display: flex; flex-direction: column; gap: 6px; padding: 10px 2px 2px; }
+.phone-settings > strong { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
+.phone-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.phone-row .mt-input { width: auto; flex: 1 1 160px; max-width: 220px; }
+.phone-row small { flex-basis: 100%; }
+/* Icons beside a form label sit on its line. */
+.mt-form .settings-label svg { display: inline-block; vertical-align: -1px; margin-right: 4px; }
+
+/* Follow-ups (H1): in the meeting form, on the Calendar tab, and on a meeting's card. */
+.fu-edit { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.fu-edit li { display: flex; flex-direction: column; gap: 5px; }
+.fu-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.fu-row-meta { padding-left: 24px; }
+.fu-edit li.done .fu-text { text-decoration: line-through; opacity: 0.6; }
+.fu-edit .fu-kind { width: auto; flex: none; }
+.fu-edit .fu-text { flex: 1 1 200px; width: auto; }
+.fu-edit .fu-due { width: auto; flex: none; }
+.fu-at { font-size: 12px; }
+.fu-remind { padding: 4px 7px; }
+.fu-board { padding: 14px 16px; margin-bottom: 14px; display: flex; flex-direction: column; gap: 8px; }
+.fu-board-head { display: flex; align-items: center; gap: 6px; }
+.fu-board-head svg { display: inline-block; color: var(--primary); }
+.fu-board ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.fu-board li { display: flex; gap: 10px; align-items: flex-start; }
+.fu-tick { flex: none; width: 20px; height: 20px; margin-top: 1px; border-radius: 6px; border: 1.5px solid var(--border-light);
+  background: transparent; color: transparent; display: grid; place-items: center; cursor: pointer; padding: 0; }
+.fu-tick:hover, .fu-tick:focus-visible { border-color: var(--primary); color: var(--primary); }
+.fu-body { min-width: 0; }
+.fu-line { font-size: 14px; }
+.fu-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; margin-top: 2px; }
+.fu-overdue { color: var(--danger, #d9534f); font-weight: 600; }
+.fu-today { color: var(--primary); font-weight: 600; }
+.fu-from { border: 0; background: none; padding: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: underline dotted; }
+.fu-from:hover { color: var(--text); }
+.fu-kind-chip { display: inline-block; padding: 0 6px; border-radius: 999px; font-size: 11px; line-height: 17px;
+  background: rgba(var(--accent-rgb), 0.12); color: var(--primary); }
+.fu-kind-chip.asked { background: rgba(217, 140, 40, 0.15); color: #c07a18; }
+.fu-kind-chip.todo { background: rgba(127, 127, 127, 0.15); color: var(--muted); }
+.cal-brief { margin-top: 6px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+.cal-about { margin: 0; color: var(--muted); line-height: 1.45; }
+.cal-open { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+/* After the call (H1b): its notes on the meeting, and action items taken from them. */
+.cal-notes { display: flex; flex-wrap: wrap; gap: 6px; }
+.fu-source { font-size: 11px; font-style: italic; }
+
+/* The meeting-reminder window (components/ReminderWindow): one card, the whole window. */
+html.reminder-root, html.reminder-root body { background: transparent; overflow: hidden; }
+.reminder-window {
+  box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden;
+  --rw-pad: 16px;
+  background: rgba(var(--raised-rgb), 0.99); color: var(--text);
+  border: none; border-radius: 12px; font-family: var(--font); font-size: 13px;
+}
+/* The header: the Start & listen colour, the meeting's name in it. */
+.reminder-window-head { display: flex; align-items: center; gap: 8px; padding: 12px var(--rw-pad); cursor: default;
+  background: var(--primary); color: var(--on-primary); }
+.reminder-window-head strong { flex: 1; font-size: 14px; line-height: 1.3; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.reminder-window-head svg { flex: none; }
+.reminder-window-close { display: grid; place-items: center; width: 24px; height: 24px; padding: 0; margin: -4px -4px -4px 0; border: none; border-radius: 6px;
+  background: transparent; color: inherit; opacity: 0.8; cursor: pointer; }
+.reminder-window-close:hover, .reminder-window-close:focus-visible { opacity: 1; background: rgba(255,255,255,0.18); }
+.reminder-window-body { display: flex; align-items: center; gap: var(--rw-pad); padding: var(--rw-pad) var(--rw-pad) 0; }
+.reminder-window-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.reminder-window-when { font-size: 13px; font-weight: 600; }
+.reminder-window .muted { font-size: 12px; }
+.reminder-window-topics { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.reminder-window .meeting-reminder-actions { padding: var(--rw-pad); margin: 0; }
+
+/* The clock at the right: hand sweeps, pings ripple out, a dot circles. */
+.reminder-clock { flex: none; width: 76px; height: 76px; overflow: visible; }
+.reminder-clock .rc-face { fill: rgba(var(--accent-rgb), 0.12); stroke: var(--primary); stroke-width: 2; }
+.reminder-clock .rc-tick { stroke: var(--primary); stroke-width: 1.5; stroke-linecap: round; opacity: 0.7; }
+.reminder-clock .rc-hour, .reminder-clock .rc-hand { stroke: var(--text); stroke-width: 2.5; stroke-linecap: round; }
+.reminder-clock .rc-hand { stroke: var(--primary); stroke-width: 2; transform-origin: 40px 40px; animation: rc-sweep 4s linear infinite; }
+.reminder-clock .rc-hub { fill: var(--primary); }
+.reminder-clock .rc-ping { fill: none; stroke: var(--primary); stroke-width: 1.5; transform-origin: 40px 40px; animation: rc-ping 2.4s ease-out infinite; }
+.reminder-clock .rc-ping-2 { animation-delay: 1.2s; }
+.reminder-clock .rc-orbit { transform-origin: 40px 40px; animation: rc-sweep 6s linear infinite reverse; }
+.reminder-clock .rc-orbit circle { fill: var(--primary); }
+@keyframes rc-sweep { to { transform: rotate(360deg); } }
+@keyframes rc-ping { from { transform: scale(1); opacity: 0.7; } to { transform: scale(1.75); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .reminder-clock .rc-hand, .reminder-clock .rc-ping, .reminder-clock .rc-orbit { animation: none; }
+  .reminder-clock .rc-ping { opacity: 0; }
+}

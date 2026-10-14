@@ -1,0 +1,724 @@
+{
+  "version": 1,
+  "id": "machine-learning",
+  "name": "Machine learning",
+  "description": "Words and sources for training, evaluating and honestly reporting machine learning models.",
+  "terms": [
+    {
+      "id": "supervised-learning",
+      "term": "Supervised learning",
+      "group": "Machine learning",
+      "definition": "Learning to predict a known label from input examples that come with the correct answer.",
+      "example": "We frame stutter detection as supervised learning on clips labelled by annotators.",
+      "misuse": "The labels are only as good as the people or process that made them.",
+      "when": "Use it when every training example has a target label.",
+      "related": ["label", "feature", "self-supervised-learning", "ground-truth"]
+    },
+    {
+      "id": "self-supervised-learning",
+      "term": "Self-supervised learning",
+      "group": "Machine learning",
+      "definition": "Learning from unlabelled data by predicting parts of the data from other parts, such as the next word or a masked patch.",
+      "example": "The speech encoder was pretrained with self-supervised learning on thousands of hours of audio.",
+      "misuse": "Not free of human choices: the data and the prediction task shape what is learned.",
+      "when": "Use it when describing how a pretrained model was first trained.",
+      "related": ["pretrained-model", "embedding", "supervised-learning"]
+    },
+    {
+      "id": "feature",
+      "term": "Feature",
+      "group": "Machine learning",
+      "definition": "One input value the model uses to make a prediction.",
+      "example": "Features that come from the test labels themselves would leak the answer.",
+      "misuse": "A feature that is only available after the event you predict cannot be used honestly.",
+      "when": "Use it when listing model inputs.",
+      "related": ["label", "data-leakage", "embedding"]
+    },
+    {
+      "id": "label",
+      "term": "Label",
+      "group": "Machine learning",
+      "definition": "The target value a model is trained to predict for each example.",
+      "example": "Each clip's label is the event type chosen by at least two of three annotators.",
+      "misuse": "A label is a recorded judgement, not guaranteed truth.",
+      "when": "Use it for the target in training and evaluation data.",
+      "related": ["label-noise", "ground-truth", "supervised-learning"]
+    },
+    {
+      "id": "label-noise",
+      "term": "Label noise",
+      "group": "Machine learning",
+      "definition": "Errors or disagreements in the labels of a dataset.",
+      "example": "Because annotators often disagreed on blocks, label noise sets a ceiling on block accuracy.",
+      "misuse": "Not something you can ignore when test labels are noisy too; it limits how high any score can be.",
+      "when": "Use it when discussing annotation quality and score ceilings.",
+      "related": ["label", "inter-rater-reliability", "ceiling-effect"]
+    },
+    {
+      "id": "train-validation-test-split",
+      "term": "Train, validation and test split",
+      "group": "Machine learning",
+      "definition": "Dividing data into a part for fitting the model, a part for choosing settings, and a part kept aside for the final estimate.",
+      "example": "We split by speaker so that no person appears in more than one part.",
+      "misuse": "A random split by example lets the same speaker or document appear in train and test.",
+      "when": "Use it when describing how you evaluated, including the unit you split on.",
+      "related": ["training-set", "validation-set", "test-set", "data-leakage", "held-out-data"]
+    },
+    {
+      "id": "training-set",
+      "term": "Training set",
+      "group": "Machine learning",
+      "definition": "The examples used to fit the model's parameters.",
+      "example": "The training set had 20,000 clips from 300 speakers.",
+      "misuse": "Scores on the training set say little about new data.",
+      "when": "Use it for the data the model learns from.",
+      "related": ["train-validation-test-split", "overfitting"]
+    },
+    {
+      "id": "validation-set",
+      "term": "Validation set",
+      "group": "Machine learning",
+      "definition": "Data kept out of training and used to choose hyperparameters, stop training or pick a model.",
+      "example": "We chose the learning rate that gave the best validation F1.",
+      "misuse": "Validation scores are optimistic once you have tuned on them; do not report them as the final result.",
+      "when": "Use it for all tuning decisions.",
+      "related": ["test-set", "hyperparameter-tuning", "early-stopping"]
+    },
+    {
+      "id": "test-set",
+      "term": "Test set",
+      "group": "Machine learning",
+      "definition": "Data kept aside until the end and used once to estimate performance on new data.",
+      "example": "We looked at the test set only after freezing all choices.",
+      "misuse": "If you check the test set, change something and check again, it has become a validation set.",
+      "when": "Use it for the final reported numbers.",
+      "related": ["held-out-data", "validation-set", "data-leakage"]
+    },
+    {
+      "id": "data-leakage",
+      "term": "Data leakage",
+      "group": "Machine learning",
+      "definition": "When information from the test data, or information unavailable at prediction time, gets into training or model choice and inflates scores.",
+      "example": "Fitting the scaler on all data before splitting is a quiet form of data leakage.",
+      "misuse": "Not only copying test rows into training: preprocessing, feature choice and overlapping speakers can also leak.",
+      "when": "Use it when checking an evaluation or explaining a result that looks too good.",
+      "related": ["train-validation-test-split", "benchmark-contamination", "test-set", "feature"]
+    },
+    {
+      "id": "generalisation-gap",
+      "term": "Generalisation gap",
+      "group": "Machine learning",
+      "definition": "The difference between a model's performance on its training data and on new data.",
+      "example": "The generalisation gap widened when we trained longer without regularisation.",
+      "misuse": "A small gap on one test set does not show the model works on a different population.",
+      "when": "Use it to describe overfitting in numbers.",
+      "related": ["overfitting", "underfitting", "distribution-shift"]
+    },
+    {
+      "id": "underfitting",
+      "term": "Underfitting",
+      "group": "Machine learning",
+      "definition": "When a model is too simple or trained too little to capture the patterns in the training data.",
+      "example": "Both training and validation loss stayed high, which points to underfitting.",
+      "misuse": "Not fixed by more regularisation; that makes it worse.",
+      "when": "Use it when training performance itself is poor.",
+      "related": ["overfitting", "bias-variance-trade-off", "generalisation-gap"]
+    },
+    {
+      "id": "bias-variance-trade-off",
+      "term": "Bias-variance trade-off",
+      "group": "Machine learning",
+      "definition": "The tension between a model too simple to fit the pattern (bias) and one so flexible it fits noise (variance).",
+      "example": "Adding features lowered bias but increased variance across folds.",
+      "misuse": "Large modern networks do not always follow the simple textbook curve; treat it as a guide, not a law.",
+      "when": "Use it when explaining choices about model size and regularisation.",
+      "related": ["overfitting", "underfitting", "regularisation"]
+    },
+    {
+      "id": "hyperparameter",
+      "term": "Hyperparameter",
+      "group": "Machine learning",
+      "definition": "A setting chosen before training rather than learned from data, such as learning rate or batch size.",
+      "example": "We report every hyperparameter and the range we searched.",
+      "misuse": "Tuning hyperparameters for your method but not for the baseline makes the comparison unfair.",
+      "when": "Use it for any setting you choose rather than learn.",
+      "related": ["hyperparameter-tuning", "learning-rate", "batch-size", "baseline"]
+    },
+    {
+      "id": "hyperparameter-tuning",
+      "term": "Hyperparameter tuning",
+      "group": "Machine learning",
+      "definition": "Searching over hyperparameter values and keeping those that do best on validation data.",
+      "example": "Each method got the same tuning budget of 30 trials.",
+      "misuse": "Tuning on the test set turns the test score into a validation score.",
+      "when": "Use it when describing your search and its budget.",
+      "related": ["hyperparameter", "validation-set", "compute-budget", "researcher-degrees-of-freedom"]
+    },
+    {
+      "id": "learning-rate",
+      "term": "Learning rate",
+      "group": "Machine learning",
+      "definition": "How large a step the optimiser takes when it updates the model's parameters.",
+      "example": "With a learning rate ten times higher, the loss diverged within a few hundred steps.",
+      "misuse": "No single value is correct for all models; it usually needs tuning.",
+      "when": "Use it when reporting or tuning training settings.",
+      "related": ["gradient-descent", "hyperparameter", "loss-function"]
+    },
+    {
+      "id": "loss-function",
+      "term": "Loss function",
+      "group": "Machine learning",
+      "definition": "The quantity a model is trained to reduce, measuring how far its predictions are from the targets.",
+      "example": "We used a weighted cross-entropy loss to handle rare event types.",
+      "misuse": "The loss you train on is often not the metric you report; say both.",
+      "when": "Use it when describing the training objective.",
+      "related": ["gradient-descent", "metric", "class-imbalance"]
+    },
+    {
+      "id": "gradient-descent",
+      "term": "Gradient descent",
+      "group": "Machine learning",
+      "definition": "Training by repeatedly nudging parameters in the direction that most reduces the loss.",
+      "example": "The model was trained with stochastic gradient descent on mini-batches.",
+      "misuse": "It finds a low point near where it starts, not necessarily the best possible model.",
+      "when": "Use it when explaining how parameters are learned.",
+      "related": ["learning-rate", "loss-function", "batch-size", "epoch"]
+    },
+    {
+      "id": "epoch",
+      "term": "Epoch",
+      "group": "Machine learning",
+      "definition": "One full pass of the training algorithm over the training set.",
+      "example": "Validation loss stopped improving after eight epochs.",
+      "misuse": "Epoch counts are not comparable across datasets of different sizes; steps may be clearer.",
+      "when": "Use it when reporting training length.",
+      "related": ["early-stopping", "batch-size", "gradient-descent"]
+    },
+    {
+      "id": "batch-size",
+      "term": "Batch size",
+      "group": "Machine learning",
+      "definition": "How many examples are processed together for each parameter update.",
+      "example": "We halved the batch size to fit in memory and lowered the learning rate to match.",
+      "misuse": "Changing batch size can change results; do not treat it as only a memory setting.",
+      "when": "Use it when reporting training settings.",
+      "related": ["hyperparameter", "learning-rate", "epoch"]
+    },
+    {
+      "id": "regularisation",
+      "term": "Regularisation",
+      "group": "Machine learning",
+      "definition": "Any technique that discourages a model from fitting noise, such as weight penalties, dropout or data augmentation.",
+      "example": "Stronger regularisation narrowed the gap between training and validation scores.",
+      "misuse": "Not a fix for leakage or a biased test set.",
+      "when": "Use it when discussing how you controlled overfitting.",
+      "related": ["overfitting", "early-stopping", "bias-variance-trade-off"]
+    },
+    {
+      "id": "early-stopping",
+      "term": "Early stopping",
+      "group": "Machine learning",
+      "definition": "Ending training when validation performance stops improving, to avoid overfitting.",
+      "example": "We used early stopping with a patience of three epochs on validation loss.",
+      "misuse": "Early stopping on the test set is a form of leakage.",
+      "when": "Use it when describing when and why training ended.",
+      "related": ["validation-set", "regularisation", "epoch"]
+    },
+    {
+      "id": "distribution-shift",
+      "term": "Distribution shift",
+      "group": "Machine learning",
+      "definition": "A difference between the data a model was trained on and the data it meets in use.",
+      "example": "Models trained on podcast audio faced distribution shift on clinical recordings.",
+      "misuse": "A good in-distribution test score says little about performance after a shift.",
+      "when": "Use it when a model is applied to new speakers, settings or time periods.",
+      "related": ["out-of-distribution", "external-validity", "generalisation-gap"]
+    },
+    {
+      "id": "out-of-distribution",
+      "term": "Out-of-distribution",
+      "group": "Machine learning",
+      "definition": "Describes data that differs in important ways from the training data.",
+      "example": "We add an out-of-distribution test set recorded in a different room and dialect.",
+      "misuse": "Say how the data differs; out-of-distribution is not a single, fixed property.",
+      "when": "Use it when you test robustness to new conditions.",
+      "related": ["distribution-shift", "robustness", "test-set"]
+    },
+    {
+      "id": "benchmark-contamination",
+      "term": "Benchmark contamination",
+      "group": "Machine learning",
+      "definition": "When test examples from a benchmark, or close copies, appear in a model's training data.",
+      "example": "Because the model was trained on web text, we checked for benchmark contamination before trusting its score.",
+      "misuse": "A high score on a public benchmark may show memorisation rather than ability.",
+      "when": "Use it when evaluating large pretrained models on public test sets.",
+      "related": ["benchmark", "data-leakage", "pretrained-model", "leaderboard"]
+    },
+    {
+      "id": "leaderboard",
+      "term": "Leaderboard",
+      "group": "Machine learning",
+      "definition": "A public ranking of methods by their score on a benchmark.",
+      "example": "The top three leaderboard entries differ by less than their seed variance.",
+      "misuse": "Rank order hides uncertainty, tuning effort and compute.",
+      "when": "Use it when discussing how a field compares methods.",
+      "related": ["benchmark", "state-of-the-art", "seed-variance", "benchmark-contamination"]
+    },
+    {
+      "id": "precision-and-recall",
+      "term": "Precision and recall",
+      "group": "Machine learning",
+      "definition": "Precision is the share of predicted positives that are correct; recall is the share of true positives that the model finds.",
+      "example": "The detector had high precision for repetitions but found only half the blocks.",
+      "misuse": "In classification, precision does not mean measurement consistency; say which sense you mean.",
+      "when": "Use them when positives are rare or when the two kinds of error cost differently.",
+      "related": ["f1-score", "confusion-matrix", "class-imbalance", "precision"]
+    },
+    {
+      "id": "f1-score",
+      "term": "F1 score",
+      "group": "Machine learning",
+      "definition": "The harmonic mean of precision and recall, a single number that is high only when both are high.",
+      "example": "We report macro F1 so that rare event types count as much as common ones.",
+      "misuse": "Say whether it is macro, micro or per class; they can differ a lot.",
+      "when": "Use it for classification with imbalanced classes.",
+      "related": ["precision-and-recall", "class-imbalance", "metric"]
+    },
+    {
+      "id": "confusion-matrix",
+      "term": "Confusion matrix",
+      "group": "Machine learning",
+      "definition": "A table of true classes against predicted classes that shows which classes the model mixes up.",
+      "example": "The confusion matrix shows prolongations are most often predicted as blocks.",
+      "misuse": "Not a single score; read the off-diagonal cells, not only the diagonal.",
+      "when": "Use it to show where a classifier fails.",
+      "related": ["precision-and-recall", "f1-score", "accuracy"]
+    },
+    {
+      "id": "roc-auc",
+      "term": "ROC AUC",
+      "group": "Machine learning",
+      "definition": "The area under the curve of true positive rate against false positive rate across all decision thresholds.",
+      "example": "ROC AUC was high, but precision at the threshold we would use was poor.",
+      "misuse": "It can look good when positives are very rare; precision-recall curves are often more informative then.",
+      "when": "Use it to compare ranking quality across thresholds.",
+      "related": ["precision-and-recall", "class-imbalance", "calibration"]
+    },
+    {
+      "id": "class-imbalance",
+      "term": "Class imbalance",
+      "group": "Machine learning",
+      "definition": "When some classes are much more common than others in the data.",
+      "example": "With 90% fluent clips, always predicting fluent gives 90% accuracy.",
+      "misuse": "Accuracy hides imbalance; report per-class or balanced metrics.",
+      "when": "Use it when choosing metrics, losses and sampling.",
+      "related": ["accuracy", "f1-score", "loss-function"]
+    },
+    {
+      "id": "calibration",
+      "term": "Calibration",
+      "group": "Machine learning",
+      "definition": "How well a model's predicted probabilities match the actual frequency of outcomes.",
+      "example": "Among clips the model gave 0.8, only 60% were stutters, so it is overconfident.",
+      "misuse": "A model can rank well and still be badly calibrated.",
+      "when": "Use it when predicted probabilities feed decisions or later analyses.",
+      "related": ["roc-auc", "metric", "predictive-uncertainty"]
+    },
+    {
+      "id": "predictive-uncertainty",
+      "term": "Predictive uncertainty",
+      "group": "Machine learning",
+      "definition": "How unsure a model is about a particular prediction, expressed as a probability or an interval.",
+      "example": "We flag clips with high predictive uncertainty for human review.",
+      "misuse": "A softmax probability is not automatically a trustworthy uncertainty; check calibration.",
+      "when": "Use it when deciding which predictions to trust or check.",
+      "related": ["calibration", "confidence-interval"]
+    },
+    {
+      "id": "seed-variance",
+      "term": "Seed variance",
+      "group": "Machine learning",
+      "definition": "The spread in results when the same training run is repeated with different random seeds.",
+      "example": "Across five seeds, F1 varied by two points, more than the gap between the two methods.",
+      "misuse": "A single run cannot show that one method beats another.",
+      "when": "Use it when comparing methods; report mean and spread over several seeds.",
+      "related": ["standard-deviation", "leaderboard", "reproducibility"]
+    },
+    {
+      "id": "compute-budget",
+      "term": "Compute budget",
+      "group": "Machine learning",
+      "definition": "The amount of computing, such as GPU hours, spent on training and tuning.",
+      "example": "Our method used a quarter of the baseline's compute budget.",
+      "misuse": "Comparing methods trained with very different compute can credit the method for what the compute did.",
+      "when": "Use it when reporting costs and making fair comparisons.",
+      "related": ["hyperparameter-tuning", "baseline", "pretrained-model"]
+    },
+    {
+      "id": "pretrained-model",
+      "term": "Pretrained model",
+      "group": "Machine learning",
+      "definition": "A model already trained on a large general dataset, released so others can reuse it.",
+      "example": "We start from a pretrained speech model rather than training from scratch.",
+      "misuse": "Its training data may overlap your test data or carry biases you cannot see.",
+      "when": "Use it when your work builds on someone else's trained weights, naming the exact version.",
+      "related": ["fine-tuning", "transfer-learning", "benchmark-contamination", "model-card"]
+    },
+    {
+      "id": "fine-tuning",
+      "term": "Fine-tuning",
+      "group": "Machine learning",
+      "definition": "Continuing to train a pretrained model on a smaller dataset for a specific task.",
+      "example": "Fine-tuning on SEP-28k improved detection but hurt performance on clinical audio.",
+      "misuse": "Fine-tuning can make a model forget general abilities; test more than the target task.",
+      "when": "Use it when you adapt a pretrained model with further training.",
+      "related": ["pretrained-model", "transfer-learning", "overfitting"]
+    },
+    {
+      "id": "transfer-learning",
+      "term": "Transfer learning",
+      "group": "Machine learning",
+      "definition": "Reusing what a model learned on one task or dataset to help with another.",
+      "example": "Transfer learning let us train a usable model with only a few hundred labelled clips.",
+      "misuse": "Transfer can hurt when the source and target differ too much.",
+      "when": "Use it for the general strategy; use fine-tuning for the specific method.",
+      "related": ["fine-tuning", "pretrained-model", "distribution-shift"]
+    },
+    {
+      "id": "embedding",
+      "term": "Embedding",
+      "group": "Machine learning",
+      "definition": "A list of numbers that represents an item such as a word, clip or sentence so that similar items are close together.",
+      "example": "We fed clip embeddings from the pretrained encoder into a small classifier.",
+      "misuse": "Closeness in embedding space reflects the training data, not a guaranteed meaning.",
+      "when": "Use it when a model's internal representation is used as input or for comparison.",
+      "related": ["feature", "pretrained-model", "self-supervised-learning"]
+    },
+    {
+      "id": "large-language-model",
+      "term": "Large language model",
+      "group": "Machine learning",
+      "definition": "A very large neural network trained on huge amounts of text to predict the next token, and often further tuned to follow instructions.",
+      "example": "We used a large language model only to draft labels, and humans checked every one.",
+      "misuse": "Fluent output is not evidence of correctness; outputs need checking.",
+      "when": "Use it for this class of models, naming the exact model and version.",
+      "related": ["tokenisation", "pretrained-model", "benchmark-contamination", "few-shot-learning"]
+    },
+    {
+      "id": "tokenisation",
+      "term": "Tokenisation",
+      "group": "Machine learning",
+      "definition": "Splitting text into the units, called tokens, that a language model reads and predicts.",
+      "example": "Because one word can be several tokens, we summed token surprisals to get word surprisal.",
+      "misuse": "Tokens are often not words; per-token numbers need care before you treat them as per-word.",
+      "when": "Use it when turning model outputs into word-level measures.",
+      "related": ["large-language-model", "embedding"]
+    },
+    {
+      "id": "few-shot-learning",
+      "term": "Few-shot learning",
+      "group": "Machine learning",
+      "definition": "Getting a model to do a task from only a handful of examples, often given in the prompt; zero-shot means no examples at all.",
+      "example": "In the few-shot setting we gave the model five labelled transcripts in the prompt.",
+      "misuse": "Results can change a lot with which examples you pick and their order.",
+      "when": "Use it when comparing prompting with fine-tuning.",
+      "related": ["large-language-model", "fine-tuning", "seed-variance"]
+    },
+    {
+      "id": "model-card",
+      "term": "Model card",
+      "group": "Machine learning",
+      "definition": "A short document released with a model that states its intended use, training data, evaluation results and limits.",
+      "example": "Our model card reports results separately for children and adults.",
+      "misuse": "Not marketing: it should say where the model fails.",
+      "when": "Use it whenever you release a trained model.",
+      "related": ["datasheet", "limitation", "pretrained-model"]
+    },
+    {
+      "id": "datasheet",
+      "term": "Datasheet for a dataset",
+      "group": "Machine learning",
+      "definition": "A document that describes how a dataset was made, what it contains, and how it should and should not be used.",
+      "example": "The datasheet explains who the speakers are and how consent was obtained.",
+      "misuse": "Not a licence; it describes the data, and the licence governs its use.",
+      "when": "Use it when you release or rely on a dataset.",
+      "related": ["model-card", "data-management-plan", "informed-consent"]
+    }
+  ],
+  "resources": [
+    {
+      "title": "arXiv",
+      "by": "Cornell University",
+      "url": "https://arxiv.org/",
+      "kind": "paper",
+      "level": 1,
+      "why": "Where most machine learning papers appear first, as preprints."
+    },
+    {
+      "title": "OpenReview",
+      "by": "OpenReview",
+      "url": "https://openreview.net/",
+      "kind": "paper",
+      "level": 1,
+      "why": "Papers from major venues with their public reviews and author responses."
+    },
+    {
+      "title": "Trending Papers",
+      "by": "Hugging Face",
+      "url": "https://huggingface.co/papers/trending",
+      "kind": "paper",
+      "level": 1,
+      "why": "A daily view of machine learning papers people are reading, often linked to code and models."
+    },
+    {
+      "title": "Hugging Face Datasets",
+      "by": "Hugging Face",
+      "url": "https://huggingface.co/datasets",
+      "kind": "dataset",
+      "level": 3,
+      "why": "A searchable hub of public datasets, many with dataset cards."
+    },
+    {
+      "title": "NeurIPS Paper Checklist",
+      "by": "NeurIPS",
+      "url": "https://neurips.cc/public/guides/PaperChecklist",
+      "kind": "guide",
+      "level": 4,
+      "why": "What a major venue asks every paper to report: claims, limits, reproducibility, error bars and compute."
+    },
+    {
+      "title": "The Machine Learning Reproducibility Checklist",
+      "by": "Joelle Pineau",
+      "url": "https://www.cs.mcgill.ca/~jpineau/ReproducibilityChecklist.pdf",
+      "kind": "guide",
+      "level": 4,
+      "why": "A one-page list of what to report about models, data splits, hyperparameters and results."
+    },
+    {
+      "title": "Leakage and the Reproducibility Crisis in ML-based Science",
+      "by": "Sayash Kapoor and Arvind Narayanan",
+      "url": "https://reproducible.cs.princeton.edu/",
+      "kind": "paper",
+      "level": 3,
+      "why": "Documents leakage errors across many fields and gives a taxonomy of leakage types."
+    },
+    {
+      "title": "Common pitfalls and recommended practices",
+      "by": "scikit-learn",
+      "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+      "kind": "guide",
+      "level": 3,
+      "why": "Worked examples of leakage through preprocessing and how pipelines prevent it."
+    },
+    {
+      "title": "Cross-validation: evaluating estimator performance",
+      "by": "scikit-learn",
+      "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+      "kind": "guide",
+      "level": 3,
+      "why": "Clear guide to splits, including grouped splits that keep one speaker in one fold."
+    },
+    {
+      "title": "Probability calibration",
+      "by": "scikit-learn",
+      "url": "https://scikit-learn.org/stable/modules/calibration.html",
+      "kind": "guide",
+      "level": 4,
+      "why": "How to check and fix whether predicted probabilities can be trusted."
+    },
+    {
+      "title": "Show Your Work: Improved Reporting of Experimental Results",
+      "by": "Jesse Dodge and others",
+      "url": "https://arxiv.org/abs/1909.03004",
+      "kind": "paper",
+      "level": 3,
+      "why": "Argues that results should be reported against the tuning and compute budget spent."
+    },
+    {
+      "title": "Deep Reinforcement Learning that Matters",
+      "by": "Peter Henderson and others",
+      "url": "https://arxiv.org/abs/1709.06560",
+      "kind": "paper",
+      "level": 3,
+      "why": "A clear demonstration that random seeds and settings can change conclusions."
+    },
+    {
+      "title": "A Recipe for Training Neural Networks",
+      "by": "Andrej Karpathy",
+      "url": "https://karpathy.github.io/2019/04/25/recipe/",
+      "kind": "guide",
+      "level": 3,
+      "why": "A practical, step-by-step habit for training models without fooling yourself."
+    },
+    {
+      "title": "Model Cards for Model Reporting",
+      "by": "Margaret Mitchell and others",
+      "url": "https://arxiv.org/abs/1810.03993",
+      "kind": "paper",
+      "level": 4,
+      "why": "The proposal for documenting a model's intended use, evaluation and limits."
+    },
+    {
+      "title": "Datasheets for Datasets",
+      "by": "Timnit Gebru and others",
+      "url": "https://arxiv.org/abs/1803.09010",
+      "kind": "paper",
+      "level": 4,
+      "why": "The proposal for documenting how a dataset was made and how it should be used."
+    },
+    {
+      "title": "CS229: Machine Learning",
+      "by": "Stanford University",
+      "url": "https://cs229.stanford.edu/",
+      "kind": "course",
+      "level": 2,
+      "why": "A thorough university course on the mathematics of machine learning."
+    },
+    {
+      "title": "Practical Deep Learning for Coders",
+      "by": "fast.ai",
+      "url": "https://course.fast.ai/",
+      "kind": "course",
+      "level": 2,
+      "why": "A free, hands-on course that gets you training models quickly."
+    },
+    {
+      "title": "Machine Learning Crash Course",
+      "by": "Google",
+      "url": "https://developers.google.com/machine-learning/crash-course",
+      "kind": "course",
+      "level": 1,
+      "why": "Short self-contained modules on the core ideas, good for filling gaps."
+    },
+    {
+      "title": "Dive into Deep Learning",
+      "by": "Aston Zhang, Zachary Lipton, Mu Li and Alexander Smola",
+      "url": "https://d2l.ai/",
+      "kind": "course",
+      "level": 2,
+      "why": "A free interactive book with runnable code for each idea."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "ml-1",
+      "level": 1,
+      "title": "Reading a machine learning paper",
+      "minutes": 40,
+      "pillar": "read",
+      "why": "Machine learning papers pack their key choices into tables and appendices; you need to find the data split, baselines and number of runs before you trust the headline.",
+      "read": [
+        {
+          "title": "arXiv",
+          "by": "Cornell University",
+          "url": "https://arxiv.org/"
+        },
+        {
+          "title": "OpenReview",
+          "by": "OpenReview",
+          "url": "https://openreview.net/"
+        },
+        {
+          "title": "Trending Papers",
+          "by": "Hugging Face",
+          "url": "https://huggingface.co/papers/trending"
+        }
+      ],
+      "do": "Pick one recent paper on OpenReview that has public reviews. Write a paper card that also records: the dataset and how it was split, the baselines, the metric, the number of seeds, and the compute used. Then read the reviews and note one concern you missed.",
+      "speak": "In one minute, state the paper's main claim and the one missing detail that most limits how far you trust it.",
+      "check": "Does the reported improvement exceed the spread across seeds, and were the baselines tuned as carefully as the new method?",
+      "terms": ["benchmark", "baseline", "leaderboard", "seed-variance", "train-validation-test-split", "metric"],
+      "skills": ["three-pass-reading", "paper-cards", "critical-appraisal"]
+    },
+    {
+      "id": "ml-2",
+      "level": 3,
+      "title": "Splits, leakage and honest evaluation",
+      "minutes": 60,
+      "pillar": "do",
+      "why": "Leakage is one of the most common reasons machine learning results fail to hold up, and it is easy to cause by accident.",
+      "read": [
+        {
+          "title": "Leakage and the Reproducibility Crisis in ML-based Science",
+          "by": "Sayash Kapoor and Arvind Narayanan",
+          "url": "https://reproducible.cs.princeton.edu/"
+        },
+        {
+          "title": "Common pitfalls and recommended practices",
+          "by": "scikit-learn",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html"
+        },
+        {
+          "title": "Cross-validation: evaluating estimator performance",
+          "by": "scikit-learn",
+          "url": "https://scikit-learn.org/stable/modules/cross_validation.html"
+        }
+      ],
+      "do": "Take a dataset where each person contributes many examples. Train the same model twice: once with a random split by example, once with a split by person. Compare the scores and write three sentences on why they differ.",
+      "speak": "Explain to a colleague, in one minute, why your split unit must match the unit you want to generalise to.",
+      "check": "Is every preprocessing step fitted only on training data, and could any person, document or near-duplicate appear on both sides of the split?",
+      "terms": ["data-leakage", "train-validation-test-split", "cross-validation", "held-out-data", "generalisation-gap", "distribution-shift"],
+      "skills": ["study-design", "spotting-confounds", "reproducible-pipeline"]
+    },
+    {
+      "id": "ml-3",
+      "level": 3,
+      "title": "Baselines, seeds and compute",
+      "minutes": 60,
+      "pillar": "do",
+      "why": "A new method only beats a baseline if both got fair tuning and the gap is larger than the noise from random seeds.",
+      "read": [
+        {
+          "title": "Show Your Work: Improved Reporting of Experimental Results",
+          "by": "Jesse Dodge and others",
+          "url": "https://arxiv.org/abs/1909.03004"
+        },
+        {
+          "title": "Deep Reinforcement Learning that Matters",
+          "by": "Peter Henderson and others",
+          "url": "https://arxiv.org/abs/1709.06560"
+        },
+        {
+          "title": "A Recipe for Training Neural Networks",
+          "by": "Andrej Karpathy",
+          "url": "https://karpathy.github.io/2019/04/25/recipe/"
+        }
+      ],
+      "do": "Run a simple baseline and your method with the same tuning budget, five seeds each. Report the mean and standard deviation for both, the budget used, and one ablation that removes your key change.",
+      "speak": "State in two sentences whether your method beats the baseline, giving the gap and the seed spread.",
+      "check": "Would your conclusion change if you had only run one seed, or given the baseline half the tuning budget?",
+      "terms": ["baseline", "ablation", "seed-variance", "compute-budget", "hyperparameter-tuning", "standard-deviation"],
+      "skills": ["baselines-and-ablations", "reproducible-pipeline", "data-analysis"]
+    },
+    {
+      "id": "ml-4",
+      "level": 4,
+      "title": "Reporting a machine learning result",
+      "minutes": 45,
+      "pillar": "write",
+      "why": "Reviewers at major venues now expect a checklist of limits, error bars, compute and data details; missing them can sink a good paper.",
+      "read": [
+        {
+          "title": "NeurIPS Paper Checklist",
+          "by": "NeurIPS",
+          "url": "https://neurips.cc/public/guides/PaperChecklist"
+        },
+        {
+          "title": "The Machine Learning Reproducibility Checklist",
+          "by": "Joelle Pineau",
+          "url": "https://www.cs.mcgill.ca/~jpineau/ReproducibilityChecklist.pdf"
+        },
+        {
+          "title": "Model Cards for Model Reporting",
+          "by": "Margaret Mitchell and others",
+          "url": "https://arxiv.org/abs/1810.03993"
+        }
+      ],
+      "do": "Fill in the NeurIPS checklist for your own project. For every No, either fix the gap or write the sentence that explains it. Then draft a half-page model card covering intended use, data, results by subgroup and known failures.",
+      "speak": "Give your main result aloud with its error bar, the compute it took, and the main case where the model fails.",
+      "check": "Could another researcher rerun your main experiment from the paper and appendix alone?",
+      "terms": ["model-card", "datasheet", "reproducibility", "limitation", "compute-budget", "calibration"],
+      "skills": ["structuring-a-paper", "hedging-claims", "figure-design"]
+    }
+  ]
+}

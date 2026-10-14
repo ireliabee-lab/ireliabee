@@ -1,0 +1,1635 @@
+{
+  "version": 1,
+  "terms": [
+    {
+      "id": "scientific-method",
+      "term": "Scientific method",
+      "group": "The research process",
+      "definition": "The cycle of asking a question, proposing an explanation, testing it against observation, and revising the explanation in light of the results.",
+      "example": "We followed the usual scientific method: we stated a hypothesis, derived a prediction, and ran an experiment to test it.",
+      "misuse": "Not a fixed recipe of steps done once in order: real projects loop back, revise questions and repeat tests many times.",
+      "when": "Use it when explaining how a field builds knowledge in general, not when describing your own specific procedure.",
+      "related": ["hypothesis", "prediction", "experiment", "empirical"]
+    },
+    {
+      "id": "empirical",
+      "term": "Empirical",
+      "group": "The research process",
+      "definition": "Based on observation or measurement of the world rather than on theory or argument alone.",
+      "example": "This is an empirical paper: every claim rests on data we collected.",
+      "misuse": "Not the same as quantitative: interviews and field notes are empirical too.",
+      "when": "Use it to say that a claim or study rests on data, or to contrast data-driven work with purely theoretical work.",
+      "related": ["evidence", "quantitative-research", "qualitative-research", "theory"]
+    },
+    {
+      "id": "literature-review",
+      "term": "Literature review",
+      "group": "The research process",
+      "definition": "A structured reading and summary of what has already been published on a topic, used to find what is known and what is not.",
+      "example": "My literature review shows that most studies measured short-term effects only.",
+      "misuse": "Not a list of paper summaries one after another: a good review groups work by idea and shows where the gaps are.",
+      "when": "Use it for the stage of reading the field before designing a study, or for the section of a thesis that reports it.",
+      "related": ["research-gap", "systematic-review", "related-work", "primary-literature"]
+    },
+    {
+      "id": "research-gap",
+      "term": "Research gap",
+      "group": "The research process",
+      "definition": "A question the existing literature has not answered, or has answered poorly, that a new study could address.",
+      "example": "The gap is that no one has tested this method on data from low-income countries.",
+      "misuse": "A gap is not just something nobody has done: it has to be something worth knowing, and you should check it is really open.",
+      "when": "Use it when justifying why your study is needed, usually in the introduction.",
+      "related": ["literature-review", "novelty", "contribution", "research-question"]
+    },
+    {
+      "id": "state-of-the-art",
+      "term": "State of the art",
+      "group": "The research process",
+      "definition": "The best published result or method on a given task at the present time.",
+      "example": "Our method matches the state of the art on two benchmarks and beats it on the third.",
+      "misuse": "Do not claim state of the art without comparing against the current best methods under the same conditions.",
+      "when": "Use it when comparing your results with the strongest existing work, with citations.",
+      "related": ["benchmark", "baseline", "related-work"]
+    },
+    {
+      "id": "pilot-study",
+      "term": "Pilot study",
+      "group": "The research process",
+      "definition": "A small, early run of a study used to check that the procedures, materials and measures work before the main study.",
+      "example": "The pilot study showed that participants misread question four, so we reworded it.",
+      "misuse": "A pilot is for testing the procedure, not for estimating the final result: its effect estimates are very noisy.",
+      "when": "Use it when describing a trial run done before the main data collection.",
+      "related": ["experiment", "power-analysis", "measurement-error"]
+    },
+    {
+      "id": "exploratory-research",
+      "term": "Exploratory research",
+      "group": "The research process",
+      "definition": "Research that looks for patterns and generates hypotheses, without a fixed hypothesis stated in advance.",
+      "example": "This analysis was exploratory, so the pattern needs a confirmatory test on new data.",
+      "misuse": "Exploratory results should not be reported as if they had been predicted in advance.",
+      "when": "Use it to label analyses you did not plan beforehand, so readers weigh them correctly.",
+      "related": ["confirmatory-research", "harking", "hypothesis", "garden-of-forking-paths"]
+    },
+    {
+      "id": "confirmatory-research",
+      "term": "Confirmatory research",
+      "group": "The research process",
+      "definition": "Research that tests a hypothesis and analysis plan fixed before seeing the data.",
+      "example": "The confirmatory analysis followed our preregistered plan exactly.",
+      "misuse": "Not confirmatory if the hypothesis or analysis was changed after looking at the results.",
+      "when": "Use it for tests that were planned in advance, ideally with a preregistration.",
+      "related": ["exploratory-research", "preregistration", "hypothesis"]
+    },
+    {
+      "id": "quantitative-research",
+      "term": "Quantitative research",
+      "group": "The research process",
+      "definition": "Research that collects numerical data and analyses it with statistics or computation.",
+      "example": "We took a quantitative approach and measured response times for every trial.",
+      "misuse": "Numbers are not automatically more objective: how they were measured still matters.",
+      "when": "Use it to describe studies built on counts, measurements and statistical analysis.",
+      "related": ["qualitative-research", "mixed-methods", "descriptive-statistics"]
+    },
+    {
+      "id": "qualitative-research",
+      "term": "Qualitative research",
+      "group": "The research process",
+      "definition": "Research that collects non-numerical data, such as interviews, observations or texts, to understand meanings and experiences.",
+      "example": "The qualitative interviews explained why nurses ignored the alarms.",
+      "misuse": "Not the same as anecdote: good qualitative work has systematic methods for collecting and analysing data.",
+      "when": "Use it for studies that aim to understand how and why, using words, images or observations.",
+      "related": ["quantitative-research", "mixed-methods", "empirical"]
+    },
+    {
+      "id": "mixed-methods",
+      "term": "Mixed methods",
+      "group": "The research process",
+      "definition": "A design that combines quantitative and qualitative methods in one study.",
+      "example": "We used mixed methods: a survey to measure usage and interviews to understand it.",
+      "misuse": "Running two unrelated studies is not mixed methods: the parts should inform each other.",
+      "when": "Use it when numbers and words are both collected and deliberately combined.",
+      "related": ["quantitative-research", "qualitative-research"]
+    },
+    {
+      "id": "primary-literature",
+      "term": "Primary literature",
+      "group": "The research process",
+      "definition": "Original research papers that report new data or results for the first time.",
+      "example": "The textbook cites it, but I went back to the primary literature to check the numbers.",
+      "misuse": "Reviews, textbooks and news articles are secondary sources, not primary literature.",
+      "when": "Use it when you mean the original papers rather than summaries of them.",
+      "related": ["literature-review", "citation", "systematic-review"]
+    },
+    {
+      "id": "lab-notebook",
+      "term": "Lab notebook",
+      "group": "The research process",
+      "definition": "A dated record of what you did, why, and what happened, kept as you work.",
+      "example": "According to my lab notebook, we changed the learning rate on 3 March.",
+      "misuse": "Not a tidy summary written afterwards: it should be written at the time, including failures.",
+      "when": "Use it for your running record of decisions and results, whether on paper or digital.",
+      "related": ["reproducibility", "version-control", "data-management-plan"]
+    },
+    {
+      "id": "research-question",
+      "term": "Research question",
+      "group": "Questions and claims",
+      "definition": "The specific question a study is designed to answer.",
+      "example": "Our research question is whether spaced practice improves recall after one month.",
+      "misuse": "Not a topic: 'memory in students' is a topic, while a question can be answered by a study.",
+      "when": "Use it early in any proposal, paper or talk to say exactly what you set out to find.",
+      "related": ["hypothesis", "research-aim", "scope", "research-gap"]
+    },
+    {
+      "id": "research-aim",
+      "term": "Research aim",
+      "group": "Questions and claims",
+      "definition": "A broad statement of what a project intends to achieve, usually broken into more specific objectives or questions.",
+      "example": "The aim of this project is to understand why patients stop taking their medication.",
+      "misuse": "An aim is broader than a research question: it is not directly testable on its own.",
+      "when": "Use it at the start of a proposal or thesis chapter before listing specific questions.",
+      "related": ["research-question", "scope"]
+    },
+    {
+      "id": "hypothesis",
+      "term": "Hypothesis",
+      "group": "Questions and claims",
+      "definition": "A proposed, testable explanation or answer to a research question.",
+      "example": "Our hypothesis is that sleep loss impairs memory consolidation.",
+      "misuse": "Not the same as a prediction: the hypothesis is the explanation, the prediction is the specific result it implies.",
+      "when": "Use it when stating what you think is true before testing it.",
+      "related": ["prediction", "theory", "null-hypothesis", "falsifiability"]
+    },
+    {
+      "id": "prediction",
+      "term": "Prediction",
+      "group": "Questions and claims",
+      "definition": "A specific, observable outcome that should occur if a hypothesis is true.",
+      "example": "If the hypothesis holds, we predict that the sleep-deprived group will recall fewer words.",
+      "misuse": "A prediction made after seeing the data is not a prediction: that is HARKing.",
+      "when": "Use it when stating the concrete result you expect in a named test.",
+      "related": ["hypothesis", "falsifiability", "harking"]
+    },
+    {
+      "id": "theory",
+      "term": "Theory",
+      "group": "Questions and claims",
+      "definition": "A well-developed explanation that ties together many observations and generates testable hypotheses.",
+      "example": "Our results fit the theory that forgetting is mainly caused by interference.",
+      "misuse": "In science a theory is not a guess: it is an explanation with substantial support.",
+      "when": "Use it for a broad explanatory framework, not for a single hunch.",
+      "related": ["hypothesis", "model", "mechanism"]
+    },
+    {
+      "id": "model",
+      "term": "Model",
+      "group": "Questions and claims",
+      "definition": "A simplified representation of a system, in words, mathematics or code, used to explain or predict its behaviour.",
+      "example": "The model captures the main trend but not the seasonal dips.",
+      "misuse": "The word means different things across fields; say which kind you mean, such as a statistical, computational or conceptual model.",
+      "when": "Use it when you describe a formal simplification, and name its type and assumptions.",
+      "related": ["theory", "assumption", "regression", "overfitting"]
+    },
+    {
+      "id": "claim",
+      "term": "Claim",
+      "group": "Questions and claims",
+      "definition": "A statement that a paper asserts to be true and that should be backed by evidence.",
+      "example": "The central claim is that the drug reduces relapse by about a third.",
+      "misuse": "A claim should be no stronger than its evidence; watch for claims that grow between the results and the abstract.",
+      "when": "Use it when identifying exactly what a paper asserts, before judging its support.",
+      "related": ["evidence", "overclaiming", "hedging", "causal-claim"]
+    },
+    {
+      "id": "assumption",
+      "term": "Assumption",
+      "group": "Questions and claims",
+      "definition": "Something taken as true without being tested in the current study.",
+      "example": "The analysis assumes that the errors are independent across participants.",
+      "misuse": "Unstated assumptions are still assumptions; a good paper names the ones its conclusions depend on.",
+      "when": "Use it when listing what must be true for your method or conclusion to hold.",
+      "related": ["model", "limitation", "threats-to-validity"]
+    },
+    {
+      "id": "falsifiability",
+      "term": "Falsifiability",
+      "group": "Questions and claims",
+      "definition": "The property of a claim that some possible observation could show it to be false.",
+      "example": "As stated, the hypothesis is not falsifiable, because every outcome can be explained by it.",
+      "misuse": "Falsifiable does not mean false: it means a test could in principle prove it wrong.",
+      "when": "Use it when checking whether a hypothesis makes a risky, testable prediction.",
+      "related": ["hypothesis", "prediction", "theory"]
+    },
+    {
+      "id": "mechanism",
+      "term": "Mechanism",
+      "group": "Questions and claims",
+      "definition": "The process or chain of steps through which a cause produces its effect.",
+      "example": "We know exercise lowers blood pressure, but the mechanism in this group is unclear.",
+      "misuse": "Showing that A causes B does not show how; do not describe a mechanism you have not tested.",
+      "when": "Use it when explaining or asking how an effect comes about.",
+      "related": ["causal-claim", "theory", "causal-inference"]
+    },
+    {
+      "id": "causal-claim",
+      "term": "Causal claim",
+      "group": "Questions and claims",
+      "definition": "A claim that changing one thing brings about a change in another.",
+      "example": "Because the study was observational, we avoid making a causal claim.",
+      "misuse": "Words such as 'leads to', 'improves' or 'drives' are causal claims, even without the word 'cause'.",
+      "when": "Use it when checking whether a design can support statements about cause and effect.",
+      "related": ["correlation-vs-causation", "causal-inference", "randomisation", "claim"]
+    },
+    {
+      "id": "scope",
+      "term": "Scope",
+      "group": "Questions and claims",
+      "definition": "The boundaries of a study: what it covers and what it deliberately leaves out.",
+      "example": "Adults over 65 were outside the scope of this study.",
+      "misuse": "A narrow scope is not a weakness in itself, but conclusions must stay within it.",
+      "when": "Use it when setting or stating the limits of what a study addresses.",
+      "related": ["research-question", "generalisability", "limitation"]
+    },
+    {
+      "id": "parsimony",
+      "term": "Parsimony",
+      "group": "Questions and claims",
+      "definition": "The preference for the simplest explanation or model that accounts for the evidence.",
+      "example": "On grounds of parsimony, we prefer the two-factor model.",
+      "misuse": "Simpler is preferred only when it explains the evidence equally well, not simply because it is simpler.",
+      "when": "Use it when choosing between explanations or models that fit the data similarly.",
+      "related": ["model", "overfitting", "alternative-explanation"]
+    },
+    {
+      "id": "experiment",
+      "term": "Experiment",
+      "group": "Design",
+      "definition": "A study in which the researcher deliberately changes one or more conditions and measures what happens.",
+      "example": "In the experiment, half the plots received extra nitrogen.",
+      "misuse": "Not any study: if you only observe without manipulating anything, it is an observational study.",
+      "when": "Use it only when you controlled which units received which condition.",
+      "related": ["observational-study", "independent-variable", "randomisation", "control-group"]
+    },
+    {
+      "id": "observational-study",
+      "term": "Observational study",
+      "group": "Design",
+      "definition": "A study that measures variables as they occur, without the researcher assigning conditions.",
+      "example": "This was an observational study, so smokers chose to smoke rather than being assigned.",
+      "misuse": "Observational studies can show associations but usually cannot, on their own, establish cause.",
+      "when": "Use it when the researcher did not control who received the exposure.",
+      "related": ["experiment", "confound", "correlation-vs-causation", "selection-bias"]
+    },
+    {
+      "id": "independent-variable",
+      "term": "Independent variable",
+      "group": "Design",
+      "definition": "The variable a researcher manipulates or uses to explain changes in an outcome.",
+      "example": "The independent variable was font size, with three levels.",
+      "misuse": "Not the same as a control variable, which is held constant.",
+      "when": "Use it when naming the factor whose effect you are testing.",
+      "related": ["dependent-variable", "control-variable", "variable", "experiment"]
+    },
+    {
+      "id": "dependent-variable",
+      "term": "Dependent variable",
+      "group": "Design",
+      "definition": "The outcome that is measured to see whether it changes with the independent variable.",
+      "example": "Reading speed was the dependent variable.",
+      "misuse": "Choosing the dependent variable after seeing which one gave a result is a questionable research practice.",
+      "when": "Use it when naming the outcome you measured.",
+      "related": ["independent-variable", "variable", "operationalise"]
+    },
+    {
+      "id": "control-variable",
+      "term": "Control variable",
+      "group": "Design",
+      "definition": "A variable held constant or adjusted for, so that it cannot explain differences in the outcome.",
+      "example": "Room temperature was a control variable and was kept at 21 degrees.",
+      "misuse": "Not the same as a control group: one is a variable, the other is a set of participants or units.",
+      "when": "Use it when describing factors you fixed or adjusted for.",
+      "related": ["confound", "control-group", "independent-variable"]
+    },
+    {
+      "id": "confound",
+      "term": "Confound",
+      "group": "Design",
+      "definition": "A third variable that is related to both the supposed cause and the outcome, and can create a false or distorted association.",
+      "example": "Age is a possible confound, because older patients were more likely to get the new drug.",
+      "misuse": "A variable that affects only the outcome is not a confound: it must also be related to the exposure.",
+      "when": "Use it when naming an alternative explanation for an observed association.",
+      "related": ["randomisation", "control-variable", "alternative-explanation", "observational-study"]
+    },
+    {
+      "id": "control-group",
+      "term": "Control group",
+      "group": "Design",
+      "definition": "A group that does not receive the treatment being tested, used as the comparison.",
+      "example": "The control group received the usual care.",
+      "misuse": "A control group only helps if it is comparable; groups formed differently can differ in more than the treatment.",
+      "when": "Use it for the comparison group in an experiment or trial.",
+      "related": ["randomisation", "baseline", "experiment", "randomised-controlled-trial"]
+    },
+    {
+      "id": "randomisation",
+      "term": "Randomisation",
+      "group": "Design",
+      "definition": "Assigning units to conditions by a chance process, so that known and unknown factors are balanced on average.",
+      "example": "Randomisation was done by computer, in blocks of four.",
+      "misuse": "Not the same as random sampling: randomisation is about assignment to groups, random sampling is about who enters the study.",
+      "when": "Use it when describing how units were allocated to conditions.",
+      "related": ["random-sampling", "confound", "randomised-controlled-trial", "control-group"]
+    },
+    {
+      "id": "blinding",
+      "term": "Blinding",
+      "group": "Design",
+      "definition": "Keeping participants, researchers or assessors unaware of which condition each unit received.",
+      "example": "The assessors were blinded to group, so they could not rate the treated patients more kindly.",
+      "misuse": "Say who was blinded; 'double-blind' alone is ambiguous about which parties were unaware.",
+      "when": "Use it when describing how you prevented expectations from influencing results.",
+      "related": ["randomised-controlled-trial", "confirmation-bias", "blind-review"]
+    },
+    {
+      "id": "within-subjects",
+      "term": "Within-subjects design",
+      "group": "Design",
+      "definition": "A design in which each participant or unit experiences every condition.",
+      "example": "We used a within-subjects design, so each participant tried both keyboards.",
+      "misuse": "Order effects are a risk: the order of conditions should be varied across participants.",
+      "when": "Use it when the same units are measured under all conditions.",
+      "related": ["between-subjects", "independent-variable", "statistical-power"]
+    },
+    {
+      "id": "between-subjects",
+      "term": "Between-subjects design",
+      "group": "Design",
+      "definition": "A design in which each participant or unit experiences only one condition.",
+      "example": "In the between-subjects design, each participant saw only one version of the advert.",
+      "misuse": "It usually needs more participants than a within-subjects design to detect the same effect.",
+      "when": "Use it when different groups receive different conditions.",
+      "related": ["within-subjects", "randomisation", "sample"]
+    },
+    {
+      "id": "longitudinal-study",
+      "term": "Longitudinal study",
+      "group": "Design",
+      "definition": "A study that measures the same units repeatedly over time.",
+      "example": "The longitudinal study followed the same children from age five to fifteen.",
+      "misuse": "Following people over time shows change and order of events, but it does not by itself prove cause.",
+      "when": "Use it when data are collected from the same units at several time points.",
+      "related": ["observational-study", "missing-data", "reverse-causation"]
+    },
+    {
+      "id": "randomised-controlled-trial",
+      "term": "Randomised controlled trial",
+      "group": "Design",
+      "definition": "An experiment in which units are randomly assigned to a treatment or a control condition and outcomes are compared.",
+      "example": "A randomised controlled trial is the strongest way to test whether the programme works.",
+      "misuse": "Randomisation protects against confounding, but a trial can still be biased by poor blinding, drop-out or selective reporting.",
+      "when": "Use it for studies that combine random assignment with a control group.",
+      "related": ["randomisation", "control-group", "blinding", "experiment"]
+    },
+    {
+      "id": "quasi-experiment",
+      "term": "Quasi-experiment",
+      "group": "Design",
+      "definition": "A study that compares conditions, like an experiment, but without random assignment.",
+      "example": "Because schools chose whether to join, this was a quasi-experiment.",
+      "misuse": "Without random assignment, groups may differ in other ways, so confounds need careful attention.",
+      "when": "Use it when conditions were compared but assignment was not random.",
+      "related": ["experiment", "randomisation", "confound"]
+    },
+    {
+      "id": "baseline",
+      "term": "Baseline",
+      "group": "Design",
+      "definition": "A reference point for comparison: either a measurement taken before an intervention, or a simple existing method your method is compared against.",
+      "example": "Our model beats a strong baseline that uses word counts only.",
+      "misuse": "A weak or poorly tuned baseline makes any new method look good; compare against honest, well-tuned ones.",
+      "when": "Use it when saying what a result should be compared with.",
+      "related": ["benchmark", "ablation", "control-group", "state-of-the-art"]
+    },
+    {
+      "id": "ablation",
+      "term": "Ablation",
+      "group": "Design",
+      "definition": "An experiment that removes or disables one part of a system to measure how much that part contributes.",
+      "example": "The ablation shows that removing the attention layer costs four points of accuracy.",
+      "misuse": "An ablation shows a part matters in this setup; it does not by itself explain why.",
+      "when": "Use it when testing which components of a method are responsible for its performance.",
+      "related": ["baseline", "benchmark", "mechanism"]
+    },
+    {
+      "id": "benchmark",
+      "term": "Benchmark",
+      "group": "Design",
+      "definition": "A standard dataset or task, with a fixed way of scoring, used to compare methods.",
+      "example": "We report results on three public benchmarks.",
+      "misuse": "Doing well on a benchmark does not guarantee doing well on real problems it does not represent.",
+      "when": "Use it when comparing methods under shared, fixed conditions.",
+      "related": ["baseline", "state-of-the-art", "metric", "overfitting"]
+    },
+    {
+      "id": "sample",
+      "term": "Sample",
+      "group": "Design",
+      "definition": "The set of units, such as people, cells or documents, actually included and measured in a study.",
+      "example": "Our sample was 240 undergraduates from two universities.",
+      "misuse": "The sample is not the population: results describe the sample and must be argued to extend beyond it.",
+      "when": "Use it for the units you actually studied.",
+      "related": ["population", "random-sampling", "sampling-bias", "generalisability"]
+    },
+    {
+      "id": "population",
+      "term": "Population",
+      "group": "Design",
+      "definition": "The whole group that a study aims to draw conclusions about.",
+      "example": "The target population is adults in England with type 2 diabetes.",
+      "misuse": "Name the population explicitly; many papers generalise to 'people' from a very narrow sample.",
+      "when": "Use it when saying who or what your conclusions are meant to apply to.",
+      "related": ["sample", "generalisability", "external-validity"]
+    },
+    {
+      "id": "sampling-bias",
+      "term": "Sampling bias",
+      "group": "Design",
+      "definition": "A systematic difference between the sample and the population, caused by how the sample was chosen.",
+      "example": "An online survey introduces sampling bias against people without internet access.",
+      "misuse": "A large sample does not fix sampling bias: a big biased sample is still biased.",
+      "when": "Use it when questioning whether the sample represents the population.",
+      "related": ["sample", "population", "selection-bias", "random-sampling"]
+    },
+    {
+      "id": "random-sampling",
+      "term": "Random sampling",
+      "group": "Design",
+      "definition": "Choosing units from the population so that each has a known, non-zero chance of selection, decided by chance.",
+      "example": "Households were chosen by random sampling from the postal address file.",
+      "misuse": "Asking whoever is nearby is not random sampling; that is a convenience sample.",
+      "when": "Use it when describing how units were selected into the study.",
+      "related": ["sample", "population", "sampling-bias", "randomisation"]
+    },
+    {
+      "id": "construct",
+      "term": "Construct",
+      "group": "Measurement",
+      "definition": "An abstract concept that a study wants to measure but cannot observe directly, such as anxiety, intelligence or code quality.",
+      "example": "Trust is the construct; our questionnaire is one way to measure it.",
+      "misuse": "The construct is not the same as its measure: a score on a test is not the concept itself.",
+      "when": "Use it when discussing the idea behind a measurement, separate from the measurement itself.",
+      "related": ["operationalise", "construct-validity", "proxy"]
+    },
+    {
+      "id": "operationalise",
+      "term": "Operationalise",
+      "group": "Measurement",
+      "definition": "To define exactly how an abstract concept will be measured or manipulated in a study.",
+      "example": "We operationalised stress as salivary cortisol thirty minutes after the task.",
+      "misuse": "Operationalising a concept does not prove the measure captures it; that needs evidence of validity.",
+      "when": "Use it when turning an idea into a specific measurement or procedure.",
+      "related": ["construct", "construct-validity", "variable", "metric"]
+    },
+    {
+      "id": "variable",
+      "term": "Variable",
+      "group": "Measurement",
+      "definition": "Any characteristic that can take different values across units or over time.",
+      "example": "Income was recorded as a continuous variable.",
+      "misuse": "Say what kind of variable it is, such as categorical or continuous, because that shapes the analysis.",
+      "when": "Use it for any measured or manipulated quantity in a study.",
+      "related": ["independent-variable", "dependent-variable", "control-variable", "operationalise"]
+    },
+    {
+      "id": "metric",
+      "term": "Metric",
+      "group": "Measurement",
+      "definition": "A defined, repeatable way of scoring or quantifying something.",
+      "example": "We chose recall as the main metric because missing a case is costly.",
+      "misuse": "A metric can be improved without improving what it was meant to track; watch for optimising the number instead of the goal.",
+      "when": "Use it when naming how a result is scored, and say why that metric fits the question.",
+      "related": ["operationalise", "benchmark", "proxy", "accuracy"]
+    },
+    {
+      "id": "validity",
+      "term": "Validity",
+      "group": "Measurement",
+      "definition": "The extent to which a study or measure actually supports the conclusion drawn from it.",
+      "example": "The validity of the finding depends on whether the survey measured loneliness at all.",
+      "misuse": "Not the same as reliability: a measure can give consistent results and still measure the wrong thing.",
+      "when": "Use it with a qualifier, such as internal, external or construct validity, whenever you can.",
+      "related": ["reliability", "internal-validity", "external-validity", "construct-validity"]
+    },
+    {
+      "id": "internal-validity",
+      "term": "Internal validity",
+      "group": "Measurement",
+      "definition": "The extent to which a study shows that the observed effect was caused by the variable studied, rather than by something else.",
+      "example": "Random assignment gives the study strong internal validity.",
+      "misuse": "High internal validity says nothing about whether the result holds in other settings.",
+      "when": "Use it when judging whether the design rules out alternative explanations.",
+      "related": ["validity", "external-validity", "confound", "randomisation"]
+    },
+    {
+      "id": "external-validity",
+      "term": "External validity",
+      "group": "Measurement",
+      "definition": "The extent to which a result holds beyond the specific sample, setting and time of the study.",
+      "example": "Because all participants were students, external validity is limited.",
+      "misuse": "A clean lab result can have strong internal validity and weak external validity at the same time.",
+      "when": "Use it when discussing whether findings apply to other people, places or conditions.",
+      "related": ["validity", "internal-validity", "generalisability", "population"]
+    },
+    {
+      "id": "construct-validity",
+      "term": "Construct validity",
+      "group": "Measurement",
+      "definition": "The extent to which a measure or manipulation actually reflects the concept it is meant to represent.",
+      "example": "Using typing speed as a measure of skill raises questions of construct validity.",
+      "misuse": "A measure named after a concept is not valid just because of its name.",
+      "when": "Use it when asking whether your measure captures the idea you care about.",
+      "related": ["construct", "operationalise", "validity", "proxy"]
+    },
+    {
+      "id": "reliability",
+      "term": "Reliability",
+      "group": "Measurement",
+      "definition": "The consistency of a measure: whether it gives similar results under similar conditions.",
+      "example": "The scale showed good reliability when participants were retested a week later.",
+      "misuse": "Reliable is not the same as valid: a scale that always reads two kilograms too heavy is reliable but wrong.",
+      "when": "Use it when discussing how consistent a measurement is.",
+      "related": ["validity", "inter-rater-reliability", "measurement-error", "precision"]
+    },
+    {
+      "id": "inter-rater-reliability",
+      "term": "Inter-rater reliability",
+      "group": "Measurement",
+      "definition": "The degree to which different people rating the same material give the same ratings.",
+      "example": "Two coders labelled every transcript, and inter-rater reliability was high.",
+      "misuse": "Report agreement with a statistic that allows for chance agreement, not only raw percentage agreement.",
+      "when": "Use it whenever human judgement is part of the measurement.",
+      "related": ["reliability", "measurement-error", "ground-truth"]
+    },
+    {
+      "id": "measurement-error",
+      "term": "Measurement error",
+      "group": "Measurement",
+      "definition": "The difference between a measured value and the true value, which can be random noise or a systematic bias.",
+      "example": "Some of the variation is measurement error from the cheap thermometers.",
+      "misuse": "Random error adds noise and averages out; systematic error shifts results in one direction and does not.",
+      "when": "Use it when discussing how far the recorded values may differ from reality.",
+      "related": ["reliability", "accuracy", "precision", "validity"]
+    },
+    {
+      "id": "accuracy",
+      "term": "Accuracy",
+      "group": "Measurement",
+      "definition": "How close a measurement is to the true value.",
+      "example": "The new sensor improved accuracy, with readings much closer to the reference.",
+      "misuse": "Not the same as precision; also, in machine learning 'accuracy' is a specific metric, the share of correct predictions.",
+      "when": "Use it when discussing closeness to the truth, and say which meaning you intend.",
+      "related": ["precision", "measurement-error", "ground-truth", "metric"]
+    },
+    {
+      "id": "precision",
+      "term": "Precision",
+      "group": "Measurement",
+      "definition": "How close repeated measurements are to each other.",
+      "example": "The readings were precise but not accurate: tightly clustered, but all too high.",
+      "misuse": "Not the same as accuracy; also, in classification 'precision' is a specific metric, the share of positive predictions that are correct.",
+      "when": "Use it when discussing the spread of repeated measurements, and say which meaning you intend.",
+      "related": ["accuracy", "reliability", "measurement-error"]
+    },
+    {
+      "id": "ceiling-effect",
+      "term": "Ceiling effect",
+      "group": "Measurement",
+      "definition": "When many scores bunch at the top of a scale, so the measure cannot detect further improvement.",
+      "example": "Most participants scored full marks, so a ceiling effect may hide any benefit.",
+      "misuse": "A lack of difference under a ceiling effect does not show the groups are the same. The mirror problem at the bottom is a floor effect.",
+      "when": "Use it when a measure is too easy or too hard to show differences.",
+      "related": ["measurement-error", "construct-validity", "negative-result"]
+    },
+    {
+      "id": "proxy",
+      "term": "Proxy",
+      "group": "Measurement",
+      "definition": "An indirect measure used in place of something that is hard to measure directly.",
+      "example": "We used postcode as a proxy for income, which is imperfect.",
+      "misuse": "Conclusions drawn from a proxy apply to the real target only as far as the two are closely linked.",
+      "when": "Use it when admitting that your measure stands in for the real quantity of interest.",
+      "related": ["construct", "construct-validity", "metric"]
+    },
+    {
+      "id": "ground-truth",
+      "term": "Ground truth",
+      "group": "Measurement",
+      "definition": "The reference values treated as correct when evaluating a measurement or prediction.",
+      "example": "Expert diagnoses served as ground truth for evaluating the classifier.",
+      "misuse": "Ground truth is often itself a human judgement and can contain errors; say how it was obtained.",
+      "when": "Use it when naming the reference labels or values you score against.",
+      "related": ["accuracy", "inter-rater-reliability", "benchmark"]
+    },
+    {
+      "id": "outlier",
+      "term": "Outlier",
+      "group": "Measurement",
+      "definition": "A data point that lies far from most of the others.",
+      "example": "One outlier had a reaction time of nine seconds, so we checked the raw log.",
+      "misuse": "Removing outliers because they spoil the result is a questionable practice; set exclusion rules before analysis.",
+      "when": "Use it when discussing unusual data points and how they were handled.",
+      "related": ["researcher-degrees-of-freedom", "robustness", "distribution"]
+    },
+    {
+      "id": "missing-data",
+      "term": "Missing data",
+      "group": "Measurement",
+      "definition": "Values that should have been recorded but were not, for example because participants dropped out.",
+      "example": "Twelve per cent of follow-up data were missing, mostly from the control group.",
+      "misuse": "Simply dropping incomplete cases can bias results if the missingness is related to the outcome.",
+      "when": "Use it when reporting how much data is absent, why, and how it was handled.",
+      "related": ["selection-bias", "longitudinal-study", "sensitivity-analysis"]
+    },
+    {
+      "id": "descriptive-statistics",
+      "term": "Descriptive statistics",
+      "group": "Statistics",
+      "definition": "Numbers that summarise the data you have, such as counts, means and spreads.",
+      "example": "Table 1 gives descriptive statistics for age and income in each group.",
+      "misuse": "Descriptive statistics describe the sample only; they do not test whether patterns hold beyond it.",
+      "when": "Use them to show readers what the data look like before any testing.",
+      "related": ["inferential-statistics", "mean", "standard-deviation"]
+    },
+    {
+      "id": "inferential-statistics",
+      "term": "Inferential statistics",
+      "group": "Statistics",
+      "definition": "Methods that use a sample to draw conclusions, with stated uncertainty, about a wider population or process.",
+      "example": "We used inferential statistics to estimate the effect in the wider population.",
+      "misuse": "Inferential results depend on assumptions about how the sample was drawn; they do not repair a biased sample.",
+      "when": "Use them when moving from what was observed to claims beyond the sample.",
+      "related": ["descriptive-statistics", "confidence-interval", "p-value", "inference"]
+    },
+    {
+      "id": "mean",
+      "term": "Mean",
+      "group": "Statistics",
+      "definition": "The sum of the values divided by the number of values; the ordinary average.",
+      "example": "The mean score rose from 62 to 68.",
+      "misuse": "The mean is pulled by extreme values; for skewed data the median may describe a typical case better.",
+      "when": "Use it to summarise the centre of roughly symmetric data, with a measure of spread beside it.",
+      "related": ["standard-deviation", "descriptive-statistics", "distribution"]
+    },
+    {
+      "id": "standard-deviation",
+      "term": "Standard deviation",
+      "group": "Statistics",
+      "definition": "A measure of how spread out individual values are around the mean.",
+      "example": "The mean was 68, with a standard deviation of 12.",
+      "misuse": "Not the same as the standard error: the standard deviation describes the data, the standard error describes uncertainty in an estimate.",
+      "when": "Use it to show how much individual values vary.",
+      "related": ["standard-error", "mean", "distribution"]
+    },
+    {
+      "id": "standard-error",
+      "term": "Standard error",
+      "group": "Statistics",
+      "definition": "An estimate of how much a statistic, such as a mean, would vary from sample to sample.",
+      "example": "The standard error of the mean shrinks as the sample grows.",
+      "misuse": "Error bars must say whether they show standard deviation, standard error or a confidence interval, because they look alike and mean different things.",
+      "when": "Use it when describing the uncertainty of an estimate.",
+      "related": ["standard-deviation", "confidence-interval", "inferential-statistics"]
+    },
+    {
+      "id": "distribution",
+      "term": "Distribution",
+      "group": "Statistics",
+      "definition": "The pattern of how often each value, or range of values, occurs in the data.",
+      "example": "The distribution of income is strongly skewed to the right.",
+      "misuse": "Do not assume a normal, bell-shaped distribution without looking at the data.",
+      "when": "Use it when describing the shape of the data, ideally with a plot.",
+      "related": ["mean", "standard-deviation", "outlier"]
+    },
+    {
+      "id": "null-hypothesis",
+      "term": "Null hypothesis",
+      "group": "Statistics",
+      "definition": "In a statistical test, the default assumption of no effect or no difference, which the data are tested against.",
+      "example": "The null hypothesis is that the two teaching methods give the same mean score.",
+      "misuse": "Failing to reject the null hypothesis does not prove it is true; it may mean the study lacked power.",
+      "when": "Use it when setting up or explaining a significance test.",
+      "related": ["alternative-hypothesis", "p-value", "type-i-error", "hypothesis"]
+    },
+    {
+      "id": "alternative-hypothesis",
+      "term": "Alternative hypothesis",
+      "group": "Statistics",
+      "definition": "In a statistical test, the hypothesis that there is an effect or difference, set against the null hypothesis.",
+      "example": "The alternative hypothesis is that the new method raises the mean score.",
+      "misuse": "Rejecting the null does not prove your particular explanation; other explanations may also fit.",
+      "when": "Use it when stating what a significance test is looking for.",
+      "related": ["null-hypothesis", "hypothesis", "statistical-power"]
+    },
+    {
+      "id": "p-value",
+      "term": "P-value",
+      "group": "Statistics",
+      "definition": "The probability of getting results at least as extreme as those observed, if the null hypothesis and the test's assumptions were true.",
+      "example": "The difference was small but reliable, p = 0.01.",
+      "misuse": "It is not the probability that the null hypothesis is true, and it says nothing about the size or importance of an effect.",
+      "when": "Use it when reporting a significance test, alongside an effect size and confidence interval.",
+      "related": ["null-hypothesis", "statistical-significance", "effect-size", "p-hacking"]
+    },
+    {
+      "id": "statistical-significance",
+      "term": "Statistical significance",
+      "group": "Statistics",
+      "definition": "The label given when a p-value falls below a pre-set threshold, often 0.05.",
+      "example": "The effect was statistically significant but too small to matter clinically.",
+      "misuse": "Significant does not mean important or large; with enough data, tiny effects become significant.",
+      "when": "Use it only in its technical sense, and say 'important' or 'large' when you mean those.",
+      "related": ["p-value", "significance-level", "effect-size", "type-i-error"]
+    },
+    {
+      "id": "significance-level",
+      "term": "Significance level",
+      "group": "Statistics",
+      "definition": "The threshold for the p-value, called alpha, set before a test; it is the accepted rate of false positives when the null is true.",
+      "example": "We set the significance level at 0.05 before collecting data.",
+      "misuse": "Alpha should be chosen before the analysis, not adjusted afterwards to make a result pass.",
+      "when": "Use it when stating the decision rule for a test.",
+      "related": ["p-value", "type-i-error", "multiple-comparisons"]
+    },
+    {
+      "id": "type-i-error",
+      "term": "Type I error",
+      "group": "Statistics",
+      "definition": "A false positive: concluding there is an effect when there is none.",
+      "example": "Testing twenty outcomes raises the risk of a type I error.",
+      "misuse": "Easily swapped with type II; remember type I is a false alarm.",
+      "when": "Use it when discussing the risk of claiming an effect that is not real.",
+      "related": ["type-ii-error", "significance-level", "multiple-comparisons", "p-hacking"]
+    },
+    {
+      "id": "type-ii-error",
+      "term": "Type II error",
+      "group": "Statistics",
+      "definition": "A false negative: failing to detect an effect that really exists.",
+      "example": "With only twenty participants, a type II error is quite likely.",
+      "misuse": "A non-significant result from a small study is weak evidence of no effect, because the type II error rate is high.",
+      "when": "Use it when discussing the risk of missing a real effect.",
+      "related": ["type-i-error", "statistical-power", "negative-result"]
+    },
+    {
+      "id": "statistical-power",
+      "term": "Statistical power",
+      "group": "Statistics",
+      "definition": "The probability that a study will detect an effect of a given size, if that effect is real.",
+      "example": "The study had 80 per cent power to detect a medium effect.",
+      "misuse": "Power belongs to the design and an assumed effect size; computing it after the fact from the observed effect adds little.",
+      "when": "Use it when planning sample size or judging how informative a null result is.",
+      "related": ["power-analysis", "type-ii-error", "effect-size", "sample"]
+    },
+    {
+      "id": "power-analysis",
+      "term": "Power analysis",
+      "group": "Statistics",
+      "definition": "A calculation, done before a study, of the sample size needed to detect a given effect with a given probability.",
+      "example": "Our power analysis called for 128 participants per group.",
+      "misuse": "The result depends heavily on the assumed effect size; state where that assumption came from.",
+      "when": "Use it when justifying your sample size in a proposal or methods section.",
+      "related": ["statistical-power", "effect-size", "preregistration", "sample"]
+    },
+    {
+      "id": "effect-size",
+      "term": "Effect size",
+      "group": "Statistics",
+      "definition": "A number that describes how large a difference or relationship is, independent of whether it is significant.",
+      "example": "The effect size was small: about a fifth of a standard deviation.",
+      "misuse": "A small p-value does not mean a large effect; always report the size as well.",
+      "when": "Use it whenever you report a result, so readers can judge whether it matters.",
+      "related": ["confidence-interval", "p-value", "statistical-power", "meta-analysis"]
+    },
+    {
+      "id": "confidence-interval",
+      "term": "Confidence interval",
+      "group": "Statistics",
+      "definition": "A range of values, computed from the data, that would contain the true value in a stated share of repeated studies, often 95 per cent.",
+      "example": "The drug reduced blood pressure by 5 mmHg, with a 95 per cent confidence interval of 2 to 8.",
+      "misuse": "Strictly, it is not a 95 per cent probability that this particular interval contains the true value; the 95 per cent describes the method.",
+      "when": "Use it to show the uncertainty around an estimate, alongside the estimate itself.",
+      "related": ["effect-size", "standard-error", "p-value", "inferential-statistics"]
+    },
+    {
+      "id": "multiple-comparisons",
+      "term": "Multiple comparisons",
+      "group": "Statistics",
+      "definition": "The problem that running many statistical tests increases the chance that some are significant by luck alone.",
+      "example": "We corrected for multiple comparisons because we tested twelve outcomes.",
+      "misuse": "Reporting only the tests that came out significant, without saying how many were run, hides the problem.",
+      "when": "Use it when a study runs more than one test on the same question or data.",
+      "related": ["type-i-error", "p-hacking", "significance-level", "garden-of-forking-paths"]
+    },
+    {
+      "id": "regression",
+      "term": "Regression",
+      "group": "Statistics",
+      "definition": "A family of statistical models that describe how an outcome changes with one or more predictor variables.",
+      "example": "In the regression, each extra year of schooling was associated with higher earnings.",
+      "misuse": "A regression coefficient describes an association; it becomes causal only under strong design assumptions.",
+      "when": "Use it when modelling an outcome as a function of several variables.",
+      "related": ["model", "correlation-coefficient", "control-variable", "overfitting"]
+    },
+    {
+      "id": "correlation-coefficient",
+      "term": "Correlation coefficient",
+      "group": "Statistics",
+      "definition": "A number between minus one and one that describes the strength and direction of a relationship between two variables.",
+      "example": "Height and weight had a correlation coefficient of 0.6.",
+      "misuse": "The common Pearson coefficient measures straight-line relationships only; a strong curved relationship can give a value near zero.",
+      "when": "Use it to summarise how closely two variables move together.",
+      "related": ["correlation-vs-causation", "regression", "effect-size"]
+    },
+    {
+      "id": "regression-to-the-mean",
+      "term": "Regression to the mean",
+      "group": "Statistics",
+      "definition": "The tendency for unusually extreme measurements to be followed by measurements closer to the average, simply through chance.",
+      "example": "Patients were enrolled when their symptoms peaked, so some improvement is regression to the mean.",
+      "misuse": "Improvement after selecting extreme cases is not evidence that a treatment worked; a control group is needed.",
+      "when": "Use it when units were chosen because they scored unusually high or low.",
+      "related": ["control-group", "alternative-explanation", "selection-bias"]
+    },
+    {
+      "id": "overfitting",
+      "term": "Overfitting",
+      "group": "Statistics",
+      "definition": "When a model fits the noise in its training data so closely that it performs poorly on new data.",
+      "example": "The model scores 99 per cent on training data but 70 per cent on held-out data, which suggests overfitting.",
+      "misuse": "Overfitting can also happen to researchers: repeatedly tuning choices on the test set overfits the test set.",
+      "when": "Use it when a model or analysis looks better on the data used to build it than on new data.",
+      "related": ["cross-validation", "held-out-data", "model", "generalisability"]
+    },
+    {
+      "id": "cross-validation",
+      "term": "Cross-validation",
+      "group": "Statistics",
+      "definition": "A way to estimate performance on new data by repeatedly training on part of the data and testing on the rest.",
+      "example": "We used five-fold cross-validation to choose the regularisation strength.",
+      "misuse": "Any step that uses the whole dataset, such as feature selection, must happen inside each fold, or the estimate is too optimistic.",
+      "when": "Use it when estimating how well a model will generalise with limited data.",
+      "related": ["overfitting", "held-out-data", "generalisability"]
+    },
+    {
+      "id": "held-out-data",
+      "term": "Held-out data",
+      "group": "Statistics",
+      "definition": "Data kept aside and not used to build or tune a model, so it can give an honest test of performance.",
+      "example": "We report final results on held-out data that we looked at only once.",
+      "misuse": "Once you tune on held-out data, it is no longer held out.",
+      "when": "Use it when describing the data used for the final evaluation.",
+      "related": ["overfitting", "cross-validation", "benchmark"]
+    },
+    {
+      "id": "evidence",
+      "term": "Evidence",
+      "group": "Evidence and inference",
+      "definition": "Observations or results that make a claim more or less likely to be true.",
+      "example": "This is suggestive evidence, but it comes from a single small study.",
+      "misuse": "Evidence comes in degrees; 'there is evidence that' should say how strong it is.",
+      "when": "Use it when linking a claim to the data that support it.",
+      "related": ["claim", "inference", "empirical"]
+    },
+    {
+      "id": "inference",
+      "term": "Inference",
+      "group": "Evidence and inference",
+      "definition": "Reasoning from evidence to a conclusion that goes beyond what was directly observed.",
+      "example": "The inference from mice to humans is the weakest step in the argument.",
+      "misuse": "Each step of inference adds uncertainty; a chain of plausible steps can still lead to a weak conclusion.",
+      "when": "Use it when examining how a conclusion follows from data.",
+      "related": ["evidence", "inferential-statistics", "generalisability", "causal-inference"]
+    },
+    {
+      "id": "generalisability",
+      "term": "Generalisability",
+      "group": "Evidence and inference",
+      "definition": "The extent to which findings apply beyond the particular people, settings or data studied.",
+      "example": "Generalisability is limited because every site was in a large city.",
+      "misuse": "Do not assume a finding generalises; state the conditions under which it was tested.",
+      "when": "Use it when discussing who or what else your results might apply to.",
+      "related": ["external-validity", "population", "sample", "overfitting"]
+    },
+    {
+      "id": "correlation-vs-causation",
+      "term": "Correlation versus causation",
+      "group": "Evidence and inference",
+      "definition": "The principle that two things moving together does not by itself show that one causes the other.",
+      "example": "Ice-cream sales and drownings rise together, but hot weather drives both.",
+      "misuse": "It does not mean correlation is useless: correlations can hint at causes that better designs then test.",
+      "when": "Use it when an association is being read as cause and effect without a design that supports it.",
+      "related": ["confound", "causal-claim", "reverse-causation", "correlation-coefficient"]
+    },
+    {
+      "id": "causal-inference",
+      "term": "Causal inference",
+      "group": "Evidence and inference",
+      "definition": "The process of drawing conclusions about cause and effect, and the set of methods for doing so.",
+      "example": "Causal inference from these observational data needs strong assumptions about confounding.",
+      "misuse": "Fancy methods cannot remove confounding by variables that were never measured.",
+      "when": "Use it when discussing whether and how a study supports a causal conclusion.",
+      "related": ["causal-claim", "randomisation", "confound", "correlation-vs-causation"]
+    },
+    {
+      "id": "reverse-causation",
+      "term": "Reverse causation",
+      "group": "Evidence and inference",
+      "definition": "When the supposed effect is actually causing the supposed cause.",
+      "example": "Poor health may cause unemployment, not only the other way round, so reverse causation is possible.",
+      "misuse": "An association alone cannot tell you the direction of cause.",
+      "when": "Use it when an observed link could run in either direction.",
+      "related": ["correlation-vs-causation", "longitudinal-study", "alternative-explanation"]
+    },
+    {
+      "id": "selection-bias",
+      "term": "Selection bias",
+      "group": "Evidence and inference",
+      "definition": "Distortion of results caused by the way units were selected into the study or into the analysis.",
+      "example": "Only patients who finished treatment were analysed, which introduces selection bias.",
+      "misuse": "It can arise after recruitment too, for example through drop-out or exclusions.",
+      "when": "Use it when the process of who gets included could explain the result.",
+      "related": ["sampling-bias", "survivorship-bias", "missing-data"]
+    },
+    {
+      "id": "survivorship-bias",
+      "term": "Survivorship bias",
+      "group": "Evidence and inference",
+      "definition": "Drawing conclusions only from cases that survived some selection process, while ignoring those that did not.",
+      "example": "Studying only successful start-ups gives survivorship bias about what makes firms succeed.",
+      "misuse": "The missing failures are often invisible, so you have to ask deliberately what was filtered out.",
+      "when": "Use it when the data contain only the winners or survivors of a process.",
+      "related": ["selection-bias", "publication-bias", "sampling-bias"]
+    },
+    {
+      "id": "confirmation-bias",
+      "term": "Confirmation bias",
+      "group": "Evidence and inference",
+      "definition": "The tendency to seek, notice and favour evidence that supports what one already believes.",
+      "example": "To guard against confirmation bias, we wrote down what result would change our minds.",
+      "misuse": "Researchers are not immune; blinding and preregistration exist partly because of it.",
+      "when": "Use it when discussing how expectations can shape analysis or interpretation.",
+      "related": ["blinding", "preregistration", "harking"]
+    },
+    {
+      "id": "threats-to-validity",
+      "term": "Threats to validity",
+      "group": "Evidence and inference",
+      "definition": "Specific reasons why a study's conclusion might be wrong, grouped by the kind of validity they affect.",
+      "example": "The main threat to validity is that participants could guess the purpose of the study.",
+      "misuse": "Listing threats is not enough; say how each was addressed or how it could affect the result.",
+      "when": "Use it in a dedicated section or paragraph that examines weaknesses honestly.",
+      "related": ["internal-validity", "external-validity", "construct-validity", "limitation"]
+    },
+    {
+      "id": "robustness",
+      "term": "Robustness",
+      "group": "Evidence and inference",
+      "definition": "The degree to which a result stays the same under reasonable changes to data, methods or assumptions.",
+      "example": "The finding was robust to excluding outliers and to using a different model.",
+      "misuse": "Checking only the variations that you expect to work is not a real robustness test.",
+      "when": "Use it when reporting whether a result survives alternative analytic choices.",
+      "related": ["sensitivity-analysis", "replication", "researcher-degrees-of-freedom"]
+    },
+    {
+      "id": "sensitivity-analysis",
+      "term": "Sensitivity analysis",
+      "group": "Evidence and inference",
+      "definition": "Re-running an analysis with different assumptions or choices to see how much the result changes.",
+      "example": "A sensitivity analysis that imputed missing values gave a similar estimate.",
+      "misuse": "Report sensitivity analyses that change the conclusion, not only those that support it.",
+      "when": "Use it when showing how dependent your conclusion is on particular decisions.",
+      "related": ["robustness", "missing-data", "assumption"]
+    },
+    {
+      "id": "alternative-explanation",
+      "term": "Alternative explanation",
+      "group": "Evidence and inference",
+      "definition": "A different account, other than the authors' hypothesis, that could also produce the observed result.",
+      "example": "An alternative explanation is that the treated group simply received more attention.",
+      "misuse": "A result that fits your hypothesis is weak support if a simpler alternative fits equally well.",
+      "when": "Use it when critiquing a study or anticipating reviewers' questions.",
+      "related": ["confound", "regression-to-the-mean", "reverse-causation", "parsimony"]
+    },
+    {
+      "id": "overclaiming",
+      "term": "Overclaiming",
+      "group": "Evidence and inference",
+      "definition": "Stating a conclusion more strongly or more broadly than the evidence supports.",
+      "example": "Saying the app 'cures anxiety' after a four-week pilot is overclaiming.",
+      "misuse": "Overclaiming often appears in titles, abstracts and press releases even when the results section is careful.",
+      "when": "Use it when the claim is bigger than the evidence, in your own writing or someone else's.",
+      "related": ["claim", "hedging", "generalisability", "causal-claim"]
+    },
+    {
+      "id": "negative-result",
+      "term": "Negative result",
+      "group": "Evidence and inference",
+      "definition": "A result that does not support the hypothesis being tested, such as finding no clear effect.",
+      "example": "Our negative result suggests the effect, if it exists, is smaller than earlier reports claimed.",
+      "misuse": "A negative result is informative only if the study had enough power to detect a meaningful effect.",
+      "when": "Use it when reporting that an expected effect was not found.",
+      "related": ["type-ii-error", "publication-bias", "file-drawer-problem", "statistical-power"]
+    },
+    {
+      "id": "systematic-review",
+      "term": "Systematic review",
+      "group": "Evidence and inference",
+      "definition": "A review that finds, screens and appraises all studies on a question using a stated, reproducible method.",
+      "example": "The systematic review searched four databases and included 42 trials.",
+      "misuse": "Not the same as a narrative literature review, where the author chooses which studies to discuss.",
+      "when": "Use it only for reviews with a predefined search and inclusion process.",
+      "related": ["meta-analysis", "literature-review", "publication-bias"]
+    },
+    {
+      "id": "meta-analysis",
+      "term": "Meta-analysis",
+      "group": "Evidence and inference",
+      "definition": "A statistical method that combines results from several studies to estimate an overall effect.",
+      "example": "The meta-analysis pooled 30 studies and found a small average effect.",
+      "misuse": "Combining biased studies gives a precise biased answer; publication bias is a major threat.",
+      "when": "Use it when numerical results from several studies are combined.",
+      "related": ["systematic-review", "effect-size", "publication-bias"]
+    },
+    {
+      "id": "replication",
+      "term": "Replication",
+      "group": "Reproducibility and open science",
+      "definition": "Repeating a study with new data to see whether the original finding holds.",
+      "example": "A replication with three times the sample found a much smaller effect.",
+      "misuse": "Terms vary by field; many use replication for new data and reproducibility for the same data, but say which you mean.",
+      "when": "Use it when a study is repeated with new data collection.",
+      "related": ["reproducibility", "robustness", "registered-report"]
+    },
+    {
+      "id": "reproducibility",
+      "term": "Reproducibility",
+      "group": "Reproducibility and open science",
+      "definition": "Getting the same results when the original data and analysis are rerun.",
+      "example": "To support reproducibility, we share our code and a script that rebuilds every figure.",
+      "misuse": "Fields use this word and 'replicability' differently; define it when precision matters.",
+      "when": "Use it when discussing whether others can rerun your analysis and get your numbers.",
+      "related": ["replication", "open-data", "open-code", "version-control"]
+    },
+    {
+      "id": "preregistration",
+      "term": "Preregistration",
+      "group": "Reproducibility and open science",
+      "definition": "Publicly recording the hypotheses, design and analysis plan before collecting or examining the data.",
+      "example": "The study was preregistered, and we note the one deviation from the plan.",
+      "misuse": "Preregistration does not forbid exploratory analysis; it makes clear which analyses were planned.",
+      "when": "Use it when fixing your plan before data collection, and when reporting deviations from it.",
+      "related": ["registered-report", "confirmatory-research", "p-hacking", "harking"]
+    },
+    {
+      "id": "registered-report",
+      "term": "Registered report",
+      "group": "Reproducibility and open science",
+      "definition": "A publishing format in which the introduction and methods are peer reviewed and accepted in principle before the results are known.",
+      "example": "As a registered report, the paper would be published whatever the outcome.",
+      "misuse": "Not the same as preregistration alone: a registered report also includes peer review and a publication decision before results.",
+      "when": "Use it for studies accepted by a journal on the strength of their question and design.",
+      "related": ["preregistration", "publication-bias", "peer-review"]
+    },
+    {
+      "id": "p-hacking",
+      "term": "P-hacking",
+      "group": "Reproducibility and open science",
+      "definition": "Trying different analyses, exclusions or outcomes until a result reaches statistical significance, then reporting only that one.",
+      "example": "Stopping data collection as soon as p fell below 0.05 would be p-hacking.",
+      "misuse": "It is often done without intent to deceive, which is why planning and transparency matter.",
+      "when": "Use it when describing flexible analysis that inflates false positives.",
+      "related": ["garden-of-forking-paths", "researcher-degrees-of-freedom", "multiple-comparisons", "preregistration"]
+    },
+    {
+      "id": "harking",
+      "term": "HARKing",
+      "group": "Reproducibility and open science",
+      "definition": "Hypothesising After the Results are Known: presenting a hypothesis formed after seeing the data as if it had been made beforehand.",
+      "example": "Writing the introduction around a surprise finding, as if we had predicted it, would be HARKing.",
+      "misuse": "Forming new hypotheses from data is fine; presenting them as prior predictions is the problem.",
+      "when": "Use it when a paper's story does not match the order in which ideas and results actually came.",
+      "related": ["exploratory-research", "preregistration", "prediction", "questionable-research-practices"]
+    },
+    {
+      "id": "garden-of-forking-paths",
+      "term": "Garden of forking paths",
+      "group": "Reproducibility and open science",
+      "definition": "The idea that many possible analysis choices, each reasonable, can lead to a significant result even without deliberate fishing.",
+      "example": "With so many ways to define the outcome, this analysis walks the garden of forking paths.",
+      "misuse": "It applies even if only one analysis was actually run, because the choice depended on the data.",
+      "when": "Use it when analysis decisions were made after seeing the data.",
+      "related": ["p-hacking", "researcher-degrees-of-freedom", "preregistration", "multiple-comparisons"]
+    },
+    {
+      "id": "researcher-degrees-of-freedom",
+      "term": "Researcher degrees of freedom",
+      "group": "Reproducibility and open science",
+      "definition": "The many choices a researcher makes in collecting and analysing data, such as exclusions, covariates and stopping rules.",
+      "example": "To limit researcher degrees of freedom, we fixed the exclusion criteria in advance.",
+      "misuse": "Not the statistical term 'degrees of freedom', which is a different concept.",
+      "when": "Use it when discussing flexibility in analysis that could shape results.",
+      "related": ["p-hacking", "garden-of-forking-paths", "preregistration", "outlier"]
+    },
+    {
+      "id": "open-data",
+      "term": "Open data",
+      "group": "Reproducibility and open science",
+      "definition": "Research data made freely available for others to access, check and reuse.",
+      "example": "The anonymised data are openly available in a public repository.",
+      "misuse": "Not all data can be open; personal data may need to be restricted or shared under controlled access.",
+      "when": "Use it when stating whether and where your data can be obtained.",
+      "related": ["open-code", "reproducibility", "data-management-plan", "anonymisation"]
+    },
+    {
+      "id": "open-code",
+      "term": "Open code",
+      "group": "Reproducibility and open science",
+      "definition": "Analysis and software code made publicly available so others can inspect and rerun it.",
+      "example": "Our code is open, with a single script that produces every table.",
+      "misuse": "Publishing code that does not run, or lacks the versions it depends on, gives little reproducibility.",
+      "when": "Use it when stating where others can find and run your analysis.",
+      "related": ["open-data", "reproducibility", "version-control"]
+    },
+    {
+      "id": "open-access",
+      "term": "Open access",
+      "group": "Reproducibility and open science",
+      "definition": "Publication that anyone can read online free of charge.",
+      "example": "The paper is open access, so the practitioners we interviewed can read it.",
+      "misuse": "Open access is about who can read the paper; it does not mean the data or code are shared.",
+      "when": "Use it when describing whether a publication is free to read.",
+      "related": ["preprint", "open-data", "journal"]
+    },
+    {
+      "id": "preprint",
+      "term": "Preprint",
+      "group": "Reproducibility and open science",
+      "definition": "A version of a paper shared publicly before, or alongside, formal peer review.",
+      "example": "The preprint came out in March, and the reviewed version was published in October.",
+      "misuse": "A preprint has not necessarily been peer reviewed; cite and read it with that in mind.",
+      "when": "Use it when citing or sharing work that has not yet passed peer review.",
+      "related": ["peer-review", "open-access", "journal"]
+    },
+    {
+      "id": "version-control",
+      "term": "Version control",
+      "group": "Reproducibility and open science",
+      "definition": "A system, such as Git, that records every change to files so earlier versions can be recovered and compared.",
+      "example": "Every change to the analysis is in version control, so we know which code produced each figure.",
+      "misuse": "It is not a backup on its own; it must be pushed somewhere safe as well.",
+      "when": "Use it for code, and where practical for text and small data files.",
+      "related": ["reproducibility", "open-code", "lab-notebook"]
+    },
+    {
+      "id": "data-management-plan",
+      "term": "Data management plan",
+      "group": "Reproducibility and open science",
+      "definition": "A document describing what data a project will collect, how it will be stored, protected, documented and shared.",
+      "example": "Our data management plan says raw recordings are deleted after transcription.",
+      "misuse": "Many funders require one, but it should guide the project, not be written once and forgotten.",
+      "when": "Use it when planning a project, applying for funding or seeking ethics approval.",
+      "related": ["open-data", "data-protection", "ethics-approval", "lab-notebook"]
+    },
+    {
+      "id": "publication-bias",
+      "term": "Publication bias",
+      "group": "Reproducibility and open science",
+      "definition": "The tendency for studies with positive or significant results to be published more often than those without.",
+      "example": "Because of publication bias, the published effect sizes are probably inflated.",
+      "misuse": "It distorts whole literatures, not just single papers, so it matters most when reading reviews and meta-analyses.",
+      "when": "Use it when judging how representative the published evidence is.",
+      "related": ["file-drawer-problem", "negative-result", "meta-analysis", "registered-report"]
+    },
+    {
+      "id": "file-drawer-problem",
+      "term": "File-drawer problem",
+      "group": "Reproducibility and open science",
+      "definition": "The unpublished studies, often with null results, that sit unseen and so leave the published record biased.",
+      "example": "We wrote up the failed study so it would not end up in the file drawer.",
+      "misuse": "It is the cause behind much publication bias, not a separate issue.",
+      "when": "Use it when talking about studies that were run but never reported.",
+      "related": ["publication-bias", "negative-result", "preregistration"]
+    },
+    {
+      "id": "peer-review",
+      "term": "Peer review",
+      "group": "Publishing and peer review",
+      "definition": "Evaluation of a manuscript by independent experts in the field, used to decide on publication and to improve the work.",
+      "example": "Peer review caught an error in our second analysis.",
+      "misuse": "Peer review is a filter, not a guarantee: reviewed papers can still be wrong.",
+      "when": "Use it when discussing how a paper was checked before publication.",
+      "related": ["blind-review", "editor", "rebuttal", "preprint"]
+    },
+    {
+      "id": "blind-review",
+      "term": "Blind review",
+      "group": "Publishing and peer review",
+      "definition": "Peer review in which reviewers do not know the authors' identities, and in double-blind review the authors do not know the reviewers either.",
+      "example": "The conference uses double-blind review, so we removed our names and self-citations that reveal them.",
+      "misuse": "Blind review rules can be broken by accident, for example by linking to a named code repository.",
+      "when": "Use it when preparing a submission for a venue that hides identities.",
+      "related": ["peer-review", "blinding", "venue"]
+    },
+    {
+      "id": "journal",
+      "term": "Journal",
+      "group": "Publishing and peer review",
+      "definition": "A periodical that publishes research papers, usually after peer review.",
+      "example": "We are submitting to a journal because the work needs more space than a conference paper allows.",
+      "misuse": "The journal's name is not evidence that a particular paper is sound.",
+      "when": "Use it when discussing where research is published.",
+      "related": ["venue", "impact-factor", "predatory-journal", "editor"]
+    },
+    {
+      "id": "venue",
+      "term": "Venue",
+      "group": "Publishing and peer review",
+      "definition": "The journal, conference or workshop where a paper is published or presented.",
+      "example": "In this field the main venues are conferences rather than journals.",
+      "misuse": "Which venues matter most differs a great deal between fields; ask people in yours.",
+      "when": "Use it when choosing where to submit or describing where work appeared.",
+      "related": ["journal", "peer-review", "blind-review"]
+    },
+    {
+      "id": "editor",
+      "term": "Editor",
+      "group": "Publishing and peer review",
+      "definition": "The person at a journal who manages review of a manuscript and makes the final decision on publication.",
+      "example": "The editor asked us to address the second reviewer's concerns about the sample.",
+      "misuse": "Reviewers advise; the editor decides, and may weigh conflicting reviews.",
+      "when": "Use it when discussing the decision process at a journal.",
+      "related": ["peer-review", "desk-rejection", "revise-and-resubmit"]
+    },
+    {
+      "id": "desk-rejection",
+      "term": "Desk rejection",
+      "group": "Publishing and peer review",
+      "definition": "Rejection of a submission by the editor without sending it to peer review.",
+      "example": "The paper was desk rejected because it did not fit the journal's scope.",
+      "misuse": "It often reflects poor fit rather than poor quality, so check a venue's scope before submitting.",
+      "when": "Use it when a manuscript was turned down before review.",
+      "related": ["editor", "journal", "venue"]
+    },
+    {
+      "id": "revise-and-resubmit",
+      "term": "Revise and resubmit",
+      "group": "Publishing and peer review",
+      "definition": "A decision asking the authors to make changes and submit the paper again for further review.",
+      "example": "We got a revise and resubmit with two major concerns to address.",
+      "misuse": "It is not an acceptance; the revised paper can still be rejected.",
+      "when": "Use it when describing a decision that allows a revised submission.",
+      "related": ["rebuttal", "editor", "peer-review"]
+    },
+    {
+      "id": "rebuttal",
+      "term": "Rebuttal",
+      "group": "Publishing and peer review",
+      "definition": "The authors' written response to reviewers, explaining changes made or why a point was not accepted.",
+      "example": "In the rebuttal we answered each comment in turn and quoted the revised text.",
+      "misuse": "A rebuttal should be polite and specific; arguing without evidence rarely persuades.",
+      "when": "Use it when replying to reviewer comments at a journal or conference.",
+      "related": ["revise-and-resubmit", "peer-review"]
+    },
+    {
+      "id": "impact-factor",
+      "term": "Impact factor",
+      "group": "Publishing and peer review",
+      "definition": "A journal-level measure: citations in one year to items the journal published in the previous two years, divided by the number of citable items in those years.",
+      "example": "The journal has a high impact factor, but that tells us little about this particular paper.",
+      "misuse": "It describes a journal on average, not the quality of any single paper or researcher.",
+      "when": "Use it only when discussing journals, and with caution.",
+      "related": ["journal", "citation", "venue"]
+    },
+    {
+      "id": "doi",
+      "term": "DOI",
+      "group": "Publishing and peer review",
+      "definition": "Digital Object Identifier: a permanent identifier for a paper, dataset or other research output.",
+      "example": "The dataset has its own DOI, so it can be cited separately from the paper.",
+      "misuse": "A DOI identifies an item; it does not mean the item was peer reviewed.",
+      "when": "Use it in citations so readers can find the exact version you mean.",
+      "related": ["citation", "open-data", "preprint"]
+    },
+    {
+      "id": "predatory-journal",
+      "term": "Predatory journal",
+      "group": "Publishing and peer review",
+      "definition": "A publisher that charges authors fees while providing little or no real peer review or editorial service.",
+      "example": "The unsolicited email inviting us to publish in three days came from a predatory journal.",
+      "misuse": "Charging a fee does not make a journal predatory; many honest open-access journals charge fees.",
+      "when": "Use it when warning about outlets that do not carry out proper review.",
+      "related": ["journal", "peer-review", "open-access"]
+    },
+    {
+      "id": "retraction",
+      "term": "Retraction",
+      "group": "Publishing and peer review",
+      "definition": "The formal withdrawal of a published paper because its findings are unreliable or because of misconduct.",
+      "example": "The paper was retracted after the images were found to be duplicated.",
+      "misuse": "Retraction does not always mean misconduct; honest errors can also lead to it.",
+      "when": "Use it when a published paper has been formally withdrawn, and check before citing.",
+      "related": ["research-misconduct", "fabrication", "peer-review"]
+    },
+    {
+      "id": "abstract",
+      "term": "Abstract",
+      "group": "Writing and speaking",
+      "definition": "A short summary at the start of a paper that states the question, method, main result and conclusion.",
+      "example": "The abstract should give the main effect with its size, not just say 'results are discussed'.",
+      "misuse": "Many readers see only the abstract, so it must not claim more than the paper shows.",
+      "when": "Use it to write the most carefully checked paragraph of any paper.",
+      "related": ["imrad", "take-home-message", "overclaiming"]
+    },
+    {
+      "id": "imrad",
+      "term": "IMRaD",
+      "group": "Writing and speaking",
+      "definition": "The standard structure of a research paper: Introduction, Methods, Results and Discussion.",
+      "example": "The thesis chapters follow IMRaD, each with its own short discussion.",
+      "misuse": "It is a common structure, not a law; some fields and venues order sections differently.",
+      "when": "Use it when planning a paper or explaining where to find something in one.",
+      "related": ["abstract", "related-work", "limitation"]
+    },
+    {
+      "id": "related-work",
+      "term": "Related work",
+      "group": "Writing and speaking",
+      "definition": "The section of a paper that places the study among previous work and shows how it differs.",
+      "example": "The related work section groups prior methods into three families.",
+      "misuse": "Not a list of summaries; each paragraph should say how the cited work relates to yours.",
+      "when": "Use it to show readers where your work fits and what is new.",
+      "related": ["literature-review", "contribution", "novelty", "citation"]
+    },
+    {
+      "id": "contribution",
+      "term": "Contribution",
+      "group": "Writing and speaking",
+      "definition": "What a piece of research adds to knowledge that was not there before.",
+      "example": "Our main contribution is a dataset of 10,000 annotated clinical notes.",
+      "misuse": "A contribution should be concrete and checkable, not 'we explore' or 'we shed light on'.",
+      "when": "Use it in the introduction, often as a short list, and in talks and proposals.",
+      "related": ["novelty", "research-gap", "take-home-message"]
+    },
+    {
+      "id": "novelty",
+      "term": "Novelty",
+      "group": "Writing and speaking",
+      "definition": "The degree to which a study's question, method or result is new compared with existing work.",
+      "example": "The novelty is in applying the method to longitudinal data.",
+      "misuse": "New is not the same as useful; reviewers also ask whether the new thing matters.",
+      "when": "Use it when explaining what is new, and support it with a search of prior work.",
+      "related": ["contribution", "research-gap", "related-work"]
+    },
+    {
+      "id": "limitation",
+      "term": "Limitation",
+      "group": "Writing and speaking",
+      "definition": "A weakness or boundary of a study that restricts what can be concluded from it.",
+      "example": "A key limitation is that we measured behaviour for only two weeks.",
+      "misuse": "Limitations should be specific and say how they might affect the result, not generic apologies.",
+      "when": "Use it in the discussion, and when answering questions about your work.",
+      "related": ["threats-to-validity", "scope", "assumption", "hedging"]
+    },
+    {
+      "id": "citation",
+      "term": "Citation",
+      "group": "Writing and speaking",
+      "definition": "A reference in the text to a source, telling readers where a fact, idea or method came from.",
+      "example": "Every number in this paragraph has a citation to the original study.",
+      "misuse": "Cite what you have read; citing a paper you know only from someone else's citation spreads errors.",
+      "when": "Use it whenever you rely on someone else's work, words or data.",
+      "related": ["reference-manager", "plagiarism", "primary-literature", "doi"]
+    },
+    {
+      "id": "reference-manager",
+      "term": "Reference manager",
+      "group": "Writing and speaking",
+      "definition": "Software, such as Zotero, that stores sources and formats citations and bibliographies.",
+      "example": "I save every paper to my reference manager with a note on why it matters.",
+      "misuse": "It stores references but not understanding; add your own notes or the library becomes a pile.",
+      "when": "Use one from the first paper you read.",
+      "related": ["citation", "literature-review"]
+    },
+    {
+      "id": "hedging",
+      "term": "Hedging",
+      "group": "Writing and speaking",
+      "definition": "Using cautious language, such as 'suggests' or 'may', to match the strength of a claim to its evidence.",
+      "example": "Instead of 'proves', we wrote 'these results suggest', because it was one study.",
+      "misuse": "Too much hedging hides the finding; hedge in proportion to real uncertainty, not by habit.",
+      "when": "Use it when stating conclusions that are supported but not settled.",
+      "related": ["overclaiming", "claim", "limitation"]
+    },
+    {
+      "id": "signposting",
+      "term": "Signposting",
+      "group": "Writing and speaking",
+      "definition": "Telling the reader or listener where you are in the argument and what comes next.",
+      "example": "I will first describe the method, then the three main results.",
+      "misuse": "Signposts should be short; a long outline of the talk wastes time.",
+      "when": "Use it at the start of talks and sections, and at transitions.",
+      "related": ["take-home-message", "imrad", "journal-club"]
+    },
+    {
+      "id": "figure-caption",
+      "term": "Figure caption",
+      "group": "Writing and speaking",
+      "definition": "The text under a figure that says what is shown, including what error bars and symbols mean.",
+      "example": "The caption states that error bars show 95 per cent confidence intervals.",
+      "misuse": "A figure should be understandable from the caption alone, without searching the main text.",
+      "when": "Use it for every figure, and say what the reader should notice.",
+      "related": ["confidence-interval", "standard-error", "take-home-message"]
+    },
+    {
+      "id": "take-home-message",
+      "term": "Take-home message",
+      "group": "Writing and speaking",
+      "definition": "The single main point you want the audience to remember.",
+      "example": "The take-home message is that the cheap test is as accurate as the expensive one.",
+      "misuse": "If you cannot state it in one sentence, the audience will not be able to either.",
+      "when": "Use it at the start and end of a talk, and to guide the abstract.",
+      "related": ["abstract", "elevator-pitch", "contribution"]
+    },
+    {
+      "id": "elevator-pitch",
+      "term": "Elevator pitch",
+      "group": "Writing and speaking",
+      "definition": "A very short spoken summary of your research, usually under a minute, for a non-specialist listener.",
+      "example": "My elevator pitch starts with the problem, not the method.",
+      "misuse": "It is not the abstract read aloud; drop jargon and lead with why it matters.",
+      "when": "Use it when someone asks what you work on, at conferences, interviews or events.",
+      "related": ["take-home-message", "contribution", "signposting"]
+    },
+    {
+      "id": "journal-club",
+      "term": "Journal club",
+      "group": "Writing and speaking",
+      "definition": "A regular meeting where members present and critically discuss research papers.",
+      "example": "At journal club I presented the paper and led the discussion on its sampling.",
+      "misuse": "Presenting a paper at journal club means appraising it, not only summarising it.",
+      "when": "Use it for group paper discussions, and treat each one as practice in critique.",
+      "related": ["peer-review", "signposting", "limitation"]
+    },
+    {
+      "id": "informed-consent",
+      "term": "Informed consent",
+      "group": "Ethics and integrity",
+      "definition": "A participant's voluntary agreement to take part, given after being told what the study involves, its risks and their rights.",
+      "example": "Informed consent was obtained in writing before the first session.",
+      "misuse": "Consent is not a signature alone: participants must understand what they agree to, and can change their minds.",
+      "when": "Use it whenever research involves people or their personal data.",
+      "related": ["right-to-withdraw", "ethics-approval", "vulnerable-participants", "confidentiality"]
+    },
+    {
+      "id": "ethics-approval",
+      "term": "Ethics approval",
+      "group": "Ethics and integrity",
+      "definition": "Permission from an ethics committee, called an IRB in the United States and often an REC in the United Kingdom, to carry out a study with people, animals or sensitive data.",
+      "example": "The study received ethics approval from the university research ethics committee.",
+      "misuse": "Approval must come before data collection starts; it cannot be obtained afterwards for data already collected.",
+      "when": "Use it when planning any study involving human participants, animals or personal data, and report the approval in the paper.",
+      "related": ["informed-consent", "data-management-plan", "vulnerable-participants"]
+    },
+    {
+      "id": "anonymisation",
+      "term": "Anonymisation",
+      "group": "Ethics and integrity",
+      "definition": "Processing data so that individuals can no longer be identified, by any reasonably likely means.",
+      "example": "Before sharing, we anonymised the transcripts and removed place names.",
+      "misuse": "Removing names is often not enough; combinations of age, job and location can still identify people.",
+      "when": "Use it only when re-identification is not reasonably possible; otherwise say pseudonymised.",
+      "related": ["pseudonymisation", "confidentiality", "data-protection", "open-data"]
+    },
+    {
+      "id": "pseudonymisation",
+      "term": "Pseudonymisation",
+      "group": "Ethics and integrity",
+      "definition": "Replacing identifying details with codes, while a separate key could still link the data back to individuals.",
+      "example": "Participants are pseudonymised as P01 to P40, and the key is stored separately.",
+      "misuse": "Pseudonymised data are still personal data under data protection law such as the UK GDPR.",
+      "when": "Use it when data are coded but could be re-linked to people.",
+      "related": ["anonymisation", "data-protection", "confidentiality"]
+    },
+    {
+      "id": "confidentiality",
+      "term": "Confidentiality",
+      "group": "Ethics and integrity",
+      "definition": "The duty to protect information participants share, and to disclose it only as agreed.",
+      "example": "We promised confidentiality, so quotes are reported without job titles.",
+      "misuse": "Confidential is not the same as anonymous: the researcher may know who said what but must not reveal it.",
+      "when": "Use it when describing how participant information is protected.",
+      "related": ["anonymisation", "informed-consent", "data-protection"]
+    },
+    {
+      "id": "data-protection",
+      "term": "Data protection",
+      "group": "Ethics and integrity",
+      "definition": "The legal rules, such as the GDPR in Europe and the UK, that govern how personal data are collected, stored and used.",
+      "example": "Under data protection law we need a lawful basis for processing the health data.",
+      "misuse": "Ethics approval and data protection compliance are related but separate requirements.",
+      "when": "Use it whenever a project handles information about identifiable people.",
+      "related": ["data-management-plan", "pseudonymisation", "anonymisation", "confidentiality"]
+    },
+    {
+      "id": "right-to-withdraw",
+      "term": "Right to withdraw",
+      "group": "Ethics and integrity",
+      "definition": "A participant's right to stop taking part in a study at any time without giving a reason or suffering a penalty.",
+      "example": "Participants were told of their right to withdraw and how to ask for their data to be removed.",
+      "misuse": "State the practical limits, for example that data cannot be removed once anonymised and pooled.",
+      "when": "Use it in consent materials and when describing procedures.",
+      "related": ["informed-consent", "ethics-approval"]
+    },
+    {
+      "id": "vulnerable-participants",
+      "term": "Vulnerable participants",
+      "group": "Ethics and integrity",
+      "definition": "People who may be less able to protect their own interests in research, such as children or some patients, and who need extra safeguards.",
+      "example": "Because the study includes children, parental consent and the child's own agreement are both needed.",
+      "misuse": "Vulnerability depends on context; people in a dependent relationship with the researcher, such as the researcher's own students, may need safeguards too.",
+      "when": "Use it when planning recruitment and consent for groups needing extra protection.",
+      "related": ["informed-consent", "ethics-approval"]
+    },
+    {
+      "id": "plagiarism",
+      "term": "Plagiarism",
+      "group": "Ethics and integrity",
+      "definition": "Presenting someone else's words, ideas, data or work as your own without proper credit.",
+      "example": "Copying a paragraph and changing a few words, without citation, is still plagiarism.",
+      "misuse": "Reusing your own published text without saying so can also be a problem, often called self-plagiarism.",
+      "when": "Use it when discussing credit and citation; avoid it by citing and quoting as you write.",
+      "related": ["citation", "research-misconduct", "authorship"]
+    },
+    {
+      "id": "fabrication",
+      "term": "Fabrication",
+      "group": "Ethics and integrity",
+      "definition": "Making up data or results and recording or reporting them as real.",
+      "example": "Inventing participants to reach the planned sample size would be fabrication.",
+      "misuse": "Not the same as falsification, which alters real data rather than inventing it.",
+      "when": "Use it only for invented data; it is one of the most serious forms of misconduct.",
+      "related": ["falsification", "research-misconduct", "retraction"]
+    },
+    {
+      "id": "falsification",
+      "term": "Falsification",
+      "group": "Ethics and integrity",
+      "definition": "Manipulating research materials, equipment, processes, data or results so the record does not accurately reflect the research.",
+      "example": "Deleting inconvenient trials without reporting it would count as falsification.",
+      "misuse": "Not the same as falsifiability, which is a property of a scientific claim.",
+      "when": "Use it for misrepresentation of real data or methods.",
+      "related": ["fabrication", "research-misconduct", "questionable-research-practices"]
+    },
+    {
+      "id": "research-misconduct",
+      "term": "Research misconduct",
+      "group": "Ethics and integrity",
+      "definition": "Serious breaches of research integrity, commonly defined as fabrication, falsification or plagiarism.",
+      "example": "The institution investigated the case as research misconduct.",
+      "misuse": "Honest error and differences of opinion are not misconduct.",
+      "when": "Use it for the serious category of deliberate or reckless dishonesty, not for ordinary mistakes.",
+      "related": ["fabrication", "falsification", "plagiarism", "questionable-research-practices"]
+    },
+    {
+      "id": "authorship",
+      "term": "Authorship",
+      "group": "Ethics and integrity",
+      "definition": "Being named as an author of a paper, which should reflect a substantial contribution and accountability for the work.",
+      "example": "We agreed authorship and author order at the start and revisited it before submission.",
+      "misuse": "Giving authorship for status alone, or leaving out someone who did substantial work, both breach good practice.",
+      "when": "Use it when agreeing who is credited, ideally early and in writing; contributor role lists such as CRediT can help.",
+      "related": ["plagiarism", "conflict-of-interest", "research-misconduct"]
+    },
+    {
+      "id": "conflict-of-interest",
+      "term": "Conflict of interest",
+      "group": "Ethics and integrity",
+      "definition": "A situation where personal, financial or professional interests could influence, or appear to influence, a researcher's judgement.",
+      "example": "One author holds shares in the company, and this is declared as a conflict of interest.",
+      "misuse": "Having a conflict is not wrongdoing in itself; failing to declare it is the problem.",
+      "when": "Use it in every paper's declarations, and when reviewing work by people you are close to.",
+      "related": ["authorship", "peer-review", "research-misconduct"]
+    },
+    {
+      "id": "questionable-research-practices",
+      "term": "Questionable research practices",
+      "group": "Ethics and integrity",
+      "definition": "Practices short of outright misconduct that distort the research record, such as p-hacking, HARKing or selective reporting.",
+      "example": "Dropping a condition that did not work, without reporting it, is a questionable research practice.",
+      "misuse": "They are common and often not deliberate, which is why they do the most damage in total.",
+      "when": "Use it when discussing everyday habits that bias results.",
+      "related": ["p-hacking", "harking", "research-misconduct", "publication-bias"]
+    }
+  ]
+}

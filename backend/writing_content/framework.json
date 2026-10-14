@@ -1,0 +1,267 @@
+{
+  "version": 1,
+  "about": "The academic writing framework behind the Write screen. Stages and checks follow the University of Melbourne Academic Skills 'Academic Writing' series (paraphrased, not quoted); structures it does not cover come from IMRaD, Swales' CARS model, the Manchester Academic Phrasebank's moves and the citation style manuals. docs/academic-writing.md.",
+  "videos": {
+    "ewAkojTzutY": "The research to writing process",
+    "jpE_DwnNc_s": "Paraphrasing ideas in your writing",
+    "1n15ZkcX5sM": "Structure and key elements of academic paragraphs",
+    "mxwCPPGXY8w": "Introductions and conclusions",
+    "pIygWc2FQiA": "Task analysis",
+    "MD2upUW9HgI": "Essay writing",
+    "4s_0um-fnXU": "Academic style",
+    "H9FU90d-qjI": "Voice in academic writing",
+    "aXNybkutCPc": "Connecting ideas",
+    "AMeyQPYHbGg": "Cohesive, critical and interpretive writing",
+    "6c8hZVhEt5k": "Clarity and focus",
+    "kolfnGpoh3w": "Reading into writing",
+    "70n2-gAp7J0": "Writing the literature review",
+    "SntBj0FIApw": "Reflective writing",
+    "mrWeLJZydUU": "Developing a research question"
+  },
+  "video_source": "Academic Skills, The University of Melbourne (YouTube)",
+  "stages": [
+    {
+      "key": "task",
+      "title": "Analyse the task",
+      "why": "Most marks are lost by answering a different question from the one set. Read the brief and the marking rubric together before anything else.",
+      "produce": "A task card: what kind of writing it is, what it must do, for whom, the word limit and the sections it needs.",
+      "checklist": [
+        "Find the direction word (discuss, evaluate, compare, argue…) and write what it asks you to do",
+        "Underline the content words: the topic itself",
+        "Note the limiting words: the place, time, group or number of sources that narrow it",
+        "List the sections or parts the task requires",
+        "Set the word limit, and aim to land within 10% of it",
+        "Read the marking rubric beside the brief"
+      ],
+      "videos": ["pIygWc2FQiA", "ewAkojTzutY", "MD2upUW9HgI"]
+    },
+    {
+      "key": "focus",
+      "title": "Choose your focus",
+      "why": "A clear focus or research question decides what you read, what you keep and what you leave out.",
+      "produce": "For research work: a research question and a one-sentence purpose statement. For reflection: one theme.",
+      "checklist": [
+        "Brainstorm everything you know and want to find out",
+        "Narrow to one focus that the word limit can carry",
+        "For research: phrase it as a question that starts with what, how, why or to what extent",
+        "It cannot be answered with yes, no or a single number",
+        "It names its scope: who, where, when",
+        "You can say in one sentence why it matters (the 'so what?')"
+      ],
+      "videos": ["mrWeLJZydUU", "ewAkojTzutY", "SntBj0FIApw"]
+    },
+    {
+      "key": "read",
+      "title": "Read and take notes",
+      "why": "Reading with your plan in mind turns notes into the first draft of your evidence.",
+      "produce": "A source list, each judged for quality, and notes in your own words with the author, year and page.",
+      "checklist": [
+        "Prefer peer-reviewed and authoritative sources; note bias and currency",
+        "Write notes in your own words, with author, year and page",
+        "Mark any exact wording as a quote",
+        "Add your own response to each note: agree, doubt, connects to…",
+        "Tag each note with the part of your plan it supports"
+      ],
+      "videos": ["kolfnGpoh3w", "ewAkojTzutY", "70n2-gAp7J0", "jpE_DwnNc_s"]
+    },
+    {
+      "key": "plan",
+      "title": "Plan the argument",
+      "why": "A plan with a thesis and a word budget keeps every paragraph working for the answer.",
+      "produce": "Your thesis (the position you take), the sections in order, a topic sentence for each paragraph and a word budget.",
+      "checklist": [
+        "Write your thesis in one or two sentences",
+        "Put the sections in the order your thesis previews them",
+        "Give each section at least one piece of evidence",
+        "For argument: include the strongest counter-argument and your reply",
+        "Budget the words: about 5% introduction, 90% body, 5% conclusion",
+        "For a literature review: choose thematic, chronological, by perspective or by method"
+      ],
+      "videos": ["ewAkojTzutY", "MD2upUW9HgI", "70n2-gAp7J0", "1n15ZkcX5sM"]
+    },
+    {
+      "key": "draft",
+      "title": "Draft the body",
+      "why": "Each paragraph makes one point, backs it with evidence and says what that evidence means.",
+      "produce": "Body paragraphs: topic sentence, evidence, interpretation, link back to the thesis.",
+      "checklist": [
+        "Open each paragraph with a topic sentence stating its one idea",
+        "Support it with evidence, mostly paraphrased and cited",
+        "Explain what the evidence shows and why it matters",
+        "Start and end paragraphs in your own voice, not a source's",
+        "In reviews: describe, then critique, then suggest, then credit strengths",
+        "In reflection: describe briefly, then interpret, evaluate and plan"
+      ],
+      "videos": ["1n15ZkcX5sM", "H9FU90d-qjI", "AMeyQPYHbGg", "SntBj0FIApw"]
+    },
+    {
+      "key": "cohesion",
+      "title": "Connect and sharpen your voice",
+      "why": "Readers follow an argument through its links: between sentences, between paragraphs, and back to the thesis.",
+      "produce": "A draft whose ideas flow, with your critical position visible throughout.",
+      "checklist": [
+        "Choose linking words that match the real relation: addition, contrast, cause, condition",
+        "Start sentences with what the reader knows and end with what is new",
+        "Keep key terms consistent; define abbreviations on first use",
+        "Connect sources to each other: agree, disagree, build on",
+        "Use reporting verbs that show your stance (suggests, argues, overlooks)"
+      ],
+      "videos": ["aXNybkutCPc", "AMeyQPYHbGg", "H9FU90d-qjI"]
+    },
+    {
+      "key": "frame",
+      "title": "Write the introduction and conclusion",
+      "why": "Written last, they can promise exactly what the body delivers.",
+      "produce": "An introduction that moves from context to focus to thesis to structure, and a conclusion that concludes.",
+      "checklist": [
+        "Introduction: context, then your focus, then your thesis, then how the piece is organised",
+        "Avoid sweeping openers ('since the beginning of time')",
+        "Conclusion: restate the thesis, sum up the main points, say what they show",
+        "Add no new evidence or citations in the conclusion",
+        "Each takes about 5% of the words"
+      ],
+      "videos": ["mxwCPPGXY8w", "MD2upUW9HgI"]
+    },
+    {
+      "key": "style",
+      "title": "Revise for style and clarity",
+      "why": "Academic style is precise, formal and measured: claims as strong as the evidence, no stronger.",
+      "produce": "A second and third draft, edited for clarity and tone.",
+      "checklist": [
+        "Aim for sentences of about 15 to 25 words; split very long ones",
+        "No contractions (don't, it's) or vague words (thing, a lot, good)",
+        "Use 'I' only where the genre allows it, such as reflection",
+        "Hedge claims to match the evidence (suggests, may, is likely)",
+        "Put the important information at the end of the sentence"
+      ],
+      "videos": ["4s_0um-fnXU", "6c8hZVhEt5k", "1n15ZkcX5sM"]
+    },
+    {
+      "key": "cite",
+      "title": "Paraphrase and cite",
+      "why": "Every idea that is not yours is credited, and in your own words wherever possible.",
+      "produce": "Consistent in-text citations and a complete reference list in the required style.",
+      "checklist": [
+        "Paraphrase: read, set the source aside, write from memory, then compare",
+        "Keep direct quotes under 10% of the text, each with a page number",
+        "Mix author-first ('Smith (2020) shows…') and idea-first ('… (Smith, 2020)') citations",
+        "Every in-text citation has an entry in the reference list, and the other way round",
+        "Use the one style the task requires, consistently"
+      ],
+      "videos": ["jpE_DwnNc_s", "1n15ZkcX5sM", "H9FU90d-qjI"]
+    },
+    {
+      "key": "proof",
+      "title": "Check and proofread",
+      "why": "The last pass catches what costs easy marks.",
+      "produce": "A final draft checked against the brief and the rubric.",
+      "checklist": [
+        "Within 10% of the word limit",
+        "Every key term from the brief appears",
+        "Every required section is there",
+        "Spelling, grammar and punctuation read aloud or checked",
+        "Formatting and reference list follow the required style"
+      ],
+      "videos": ["ewAkojTzutY", "pIygWc2FQiA", "MD2upUW9HgI"]
+    }
+  ],
+  "genres": [
+    {
+      "key": "essay",
+      "title": "Essay",
+      "summary": "An argument that answers a question, in continuous prose with no headings.",
+      "first_person": false,
+      "headings": false,
+      "sections": [
+        {"key": "intro", "title": "Introduction", "share": 0.05, "hint": "Context, then your focus, then your thesis, then how the essay is organised."},
+        {"key": "body1", "title": "First main point", "share": 0.30, "hint": "Topic sentence, evidence, what it shows, link back to the thesis."},
+        {"key": "body2", "title": "Second main point", "share": 0.30, "hint": "In the order your thesis previews. One idea per paragraph."},
+        {"key": "body3", "title": "Third main point or counter-argument", "share": 0.30, "hint": "Address the strongest objection and answer it."},
+        {"key": "conclusion", "title": "Conclusion", "share": 0.05, "hint": "Restate the thesis, sum up, say what it all shows. No new evidence."}
+      ]
+    },
+    {
+      "key": "literature_review",
+      "title": "Literature review",
+      "summary": "A critical synthesis of what is known, organised to show where the gap is.",
+      "first_person": false,
+      "headings": true,
+      "sections": [
+        {"key": "intro", "title": "Introduction", "share": 0.08, "hint": "The topic, why it matters, the scope (which literature, which years) and how the review is organised."},
+        {"key": "theme1", "title": "Theme 1", "share": 0.25, "hint": "Group sources by theme, not one by one. Describe, critique, and say what they mean together."},
+        {"key": "theme2", "title": "Theme 2", "share": 0.25, "hint": "Show where sources agree, disagree and build on each other."},
+        {"key": "theme3", "title": "Theme 3", "share": 0.22, "hint": "Judge the methods, samples and applicability, not only the findings."},
+        {"key": "gap", "title": "Gaps and directions", "share": 0.12, "hint": "What the literature does not yet answer: this is where your research question comes from."},
+        {"key": "conclusion", "title": "Conclusion", "share": 0.08, "hint": "What is known, what is not, and why the gap matters."}
+      ]
+    },
+    {
+      "key": "research_paper",
+      "title": "Research paper",
+      "summary": "An empirical study in the IMRaD structure: Introduction, Methods, Results and Discussion.",
+      "first_person": true,
+      "headings": true,
+      "sections": [
+        {"key": "abstract", "title": "Abstract", "share": 0.05, "hint": "In 150 to 250 words: background, aim, method, main result, conclusion. Written last."},
+        {"key": "intro", "title": "Introduction", "share": 0.15, "hint": "Swales' CARS moves: establish the territory, show the gap, then say how this study fills it."},
+        {"key": "methods", "title": "Methods", "share": 0.20, "hint": "Enough detail to repeat the study: participants, materials, procedure, analysis. Past tense."},
+        {"key": "results", "title": "Results", "share": 0.20, "hint": "What you found, with statistics, tables and figures. Report, do not interpret."},
+        {"key": "discussion", "title": "Discussion", "share": 0.30, "hint": "What the results mean, how they compare with the literature, limitations and implications."},
+        {"key": "conclusion", "title": "Conclusion", "share": 0.10, "hint": "The answer to the research question and what should happen next."}
+      ]
+    },
+    {
+      "key": "research_proposal",
+      "title": "Research proposal",
+      "summary": "A plan for a study: what you will ask, why it matters, and how you will answer it.",
+      "first_person": true,
+      "headings": true,
+      "sections": [
+        {"key": "summary", "title": "Summary", "share": 0.05, "hint": "The question, why it matters, the method and the expected contribution in one paragraph."},
+        {"key": "background", "title": "Background and rationale", "share": 0.20, "hint": "What is known, the gap, and why filling it matters now."},
+        {"key": "question", "title": "Research question and aims", "share": 0.10, "hint": "The question, a purpose statement, and two to four objectives."},
+        {"key": "literature", "title": "Literature review", "share": 0.20, "hint": "The studies your question builds on, critically, grouped by theme."},
+        {"key": "methods", "title": "Methodology", "share": 0.25, "hint": "Design, participants or data, instruments, analysis, and why they suit the question."},
+        {"key": "ethics", "title": "Ethics", "share": 0.05, "hint": "Consent, risk, data protection and approvals needed."},
+        {"key": "timeline", "title": "Timeline", "share": 0.05, "hint": "The main stages and when each will be done."},
+        {"key": "significance", "title": "Expected outcomes and significance", "share": 0.10, "hint": "What you expect to find and who it will help."}
+      ]
+    },
+    {
+      "key": "reflective",
+      "title": "Reflective writing",
+      "summary": "Learning from an experience, in the first person, linked to theory.",
+      "first_person": true,
+      "headings": false,
+      "sections": [
+        {"key": "describe", "title": "Describe", "share": 0.15, "hint": "Briefly, what happened. Keep this the smallest part."},
+        {"key": "interpret", "title": "Interpret", "share": 0.30, "hint": "What it meant, how you felt, and why, linked to your readings."},
+        {"key": "evaluate", "title": "Evaluate", "share": 0.30, "hint": "What went well or badly and what you learned. Be honest and specific."},
+        {"key": "plan", "title": "Plan", "share": 0.25, "hint": "What you will do differently next time, and how."}
+      ]
+    },
+    {
+      "key": "report",
+      "title": "Report",
+      "summary": "Findings and recommendations for a reader who needs to act, organised under headings.",
+      "first_person": false,
+      "headings": true,
+      "sections": [
+        {"key": "executive", "title": "Executive summary", "share": 0.07, "hint": "Purpose, key findings and recommendations, readable on its own."},
+        {"key": "intro", "title": "Introduction", "share": 0.10, "hint": "Purpose, scope and background."},
+        {"key": "findings", "title": "Findings", "share": 0.40, "hint": "What you found, under clear numbered headings, with evidence."},
+        {"key": "discussion", "title": "Discussion", "share": 0.20, "hint": "What the findings mean for the reader."},
+        {"key": "recommendations", "title": "Recommendations", "share": 0.15, "hint": "Specific, actionable steps, each tied to a finding."},
+        {"key": "conclusion", "title": "Conclusion", "share": 0.08, "hint": "The main message in a few sentences."}
+      ]
+    }
+  ],
+  "citation_styles": [
+    {"key": "apa", "title": "APA 7th"},
+    {"key": "harvard", "title": "Harvard"},
+    {"key": "ieee", "title": "IEEE"},
+    {"key": "vancouver", "title": "Vancouver"},
+    {"key": "mla", "title": "MLA 9th"},
+    {"key": "chicago", "title": "Chicago (author-date)"}
+  ]
+}

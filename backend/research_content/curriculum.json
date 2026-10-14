@@ -1,0 +1,1781 @@
+{
+  "version": 1,
+  "levels": [
+    {
+      "id": 0,
+      "name": "Orientation",
+      "weeks": "1–2",
+      "goal": "Understand how research works, what researchers do all day, and the core words they use to talk about it.",
+      "outcomes": [
+        "Explain the research cycle from question to published paper in your own words.",
+        "Describe what a supervisor, a reviewer and an editor each do.",
+        "Use the starter research terms correctly in speech.",
+        "Set up a reference manager and a lab notebook, and use both daily.",
+        "Say what makes a research problem important and worth your time."
+      ],
+      "lessons": [
+        {
+          "id": "l0-1",
+          "title": "What research is and what a researcher does",
+          "minutes": 25,
+          "pillar": "think",
+          "why": "You need a clear picture of the whole job before you learn its parts.",
+          "read": [
+            {
+              "title": "The Illustrated Guide to a Ph.D.",
+              "by": "Matt Might",
+              "url": "https://matt.might.net/articles/phd-school-in-pictures/"
+            },
+            {
+              "title": "A Survival Guide to a PhD",
+              "by": "Andrej Karpathy",
+              "url": "https://karpathy.github.io/2016/09/07/phd/"
+            }
+          ],
+          "do": "Write five sentences describing what a researcher in your chosen field does in a normal week. Then list three questions you still have about the job.",
+          "speak": "In one minute, explain to a friend what it means to add something new to human knowledge, and why most contributions are small.",
+          "check": "Can you explain why a single research project usually adds only a small piece to what is known?",
+          "terms": [
+            "scientific-method",
+            "empirical",
+            "contribution",
+            "primary-literature"
+          ],
+          "skills": [
+            "how-research-works",
+            "discuss-research"
+          ]
+        },
+        {
+          "id": "l0-2",
+          "title": "The shape of a project: from question to paper",
+          "minutes": 30,
+          "pillar": "think",
+          "why": "Every study, in every field, follows the same broad arc, and knowing it tells you where you are.",
+          "read": [
+            {
+              "title": "CS197: Computer Science Research",
+              "by": "Michael Bernstein, Stanford",
+              "url": "https://cs197.stanford.edu/"
+            }
+          ],
+          "do": "Draw the research cycle as a loop: question, reading, hypothesis, design, data, analysis, writing, review. Mark the two steps you think are hardest and write one sentence on why.",
+          "speak": "Walk through the steps of a research project out loud, using the words hypothesis, prediction and experiment correctly.",
+          "check": "What is the difference between a hypothesis and a prediction?",
+          "terms": [
+            "research-question",
+            "hypothesis",
+            "prediction",
+            "experiment",
+            "literature-review",
+            "peer-review"
+          ],
+          "skills": [
+            "how-research-works",
+            "research-vocabulary"
+          ]
+        },
+        {
+          "id": "l0-3",
+          "title": "Learning how to learn a new field",
+          "minutes": 25,
+          "pillar": "operate",
+          "why": "You will learn hundreds of terms and ideas, and retrieval practice makes them stick far better than rereading.",
+          "read": [
+            {
+              "title": "Learning How to Learn",
+              "by": "Barbara Oakley and Terrence Sejnowski",
+              "url": "https://www.coursera.org/learn/learning-how-to-learn"
+            },
+            {
+              "title": "FORRT Glossary",
+              "by": "FORRT",
+              "url": "https://forrt.org/glossary/"
+            }
+          ],
+          "do": "Pick ten starter terms. Close your notes and write each definition from memory, then check and mark the ones you missed. Repeat the missed ones tomorrow and in three days.",
+          "speak": "Without notes, define hypothesis, sample and bias in plain words, one after another.",
+          "check": "Why does testing yourself from memory work better than rereading your notes?",
+          "terms": [
+            "hypothesis",
+            "sample",
+            "population",
+            "variable",
+            "evidence"
+          ],
+          "skills": [
+            "learning-how-to-learn",
+            "research-vocabulary"
+          ]
+        },
+        {
+          "id": "l0-4",
+          "title": "Choosing important problems",
+          "minutes": 30,
+          "pillar": "think",
+          "why": "Researchers who deliberately ask what the important problems are tend to spend their time better.",
+          "read": [
+            {
+              "title": "You and Your Research",
+              "by": "Richard Hamming",
+              "url": "https://www.cs.virginia.edu/~robins/YouAndYourResearch.html"
+            },
+            {
+              "title": "The Heilmeier Catechism",
+              "by": "DARPA",
+              "url": "https://www.darpa.mil/about/heilmeier-catechism"
+            }
+          ],
+          "do": "List three important open problems in a field that interests you. For one of them, answer the first four Heilmeier questions in one or two sentences each, with no jargon.",
+          "speak": "Name one important problem in a field you care about, say why it matters, and say why it is still unsolved.",
+          "check": "What is the difference between a research topic and a research question?",
+          "terms": [
+            "research-question",
+            "research-gap",
+            "novelty",
+            "contribution",
+            "scope"
+          ],
+          "skills": [
+            "problem-selection",
+            "discuss-research"
+          ]
+        },
+        {
+          "id": "l0-5",
+          "title": "Your research toolkit",
+          "minutes": 25,
+          "pillar": "operate",
+          "why": "Good habits with references and notes from day one save weeks of lost sources and forgotten decisions later.",
+          "read": [
+            {
+              "title": "Zotero",
+              "by": "Zotero",
+              "url": "https://www.zotero.org/"
+            },
+            {
+              "title": "Semantic Scholar",
+              "by": "Allen Institute for AI",
+              "url": "https://www.semanticscholar.org/"
+            },
+            {
+              "title": "The Turing Way",
+              "by": "The Turing Way community",
+              "url": "https://book.the-turing-way.org/"
+            }
+          ],
+          "do": "Install Zotero and save three papers from Semantic Scholar into it, each with one line on why it matters. Start a dated lab notebook and write today's first entry.",
+          "speak": "Explain in one minute why a researcher keeps a lab notebook, and what goes into it.",
+          "check": "If you found a result in six months' time, could your notes tell you exactly how you got it?",
+          "terms": [
+            "reference-manager",
+            "citation",
+            "lab-notebook",
+            "version-control",
+            "reproducibility"
+          ],
+          "skills": [
+            "reference-management",
+            "lab-notebook-keeping",
+            "note-taking"
+          ]
+        },
+        {
+          "id": "l0-6",
+          "title": "Talking about research out loud",
+          "minutes": 20,
+          "pillar": "speak",
+          "why": "Research is discussed far more than it is written, and supervisors judge understanding by how you explain things.",
+          "read": [
+            {
+              "title": "Poldrack Lab guide",
+              "by": "Russell Poldrack and lab",
+              "url": "https://poldracklab.github.io/"
+            },
+            {
+              "title": "Academic Phrasebank",
+              "by": "University of Manchester",
+              "url": "https://www.phrasebank.manchester.ac.uk/"
+            }
+          ],
+          "do": "Record yourself explaining how research works for two minutes. Play it back and note every term you used vaguely or incorrectly, then record it again.",
+          "speak": "Explain how a finding goes from an idea in a lab to a published paper that others trust.",
+          "check": "Could you explain peer review to someone outside research without using jargon?",
+          "terms": [
+            "peer-review",
+            "evidence",
+            "claim",
+            "replication",
+            "journal"
+          ],
+          "skills": [
+            "discuss-research",
+            "research-vocabulary"
+          ]
+        }
+      ],
+      "exit": {
+        "title": "Orientation oral with your supervisor",
+        "description": "A 10-minute oral with the supervisor on how research works, followed by a recall check of the starter terms. You pass the recall part at 90 per cent.",
+        "persona": "supervisor",
+        "recall_threshold": 0.9,
+        "skills": [
+          "how-research-works",
+          "research-vocabulary",
+          "discuss-research"
+        ],
+        "rubric": [
+          {
+            "id": "cycle",
+            "criterion": "Describes the research cycle from question to publication in the correct order."
+          },
+          {
+            "id": "roles",
+            "criterion": "Explains the roles of supervisor, reviewer and editor accurately."
+          },
+          {
+            "id": "terms",
+            "criterion": "Uses starter terms correctly without prompting, including hypothesis versus prediction."
+          },
+          {
+            "id": "important-problems",
+            "criterion": "Names an important problem and gives a reason it matters."
+          },
+          {
+            "id": "unknowns",
+            "criterion": "Says plainly when they do not know something instead of guessing."
+          }
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "name": "Reader",
+      "weeks": "3–8",
+      "goal": "Read, record and critically judge research papers, and present one to others.",
+      "outcomes": [
+        "Read a paper in three passes and decide at each pass whether to continue.",
+        "Write a paper card for every paper you read.",
+        "Build a field map of about 30 papers on one topic.",
+        "Read figures and tables accurately, including error bars and sample sizes.",
+        "Judge whether a paper's claim is bigger than its evidence.",
+        "Present a paper at a journal club and answer questions on it."
+      ],
+      "lessons": [
+        {
+          "id": "l1-1",
+          "title": "Three-pass reading",
+          "minutes": 30,
+          "pillar": "read",
+          "why": "Reading every paper from start to finish is slow; passes let you decide quickly which papers deserve deep reading.",
+          "read": [
+            {
+              "title": "How to Read a Paper",
+              "by": "S. Keshav",
+              "url": "http://ccr.sigcomm.org/online/files/p83-keshavA.pdf"
+            },
+            {
+              "title": "Stanford CS230 lecture on reading research papers",
+              "by": "Andrew Ng",
+              "url": "https://www.youtube.com/watch?v=733m6qBH-jI"
+            }
+          ],
+          "do": "Take one paper in your area. Do a first pass of about ten minutes: title, abstract, introduction, headings and conclusion. Write down its category, context, contributions and how clearly it is written, then decide whether to do a second pass.",
+          "speak": "After a first pass only, explain in one minute what the paper claims and whether it is worth a deeper read.",
+          "check": "What do you read in a first pass, and what do you deliberately skip?",
+          "terms": [
+            "abstract",
+            "contribution",
+            "imrad",
+            "claim"
+          ],
+          "skills": [
+            "three-pass-reading"
+          ]
+        },
+        {
+          "id": "l1-2",
+          "title": "The paper card",
+          "minutes": 25,
+          "pillar": "write",
+          "why": "A short fixed record of each paper turns reading into knowledge you can find, compare and cite later.",
+          "read": [
+            {
+              "title": "How to Read a Paper",
+              "by": "S. Keshav",
+              "url": "http://ccr.sigcomm.org/online/files/p83-keshavA.pdf"
+            }
+          ],
+          "do": "Write a paper card for the paper from the last lesson with five fields: question, method, result with its size and uncertainty, main limitation, and your own critique. Keep it under 150 words.",
+          "speak": "Read your card aloud, then give the result as a spoken sentence that includes the effect size and its uncertainty.",
+          "check": "Does your card give the size of the result and its uncertainty, not just whether it was significant?",
+          "terms": [
+            "research-question",
+            "effect-size",
+            "confidence-interval",
+            "limitation",
+            "statistical-significance"
+          ],
+          "skills": [
+            "paper-cards",
+            "note-taking"
+          ]
+        },
+        {
+          "id": "l1-3",
+          "title": "Finding papers and building a field map",
+          "minutes": 45,
+          "pillar": "read",
+          "why": "A map of about thirty papers shows you the main ideas, the debates and where the gaps are.",
+          "read": [
+            {
+              "title": "Semantic Scholar",
+              "by": "Allen Institute for AI",
+              "url": "https://www.semanticscholar.org/"
+            },
+            {
+              "title": "Connected Papers",
+              "by": "Connected Papers",
+              "url": "https://www.connectedpapers.com/"
+            },
+            {
+              "title": "Zotero",
+              "by": "Zotero",
+              "url": "https://www.zotero.org/"
+            },
+            {
+              "title": "OpenReview",
+              "by": "OpenReview",
+              "url": "https://openreview.net/"
+            }
+          ],
+          "do": "Start from one key paper and follow its references and the papers that cite it until you have about 30. Save them in Zotero, tag each with a group, and write one sentence per group saying what it contributes and what it leaves open.",
+          "speak": "In one minute, describe the main groups of work in your field map and name one gap you noticed.",
+          "check": "Can you name the three or four main groups of work in your map and one open question between them?",
+          "terms": [
+            "literature-review",
+            "research-gap",
+            "state-of-the-art",
+            "primary-literature",
+            "related-work"
+          ],
+          "skills": [
+            "literature-search",
+            "field-map",
+            "reference-management"
+          ]
+        },
+        {
+          "id": "l1-4",
+          "title": "Reading figures and tables",
+          "minutes": 30,
+          "pillar": "read",
+          "why": "The evidence of most papers lives in their figures and tables, and they are easy to misread.",
+          "read": [
+            {
+              "title": "How to Read a Paper",
+              "by": "S. Keshav",
+              "url": "http://ccr.sigcomm.org/online/files/p83-keshavA.pdf"
+            },
+            {
+              "title": "FORRT Glossary",
+              "by": "FORRT",
+              "url": "https://forrt.org/glossary/"
+            }
+          ],
+          "do": "Choose the main figure of a paper. Before reading the text, write down what the axes and units are, what the error bars show, how many data points there are, and what you think the figure shows. Then compare with the authors' description.",
+          "speak": "Describe a figure out loud as if to someone who cannot see it: what is plotted, what the error bars mean, and what the reader should notice.",
+          "check": "Do you know whether the error bars show standard deviation, standard error or a confidence interval, and why it matters?",
+          "terms": [
+            "figure-caption",
+            "standard-deviation",
+            "standard-error",
+            "confidence-interval",
+            "baseline",
+            "distribution"
+          ],
+          "skills": [
+            "reading-figures",
+            "three-pass-reading"
+          ]
+        },
+        {
+          "id": "l1-5",
+          "title": "Critical appraisal: is the claim bigger than the evidence?",
+          "minutes": 40,
+          "pillar": "think",
+          "why": "Many published claims are stronger than their evidence, and spotting this is the core skill of a researcher.",
+          "read": [
+            {
+              "title": "FORRT Glossary",
+              "by": "FORRT",
+              "url": "https://forrt.org/glossary/"
+            },
+            {
+              "title": "OpenReview",
+              "by": "OpenReview",
+              "url": "https://openreview.net/"
+            }
+          ],
+          "do": "For one paper, write the main claim in one sentence. Then list the design, the sample, the measure and the main result, and note any confound, alternative explanation or generalisation that goes beyond the data. Compare your notes with a public review of a paper on OpenReview.",
+          "speak": "Give a one-minute verdict on a paper: state its claim, the strongest evidence for it, and the biggest gap between claim and evidence.",
+          "check": "Does the paper's design allow the kind of claim it makes, for example a causal one?",
+          "terms": [
+            "overclaiming",
+            "confound",
+            "alternative-explanation",
+            "generalisability",
+            "correlation-vs-causation",
+            "threats-to-validity"
+          ],
+          "skills": [
+            "critical-appraisal"
+          ]
+        },
+        {
+          "id": "l1-6",
+          "title": "Presenting a paper at journal club",
+          "minutes": 35,
+          "pillar": "speak",
+          "why": "Presenting a paper to peers tests whether you understood it and trains you to handle questions.",
+          "read": [
+            {
+              "title": "Academic Phrasebank",
+              "by": "University of Manchester",
+              "url": "https://www.phrasebank.manchester.ac.uk/"
+            },
+            {
+              "title": "A Survival Guide to a PhD",
+              "by": "Andrej Karpathy",
+              "url": "https://karpathy.github.io/2016/09/07/phd/"
+            }
+          ],
+          "do": "Prepare a ten-minute journal club presentation: the question, why it matters, the method, the main result with its size, the limitations, and two questions for discussion. Rehearse it once against a timer.",
+          "speak": "Give the first minute of your journal club talk: the paper's question, why it matters and its take-home message.",
+          "check": "Does your presentation include your own critique, not only a summary of what the authors say?",
+          "terms": [
+            "journal-club",
+            "take-home-message",
+            "signposting",
+            "hedging",
+            "limitation"
+          ],
+          "skills": [
+            "present-a-paper",
+            "answering-questions"
+          ]
+        }
+      ],
+      "exit": {
+        "title": "Journal club: three papers",
+        "description": "Present three papers at a journal club, one at a time, and answer the panel's questions on each.",
+        "persona": "journal-club",
+        "recall_threshold": null,
+        "skills": [
+          "present-a-paper",
+          "critical-appraisal",
+          "paper-cards",
+          "answering-questions"
+        ],
+        "rubric": [
+          {
+            "id": "claim",
+            "criterion": "States each paper's main claim accurately in one sentence."
+          },
+          {
+            "id": "result-size",
+            "criterion": "Reports the main result with its size and uncertainty, not only its significance."
+          },
+          {
+            "id": "appraisal",
+            "criterion": "Identifies at least one real weakness where the claim goes beyond the evidence."
+          },
+          {
+            "id": "figures",
+            "criterion": "Explains a key figure or table correctly, including what the error bars show."
+          },
+          {
+            "id": "questions",
+            "criterion": "Answers the panel's questions directly and admits uncertainty where it exists."
+          },
+          {
+            "id": "time",
+            "criterion": "Keeps each presentation within its time limit."
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Question-maker",
+      "weeks": "9–12",
+      "goal": "Turn an interest and a field map into a specific, testable and worthwhile research question.",
+      "outcomes": [
+        "Write a research question that a single study could answer.",
+        "State a hypothesis and the prediction that would show it wrong.",
+        "Justify the question with a research gap from the literature.",
+        "Answer the Heilmeier questions for your own project without jargon."
+      ],
+      "lessons": [
+        {
+          "id": "l2-1",
+          "title": "Finding a gap in your field map",
+          "minutes": 35,
+          "pillar": "read",
+          "why": "A good question usually starts where existing work stops, and your field map shows you where that is.",
+          "read": [
+            {
+              "title": "The Craft of Research",
+              "by": "Wayne C. Booth, Gregory G. Colomb, Joseph M. Williams and others (paid book)",
+              "url": "https://press.uchicago.edu/ucp/books/book/chicago/C/bo215874008.html"
+            },
+            {
+              "title": "CS197: Computer Science Research",
+              "by": "Michael Bernstein, Stanford",
+              "url": "https://cs197.stanford.edu/"
+            }
+          ],
+          "do": "Go back to your field map. For each group of papers, write what it has shown, what it assumes and what it has not tested. Then list three candidate gaps, and for each one name two papers that show the gap is real.",
+          "speak": "In one minute, describe one gap in your field, name the papers on either side of it, and say why nobody has filled it yet.",
+          "check": "Is your gap a question nobody has answered, or only a question you have not yet found the answer to?",
+          "terms": [
+            "research-gap",
+            "literature-review",
+            "state-of-the-art",
+            "related-work",
+            "assumption"
+          ],
+          "skills": [
+            "field-map",
+            "question-framing"
+          ]
+        },
+        {
+          "id": "l2-2",
+          "title": "Choosing a problem worth your time",
+          "minutes": 35,
+          "pillar": "think",
+          "why": "The problem you choose limits what your work can achieve, so it deserves deliberate thought before you start.",
+          "read": [
+            {
+              "title": "You and Your Research",
+              "by": "Richard Hamming",
+              "url": "https://www.cs.virginia.edu/~robins/YouAndYourResearch.html"
+            },
+            {
+              "title": "How to Choose a Good Scientific Problem",
+              "by": "Uri Alon",
+              "url": "https://www.weizmann.ac.il/mcb/alon/sites/mcb.UriAlon/files/uploads/nurturing/howtochoosegoodproblem.pdf"
+            },
+            {
+              "title": "Why science demands a leap into the unknown",
+              "by": "Uri Alon (TED talk)",
+              "url": "https://www.ted.com/talks/uri_alon_why_science_demands_a_leap_into_the_unknown"
+            },
+            {
+              "title": "An Opinionated Guide to ML Research",
+              "by": "John Schulman",
+              "url": "https://joschu.net/blog/opinionated-guide-ml-research.html"
+            }
+          ],
+          "do": "Take your three candidate gaps. Place each one on a simple chart with feasibility on one axis and interest on the other, as Alon suggests. For the most promising one, write two sentences on why it is important and one on why you have a reasonable way to attack it.",
+          "speak": "Explain out loud why you chose one problem over the other two, using the words important, feasible and interesting.",
+          "check": "Hamming separates an important problem from one that is merely big. Does your problem have a reasonable line of attack?",
+          "terms": [
+            "research-gap",
+            "novelty",
+            "contribution",
+            "scope",
+            "pilot-study"
+          ],
+          "skills": [
+            "problem-selection"
+          ]
+        },
+        {
+          "id": "l2-3",
+          "title": "From topic to a specific, answerable question",
+          "minutes": 35,
+          "pillar": "think",
+          "why": "A topic cannot be answered; a question can, and a specific question tells you what study to run.",
+          "read": [
+            {
+              "title": "The Craft of Research",
+              "by": "Wayne C. Booth, Gregory G. Colomb, Joseph M. Williams and others (paid book)",
+              "url": "https://press.uchicago.edu/ucp/books/book/chicago/C/bo215874008.html"
+            },
+            {
+              "title": "FORRT Glossary",
+              "by": "FORRT",
+              "url": "https://forrt.org/glossary/"
+            }
+          ],
+          "do": "Write your chosen problem as a broad topic. Narrow it in three steps until it names a population, the variables involved and what would count as an answer. Finish with one sentence: I am studying this topic because I want to find out this question, in order to help my reader understand this wider issue.",
+          "speak": "Say your research question in one sentence, then say what kind of evidence would answer it.",
+          "check": "Could a single study answer your question, and would you know when it had?",
+          "terms": [
+            "research-question",
+            "research-aim",
+            "scope",
+            "variable",
+            "population"
+          ],
+          "skills": [
+            "question-framing"
+          ]
+        },
+        {
+          "id": "l2-4",
+          "title": "Hypotheses and predictions that could turn out false",
+          "minutes": 35,
+          "pillar": "think",
+          "why": "A hypothesis that no result could contradict tells you nothing, so you must state in advance what would show it wrong.",
+          "read": [
+            {
+              "title": "Improving Your Statistical Inferences",
+              "by": "Daniël Lakens",
+              "url": "https://lakens.github.io/statistical_inferences/"
+            },
+            {
+              "title": "FORRT Glossary",
+              "by": "FORRT",
+              "url": "https://forrt.org/glossary/"
+            }
+          ],
+          "do": "Write a hypothesis for your question. Then write the specific prediction it makes, including the direction of the effect. Finally, write the result that would count against it, and one alternative hypothesis that predicts something different.",
+          "speak": "State your hypothesis, then say out loud exactly which result would make you give it up.",
+          "check": "If your study found no effect, or the opposite effect, would your hypothesis be in trouble?",
+          "terms": [
+            "hypothesis",
+            "prediction",
+            "falsifiability",
+            "null-hypothesis",
+            "alternative-hypothesis",
+            "theory"
+          ],
+          "skills": [
+            "hypothesis-formulation"
+          ]
+        },
+        {
+          "id": "l2-5",
+          "title": "The Heilmeier Catechism",
+          "minutes": 40,
+          "pillar": "think",
+          "why": "These eight questions force you to say plainly what you are doing, why it matters and how you will know it worked.",
+          "read": [
+            {
+              "title": "The Heilmeier Catechism",
+              "by": "DARPA",
+              "url": "https://www.darpa.mil/about/heilmeier-catechism"
+            },
+            {
+              "title": "An Opinionated Guide to ML Research",
+              "by": "John Schulman",
+              "url": "https://joschu.net/blog/opinionated-guide-ml-research.html"
+            }
+          ],
+          "do": "Answer all eight questions for your project in two or three sentences each. What are you trying to do, with no jargon? How is it done today, and what are the limits? What is new in your approach, and why do you think it will succeed? Who cares, and what difference will it make? What are the risks? How much will it cost? How long will it take? What are the mid-term and final exams to check for success?",
+          "speak": "Answer the first question, what you are trying to do, in thirty seconds and with no jargon at all.",
+          "check": "Which of your eight answers is weakest, and what would you need to find out to make it stronger?",
+          "terms": [
+            "research-aim",
+            "state-of-the-art",
+            "novelty",
+            "contribution",
+            "limitation"
+          ],
+          "skills": [
+            "problem-selection",
+            "question-framing"
+          ]
+        },
+        {
+          "id": "l2-6",
+          "title": "A one-page proposal, pitched aloud",
+          "minutes": 45,
+          "pillar": "write",
+          "why": "Fitting your plan on one page shows whether it hangs together, and pitching it aloud shows whether you can defend it.",
+          "read": [
+            {
+              "title": "The Heilmeier Catechism",
+              "by": "DARPA",
+              "url": "https://www.darpa.mil/about/heilmeier-catechism"
+            },
+            {
+              "title": "The Craft of Research",
+              "by": "Wayne C. Booth, Gregory G. Colomb, Joseph M. Williams and others (paid book)",
+              "url": "https://press.uchicago.edu/ucp/books/book/chicago/C/bo215874008.html"
+            }
+          ],
+          "do": "Turn your Heilmeier answers into a one-page proposal: the question, the gap with the papers that show it, the hypothesis and its prediction, the approach, the main risk with a fallback, and how you will judge success. Cut anything that does not fit on one page.",
+          "speak": "Pitch your proposal in two minutes, then answer the question: why should anyone care about the answer?",
+          "check": "Could someone outside your field read your page and say what you will do and how you will know it worked?",
+          "terms": [
+            "research-question",
+            "hypothesis",
+            "research-gap",
+            "elevator-pitch",
+            "take-home-message"
+          ],
+          "skills": [
+            "question-framing",
+            "hypothesis-formulation",
+            "discuss-research"
+          ]
+        }
+      ],
+      "exit": {
+        "title": "Proposal defence",
+        "description": "Write a one-page proposal that answers the eight Heilmeier questions, then defend it live to a proposal panel. The panel asks each question in turn and challenges any answer that is vague, full of jargon or unsupported.",
+        "persona": "proposal",
+        "recall_threshold": null,
+        "skills": [
+          "question-framing",
+          "hypothesis-formulation",
+          "problem-selection"
+        ],
+        "rubric": [
+          {
+            "id": "no-jargon",
+            "criterion": "Says what the project is trying to do in plain words, with no jargon."
+          },
+          {
+            "id": "gap",
+            "criterion": "Describes how the problem is handled today and its limits, citing specific prior papers."
+          },
+          {
+            "id": "specific",
+            "criterion": "States a question specific enough that a single study could answer it."
+          },
+          {
+            "id": "testable",
+            "criterion": "Gives a hypothesis with a prediction that could turn out false."
+          },
+          {
+            "id": "matters",
+            "criterion": "Explains who would care about the answer and what difference it would make."
+          },
+          {
+            "id": "risks-exams",
+            "criterion": "Names the main risk and gives concrete mid-term and final checks of success."
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "name": "Methodologist",
+      "weeks": "13–22",
+      "goal": "Design a study that can answer your question, and plan its measures, sample, analysis and ethics before collecting data.",
+      "outcomes": [
+        "Choose a study design and explain what claims it can and cannot support.",
+        "Operationalise the key constructs and argue for the validity of the measures.",
+        "Justify the sample size with a power analysis or another stated reason.",
+        "Write a preregistration with hypotheses, design and analysis plan.",
+        "Identify the main threats to validity and how the design addresses them.",
+        "Prepare the ethics and data management materials the study needs."
+      ],
+      "lessons": [
+        {
+          "id": "l3-1",
+          "title": "Study designs and the claims they support",
+          "minutes": 40,
+          "pillar": "think",
+          "why": "The design of a study decides which claims it can support, so you choose it to fit the claim you want to make.",
+          "read": [
+            {
+              "title": "Statistical Rethinking",
+              "by": "Richard McElreath",
+              "url": "https://xcelab.net/rm/"
+            },
+            {
+              "title": "FORRT Glossary",
+              "by": "FORRT",
+              "url": "https://forrt.org/glossary/"
+            }
+          ],
+          "do": "Write three versions of a study for your question: an experiment where you assign the conditions at random, an observational study where you record what already happens, and a correlational analysis of existing data. For each, write the strongest claim it could support and the claim it could not.",
+          "speak": "Explain in one minute why a randomised experiment can support a causal claim that a correlational study usually cannot.",
+          "check": "Does your planned claim, causal or not, match what your chosen design can support?",
+          "terms": [
+            "experiment",
+            "observational-study",
+            "randomisation",
+            "causal-claim",
+            "correlation-vs-causation",
+            "quasi-experiment"
+          ],
+          "skills": [
+            "study-design",
+            "causal-reasoning"
+          ]
+        },
+        {
+          "id": "l3-2",
+          "title": "Measuring what you mean: constructs, validity and reliability",
+          "minutes": 40,
+          "pillar": "think",
+          "why": "Most ideas you study cannot be measured directly, so a study is only as good as the link between the idea and its measure.",
+          "read": [
+            {
+              "title": "FORRT Glossary",
+              "by": "FORRT",
+              "url": "https://forrt.org/glossary/"
+            },
+            {
+              "title": "Improving Your Statistical Inferences",
+              "by": "Daniël Lakens",
+              "url": "https://lakens.github.io/statistical_inferences/"
+            }
+          ],
+          "do": "List the key constructs in your question. For each, write how you will operationalise it as something you can measure, one reason the measure might not capture the construct, and how you would check that the measure gives consistent results.",
+          "speak": "Explain the difference between validity and reliability, with one example of a measure that is reliable but not valid.",
+          "check": "If two people took your measure on the same thing, would they get the same answer, and would it be the thing you care about?",
+          "terms": [
+            "construct",
+            "operationalise",
+            "construct-validity",
+            "reliability",
+            "measurement-error",
+            "proxy"
+          ],
+          "skills": [
+            "operationalising-constructs"
+          ]
+        },
+        {
+          "id": "l3-3",
+          "title": "Confounds, baselines and ablations",
+          "minutes": 40,
+          "pillar": "do",
+          "why": "A result means little until you have ruled out other explanations and compared it with a fair starting point.",
+          "read": [
+            {
+              "title": "Statistical Rethinking",
+              "by": "Richard McElreath",
+              "url": "https://xcelab.net/rm/"
+            },
+            {
+              "title": "An Opinionated Guide to ML Research",
+              "by": "John Schulman",
+              "url": "https://joschu.net/blog/opinionated-guide-ml-research.html"
+            }
+          ],
+          "do": "For your design, list every other variable that could produce the effect you expect, and say how the design controls each one. Then name the baseline you will compare against and, if your method has several parts, the ablations that would show which part matters.",
+          "speak": "Name the most likely confound in your study and explain out loud how your design deals with it.",
+          "check": "If your result came out as predicted, what is the best alternative explanation, and does your design rule it out?",
+          "terms": [
+            "confound",
+            "control-group",
+            "baseline",
+            "ablation",
+            "alternative-explanation",
+            "internal-validity"
+          ],
+          "skills": [
+            "spotting-confounds",
+            "baselines-and-ablations"
+          ]
+        },
+        {
+          "id": "l3-4",
+          "title": "Sample size, power and effect sizes",
+          "minutes": 45,
+          "pillar": "do",
+          "why": "A study that is too small can miss a real effect or exaggerate the one it finds, so the sample size needs a stated reason.",
+          "read": [
+            {
+              "title": "Improving Your Statistical Inferences",
+              "by": "Daniël Lakens",
+              "url": "https://lakens.github.io/statistical_inferences/"
+            }
+          ],
+          "do": "Decide the smallest effect size that would matter for your question, and say why. Run a power analysis for that effect at your chosen significance level. Write down the sample size it gives, and what you will do if you cannot reach it.",
+          "speak": "Explain why a result with a small p-value can still be too small to matter, and why a non-significant result is not proof of no effect.",
+          "check": "Can you give the basis for your sample size in one sentence, including the effect size you planned for?",
+          "terms": [
+            "statistical-power",
+            "power-analysis",
+            "effect-size",
+            "p-value",
+            "type-ii-error",
+            "significance-level"
+          ],
+          "skills": [
+            "sample-size-planning",
+            "reading-statistics"
+          ]
+        },
+        {
+          "id": "l3-5",
+          "title": "Replicating a result: preregistration and a reproducible pipeline",
+          "minutes": 60,
+          "pillar": "do",
+          "why": "Writing your plan down before you see the data, and keeping every step in code, lets others check and trust your result.",
+          "read": [
+            {
+              "title": "Preregistration",
+              "by": "Center for Open Science",
+              "url": "https://www.cos.io/initiatives/prereg"
+            },
+            {
+              "title": "OSF",
+              "by": "Center for Open Science",
+              "url": "https://osf.io/"
+            },
+            {
+              "title": "The Turing Way",
+              "by": "The Turing Way community",
+              "url": "https://book.the-turing-way.org/"
+            },
+            {
+              "title": "The Missing Semester of Your CS Education",
+              "by": "MIT",
+              "url": "https://missing.csail.mit.edu/"
+            },
+            {
+              "title": "The Carpentries",
+              "by": "The Carpentries",
+              "url": "https://carpentries.org/"
+            }
+          ],
+          "do": "Choose one published result you could replicate with public data or a small study. Write a preregistration-style plan: the hypothesis, the design, the sample, the exact analysis, and which analyses are confirmatory and which exploratory. Put your code and data notes under version control from the first day, and record where each data file came from.",
+          "speak": "Explain in one minute the difference between a confirmatory and an exploratory analysis, and why the plan must be written first.",
+          "check": "Could someone else take your repository and plan, run your analysis, and get the same numbers?",
+          "terms": [
+            "replication",
+            "reproducibility",
+            "preregistration",
+            "confirmatory-research",
+            "version-control",
+            "data-management-plan",
+            "p-hacking"
+          ],
+          "skills": [
+            "preregistering",
+            "reproducible-pipeline",
+            "version-control"
+          ]
+        },
+        {
+          "id": "l3-6",
+          "title": "Research ethics and consent",
+          "minutes": 35,
+          "pillar": "operate",
+          "why": "Research must protect the people and data it relies on, and most studies with people need approval before they start.",
+          "read": [
+            {
+              "title": "UK Research Integrity Office",
+              "by": "UKRIO",
+              "url": "https://ukrio.org/"
+            },
+            {
+              "title": "Office of Research Integrity",
+              "by": "US Department of Health and Human Services",
+              "url": "https://ori.hhs.gov/"
+            },
+            {
+              "title": "The Turing Way",
+              "by": "The Turing Way community",
+              "url": "https://book.the-turing-way.org/"
+            }
+          ],
+          "do": "Draft the ethics section for your study: what participants will be told, how they give informed consent, how they can withdraw, how their data will be stored and protected, and whether any of them may be vulnerable. Find out who approves research ethics at your institution and what they need from you.",
+          "speak": "Explain to a participant, in plain words, what taking part involves and what happens to their data.",
+          "check": "Does your plan say how a participant can withdraw, and what happens to their data if they do?",
+          "terms": [
+            "informed-consent",
+            "ethics-approval",
+            "right-to-withdraw",
+            "data-protection",
+            "anonymisation",
+            "research-misconduct"
+          ],
+          "skills": [
+            "ethics-process",
+            "data-management"
+          ]
+        }
+      ],
+      "exit": {
+        "title": "Design defence with a reviewer",
+        "description": "Replicate one published result, with your code, data notes and a preregistration-style plan written before the analysis. Then defend the design and the replication to a sceptical reviewer who probes its weaknesses.",
+        "persona": "reviewer",
+        "recall_threshold": null,
+        "skills": [
+          "study-design",
+          "spotting-confounds",
+          "sample-size-planning",
+          "preregistering",
+          "ethics-process"
+        ],
+        "rubric": [
+          {
+            "id": "design-fit",
+            "criterion": "Explains why the chosen design can support the planned claim."
+          },
+          {
+            "id": "measures",
+            "criterion": "Justifies how each key construct is measured."
+          },
+          {
+            "id": "sample-size",
+            "criterion": "Gives a clear, stated basis for the sample size."
+          },
+          {
+            "id": "threats",
+            "criterion": "Names the main threats to validity and how each is handled."
+          },
+          {
+            "id": "plan",
+            "criterion": "Separates confirmatory from exploratory analyses in the written plan."
+          },
+          {
+            "id": "ethics",
+            "criterion": "Describes consent, data protection and ethics approval steps correctly."
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "name": "Author",
+      "weeks": "23–32",
+      "goal": "Write a complete, honest research paper and revise it in response to review.",
+      "outcomes": [
+        "Structure a paper so each section does its job.",
+        "Write an abstract that states the main result with its size.",
+        "Write related work that shows clearly what is new.",
+        "Make figures with captions that stand on their own.",
+        "Hedge claims in proportion to their evidence.",
+        "Respond to reviewer comments point by point."
+      ],
+      "lessons": [
+        {
+          "id": "l4-1",
+          "title": "The shape of a paper: one clear idea, in IMRaD",
+          "minutes": 30,
+          "pillar": "write",
+          "why": "Readers expect a paper to make one main point and to find each part of the argument in a familiar place.",
+          "read": [
+            {
+              "title": "How to write a great research paper",
+              "by": "Simon Peyton Jones",
+              "url": "https://simon.peytonjones.org/great-research-paper/"
+            },
+            {
+              "title": "Ten simple rules for structuring papers",
+              "by": "Brett Mensh and Konrad Kording",
+              "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619"
+            }
+          ],
+          "do": "Write the single main idea of your paper in one sentence. Then write one sentence for each part: Introduction, Methods, Results and Discussion. If a sentence does not support the main idea, mark it for cutting.",
+          "speak": "In thirty seconds, tell a peer the one idea your paper is about and what evidence supports it.",
+          "check": "Can you state the main idea of your paper in one sentence, and does every section serve it?",
+          "terms": [
+            "imrad",
+            "contribution",
+            "take-home-message",
+            "claim",
+            "signposting"
+          ],
+          "skills": [
+            "structuring-a-paper"
+          ]
+        },
+        {
+          "id": "l4-2",
+          "title": "Writing the introduction: establish, find the niche, fill it",
+          "minutes": 35,
+          "pillar": "write",
+          "why": "A good introduction tells readers what the field knows, what is missing, and how your paper fills the gap, in that order.",
+          "read": [
+            {
+              "title": "Academic Writing for Graduate Students (paid book)",
+              "by": "John Swales and Christine Feak",
+              "url": "https://press.umich.edu/Books/A/Academic-Writing-for-Graduate-Students-3rd-Edition2"
+            },
+            {
+              "title": "Academic Phrasebank",
+              "by": "University of Manchester",
+              "url": "https://www.phrasebank.manchester.ac.uk/"
+            }
+          ],
+          "do": "Draft your introduction in three moves from Swales' CARS model. First, establish the territory: say why the area matters and what is known, with citations. Second, establish a niche: name the gap or problem in prior work. Third, occupy the niche: state what your paper does and what it contributes.",
+          "speak": "Say your three moves out loud in three sentences: what is known, what is missing, and what you did about it.",
+          "check": "Does your introduction name a specific gap in cited prior work before it says what you did?",
+          "terms": [
+            "research-gap",
+            "related-work",
+            "contribution",
+            "novelty",
+            "citation"
+          ],
+          "skills": [
+            "writing-related-work",
+            "structuring-a-paper"
+          ]
+        },
+        {
+          "id": "l4-3",
+          "title": "Methods, results and figures someone could reproduce",
+          "minutes": 40,
+          "pillar": "write",
+          "why": "Readers can only trust and build on a result if they can see exactly how it was produced.",
+          "read": [
+            {
+              "title": "Ten simple rules for structuring papers",
+              "by": "Brett Mensh and Konrad Kording",
+              "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619"
+            },
+            {
+              "title": "Writing in the Sciences",
+              "by": "Kristin Sainani, Stanford",
+              "url": "https://www.coursera.org/learn/sciwrite"
+            }
+          ],
+          "do": "Write your methods so a competent stranger could repeat the study: data, materials, procedure, analysis and any settings. Report each main result with its size and uncertainty. Make one key figure with labelled axes, units and a caption that states what the figure shows and how many data points it uses.",
+          "speak": "Talk a peer through your key figure without reading the caption, then check whether they understood it.",
+          "check": "Could someone rerun your analysis from your methods section and your shared code and data?",
+          "terms": [
+            "reproducibility",
+            "figure-caption",
+            "effect-size",
+            "confidence-interval",
+            "open-code",
+            "open-data"
+          ],
+          "skills": [
+            "figure-design",
+            "reproducible-pipeline"
+          ]
+        },
+        {
+          "id": "l4-4",
+          "title": "Discussion, limitations and hedging",
+          "minutes": 35,
+          "pillar": "write",
+          "why": "Readers judge you on whether your claims match your evidence, and an honest limitations section builds trust.",
+          "read": [
+            {
+              "title": "Academic Phrasebank",
+              "by": "University of Manchester",
+              "url": "https://www.phrasebank.manchester.ac.uk/"
+            },
+            {
+              "title": "Writing in the Sciences",
+              "by": "Kristin Sainani, Stanford",
+              "url": "https://www.coursera.org/learn/sciwrite"
+            }
+          ],
+          "do": "Write the discussion: restate the main finding, compare it with prior work, and give at least one alternative explanation. Write specific limitations and say how each may affect the result. Then go through every claim and adjust its wording, for example from 'shows' to 'suggests', so its strength matches the evidence.",
+          "speak": "Explain one limitation of your study aloud, and say what the result would look like if that limitation mattered.",
+          "check": "Is there any claim in your discussion that is stronger than your results support?",
+          "terms": [
+            "hedging",
+            "limitation",
+            "overclaiming",
+            "alternative-explanation",
+            "generalisability"
+          ],
+          "skills": [
+            "hedging-claims",
+            "reasoning-under-uncertainty"
+          ]
+        },
+        {
+          "id": "l4-5",
+          "title": "The abstract and the title",
+          "minutes": 25,
+          "pillar": "write",
+          "why": "Many readers see only the title and abstract, so these decide whether the rest is read.",
+          "read": [
+            {
+              "title": "Ten simple rules for structuring papers",
+              "by": "Brett Mensh and Konrad Kording",
+              "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619"
+            },
+            {
+              "title": "Writing in the Sciences",
+              "by": "Kristin Sainani, Stanford",
+              "url": "https://www.coursera.org/learn/sciwrite"
+            }
+          ],
+          "do": "Write an abstract within your venue's word limit, often around 150 to 250 words, that gives the context, the gap, what you did, the main result with its size, and what it means. Write three candidate titles that state the main idea, and choose the one that is accurate and specific.",
+          "speak": "Read your abstract aloud to someone outside your field and ask them to tell you the main finding.",
+          "check": "Does your abstract state the main result with its size, and does your title avoid claiming more than you found?",
+          "terms": [
+            "abstract",
+            "take-home-message",
+            "overclaiming",
+            "effect-size"
+          ],
+          "skills": [
+            "writing-an-abstract"
+          ]
+        },
+        {
+          "id": "l4-6",
+          "title": "Peer review: writing reviews and answering them",
+          "minutes": 40,
+          "pillar": "operate",
+          "why": "Reviewing teaches you what makes a paper convincing, and answering reviews well is part of getting published.",
+          "read": [
+            {
+              "title": "OpenReview",
+              "by": "OpenReview",
+              "url": "https://openreview.net/"
+            },
+            {
+              "title": "Researcher Academy",
+              "by": "Elsevier",
+              "url": "https://researcheracademy.elsevier.com/"
+            },
+            {
+              "title": "Web of Science Academy",
+              "by": "Clarivate",
+              "url": "https://clarivate.com/academia-government/web-of-science-academy/"
+            }
+          ],
+          "do": "Review a published paper whose reviews are public on OpenReview. Write a summary, its strengths, its weaknesses and your questions for the authors, before you read the real reviews. Then compare: note what the real reviewers raised that you missed, and what you raised that they did not. Finally, write a point-by-point response to one real review as if you were the author.",
+          "speak": "Give a two-minute spoken review of the paper to a peer: summary, main strength, main weakness, one question.",
+          "check": "Is each weakness in your review specific enough that the authors would know what to change?",
+          "terms": [
+            "peer-review",
+            "blind-review",
+            "rebuttal",
+            "revise-and-resubmit"
+          ],
+          "skills": [
+            "peer-reviewing",
+            "responding-to-reviewers",
+            "critical-appraisal"
+          ]
+        }
+      ],
+      "exit": {
+        "title": "Paper and reviews",
+        "description": "Write a workshop-length paper draft and two peer reviews of published papers, then defend the draft to a sceptical reviewer.",
+        "persona": "reviewer",
+        "recall_threshold": null,
+        "skills": [
+          "structuring-a-paper",
+          "writing-an-abstract",
+          "hedging-claims",
+          "figure-design",
+          "peer-reviewing",
+          "responding-to-reviewers"
+        ],
+        "rubric": [
+          {
+            "id": "abstract",
+            "criterion": "The abstract states the question, method, main result with its size, and conclusion."
+          },
+          {
+            "id": "introduction",
+            "criterion": "The introduction establishes the territory, names a specific gap in cited work and says how the paper fills it."
+          },
+          {
+            "id": "reproducible",
+            "criterion": "The methods give enough detail for someone else to repeat the study."
+          },
+          {
+            "id": "claims-match",
+            "criterion": "No claim in the title, abstract or discussion goes beyond the results."
+          },
+          {
+            "id": "reviews",
+            "criterion": "Each review gives a summary, strengths, specific weaknesses and questions for the authors."
+          },
+          {
+            "id": "defence",
+            "criterion": "Answers each objection from the reviewer with evidence and concedes valid points."
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "name": "Communicator",
+      "weeks": "Runs alongside levels 2–6",
+      "goal": "Explain research clearly and confidently to any audience, from a one-minute pitch to a conference talk with questions.",
+      "outcomes": [
+        "Give a one-minute pitch of your research to a non-specialist.",
+        "Give a timed talk with a clear take-home message.",
+        "Signpost structure so listeners know where they are.",
+        "Handle hostile or confused questions calmly and honestly."
+      ],
+      "lessons": [
+        {
+          "id": "l5-1",
+          "title": "The elevator pitch of your research",
+          "minutes": 25,
+          "pillar": "speak",
+          "why": "You will often have under a minute to explain your work, and people decide in that minute whether to ask more.",
+          "read": [
+            {
+              "title": "The Heilmeier Catechism",
+              "by": "DARPA",
+              "url": "https://www.darpa.mil/about/heilmeier-catechism"
+            },
+            {
+              "title": "How to give a great research talk",
+              "by": "Simon Peyton Jones",
+              "url": "https://simon.peytonjones.org/great-research-talk/"
+            }
+          ],
+          "do": "Write a pitch of about five sentences: the problem, why it matters, what you are doing, what you have found or expect to find, and what you want the listener to remember. Remove every word a non-specialist would not know.",
+          "speak": "Give your pitch aloud in under one minute, timed, to someone outside your field. Ask them to repeat the main point back to you.",
+          "check": "Could a non-specialist repeat your main point after hearing your pitch once?",
+          "terms": [
+            "elevator-pitch",
+            "take-home-message",
+            "contribution"
+          ],
+          "skills": [
+            "elevator-pitch"
+          ]
+        },
+        {
+          "id": "l5-2",
+          "title": "Structuring a 10-minute research talk",
+          "minutes": 35,
+          "pillar": "speak",
+          "why": "A short talk can carry only one main message, and the story around it decides whether the audience remembers it.",
+          "read": [
+            {
+              "title": "How to give a great research talk",
+              "by": "Simon Peyton Jones",
+              "url": "https://simon.peytonjones.org/great-research-talk/"
+            },
+            {
+              "title": "CS197: Computer Science Research",
+              "by": "Michael Bernstein, Stanford",
+              "url": "https://cs197.stanford.edu/"
+            }
+          ],
+          "do": "Write the one message you want the audience to leave with. Plan the talk as a story: the problem, why it is hard, your key idea, the evidence, and what it means. Make slides with few words and one point each, and plan where you will signpost the structure.",
+          "speak": "Say the one message of your talk in a single sentence, then give the story of the talk in five sentences.",
+          "check": "Does every slide support the one message, and could you drop any slide without losing it?",
+          "terms": [
+            "take-home-message",
+            "signposting",
+            "contribution"
+          ],
+          "skills": [
+            "conference-talk"
+          ]
+        },
+        {
+          "id": "l5-3",
+          "title": "Delivering the talk and handling nerves",
+          "minutes": 30,
+          "pillar": "speak",
+          "why": "Nerves are normal, and rehearsing aloud helps you deliver the talk well despite them.",
+          "read": [
+            {
+              "title": "How to give a great research talk",
+              "by": "Simon Peyton Jones",
+              "url": "https://simon.peytonjones.org/great-research-talk/"
+            },
+            {
+              "title": "Vitae",
+              "by": "Vitae",
+              "url": "https://www.vitae.ac.uk/"
+            }
+          ],
+          "do": "Rehearse your 10-minute talk aloud at least three times and time each run. Learn your opening and closing sentences by heart. Record one run, watch it, and note one habit to change, such as reading from the slides or speaking too fast.",
+          "speak": "Give the full talk aloud, on time, facing the audience rather than the slides.",
+          "check": "Did your last rehearsal finish within the time limit with the main message said clearly at the start and the end?",
+          "terms": [
+            "take-home-message",
+            "signposting"
+          ],
+          "skills": [
+            "conference-talk"
+          ]
+        },
+        {
+          "id": "l5-4",
+          "title": "Answering questions at a talk",
+          "minutes": 35,
+          "pillar": "speak",
+          "why": "Questions are where the audience tests your understanding, and a calm, honest answer builds more trust than a clever one.",
+          "read": [
+            {
+              "title": "How to give a great research talk",
+              "by": "Simon Peyton Jones",
+              "url": "https://simon.peytonjones.org/great-research-talk/"
+            },
+            {
+              "title": "Researcher Academy",
+              "by": "Elsevier",
+              "url": "https://researcheracademy.elsevier.com/"
+            }
+          ],
+          "do": "Write ten questions the audience might ask, including one hostile and one off-topic. For each, practise three steps: restate the question briefly, answer the part you can, and say what you would need to know to answer the rest. For the off-topic one, answer briefly and offer to talk afterwards.",
+          "speak": "Have a peer ask you five questions, including one hostile one, and answer each in under a minute without becoming defensive.",
+          "check": "When you did not know an answer, did you say so and say what would settle it?",
+          "terms": [
+            "limitation",
+            "evidence",
+            "alternative-explanation"
+          ],
+          "skills": [
+            "answering-questions",
+            "handling-critique"
+          ]
+        },
+        {
+          "id": "l5-5",
+          "title": "Research posters",
+          "minutes": 30,
+          "pillar": "write",
+          "why": "At a poster session people decide in seconds whether to stop, so a poster needs one clear message and very little text.",
+          "read": [
+            {
+              "title": "Ten simple rules for structuring papers",
+              "by": "Brett Mensh and Konrad Kording",
+              "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619"
+            },
+            {
+              "title": "Writing in the Sciences",
+              "by": "Kristin Sainani, Stanford",
+              "url": "https://www.coursera.org/learn/sciwrite"
+            }
+          ],
+          "do": "Design a poster for your project with a title that states the main finding, one key figure, and short sections for the question, method, result and meaning. Cut the text until a passer-by could get the main point in under a minute.",
+          "speak": "Give a two-minute walk-through of your poster to a peer, pointing to the key figure.",
+          "check": "Can someone get your main finding from the poster in under a minute without you there?",
+          "terms": [
+            "take-home-message",
+            "figure-caption"
+          ],
+          "skills": [
+            "figure-design",
+            "conference-talk"
+          ]
+        },
+        {
+          "id": "l5-6",
+          "title": "A short cold email to a professor",
+          "minutes": 25,
+          "pillar": "write",
+          "why": "Researchers receive many emails, so a short, specific one is easier to read and to answer.",
+          "read": [
+            {
+              "title": "A Survival Guide to a PhD",
+              "by": "Andrej Karpathy",
+              "url": "https://karpathy.github.io/2016/09/07/phd/"
+            },
+            {
+              "title": "Vitae",
+              "by": "Vitae",
+              "url": "https://www.vitae.ac.uk/"
+            }
+          ],
+          "do": "Write an email of no more than about 150 words to a researcher whose work you have read. Say why you are writing to them in particular, naming a specific paper. Say briefly what you have done. End with one specific ask they can answer quickly. Read it again and cut anything that does not serve those three parts.",
+          "speak": "Explain aloud, in two sentences, why you chose this researcher and what you are asking for.",
+          "check": "Does your email name a specific piece of their work and make exactly one clear request?",
+          "terms": [
+            "contribution",
+            "research-question"
+          ],
+          "skills": [
+            "discuss-research",
+            "elevator-pitch"
+          ]
+        }
+      ],
+      "exit": {
+        "title": "Mock conference",
+        "description": "Give a 10-minute talk on your work, then take 10 minutes of questions from a mixed conference audience, scored on clarity, accuracy and composure.",
+        "persona": "audience",
+        "recall_threshold": null,
+        "skills": [
+          "conference-talk",
+          "elevator-pitch",
+          "answering-questions",
+          "handling-critique"
+        ],
+        "rubric": [
+          {
+            "id": "message",
+            "criterion": "States the take-home message in the first minute and again at the end."
+          },
+          {
+            "id": "structure",
+            "criterion": "Signposts the structure so the audience can follow."
+          },
+          {
+            "id": "accuracy",
+            "criterion": "Reports the main result with its size and uncertainty, without claiming more than it shows."
+          },
+          {
+            "id": "time",
+            "criterion": "Finishes the talk within 10 minutes."
+          },
+          {
+            "id": "questions",
+            "criterion": "Restates each question, answers what they can and says what they would need to know the rest."
+          },
+          {
+            "id": "composure",
+            "criterion": "Stays calm and polite with hostile or off-topic questions."
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "name": "Independent researcher",
+      "weeks": "33–52",
+      "goal": "Plan and lead your own research programme, review others' work, and defend your ideas to experts.",
+      "outcomes": [
+        "Write a research proposal with a clear problem, approach, risks and measures of success.",
+        "Plan a year of work with milestones and checks.",
+        "Write a fair and useful peer review of a manuscript.",
+        "Defend your work under expert questioning while conceding valid points."
+      ],
+      "lessons": [
+        {
+          "id": "l6-1",
+          "title": "Setting a research agenda",
+          "minutes": 35,
+          "pillar": "think",
+          "why": "Independent researchers choose their own problems, and a written agenda keeps a year of work pointed at something important.",
+          "read": [
+            {
+              "title": "You and Your Research",
+              "by": "Richard Hamming",
+              "url": "https://www.cs.virginia.edu/~robins/YouAndYourResearch.html"
+            },
+            {
+              "title": "An Opinionated Guide to ML Research",
+              "by": "John Schulman",
+              "url": "https://joschu.net/blog/opinionated-guide-ml-research.html"
+            }
+          ],
+          "do": "Write a one-page research agenda: the big problem you want to work on, why it matters, and three questions you could tackle in turn, from the most feasible to the most ambitious. For each question, say what result would change what you do next.",
+          "speak": "In two minutes, tell a peer what your research agenda is and why you chose it over the alternatives.",
+          "check": "Is your first question small enough to answer this year, and does it lead to the next one?",
+          "terms": [
+            "research-aim",
+            "research-question",
+            "research-gap",
+            "scope"
+          ],
+          "skills": [
+            "problem-selection",
+            "project-planning"
+          ]
+        },
+        {
+          "id": "l6-2",
+          "title": "From replication to an original contribution",
+          "minutes": 40,
+          "pillar": "do",
+          "why": "A replication gives you a working baseline and deep knowledge of one result, which is often the best starting point for something new.",
+          "read": [
+            {
+              "title": "An Opinionated Guide to ML Research",
+              "by": "John Schulman",
+              "url": "https://joschu.net/blog/opinionated-guide-ml-research.html"
+            },
+            {
+              "title": "CS197: Computer Science Research",
+              "by": "Michael Bernstein, Stanford",
+              "url": "https://cs197.stanford.edu/"
+            }
+          ],
+          "do": "Take the result you replicated. List its assumptions, limits and open questions. Choose one change you could test, such as a new setting, a new baseline or an ablation, and write the hypothesis and the result that would show it wrong. Say what would be new if it worked and what you would learn if it did not.",
+          "speak": "Explain to a peer how your new idea differs from the paper you replicated, and why the difference matters.",
+          "check": "Can you say in one sentence what your extension adds that the original paper did not?",
+          "terms": [
+            "replication",
+            "contribution",
+            "novelty",
+            "baseline",
+            "ablation",
+            "negative-result"
+          ],
+          "skills": [
+            "running-a-project",
+            "baselines-and-ablations"
+          ]
+        },
+        {
+          "id": "l6-3",
+          "title": "Pitching a grant or fellowship",
+          "minutes": 40,
+          "pillar": "write",
+          "why": "Funders need to see quickly what you will do, why it matters and how they will know it worked.",
+          "read": [
+            {
+              "title": "The Heilmeier Catechism",
+              "by": "DARPA",
+              "url": "https://www.darpa.mil/about/heilmeier-catechism"
+            },
+            {
+              "title": "Vitae",
+              "by": "Vitae",
+              "url": "https://www.vitae.ac.uk/"
+            }
+          ],
+          "do": "Answer the Heilmeier questions again, this time for a one-year project you would lead. Then turn the answers into a one-page case for support: the problem, what is new in your approach, the plan with milestones, the main risks with a fallback for each, and how success will be measured.",
+          "speak": "Give a three-minute spoken pitch of your project to a mock funding panel, without jargon.",
+          "check": "Does your pitch say how the panel would know, at the midpoint and at the end, whether the project is working?",
+          "terms": [
+            "research-aim",
+            "contribution",
+            "novelty",
+            "scope"
+          ],
+          "skills": [
+            "writing-a-proposal",
+            "project-planning"
+          ]
+        },
+        {
+          "id": "l6-4",
+          "title": "Preparing for a viva or thesis defence",
+          "minutes": 40,
+          "pillar": "speak",
+          "why": "A viva tests whether you understand your own work in depth, and preparation makes it a conversation rather than an ordeal.",
+          "read": [
+            {
+              "title": "The viva",
+              "by": "University of St Andrews",
+              "url": "https://www.st-andrews.ac.uk/lifelong-learning/support/postgraduate-research/our-guide-to-being-a-pgr/the-viva/"
+            },
+            {
+              "title": "Viva Survivors",
+              "by": "Nathan Ryder",
+              "url": "https://viva-survivors.com/"
+            }
+          ],
+          "do": "Reread your own work and write short answers to these: what is your contribution, why did you choose your methods over the alternatives, what are the main limitations, and what would you do differently now. Write ten likely questions and answer each aloud.",
+          "speak": "Summarise your project in five minutes as if opening a viva, then answer three questions from a peer.",
+          "check": "Can you name at least one alternative to each major choice you made, and say why you did not take it?",
+          "terms": [
+            "contribution",
+            "limitation",
+            "alternative-explanation",
+            "threats-to-validity"
+          ],
+          "skills": [
+            "handling-critique",
+            "answering-questions"
+          ]
+        },
+        {
+          "id": "l6-5",
+          "title": "Handling critique calmly",
+          "minutes": 30,
+          "pillar": "speak",
+          "why": "Critique of your work is not an attack on you, and conceding a valid point makes the rest of your case more credible.",
+          "read": [
+            {
+              "title": "Viva Survivors",
+              "by": "Nathan Ryder",
+              "url": "https://viva-survivors.com/"
+            },
+            {
+              "title": "Advice for Research Students",
+              "by": "Jason Eisner",
+              "url": "https://www.cs.jhu.edu/~jason/advice/"
+            }
+          ],
+          "do": "Collect three pieces of critique of your work, from a reviewer, supervisor or peer. For each, write whether it is valid, partly valid or mistaken, and the evidence for your view. Draft a calm reply that concedes what is valid and explains, with evidence, where you disagree.",
+          "speak": "Have a peer give you a sharp criticism of your work. Pause, restate it, and reply without raising your voice or changing the subject.",
+          "check": "In your replies, did you concede at least one valid point clearly instead of arguing against everything?",
+          "terms": [
+            "peer-review",
+            "rebuttal",
+            "limitation",
+            "overclaiming"
+          ],
+          "skills": [
+            "handling-critique",
+            "responding-to-reviewers"
+          ]
+        },
+        {
+          "id": "l6-6",
+          "title": "Mentoring a newcomer and working with a supervisor",
+          "minutes": 30,
+          "pillar": "operate",
+          "why": "Research is done in groups, and the relationships with the people above and below you shape how well the work goes.",
+          "read": [
+            {
+              "title": "A Survival Guide to a PhD",
+              "by": "Andrej Karpathy",
+              "url": "https://karpathy.github.io/2016/09/07/phd/"
+            },
+            {
+              "title": "Advice for Research Students",
+              "by": "Jason Eisner",
+              "url": "https://www.cs.jhu.edu/~jason/advice/"
+            },
+            {
+              "title": "Vitae",
+              "by": "Vitae",
+              "url": "https://www.vitae.ac.uk/"
+            }
+          ],
+          "do": "Write a one-page plan for your next meeting with your supervisor: what you did, what you found, where you are stuck, and what decision you need from them. Then write a short starter guide for a newcomer to your project: what to read first, where things are kept, and who to ask about what.",
+          "speak": "Explain your project to a newcomer in five minutes, then ask them to tell you what they understood.",
+          "check": "Does your meeting plan end with a specific decision or piece of help you need from your supervisor?",
+          "terms": [
+            "lab-notebook",
+            "authorship",
+            "journal-club"
+          ],
+          "skills": [
+            "discuss-research",
+            "running-a-project"
+          ]
+        }
+      ],
+      "exit": {
+        "title": "Mock viva",
+        "description": "A long oral examination on your own project with a three-person committee probing depth, alternatives, limits and what you would do differently.",
+        "persona": "committee",
+        "recall_threshold": null,
+        "skills": [
+          "handling-critique",
+          "answering-questions",
+          "running-a-project",
+          "reasoning-under-uncertainty"
+        ],
+        "rubric": [
+          {
+            "id": "contribution",
+            "criterion": "States the contribution in plain words and places it against specific prior work."
+          },
+          {
+            "id": "depth",
+            "criterion": "Explains the reasons for methodological choices in detail when asked."
+          },
+          {
+            "id": "alternatives",
+            "criterion": "Names alternatives to major choices and says why they were not taken."
+          },
+          {
+            "id": "limits",
+            "criterion": "Names specific limitations and says how each may affect the conclusions."
+          },
+          {
+            "id": "hindsight",
+            "criterion": "Says concretely what they would do differently now and why."
+          },
+          {
+            "id": "composure",
+            "criterion": "Concedes valid points calmly and holds a position only when evidence supports it."
+          }
+        ]
+      }
+    }
+  ]
+}

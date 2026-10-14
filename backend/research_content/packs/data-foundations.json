@@ -1,0 +1,121 @@
+{
+  "version": 1,
+  "id": "data-foundations",
+  "name": "Data and maths foundations",
+  "description": "Python data handling, plots, probability, sampling and linear algebra: what you need before you model anything.",
+  "terms": [
+    {"id": "dataframe", "term": "Data frame", "group": "Data and maths foundations", "definition": "A table held in memory, with named columns of one type each and one row per observation; pandas in Python, data.frame in R.", "example": "Each row of our data frame is one word, with its speaker, start time, end time and label.", "misuse": "A data frame is not a spreadsheet: formulas do not live in cells, so every change is a line of code you can rerun.", "when": "Use it when you describe how your data is stored and processed.", "related": ["tidy-data", "vectorisation"]},
+    {"id": "tidy-data", "term": "Tidy data", "group": "Data and maths foundations", "definition": "A table laid out so that each variable is a column, each observation a row and each kind of observational unit its own table.", "example": "We reshaped the transcripts into tidy data: one row per word, never one row per speaker with words in columns.", "misuse": "Tidy does not mean clean; a tidy table can still hold errors.", "when": "Use it when you plan the shape of a table before analysis.", "related": ["dataframe"]},
+    {"id": "vectorisation", "term": "Vectorisation", "group": "Data and maths foundations", "definition": "Applying an operation to a whole column or array at once instead of looping over items one by one.", "example": "Pause length is a vectorised subtraction: start times minus the previous word's end times.", "misuse": "Vectorised code is faster, but it is not automatically correct; check the first rows by hand.", "when": "Use it when you explain why an analysis script runs in seconds rather than hours.", "related": ["dataframe", "vector"]},
+    {"id": "exploratory-data-analysis", "term": "Exploratory data analysis", "group": "Data and maths foundations", "definition": "Looking at data with counts, summaries and plots before testing anything, to learn its shape, errors and surprises.", "example": "Exploratory data analysis showed that three speakers produce half of all repetitions.", "misuse": "Patterns found while exploring are ideas to test, not findings to report as confirmed.", "when": "Use it for the first pass over any new data set.", "related": ["histogram", "log-transform", "exploratory-research"]},
+    {"id": "histogram", "term": "Histogram", "group": "Data and maths foundations", "definition": "A plot that splits a numeric variable into bins and shows how many values fall into each.", "example": "The histogram of pause lengths has a long right tail.", "misuse": "The picture changes with the bin width; try more than one before you describe a shape.", "when": "Use it to see the distribution of one numeric variable.", "related": ["skewed-distribution", "exploratory-data-analysis"]},
+    {"id": "skewed-distribution", "term": "Skewed distribution", "group": "Data and maths foundations", "definition": "A distribution with a longer tail on one side, so the mean is pulled away from the median.", "example": "Pause durations are right-skewed: most are short, a few are very long.", "misuse": "Skew is not an error in the data; it is often how durations and counts naturally behave.", "when": "Use it when the mean and median of a variable disagree.", "related": ["median", "log-transform", "histogram"]},
+    {"id": "median", "term": "Median", "group": "Data and maths foundations", "definition": "The middle value when the data is sorted; half the values lie below it and half above.", "example": "The median pause before a fluent word was 180 ms.", "misuse": "The median is not a better mean in every case; with symmetric data both tell the same story.", "when": "Use it to summarise skewed data such as durations.", "related": ["skewed-distribution", "mean"]},
+    {"id": "log-transform", "term": "Log transform", "group": "Data and maths foundations", "definition": "Replacing each value with its logarithm, which turns multiplicative differences into additive ones and pulls in long right tails.", "example": "We modelled log pause duration, so an effect means a percentage change in pause length.", "misuse": "A logged variable changes how you read coefficients; say so when you report them.", "when": "Use it for positive, right-skewed measures such as durations and frequencies.", "related": ["skewed-distribution", "logarithm"]},
+    {"id": "random-variable", "term": "Random variable", "group": "Data and maths foundations", "definition": "A quantity whose value depends on chance, described by the probabilities of its possible values.", "example": "Whether the next word is stuttered can be treated as a random variable with two values.", "misuse": "Random does not mean without cause; it means we describe it with probabilities.", "when": "Use it when you set up a probability model of your data.", "related": ["probability-distribution"]},
+    {"id": "probability-distribution", "term": "Probability distribution", "group": "Data and maths foundations", "definition": "A description of how likely each possible value of a random variable is.", "example": "A language model gives a probability distribution over the next word.", "misuse": "A distribution of observed values in a sample is an estimate of the true one, not the thing itself.", "when": "Use it when you talk about what values are likely and how likely.", "related": ["random-variable", "conditional-probability", "distribution"]},
+    {"id": "conditional-probability", "term": "Conditional probability", "group": "Data and maths foundations", "definition": "The probability of an event given that another has happened, written P(A | B).", "example": "Surprisal uses the probability of a word given the words before it.", "misuse": "P(A | B) is not P(B | A): the chance of a stutter given a long word differs from the chance of a long word given a stutter.", "when": "Use it whenever a probability depends on context.", "related": ["probability-distribution", "bayes-rule"]},
+    {"id": "bayes-rule", "term": "Bayes' rule", "group": "Data and maths foundations", "definition": "The rule that turns P(B | A) into P(A | B) using how common A and B are on their own.", "example": "Bayes' rule explains why a detector that is right 95% of the time still raises many false alarms when stutters are rare.", "misuse": "Using it well needs a sensible base rate; a guessed one gives a confident wrong answer.", "when": "Use it when you reason from evidence back to causes, or about rare events.", "related": ["conditional-probability"]},
+    {"id": "logarithm", "term": "Logarithm", "group": "Data and maths foundations", "definition": "The power a base must be raised to in order to give a number; log2(8) is 3.", "example": "Multiplying probabilities along a sentence becomes adding their logarithms.", "misuse": "Say which base you used: bits for base 2, nats for base e.", "when": "Use it for probabilities, durations and anything that grows by multiplying.", "related": ["log-probability", "log-transform"]},
+    {"id": "log-probability", "term": "Log probability", "group": "Data and maths foundations", "definition": "The logarithm of a probability, always zero or negative; the negative of it is surprisal.", "example": "A word with probability 1/8 has a log2 probability of -3, so a surprisal of 3 bits.", "misuse": "Small differences in log probability can be large differences in probability; read them on the log scale.", "when": "Use it whenever you work with probabilities from a model.", "related": ["logarithm", "surprisal"]},
+    {"id": "sampling-distribution", "term": "Sampling distribution", "group": "Data and maths foundations", "definition": "The distribution a statistic, such as a mean, would have if you drew many samples of the same size.", "example": "The sampling distribution of mean pause length tells us how much it would move with a different set of speakers.", "misuse": "It is not the distribution of your data; it is the distribution of a number computed from the data.", "when": "Use it when you explain where standard errors and confidence intervals come from.", "related": ["standard-error", "bootstrap"]},
+    {"id": "bootstrap", "term": "Bootstrap", "group": "Data and maths foundations", "definition": "Estimating uncertainty by resampling your own data with replacement many times and recomputing the statistic each time.", "example": "We bootstrapped by speaker, so each resample kept a speaker's words together.", "misuse": "Resample the unit you want to generalise to; resampling words when you care about speakers makes you overconfident.", "when": "Use it for uncertainty when no simple formula fits.", "related": ["sampling-distribution", "confidence-interval"]},
+    {"id": "law-of-large-numbers", "term": "Law of large numbers", "group": "Data and maths foundations", "definition": "As a sample grows, its average gets closer to the true average.", "example": "With 3,000 segments the overall disfluency rate is stable, but one speaker's rate from 20 words is not.", "misuse": "It says nothing about small samples, and it does not make a biased sample unbiased.", "when": "Use it to explain why small groups give noisy numbers.", "related": ["sampling-distribution", "sample"]},
+    {"id": "vector", "term": "Vector", "group": "Data and maths foundations", "definition": "An ordered list of numbers; it can describe one observation's features or a direction in space.", "example": "Each word becomes a vector: length, frequency, position and surprisal.", "misuse": "In machine learning a vector is often just a list of numbers; the arrow picture is an aid, not a requirement.", "when": "Use it when you describe inputs, weights or embeddings.", "related": ["matrix", "dot-product"]},
+    {"id": "matrix", "term": "Matrix", "group": "Data and maths foundations", "definition": "A rectangular grid of numbers; a data set with rows of observations and columns of features is one.", "example": "Our design matrix has one row per word and one column per predictor.", "misuse": "Rows and columns are not interchangeable; mixing them up breaks every multiplication.", "when": "Use it when you describe data or a model's weights in bulk.", "related": ["vector", "matrix-multiplication"]},
+    {"id": "dot-product", "term": "Dot product", "group": "Data and maths foundations", "definition": "Multiply two vectors element by element and add the results; it measures how much they point the same way.", "example": "A linear model's prediction is the dot product of a word's features with the weights.", "misuse": "A large dot product can come from long vectors, not only similar ones; cosine similarity corrects for length.", "when": "Use it when you explain how a linear model or an embedding comparison works.", "related": ["vector", "matrix-multiplication"]},
+    {"id": "matrix-multiplication", "term": "Matrix multiplication", "group": "Data and maths foundations", "definition": "Combining two matrices by taking the dot product of each row of the first with each column of the second.", "example": "Multiplying the design matrix by the weight vector gives every word's prediction at once.", "misuse": "Order matters: A times B is usually not B times A, and the inner sizes must match.", "when": "Use it when you explain how models process many examples at once.", "related": ["matrix", "dot-product"]}
+  ],
+  "resources": [
+    {"title": "10 minutes to pandas", "by": "pandas", "url": "https://pandas.pydata.org/docs/user_guide/10min.html", "kind": "guide", "level": 0, "why": "The quickest tour of the table library you will use every day."},
+    {"title": "NumPy: the absolute basics for beginners", "by": "NumPy", "url": "https://numpy.org/doc/stable/user/absolute_beginners.html", "kind": "guide", "level": 0, "why": "Arrays and vectorised maths, the ground under pandas and every model."},
+    {"title": "Pandas course", "by": "Kaggle Learn", "url": "https://www.kaggle.com/learn/pandas", "kind": "course", "level": 0, "why": "Short hands-on exercises that run in the browser."},
+    {"title": "Quick start guide", "by": "Matplotlib", "url": "https://matplotlib.org/stable/users/explain/quick_start.html", "kind": "guide", "level": 0, "why": "How plots are built, so you can make the one you need."},
+    {"title": "Practical Statistics for Data Scientists, 2nd edition (chapters 1 and 2)", "by": "Peter Bruce, Andrew Bruce and Peter Gedeck", "url": "https://www.oreilly.com/library/view/practical-statistics-for/9781492072935/", "kind": "book", "level": 0, "why": "Exploratory analysis, distributions, sampling and the bootstrap, with code."},
+    {"title": "Seeing Theory", "by": "Daniel Kunin and others, Brown University", "url": "https://seeing-theory.brown.edu/", "kind": "course", "level": 1, "why": "Probability and statistics you can see and play with."},
+    {"title": "Essence of linear algebra", "by": "Grant Sanderson (3Blue1Brown)", "url": "https://www.3blue1brown.com/topics/linear-algebra", "kind": "video", "level": 1, "why": "The intuition for vectors and matrices, in short videos."},
+    {"title": "Mathematics for Machine Learning (chapters 2 and 6)", "by": "Marc Peter Deisenroth, A. Aldo Faisal and Cheng Soon Ong", "url": "https://mml-book.github.io/", "kind": "book", "level": 1, "why": "Linear algebra and probability written for machine learning; free from the authors."},
+    {"title": "Hands-On Machine Learning, 2nd edition (chapters 1 and 2)", "by": "Aurélien Géron", "url": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/", "kind": "book", "level": 1, "why": "The machine learning landscape and a complete project from raw data to a model."},
+    {"title": "Notebooks for Hands-On Machine Learning, 2nd edition", "by": "Aurélien Géron", "url": "https://github.com/ageron/handson-ml2", "kind": "code", "level": 1, "why": "The book's code, to run alongside each chapter."}
+  ],
+  "lessons": [
+    {
+      "id": "df-1", "level": 0, "title": "Python for data: NumPy and pandas", "minutes": 60, "pillar": "operate",
+      "why": "Almost every research project starts by loading, cleaning and reshaping tables; doing it in code makes every step checkable and repeatable.",
+      "read": [
+        {"title": "10 minutes to pandas", "by": "pandas", "url": "https://pandas.pydata.org/docs/user_guide/10min.html"},
+        {"title": "NumPy: the absolute basics for beginners", "by": "NumPy", "url": "https://numpy.org/doc/stable/user/absolute_beginners.html"}
+      ],
+      "do": "Load a table with one row per word (speaker, word, start time, end time, label). Count words and labels per speaker with groupby, add a column for each word's duration, and save the result as a new file from a script you can rerun.",
+      "speak": "In one minute, explain why each row is one word and not one speaker, and what that choice lets you do.",
+      "check": "Does rerunning the script from the raw file give exactly the same table, and did you check five rows by hand?",
+      "terms": ["dataframe", "tidy-data", "vectorisation", "variable"],
+      "skills": ["data-management", "reproducible-pipeline"]
+    },
+    {
+      "id": "df-2", "level": 0, "title": "Looking at data before modelling it", "minutes": 60, "pillar": "do",
+      "why": "Plots and simple summaries catch errors, outliers and odd speakers before they quietly shape a result.",
+      "read": [
+        {"title": "Practical Statistics for Data Scientists, 2nd edition, chapter 1", "by": "Peter Bruce, Andrew Bruce and Peter Gedeck", "url": "https://www.oreilly.com/library/view/practical-statistics-for/9781492072935/"},
+        {"title": "Quick start guide", "by": "Matplotlib", "url": "https://matplotlib.org/stable/users/explain/quick_start.html"}
+      ],
+      "do": "Plot a histogram of pause lengths between words, then the same on a log scale. Report the mean and the median, and list the three speakers with the most and fewest disfluencies per 100 words.",
+      "speak": "Describe the shape of the pause distribution in plain words, and say why the median is the better summary here.",
+      "check": "Did you look for impossible values (negative pauses, zero-length words) and decide what to do with them before going on?",
+      "terms": ["exploratory-data-analysis", "histogram", "skewed-distribution", "median", "log-transform", "outlier"],
+      "skills": ["data-analysis", "figure-design"]
+    },
+    {
+      "id": "df-3", "level": 1, "title": "Probability you will actually use", "minutes": 60, "pillar": "think",
+      "why": "Language models, classifiers and statistical tests all speak in probabilities; surprisal is just a log probability turned round.",
+      "read": [
+        {"title": "Seeing Theory: basic probability and compound probability", "by": "Brown University", "url": "https://seeing-theory.brown.edu/"},
+        {"title": "Mathematics for Machine Learning, chapter 6", "by": "Deisenroth, Faisal and Ong", "url": "https://mml-book.github.io/"}
+      ],
+      "do": "In Python, estimate from your table the probability that a word is disfluent overall and given that it is a speaker's first word in a segment. Then take five probabilities (1/2, 1/4, 1/8, 1/100, 1/1000) and compute their surprisal in bits.",
+      "speak": "Explain surprisal to a friend in two sentences, using the idea of how unexpected a word is.",
+      "check": "Can you say in words the difference between P(disfluent | first word) and P(first word | disfluent)?",
+      "terms": ["random-variable", "probability-distribution", "conditional-probability", "bayes-rule", "logarithm", "log-probability", "surprisal"],
+      "skills": ["reasoning-under-uncertainty", "reading-statistics"]
+    },
+    {
+      "id": "df-4", "level": 1, "title": "Samples, uncertainty and the bootstrap", "minutes": 60, "pillar": "think",
+      "why": "Any number from a sample would change with a different sample; research reports say how much.",
+      "read": [
+        {"title": "Practical Statistics for Data Scientists, 2nd edition, chapter 2", "by": "Peter Bruce, Andrew Bruce and Peter Gedeck", "url": "https://www.oreilly.com/library/view/practical-statistics-for/9781492072935/"},
+        {"title": "Seeing Theory: frequentist inference", "by": "Brown University", "url": "https://seeing-theory.brown.edu/"}
+      ],
+      "do": "Bootstrap the median pause length 2,000 times, first resampling words, then resampling whole speakers. Report both 95% intervals and explain why they differ.",
+      "speak": "In one minute, explain why resampling speakers gives a wider interval, and which one you would report.",
+      "check": "Is the unit you resampled the same unit you want your conclusion to be about?",
+      "terms": ["sampling-distribution", "bootstrap", "standard-error", "confidence-interval", "law-of-large-numbers"],
+      "skills": ["reading-statistics", "reasoning-under-uncertainty"]
+    },
+    {
+      "id": "df-5", "level": 1, "title": "Linear algebra for data", "minutes": 60, "pillar": "think",
+      "why": "A data set is a matrix and a linear model is a matrix times a vector; seeing that makes every later model easier.",
+      "read": [
+        {"title": "Essence of linear algebra, chapters 1 to 4", "by": "Grant Sanderson (3Blue1Brown)", "url": "https://www.3blue1brown.com/topics/linear-algebra"},
+        {"title": "Mathematics for Machine Learning, chapter 2", "by": "Deisenroth, Faisal and Ong", "url": "https://mml-book.github.io/"}
+      ],
+      "do": "Build a small matrix with one row per word and three columns (length in letters, position in the segment, a constant 1). Pick a weight vector by hand and compute every word's prediction with one matrix multiplication in NumPy, then with a loop, and confirm they match.",
+      "speak": "Explain in one minute how one matrix multiplication makes a prediction for every row at once.",
+      "check": "Can you state the shapes of the matrix, the weights and the result, and why they must fit?",
+      "terms": ["vector", "matrix", "dot-product", "matrix-multiplication"],
+      "skills": ["data-analysis"]
+    },
+    {
+      "id": "df-6", "level": 1, "title": "An end-to-end project, start to finish", "minutes": 90, "pillar": "do",
+      "why": "Seeing a whole project once (question, data, checks, model, evaluation) shows where each skill fits before you learn them in depth.",
+      "read": [
+        {"title": "Hands-On Machine Learning, 2nd edition, chapters 1 and 2", "by": "Aurélien Géron", "url": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/"},
+        {"title": "Notebooks for Hands-On Machine Learning, 2nd edition", "by": "Aurélien Géron", "url": "https://github.com/ageron/handson-ml2"}
+      ],
+      "do": "Work through the chapter 2 notebook yourself. Then write a one-page data check note for your own data set: where it came from, its licence, what one row means, missing values, odd speakers, and what you will and will not use.",
+      "speak": "Walk someone through your data check note in two minutes as if they were your supervisor.",
+      "check": "Would a stranger be able to rebuild your table from the raw download using only your note and your script?",
+      "terms": ["exploratory-data-analysis", "tidy-data", "missing-data", "open-data"],
+      "skills": ["running-a-project", "data-management", "lab-notebook-keeping"]
+    }
+  ]
+}

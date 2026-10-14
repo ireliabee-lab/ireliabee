@@ -1,0 +1,214 @@
+{
+ "_about": "Public X responses recorded 2026-10-13/14 from cdn.syndication.twimg.com/tweet-result and publish.twitter.com/oembed, for offline tests of link_import.x_text.",
+ "syndication": {
+  "2109361546505966046": {
+   "__typename": "Tweet",
+   "favorite_count": 42612,
+   "lang": "en",
+   "created_at": "2026-10-11T19:12:37.000Z",
+   "display_text_range": [
+    0,
+    278
+   ],
+   "entities": {},
+   "id_str": "2109361546505966046",
+   "text": "Dusting off this tweet from April because this gap in shared understanding of LLM capability is *widening*. It's now less \"two groups of people speaking past each other\" and more a sharp funnel.\n\n- Napkin math somewhere around 6B people (~75% of the population) have barely come",
+   "user": {
+    "id_str": "33836629",
+    "name": "Andrej Karpathy",
+    "screen_name": "karpathy",
+    "is_blue_verified": true,
+    "profile_image_shape": "Circle",
+    "verified": false,
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_normal.jpg"
+   },
+   "edit_control": {
+    "initial_tweet_id": "2109361082217402758",
+    "edit_tweet_ids": [
+     "2109361082217402758",
+     "2109361546505966046"
+    ],
+    "editable_until_msecs": "1791749446000",
+    "edits_remaining": "4",
+    "is_edit_eligible": true
+   },
+   "conversation_count": 1954,
+   "news_action_type": "conversation",
+   "quoted_tweet": {
+    "favorite_count": 22686,
+    "lang": "en",
+    "reply_count": 1255,
+    "retweet_count": 2691,
+    "created_at": "2026-04-09T20:10:52.000Z",
+    "display_text_range": [
+     0,
+     280
+    ],
+    "entities": {},
+    "id_str": "2042334451611693415",
+    "text": "Judging by my tl there is a growing gap in understanding of AI capability.\n\nThe first issue I think is around recency and tier of use. I think a lot of people tried the free tier of ChatGPT somewhere  last year and allowed it to inform their views on AI a little too much. This is",
+    "user": {
+     "id_str": "33836629",
+     "name": "Andrej Karpathy",
+     "screen_name": "karpathy",
+     "is_blue_verified": true,
+     "profile_image_shape": "Circle",
+     "verified": false,
+     "profile_image_url_https": "https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_normal.jpg"
+    },
+    "edit_control": {
+     "edit_tweet_ids": [
+      "2042334451611693415"
+     ],
+     "editable_until_msecs": "1775769052000",
+     "edits_remaining": "5",
+     "is_edit_eligible": false
+    },
+    "isEdited": false,
+    "isStaleEdit": false
+   },
+   "isEdited": true,
+   "isStaleEdit": false,
+   "previous_counts": {
+    "favorite_count": 87,
+    "quote_count": 3,
+    "reply_count": 12,
+    "retweet_count": 14
+   },
+   "note_tweet": {
+    "id": "Tm90ZVR3ZWV0UmVzdWx0czoyMTA5MzYxNTQ2MjgzNjIyNDAw"
+   }
+  },
+  "20": {
+   "__typename": "Tweet",
+   "favorite_count": 309380,
+   "lang": "en",
+   "created_at": "2006-03-21T20:50:14.000Z",
+   "display_text_range": [
+    0,
+    24
+   ],
+   "entities": {},
+   "id_str": "20",
+   "text": "just setting up my twttr",
+   "user": {
+    "id_str": "12",
+    "name": "jack",
+    "screen_name": "jack",
+    "is_blue_verified": true,
+    "profile_image_shape": "Circle",
+    "verified": false,
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1661201415899951105/azNjKOSH_normal.jpg",
+    "highlighted_label": {
+     "badge": {
+      "url": "https://pbs.twimg.com/profile_images/1285655593592791040/HtwPZgej_bigger.jpg"
+     },
+     "description": "Square",
+     "url": {
+      "url": "https://twitter.com/Square",
+      "url_type": "DeepLink"
+     },
+     "user_label_display_type": "Badge",
+     "user_label_type": "BusinessLabel"
+    }
+   },
+   "edit_control": {
+    "edit_tweet_ids": [
+     "20"
+    ],
+    "editable_until_msecs": "1142976014000",
+    "edits_remaining": "5",
+    "is_edit_eligible": true
+   },
+   "conversation_count": 18088,
+   "news_action_type": "conversation",
+   "isEdited": false,
+   "isStaleEdit": false
+  },
+  "2042334451611693415": {
+   "__typename": "Tweet",
+   "favorite_count": 22700,
+   "lang": "en",
+   "created_at": "2026-04-09T20:10:52.000Z",
+   "display_text_range": [
+    0,
+    280
+   ],
+   "entities": {},
+   "id_str": "2042334451611693415",
+   "text": "Judging by my tl there is a growing gap in understanding of AI capability.\n\nThe first issue I think is around recency and tier of use. I think a lot of people tried the free tier of ChatGPT somewhere  last year and allowed it to inform their views on AI a little too much. This is",
+   "user": {
+    "id_str": "33836629",
+    "name": "Andrej Karpathy",
+    "screen_name": "karpathy",
+    "is_blue_verified": true,
+    "profile_image_shape": "Circle",
+    "verified": false,
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_normal.jpg"
+   },
+   "edit_control": {
+    "edit_tweet_ids": [
+     "2042334451611693415"
+    ],
+    "editable_until_msecs": "1775769052000",
+    "edits_remaining": "5",
+    "is_edit_eligible": false
+   },
+   "conversation_count": 1256,
+   "news_action_type": "conversation",
+   "quoted_tweet": {
+    "favorite_count": 1938,
+    "lang": "en",
+    "reply_count": 85,
+    "retweet_count": 204,
+    "created_at": "2026-04-09T02:13:41.000Z",
+    "display_text_range": [
+     0,
+     96
+    ],
+    "entities": {},
+    "id_str": "2042063369432183238",
+    "text": "The degree to which you are awed by AI is perfectly correlated with how much you use AI to code.",
+    "user": {
+     "id_str": "1254131357774733312",
+     "name": "staysaasy",
+     "screen_name": "staysaasy",
+     "is_blue_verified": true,
+     "profile_image_shape": "Circle",
+     "verified": false,
+     "profile_image_url_https": "https://pbs.twimg.com/profile_images/1278194413215219712/7XH7bhjE_normal.jpg"
+    },
+    "edit_control": {
+     "edit_tweet_ids": [
+      "2042063369432183238"
+     ],
+     "editable_until_msecs": "1775704421000",
+     "edits_remaining": "5",
+     "is_edit_eligible": true
+    },
+    "isEdited": false,
+    "isStaleEdit": false
+   },
+   "isEdited": false,
+   "isStaleEdit": false,
+   "note_tweet": {
+    "id": "Tm90ZVR3ZWV0UmVzdWx0czoyMDQyMzM0NDUxMjkyODU2MzIw"
+   }
+  }
+ },
+ "oembed": {
+  "2109361546505966046": {
+   "url": "https://x.com/karpathy/status/2109361546505966046",
+   "author_name": "Andrej Karpathy",
+   "author_url": "https://x.com/karpathy",
+   "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Dusting off this tweet from April because this gap in shared understanding of LLM capability is *widening*. It&#39;s now less &quot;two groups of people speaking past each other&quot; and more a sharp funnel.<br><br>- Napkin math somewhere around 6B people (~75% of the population) have barely come… <a href=\"https://t.co/79xGhQdf1n\">https://t.co/79xGhQdf1n</a></p>&mdash; Andrej Karpathy (@karpathy) <a href=\"https://x.com/karpathy/status/2109361546505966046?ref_src=twsrc%5Etfw\">October 11, 2026</a></blockquote>\n\n",
+   "width": 550,
+   "height": null,
+   "type": "rich",
+   "cache_age": "3153600000",
+   "provider_name": "X",
+   "provider_url": "https://x.com",
+   "version": "1.0"
+  }
+ }
+}

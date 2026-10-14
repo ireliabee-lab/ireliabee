@@ -1,0 +1,211 @@
+{
+  "realm": 1,
+  "cards": [
+    {"id": "r1-w-get-up", "kind": "word", "text": "get up", "meaning": "to leave your bed after sleeping", "example": "I get up at seven o'clock.", "goes_with": ["get up early", "get up late", "get up at six"], "note": "With he or she, say 'gets up': She gets up at six.", "job": ""},
+    {"id": "r1-w-work", "kind": "word", "text": "work", "meaning": "to do your job", "example": "My brother works in a bank.", "goes_with": ["work in a shop", "work at the market", "go to work"], "note": "Say 'work in a shop' or 'work at the market'.", "job": ""},
+    {"id": "r1-w-eat", "kind": "word", "text": "eat", "meaning": "to put food in your mouth and have it", "example": "We eat dinner at eight.", "goes_with": ["eat breakfast", "eat lunch", "eat out"], "note": "Say 'eat breakfast', with no 'the'.", "job": ""},
+    {"id": "r1-w-cook", "kind": "word", "text": "cook", "meaning": "to make food hot and ready to eat", "example": "My father cooks on Sunday.", "goes_with": ["cook dinner", "cook for my family", "like cooking"], "note": "A cook is also a person who cooks.", "job": ""},
+    {"id": "r1-w-buy", "kind": "word", "text": "buy", "meaning": "to get something and pay money for it", "example": "I buy bread at the market.", "goes_with": ["buy food", "buy a ticket", "buy something for"], "note": "With he or she, say 'buys'.", "job": ""},
+    {"id": "r1-w-sell", "kind": "word", "text": "sell", "meaning": "to give something to a person who pays you for it", "example": "That stall sells fresh fish.", "goes_with": ["sell fruit", "sell something to someone"], "note": "The shopkeeper sells; you buy.", "job": ""},
+    {"id": "r1-w-drive", "kind": "word", "text": "drive", "meaning": "to make a car or a bus move and go somewhere", "example": "She drives to work.", "goes_with": ["drive a car", "drive to town", "can drive"], "note": "Say 'drive to work', not 'drive at work'.", "job": ""},
+    {"id": "r1-w-like", "kind": "word", "text": "like", "meaning": "to think something is nice or good", "example": "I like fresh bread.", "goes_with": ["like cooking", "don't like", "really like"], "note": "Say 'I like it', not 'I like'. Like needs a thing after it.", "job": ""},
+    {"id": "r1-w-usually", "kind": "word", "text": "usually", "meaning": "most of the time; on most days", "example": "I usually walk to the market.", "goes_with": ["usually get up", "usually eat"], "note": "Put it before the main verb: I usually eat, not I eat usually.", "job": ""},
+    {"id": "r1-w-never", "kind": "word", "text": "never", "meaning": "not at any time", "example": "He never drinks coffee.", "goes_with": ["never eat", "never go"], "note": "Never already means 'not', so don't add don't: I never eat meat.", "job": ""},
+    {"id": "r1-w-market", "kind": "word", "text": "market", "meaning": "a place outside, with tables where people sell food and things", "example": "The market is open on Saturday.", "goes_with": ["at the market", "market stall", "market day"], "note": "Say 'at the market'.", "job": ""},
+    {"id": "r1-w-shop", "kind": "word", "text": "shop", "meaning": "a building where you buy things", "example": "There is a small shop on my street.", "goes_with": ["shop assistant", "go to the shop", "clothes shop"], "note": "Shop is also a verb: I shop on Friday.", "job": ""},
+    {"id": "r1-w-bread", "kind": "word", "text": "bread", "meaning": "a common food made from flour and baked", "example": "Can I have some bread, please?", "goes_with": ["a loaf of bread", "fresh bread", "bread and butter"], "note": "Say 'some bread' or 'a loaf of bread', not 'a bread'.", "job": ""},
+    {"id": "r1-w-apple", "kind": "word", "text": "apple", "meaning": "a round fruit, red, green or yellow", "example": "These apples are very sweet.", "goes_with": ["an apple", "apple juice", "a kilo of apples"], "note": "Say 'an apple', because apple starts with a vowel sound.", "job": ""},
+    {"id": "r1-w-fish", "kind": "word", "text": "fish", "meaning": "an animal that lives in water; we often eat it", "example": "We eat fish on Friday.", "goes_with": ["fresh fish", "fish and chips", "cook fish"], "note": "The plural is also 'fish': two fish.", "job": ""},
+    {"id": "r1-w-cheese", "kind": "word", "text": "cheese", "meaning": "a food made from milk, often yellow or white", "example": "I like cheese on my bread.", "goes_with": ["a piece of cheese", "cheese sandwich"], "note": "Say 'some cheese', not 'a cheese', when you eat it.", "job": ""},
+    {"id": "r1-w-price", "kind": "word", "text": "price", "meaning": "how much money you pay for something", "example": "The price is on the label.", "goes_with": ["a good price", "the price of"], "note": "Ask 'What's the price?' or 'How much is it?'.", "job": ""},
+    {"id": "r1-w-cheap", "kind": "word", "text": "cheap", "meaning": "not costing much money", "example": "The tomatoes are cheap today.", "goes_with": ["very cheap", "cheap food"], "note": "The opposite is 'expensive'.", "job": ""},
+    {"id": "r1-w-expensive", "kind": "word", "text": "expensive", "meaning": "costing a lot of money", "example": "This cheese is very expensive.", "goes_with": ["too expensive", "very expensive"], "note": "The opposite is 'cheap'.", "job": ""},
+    {"id": "r1-w-station", "kind": "word", "text": "station", "meaning": "a place where trains or buses stop for people", "example": "The station is near the market.", "goes_with": ["train station", "bus station", "at the station"], "note": "Say 'at the station' when you wait there.", "job": ""},
+    {"id": "r1-w-near", "kind": "word", "text": "near", "meaning": "not far from", "example": "My house is near the park.", "goes_with": ["near here", "near the station"], "note": "Near needs no other word after it: near the bank.", "job": ""},
+    {"id": "r1-w-behind", "kind": "word", "text": "behind", "meaning": "at the back of something", "example": "The car park is behind the shop.", "goes_with": ["behind the house", "behind me"], "note": "The opposite is 'in front of'.", "job": ""},
+    {"id": "r1-w-between", "kind": "word", "text": "between", "meaning": "in the space in the middle of two things", "example": "The café is between the bank and the bookshop.", "goes_with": ["between A and B"], "note": "Between needs two things, joined with 'and'.", "job": ""},
+    {"id": "r1-w-opposite", "kind": "word", "text": "opposite", "meaning": "on the other side, facing something", "example": "The bank is opposite the town hall.", "goes_with": ["opposite the station", "just opposite"], "note": "Say 'opposite the bank', with no 'of'.", "job": ""},
+
+    {"id": "r1-p-every-day", "kind": "phrase", "text": "every day", "meaning": "on all days, again and again", "example": "I walk to work every day.", "goes_with": ["every morning", "every week"], "note": "Two words here. 'Everyday' as one word means 'normal'.", "job": "other"},
+    {"id": "r1-p-at-the-weekend", "kind": "phrase", "text": "at the weekend", "meaning": "on Saturday and Sunday", "example": "We go to the market at the weekend.", "goes_with": ["at the weekend", "this weekend"], "note": "British English says 'at the weekend'.", "job": "other"},
+    {"id": "r1-p-how-much", "kind": "phrase", "text": "How much is it?", "meaning": "a question about the price", "example": "I like this bag. How much is it?", "goes_with": ["How much are they?", "How much is the cheese?"], "note": "For two or more things, say 'How much are they?'.", "job": "asking"},
+    {"id": "r1-p-here-you-are", "kind": "phrase", "text": "Here you are.", "meaning": "what you say when you give something to someone", "example": "Two apples? Here you are.", "goes_with": ["Here you are, thanks."], "note": "Both the buyer and the seller can say it.", "job": "other"},
+    {"id": "r1-p-anything-else", "kind": "phrase", "text": "Anything else?", "meaning": "do you want more things?", "example": "Three lemons. Anything else?", "goes_with": ["Anything else for you?"], "note": "Shop staff often ask this.", "job": "asking"},
+    {"id": "r1-p-thats-all", "kind": "phrase", "text": "That's all, thanks.", "meaning": "I don't want anything more", "example": "No, that's all, thanks.", "goes_with": ["No, that's all."], "note": "A friendly answer to 'Anything else?'.", "job": "thanking"},
+    {"id": "r1-p-too-expensive", "kind": "phrase", "text": "It's too expensive.", "meaning": "it costs more than I want to pay", "example": "I like the coat, but it's too expensive.", "goes_with": ["too expensive for me", "a bit expensive"], "note": "'Too' means more than is good for you.", "job": "opinion"},
+    {"id": "r1-p-next-to", "kind": "phrase", "text": "next to", "meaning": "at the side of, very close", "example": "The post office is next to the station.", "goes_with": ["next to me", "right next to"], "note": "Always say 'to': next to the bank.", "job": "other"},
+    {"id": "r1-p-in-front-of", "kind": "phrase", "text": "in front of", "meaning": "at the front of something; the opposite of behind", "example": "There is a clock in front of the town hall.", "goes_with": ["in front of the house", "in front of me"], "note": "Three words: in front of.", "job": "other"},
+    {"id": "r1-p-excuse-me", "kind": "phrase", "text": "Excuse me.", "meaning": "a polite way to start talking to someone you don't know", "example": "Excuse me. Is there a bank near here?", "goes_with": ["Excuse me, can you help me?"], "note": "Use it before a question to a stranger.", "job": "asking"},
+    {"id": "r1-p-is-it-far", "kind": "phrase", "text": "Is it far?", "meaning": "a question: do I need to go a long way?", "example": "The station? Is it far?", "goes_with": ["Is it far from here?"], "note": "Answers: 'No, it isn't.' or 'Yes, it is.'", "job": "asking"},
+    {"id": "r1-p-on-the-left", "kind": "phrase", "text": "It's on the left.", "meaning": "it is on your left side as you go", "example": "Go straight on. The bank is on the left.", "goes_with": ["on the right", "on your left"], "note": "Say 'on the left', with 'the'.", "job": "other"},
+    {"id": "r1-p-say-again", "kind": "phrase", "text": "Sorry, can you say that again, please?", "meaning": "please say it one more time", "example": "Sorry, can you say that again, please? I don't understand.", "goes_with": ["Can you say that slowly, please?"], "note": "It is always fine to ask. People are happy to repeat.", "job": "clarifying"},
+    {"id": "r1-p-of-course", "kind": "phrase", "text": "Of course.", "meaning": "yes, certainly", "example": "Can you help me? Of course.", "goes_with": ["Yes, of course."], "note": "A warm way to say yes to a request.", "job": "agreeing"},
+
+    {"id": "r1-s-i-usually", "kind": "pattern", "text": "I usually ___ at ___.", "meaning": "say what you do on most days, and when", "example": "I usually get up at seven.", "goes_with": ["I never ___.", "She usually ___s at ___."], "note": "Usually goes before the verb.", "job": ""},
+    {"id": "r1-s-can-i-have", "kind": "pattern", "text": "Can I have ___, please?", "meaning": "ask for something in a shop or café", "example": "Can I have two apples, please?", "goes_with": ["Can I have the bill, please?"], "note": "A polite, simple way to ask for things.", "job": ""},
+    {"id": "r1-s-i-can", "kind": "pattern", "text": "I can ___, but I can't ___.", "meaning": "say what you are able and not able to do", "example": "I can cook, but I can't drive.", "goes_with": ["Can you ___?", "She can ___."], "note": "After can, use the verb with no -s and no 'to'.", "job": ""},
+    {"id": "r1-s-i-like", "kind": "pattern", "text": "I like ___, but I don't like ___.", "meaning": "say what you enjoy and what you don't", "example": "I like fish, but I don't like cheese.", "goes_with": ["I really like ___.", "She likes ___."], "note": "With he or she: likes / doesn't like.", "job": ""},
+    {"id": "r1-s-there-is", "kind": "pattern", "text": "There is ___ near ___.", "meaning": "say that one thing is in a place", "example": "There is a café near the station.", "goes_with": ["There isn't ___.", "Is there ___?"], "note": "Use 'there is' for one thing.", "job": ""},
+    {"id": "r1-s-there-are", "kind": "pattern", "text": "There are ___ in ___.", "meaning": "say that two or more things are in a place", "example": "There are ten stalls in the square.", "goes_with": ["There aren't ___.", "Are there ___?"], "note": "Use 'there are' for two or more things.", "job": ""},
+    {"id": "r1-s-do-you", "kind": "pattern", "text": "Do you ___?", "meaning": "ask a yes or no question with a normal verb", "example": "Do you sell stamps?", "goes_with": ["Does she ___?", "Yes, I do. / No, I don't."], "note": "With he or she, use Does, and the verb has no -s.", "job": ""},
+    {"id": "r1-s-is-there", "kind": "pattern", "text": "Is there ___ near here?", "meaning": "ask if a place is close to you", "example": "Is there a cash machine near here?", "goes_with": ["Are there any ___ near here?", "Yes, there is. / No, there isn't."], "note": "For two or more things, ask 'Are there any ___?'.", "job": ""}
+  ],
+  "lessons": [
+    {
+      "id": "r1-l1", "title": "A day in Market Town", "minutes": 20,
+      "pillar": "words",
+      "why": "Your daily routine is one of the first things people ask about, so these words come up in almost every friendly conversation.",
+      "cards": ["r1-w-get-up", "r1-w-eat", "r1-w-cook", "r1-w-bread", "r1-w-usually", "r1-w-never", "r1-p-every-day", "r1-p-at-the-weekend"],
+      "passage": {
+        "kind": "read",
+        "title": "Sam the baker",
+        "text": "My name is Sam. I live in a small market town, and I work in a bakery. I get up at five o'clock every day. It is very early, but I like it. I usually eat bread and cheese for breakfast. I never drink coffee in the morning. I drink tea. I start work at six. I make bread and cakes for the market. At the weekend, I don't work. I get up at nine. I cook a big breakfast for my family. We eat eggs, bread and tomatoes. In the evening, I usually read a book. I never go to bed late.",
+        "links": []
+      },
+      "drills": [
+        {"type": "choose", "prompt": "Which word means 'not at any time'?", "options": ["usually", "never", "every day"], "answer": 1, "hint": "Sam doesn't drink coffee in the morning. Which word does he use?", "why": "Never means 'not at any time'. Usually means 'on most days'."},
+        {"type": "gap", "sentence": "I ___ up at seven o'clock.", "options": ["get", "eat", "cook"], "answer": 0, "hint": "This is what you do when you leave your bed.", "why": "'Get up' means to leave your bed after sleeping."},
+        {"type": "gap", "sentence": "I ___ breakfast at eight.", "options": ["eat", "get", "go"], "answer": 0, "hint": "What do you do with food?", "why": "We say 'eat breakfast', with no 'the'."},
+        {"type": "order", "answer": "I usually get up at seven.", "hint": "Start with I. The time comes at the end.", "why": "Usually goes before the main verb: I usually get up."},
+        {"type": "fix", "sentence": "I cook dinner every days.", "answer": "I cook dinner every day.", "accept": [], "hint": "Look at the word after 'every'.", "why": "After 'every', use one: every day, every week."},
+        {"type": "join", "parts": ["I get up at seven.", "I eat breakfast."], "answers": ["I get up at seven and I eat breakfast.", "I get up at seven and eat breakfast.", "I get up at seven, and I eat breakfast."], "hint": "Use a small word that adds one thing to another.", "why": "'And' joins two things that both happen."},
+        {"type": "choose", "prompt": "What does Sam do at the weekend?", "options": ["He cooks a big breakfast.", "He makes bread for the market.", "He gets up at five."], "answer": 0, "hint": "Read the part that starts 'At the weekend'.", "why": "At the weekend Sam doesn't work. He gets up at nine and cooks for his family."}
+      ],
+      "write": {"prompt": "Write about a normal day for you. When do you get up? What do you eat? Use 'usually' and 'never' once each.", "min_words": 15},
+      "speak": {"prompt": "Tell the Guide about a normal day for you: when you get up, what you eat and what you do in the evening. Take your time; pauses are part of talking.", "character": "wc_guide"},
+      "check": "Where does 'usually' go in the sentence 'I get up at seven'?"
+    },
+    {
+      "id": "r1-l2", "title": "What people do every day", "minutes": 25,
+      "pillar": "sentences",
+      "why": "The present simple lets you talk about your life, your job and the people you know.",
+      "rule": "Use the present simple for habits and things you do again and again. With he, she and it, add -s to the verb: I work, she works. For 'not', use don't with I, you, we and they, and doesn't with he, she and it. After don't or doesn't, the verb has no -s: she doesn't work.",
+      "cards": ["r1-s-i-usually", "r1-w-work", "r1-w-drive", "r1-w-buy", "r1-w-sell", "r1-w-market"],
+      "passage": {
+        "kind": "read",
+        "title": "Mina's fruit stall",
+        "text": "Mina sells fruit at the market. She drives to the town at six o'clock every morning. Her husband, Tom, doesn't drive. He goes by bus. They open the stall at seven. Mina usually works at the front. She talks to the customers. Tom works at the back. He carries the boxes. The market is busy on Saturday. Many people buy apples and oranges. Mina doesn't sell vegetables. Her friend Joe sells them at the next stall. At two o'clock, the market closes. Mina and Tom go home. Tom cooks dinner, and Mina watches the news. They both go to bed early, because their day starts again at five.",
+        "links": [{"title": "Present simple", "by": "British Council LearnEnglish", "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/a1-a2/present-simple"}]
+      },
+      "drills": [
+        {"type": "gap", "sentence": "She ___ at the market.", "options": ["work", "works", "working"], "answer": 1, "hint": "The subject is 'she'. What does the verb need?", "why": "With he, she and it, the present simple verb ends in -s: she works."},
+        {"type": "gap", "sentence": "Tom ___ drive.", "options": ["don't", "doesn't", "isn't"], "answer": 1, "hint": "Tom is 'he'. Which 'not' word goes with he?", "why": "Use doesn't with he, she and it: he doesn't drive."},
+        {"type": "fix", "sentence": "Mina sell fruit.", "answer": "Mina sells fruit.", "accept": [], "hint": "Mina is 'she'. Look at the verb.", "why": "With one person who is not I or you, add -s: Mina sells."},
+        {"type": "fix", "sentence": "He doesn't drives to work.", "answer": "He doesn't drive to work.", "accept": [], "hint": "Doesn't already shows it is 'he'.", "why": "After doesn't, the verb has no -s: he doesn't drive."},
+        {"type": "order", "answer": "They open the stall at seven.", "hint": "Who? What do they do? When?", "why": "English sentences usually go: who, then the verb, then the thing, then the time."},
+        {"type": "choose", "prompt": "Which sentence is correct?", "options": ["We works every day.", "We work every day.", "We is work every day."], "answer": 1, "hint": "Is 'we' like 'she', or like 'I'?", "why": "With I, you, we and they, the verb has no -s: we work."},
+        {"type": "join", "parts": ["Tom goes by bus.", "Mina drives."], "answers": ["Tom goes by bus, but Mina drives.", "Tom goes by bus but Mina drives."], "hint": "The two people do different things. Which small word shows a difference?", "why": "'But' joins two ideas that are different."}
+      ],
+      "write": {"prompt": "Write about a person you know. What do they do every day? Use he or she, and one sentence with doesn't.", "min_words": 15},
+      "speak": {"prompt": "Describe the day of someone you know well: when they get up, where they work and one thing they never do. Say it at your own pace.", "character": ""},
+      "check": "When do you add -s to a verb in the present simple? Give two examples."
+    },
+    {
+      "id": "r1-l3", "title": "At the fruit stall", "minutes": 25,
+      "pillar": "phrases",
+      "why": "A few ready-made phrases are enough to buy what you need, ask the price and finish politely.",
+      "cards": ["r1-s-can-i-have", "r1-p-how-much", "r1-p-here-you-are", "r1-p-anything-else", "r1-p-thats-all", "r1-p-too-expensive", "r1-w-price", "r1-w-apple"],
+      "passage": {
+        "kind": "read",
+        "title": "Anna buys some fruit",
+        "text": "Shopkeeper: Good morning! What would you like?\nAnna: Good morning. How much are the apples?\nShopkeeper: Twenty-five pence each.\nAnna: That's a good price. Can I have six apples, please?\nShopkeeper: Of course. Here you are. Anything else?\nAnna: Yes. How much are the strawberries?\nShopkeeper: They're four pounds a box.\nAnna: Oh, they're too expensive for me. How much is the melon?\nShopkeeper: The melon is two pounds.\nAnna: Great. Can I have a melon, please?\nShopkeeper: Here you are. Anything else?\nAnna: No, that's all, thanks. How much is it?\nShopkeeper: That's three pounds fifty, please.\nAnna: Here you are.\nShopkeeper: Thank you. Have a nice day!",
+        "links": []
+      },
+      "drills": [
+        {"type": "choose", "prompt": "The shopkeeper gives you your apples. What do they say?", "options": ["Here you are.", "Anything else?", "That's all, thanks."], "answer": 0, "hint": "Which phrase goes with giving something?", "why": "'Here you are' is what you say as you give something to someone."},
+        {"type": "choose", "prompt": "The shopkeeper asks 'Anything else?'. You don't want more. What do you say?", "options": ["Anything else?", "No, that's all, thanks.", "How much is it?"], "answer": 1, "hint": "You want to finish buying.", "why": "'That's all, thanks' tells the shopkeeper you have everything you need."},
+        {"type": "gap", "sentence": "How much ___ the apples?", "options": ["is", "are", "do"], "answer": 1, "hint": "Apples: one thing, or more than one?", "why": "Use 'How much are' for two or more things, and 'How much is' for one."},
+        {"type": "gap", "sentence": "Can I ___ a melon, please?", "options": ["have", "has", "having"], "answer": 0, "hint": "What form of the verb comes after can?", "why": "After can, use the verb with nothing added: Can I have...?"},
+        {"type": "order", "answer": "Can I have six apples, please?", "hint": "Start with the question word that asks for permission.", "why": "Can I have ___, please? is a polite way to ask for things."},
+        {"type": "fix", "sentence": "How many is the cheese?", "answer": "How much is the cheese?", "accept": [], "hint": "You are asking about money, not about a number of things.", "why": "Ask 'How much is it?' about the price. 'How many' asks about a number."},
+        {"type": "choose", "prompt": "Why doesn't Anna buy the strawberries?", "options": ["They are too expensive for her.", "She doesn't like fruit.", "The stall is closed."], "answer": 0, "hint": "Look at what Anna says after the price.", "why": "Anna says they're too expensive for her, so she buys a melon."},
+        {"type": "join", "parts": ["I like the strawberries.", "They are too expensive."], "answers": ["I like the strawberries, but they are too expensive.", "I like the strawberries but they are too expensive."], "hint": "The second idea is a problem. Which small word shows that?", "why": "'But' joins two ideas that pull in different ways."}
+      ],
+      "write": {"prompt": "Write a short conversation at a market stall. You buy two things, ask one price, and finish politely.", "min_words": 20},
+      "speak": {"prompt": "Buy three things from the Shopkeeper. Ask the price of each one, and finish with 'That's all, thanks.' There is no hurry; pause whenever you like.", "character": "wc_shopkeeper"},
+      "check": "How do you ask the price of one thing? And of two or more things?"
+    },
+    {
+      "id": "r1-l4", "title": "What you like, what you can do", "minutes": 25,
+      "pillar": "sentences",
+      "why": "Saying what you like and what you can do helps people get to know you, at work and with new friends.",
+      "rule": "Use can and a verb to say what you are able to do: I can cook. After can, the verb has no -s and no 'to': she can cook. The negative is can't. Use like to say what you enjoy; with he, she and it, say likes and doesn't like.",
+      "cards": ["r1-s-i-can", "r1-s-i-like", "r1-w-like", "r1-w-drive", "r1-w-cook", "r1-w-fish", "r1-w-cheese"],
+      "passage": {
+        "kind": "read",
+        "title": "The Thursday cooking class",
+        "text": "There is a cooking class in the town hall every Thursday. Leo goes every week. Leo can cook eggs and rice, but he can't cook fish. He likes fish a lot, so he wants to learn. His teacher, Rosa, can cook everything. She likes cheese, and she uses it in many dishes. Leo doesn't like cheese much, but he likes Rosa's cheese pie. After the class, Leo drives Rosa home. Rosa can't drive. She likes the bus, but there is no bus on Thursday evening. One week, Rosa asks, 'Can you cook fish now?' 'Yes, I can!' says Leo. 'But I can't cook it fast.' 'That's fine,' says Rosa. 'Slow cooking is good cooking.'",
+        "links": []
+      },
+      "drills": [
+        {"type": "gap", "sentence": "Rosa can't ___.", "options": ["drive", "drives", "to drive"], "answer": 0, "hint": "What does a verb look like after can or can't?", "why": "After can and can't, the verb has no -s and no 'to': she can't drive."},
+        {"type": "fix", "sentence": "He cans cook rice.", "answer": "He can cook rice.", "accept": [], "hint": "Can is a special verb. Does it change with he?", "why": "Can never takes -s: he can, she can."},
+        {"type": "fix", "sentence": "Leo don't like cheese.", "answer": "Leo doesn't like cheese.", "accept": ["Leo does not like cheese."], "hint": "Leo is 'he'.", "why": "With he, she and it, use doesn't: he doesn't like."},
+        {"type": "gap", "sentence": "She ___ cheese.", "options": ["like", "likes", "liking"], "answer": 1, "hint": "The subject is 'she'.", "why": "Like is a normal verb, so with she it takes -s: she likes."},
+        {"type": "choose", "prompt": "What can't Leo do at the start of the story?", "options": ["cook fish", "cook eggs", "drive"], "answer": 0, "hint": "Read the third sentence.", "why": "Leo can cook eggs and rice, but he can't cook fish, so he goes to the class."},
+        {"type": "order", "answer": "I can cook, but I can't drive.", "hint": "First the thing you can do, then the thing you can't.", "why": "I can ___, but I can't ___ puts two abilities side by side."},
+        {"type": "join", "parts": ["I can swim.", "I can't ride a bike."], "answers": ["I can swim, but I can't ride a bike.", "I can swim but I can't ride a bike."], "hint": "One is a yes, one is a no. Which small word links them?", "why": "'But' joins two ideas that are different, like can and can't."}
+      ],
+      "write": {"prompt": "Write about three things you can do, one thing you can't do, and two foods: one you like and one you don't like.", "min_words": 20},
+      "speak": {"prompt": "Tell the Guide what you can and can't do, and one food you like and one you don't. Say it in your own time; there is no need to be quick.", "character": "wc_guide"},
+      "check": "Do you say 'she can cooks' or 'she can cook'? Why?"
+    },
+    {
+      "id": "r1-l5", "title": "Where things are in town", "minutes": 25,
+      "pillar": "understanding",
+      "why": "Understanding where places are lets you find your way and help others find theirs.",
+      "rule": "Use there is for one thing and there are for two or more: there is a bank, there are two cafés. To say where something is, use near, next to, opposite, behind, in front of or between. Between needs two places joined with and: between the bank and the bookshop.",
+      "cards": ["r1-s-there-is", "r1-s-there-are", "r1-w-near", "r1-w-behind", "r1-w-between", "r1-w-opposite", "r1-p-next-to", "r1-p-in-front-of"],
+      "passage": {
+        "kind": "read",
+        "title": "Welcome to Market Town",
+        "text": "Welcome to Market Town! The market is in the main square. There are about thirty stalls in the square. There is a big old clock in front of the town hall. The bank is opposite the town hall, on the other side of the square. There is a small café between the bank and the bookshop. The café has good tea and cheap cakes. Behind the café, there is a car park. There are two supermarkets in the town, but they are not near the square. The train station is on Mill Street, next to the post office. It is a ten-minute walk from the market. There isn't a cinema in Market Town, but there is a library near the station. It opens at nine o'clock and closes at five.",
+        "links": [{"title": "Using 'there is' and 'there are'", "by": "British Council LearnEnglish", "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/a1-a2/using-there-there-are"}]
+      },
+      "drills": [
+        {"type": "choose", "prompt": "Where is the café?", "options": ["between the bank and the bookshop", "behind the town hall", "next to the station"], "answer": 0, "hint": "Find the sentence with the word 'café' in it.", "why": "The passage says there is a small café between the bank and the bookshop."},
+        {"type": "choose", "prompt": "What is behind the café?", "options": ["a car park", "a library", "the post office"], "answer": 0, "hint": "Look for the word 'behind'.", "why": "'Behind the café, there is a car park.'"},
+        {"type": "gap", "sentence": "There ___ two supermarkets in the town.", "options": ["is", "are", "am"], "answer": 1, "hint": "How many supermarkets?", "why": "Use there are for two or more things."},
+        {"type": "gap", "sentence": "The café is ___ the bank and the bookshop.", "options": ["between", "next", "in front"], "answer": 0, "hint": "There are two places here, joined with 'and'.", "why": "Between goes with two things: between A and B. 'Next' needs 'to', and 'in front' needs 'of'."},
+        {"type": "fix", "sentence": "There is three cafés near the market.", "answer": "There are three cafés near the market.", "accept": [], "hint": "Count the cafés.", "why": "Three is more than one, so use there are."},
+        {"type": "fix", "sentence": "The station is next the post office.", "answer": "The station is next to the post office.", "accept": [], "hint": "One small word is missing after 'next'.", "why": "Always say 'next to': next to the post office."},
+        {"type": "order", "answer": "There is a library near the station.", "hint": "Start with 'There'. The place comes at the end.", "why": "There is + a thing + where it is."},
+        {"type": "choose", "prompt": "Is there a cinema in Market Town?", "options": ["No, there isn't.", "Yes, there is.", "No, there aren't."], "answer": 0, "hint": "Read the sentence about the cinema. The question is about one cinema.", "why": "The passage says there isn't a cinema. A short answer to 'Is there...?' uses there is or there isn't."}
+      ],
+      "write": {"prompt": "Write about your street or a street you know. What is there? Where is it? Use there is, there are and two place words.", "min_words": 20},
+      "speak": {"prompt": "The Guide is new in your town. Tell them where three places are, using near, next to or opposite. Take all the time you need.", "character": "wc_guide"},
+      "check": "Do you say 'there is' or 'there are' for two banks? And which place word needs two things?"
+    },
+    {
+      "id": "r1-l6", "title": "Asking your way", "minutes": 25,
+      "pillar": "communicating",
+      "why": "Yes or no questions let you get what you need from a stranger, even with only a few words.",
+      "rule": "For a yes or no question with most verbs, start with Do or Does: Do you sell bread? Does she work here? With be, can and there is, move that word to the front: Is it far? Can you help me? Is there a bank near here? Short answers use the same word: Yes, I do. No, it isn't. Yes, there is.",
+      "cards": ["r1-s-do-you", "r1-s-is-there", "r1-p-excuse-me", "r1-p-is-it-far", "r1-p-on-the-left", "r1-p-say-again", "r1-p-of-course", "r1-w-station"],
+      "passage": {
+        "kind": "read",
+        "title": "Nadia needs a stamp",
+        "text": "Nadia is new in Market Town. She has a birthday card for her sister, and she needs a stamp. She stops at a stall in the market.\nNadia: Excuse me. Do you sell stamps?\nStallholder: No, I don't, sorry. Try the post office.\nNadia: Is there a post office near here?\nStallholder: Yes, there is. It's on Mill Street, next to the station. Go straight on, and Mill Street is on the left.\nNadia: Is it far?\nStallholder: No, it isn't. It's about ten minutes on foot.\nNadia: Sorry, can you say that again, please?\nStallholder: Of course. Go straight on. Mill Street is on the left. The post office is next to the station.\nNadia: Thank you! Do you know the opening time?\nStallholder: Yes, I do. It opens at nine, and it's nine o'clock now!",
+        "links": [{"title": "Question forms", "by": "British Council LearnEnglish", "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/a1-a2/question-forms"}]
+      },
+      "drills": [
+        {"type": "gap", "sentence": "___ you sell bread?", "options": ["Do", "Does", "Are"], "answer": 0, "hint": "The subject is 'you', and 'sell' is a normal verb.", "why": "With a normal verb and you, start the question with Do."},
+        {"type": "gap", "sentence": "___ there a bank near here?", "options": ["Is", "Are", "Do"], "answer": 0, "hint": "One bank. How does 'There is a bank' become a question?", "why": "Move 'is' to the front: There is a bank becomes Is there a bank?"},
+        {"type": "choose", "prompt": "Someone asks, 'Is it far?' It is near. What do you say?", "options": ["No, it isn't.", "No, it doesn't.", "No, I'm not."], "answer": 0, "hint": "The question starts with 'Is it'. Use the same words.", "why": "Short answers repeat the question's verb: Is it...? No, it isn't."},
+        {"type": "fix", "sentence": "Does she works at the market?", "answer": "Does she work at the market?", "accept": [], "hint": "Does already shows it is 'she'.", "why": "After Does, the verb has no -s: Does she work?"},
+        {"type": "order", "answer": "Excuse me, is there a café near here?", "hint": "Start politely, then ask about the place.", "why": "Excuse me + Is there ___ near here? is a polite way to ask a stranger."},
+        {"type": "choose", "prompt": "You don't understand the directions. What do you say?", "options": ["Sorry, can you say that again, please?", "Is it far?", "Of course."], "answer": 0, "hint": "You want to hear it one more time.", "why": "Asking someone to say it again is normal and polite. People are happy to repeat."},
+        {"type": "choose", "prompt": "Where is the post office?", "options": ["next to the station", "opposite the market", "behind the bank"], "answer": 0, "hint": "Read what the stallholder says after 'Yes, there is.'", "why": "The stallholder says the post office is on Mill Street, next to the station."},
+        {"type": "join", "parts": ["Go straight on.", "Mill Street is on the left."], "answers": ["Go straight on, and Mill Street is on the left.", "Go straight on and Mill Street is on the left."], "hint": "The second part comes after the first. Which small word adds it?", "why": "'And' links two steps in directions."}
+      ],
+      "write": {"prompt": "Write four yes or no questions you can ask in a new town, about shops, the station or the market. For example: Is there a bank near here?", "min_words": 16},
+      "speak": {"prompt": "You are new in town. Ask the Shopkeeper three yes or no questions: one about what they sell, one about where a place is, and one about how far it is. If you want to hear something again, ask. Pauses are fine.", "character": "wc_shopkeeper"},
+      "check": "How do you turn 'You sell bread' into a question? And 'There is a bank near here'?"
+    }
+  ],
+  "placement": [
+    {"id": "p1-1", "realm": 1, "type": "gap", "sentence": "She ___ at the bank every day.", "options": ["work", "works", "working"], "answer": 1},
+    {"id": "p1-2", "realm": 1, "type": "gap", "sentence": "There ___ two cafés near the station.", "options": ["is", "are", "be"], "answer": 1},
+    {"id": "p1-3", "realm": 1, "type": "choose", "prompt": "Which question is correct?", "options": ["Do you can swim?", "Can you swim?", "Are you can swim?"], "answer": 1}
+  ]
+}

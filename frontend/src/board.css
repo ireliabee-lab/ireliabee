@@ -1,0 +1,158 @@
+/* ── Idea boards: sticky notes on a cork wall ────────────────────────────────
+ * A wall of paper and pins, over cork, in a wooden frame. The notes are the
+ * only bright thing on the screen, so what someone wrote is what they see.
+ * Colours are fixed (paper is paper in any theme); the chrome follows the app.
+ */
+
+.board-wrap { display: flex; flex-direction: column; gap: 10px; height: 100%; min-height: 0; }
+
+/* The bar above the wall: where it is, what it is called, how notes land. */
+.board-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.board-bar .board-spacer { flex: 1 1 auto; }
+.board-title { flex: 0 1 320px; min-width: 160px; background: transparent; border: 1px solid transparent;
+  border-radius: 8px; padding: 6px 10px; color: var(--text); font-size: 15px; font-weight: 600; }
+.board-title:hover { border-color: var(--border-light); }
+.board-title:focus { outline: none; border-color: var(--primary); background: var(--surface); }
+.board-state { font-size: 12px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+.board-state.saving { color: var(--primary); }
+
+/* The wall itself: cork in a frame, scrolling under the notes.
+ *
+ * The wall is made of the theme's own colours — its surface, tinted with its
+ * accent — so it sits in the app rather than on top of it. The grain keeps the
+ * feel of cork without the brown. The paper does not follow the theme: a yellow
+ * sticky note is yellow everywhere, which is what makes the notes the brightest
+ * thing on the screen.
+ */
+.board-stage {
+  position: relative; flex: 1 1 auto; min-height: 0; display: flex;
+  /* The wall is the theme's own surface, lifted a little and tinted with the
+     theme's accent, so it belongs to whatever theme is on. The paper keeps its
+     own colours: a yellow sticky note is yellow in any theme. */
+  --cork: color-mix(in srgb, var(--surface-solid) 88%, rgb(var(--accent-rgb)) 12%);
+  --cork-dark: rgba(0, 0, 0, 0.13);
+  --cork-mid: rgba(0, 0, 0, 0.07);
+  --cork-light: rgba(var(--ink-rgb), 0.06);
+}
+.board-cork {
+  position: relative; flex: 1 1 auto; min-height: 420px; overflow: auto;
+  border: 0; border-radius: 0;              /* no frame, no rounded corners: just the wall */
+  background-color: var(--cork);
+  /* Cork grain: three sizes of fleck, and a soft light from the top left. */
+  background-image:
+    repeating-radial-gradient(circle at 0 0, var(--cork-dark) 0 1.2px, transparent 1.2px 6px),
+    repeating-radial-gradient(circle at 9px 7px, var(--cork-light) 0 1.4px, transparent 1.4px 8px),
+    repeating-radial-gradient(circle at 5px 13px, var(--cork-mid) 0 1px, transparent 1px 11px),
+    linear-gradient(160deg, rgba(var(--ink-rgb), 0.10), rgba(0, 0, 0, 0.12));
+  background-size: 13px 13px, 19px 19px, 27px 27px, auto;
+  cursor: default;
+}
+/* A note at 0,0 still has its pin and turn handle: they hang outside its paper,
+ * and a note is placed from inside this edge (an absolute box starts at the
+ * padding box, which a transparent border moves in). */
+.board-surface { position: relative; border: 0 solid transparent; border-top-width: 24px; border-left-width: 24px; }
+
+/* Said over the wall, not on it: it stays put however far the cork is scrolled. */
+.board-empty-layer { position: absolute; inset: 0; display: grid; place-items: start center;
+  padding-top: 64px; pointer-events: none; }
+
+.board-empty { pointer-events: auto; text-align: center; background: rgba(24, 16, 8, 0.6); color: #fff6e6;
+  padding: 18px 22px; border-radius: 14px; max-width: 420px; display: flex; flex-direction: column; gap: 6px;
+  align-items: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
+.board-empty p { margin: 0; }
+.board-empty .muted { color: rgba(255, 246, 230, 0.75); }
+
+/* ── One note ──────────────────────────────────────────────────────────────── */
+.sticky {
+  position: absolute; display: flex; flex-direction: column; padding: 20px 12px 10px;
+  color: #2b2b2b; font-size: 14.5px; line-height: 1.45;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.18), 0 10px 18px rgba(0, 0, 0, 0.16);
+  transition: box-shadow 0.12s ease, filter 0.12s ease;
+  transform-origin: 50% 50%;                /* it turns on its middle */
+  touch-action: none;                       /* the wall is dragged, not scrolled, over a note */
+  user-select: none;
+}
+.sticky:hover { box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 14px 26px rgba(0, 0, 0, 0.2); }
+/* Picked up: no border, just further off the wall and a touch brighter. */
+.sticky.picked { box-shadow: 0 6px 10px rgba(0, 0, 0, 0.22), 0 20px 38px rgba(0, 0, 0, 0.26); filter: brightness(1.03); }
+.sticky.writing { box-shadow: 0 7px 12px rgba(0, 0, 0, 0.24), 0 22px 42px rgba(0, 0, 0, 0.3); }
+/* Keyboard focus still shows: that ring is how someone tabbing knows where they are. */
+.sticky:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+
+/* Paper. A sticky note's own fold at the bottom right, and lined paper for notes. */
+.sticky-yellow { background: linear-gradient(#fff4b8, #ffe873); }
+.sticky-green  { background: linear-gradient(#d9f2c0, #c2e79c); }
+.sticky-blue   { background: linear-gradient(#cfe6ff, #a9d1ff); }
+.sticky-pink   { background: linear-gradient(#ffd7e8, #ffb9d5); }
+.sticky-orange { background: linear-gradient(#ffddb0, #ffc178); }
+.sticky-white  { background: linear-gradient(#ffffff, #f1f1f1); }
+.sticky-lined  { background-color: #fdfdfa;
+  background-image: repeating-linear-gradient(#fdfdfa 0 23px, #cfd8e3 23px 24px); }
+
+.sticky-pin { position: absolute; top: -9px; left: 50%; width: 16px; height: 16px; margin-left: -8px;
+  border-radius: 50%; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35), inset -2px -2px 3px rgba(0, 0, 0, 0.25),
+  inset 2px 2px 3px rgba(255, 255, 255, 0.55); }
+.pin-red    { background: radial-gradient(circle at 35% 30%, #ff8b7a, #d7362a); }
+.pin-blue   { background: radial-gradient(circle at 35% 30%, #8fc4ff, #1f6fd0); }
+.pin-green  { background: radial-gradient(circle at 35% 30%, #a7e6a0, #2f9142); }
+.pin-yellow { background: radial-gradient(circle at 35% 30%, #ffe08a, #e0a70d); }
+.pin-pink   { background: radial-gradient(circle at 35% 30%, #ffb3d9, #d63384); }
+.pin-white  { background: radial-gradient(circle at 35% 30%, #ffffff, #c4c4c4); }
+
+.sticky-text { flex: 1 1 auto; overflow: auto; white-space: pre-wrap; word-break: break-word;
+  font-family: "Caveat", "Segoe Print", "Bradley Hand", cursive; font-size: 19px; line-height: 1.35; }
+.sticky-lined .sticky-text { font-family: inherit; font-size: 14.5px; line-height: 24px; }
+.sticky-text.read { cursor: text; user-select: text; }
+.sticky-text.read:empty::before { content: "Write something…"; color: rgba(0, 0, 0, 0.35); }
+.sticky-empty { color: rgba(0, 0, 0, 0.35); }
+textarea.sticky-text { width: 100%; border: 0; background: transparent; resize: none; color: inherit;
+  padding: 0; outline: none; user-select: text; }
+
+.sticky-tools { position: absolute; top: 4px; right: 4px; display: flex; gap: 2px; }
+.sticky-btn, .sticky-palette summary { display: grid; place-items: center; width: 22px; height: 22px; cursor: pointer;
+  border: 0; border-radius: 6px; background: rgba(0, 0, 0, 0.06); color: #333; list-style: none; }
+.sticky-palette summary::-webkit-details-marker { display: none; }
+.sticky-btn:hover, .sticky-palette summary:hover { background: rgba(0, 0, 0, 0.14); }
+.sticky-palette { position: relative; }
+.sticky-swatches { position: absolute; top: 26px; right: 0; z-index: 5; width: 176px; padding: 10px;
+  display: flex; flex-direction: column; gap: 6px; }
+.sticky-kicker { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.sticky-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.sticky-swatch { width: 22px; height: 22px; border-radius: 6px; border: 1px solid rgba(0, 0, 0, 0.18); cursor: pointer; }
+.sticky-swatch.pin-red, .sticky-swatch.pin-blue, .sticky-swatch.pin-green,
+.sticky-swatch.pin-yellow, .sticky-swatch.pin-pink, .sticky-swatch.pin-white { border-radius: 50%; }
+.sticky-swatch.on { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* The corner you pull to turn a note on its pin. */
+.sticky-turn { position: absolute; top: -10px; left: -10px; width: 22px; height: 22px; display: grid;
+  place-items: center; border-radius: 50%; cursor: grab; color: #444;
+  background: rgba(255, 255, 255, 0.92); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
+.sticky-turn:active { cursor: grabbing; }
+
+/* The corner you pull to make a note bigger. */
+.sticky-grip { position: absolute; right: 0; bottom: 0; width: 18px; height: 18px; cursor: nwse-resize;
+  background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.18) 50%); border-bottom-right-radius: 3px; }
+
+/* ── The list of boards ─────────────────────────────────────────────────────── */
+.board-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.board-card { display: flex; flex-direction: column; gap: 6px; padding: 16px; text-align: left; cursor: pointer;
+  color: var(--text); font: inherit; }
+.board-card:hover { transform: translateY(-1px); }
+.board-card-pins { display: flex; gap: 5px; }
+.board-card-pins i { width: 10px; height: 10px; border-radius: 50%; }
+.board-card-title { font-size: 15px; }
+.board-card-preview { font-size: 13px; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; overflow: hidden; }
+.board-card-meta { font-size: 12px; }
+.board-blank { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 28px; text-align: center; }
+.board-blank p { margin: 0; max-width: 420px; }
+.board-open { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sticky, .board-card { transition: none; }
+}
+@media print {
+  .board-bar, .sticky-tools, .sticky-grip { display: none !important; }
+  .board-cork { border: 0; box-shadow: none; background: #fff; overflow: visible; }
+  .sticky { box-shadow: none; border: 1px solid #ccc; transform: none; }
+}

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-fit-reminder"
+description = "Enables the fit_reminder command without any pre-configured scope."
+commands.allow = ["fit_reminder"]
+
+[[permission]]
+identifier = "deny-fit-reminder"
+description = "Denies the fit_reminder command without any pre-configured scope."
+commands.deny = ["fit_reminder"]

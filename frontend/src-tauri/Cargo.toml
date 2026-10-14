@@ -1,0 +1,30 @@
+[package]
+name = "interview-coach"
+version = "0.3.1"
+edition = "2021"
+
+[lib]
+name = "interview_coach_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-shell = "2"
+tauri-plugin-process = "2"
+tauri-plugin-updater = "2"
+# Meeting reminders as system notifications (docs/meetings-and-reminders.md).
+tauri-plugin-notification = "2"
+# Start at login, hidden in the tray, so reminders come after a restart.
+tauri-plugin-autostart = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# One running copy at a time: a second launch focuses the first (audit 182-H2).
+tauri-plugin-single-instance = "2"
+# The per-launch token the app and its backend share.
+getrandom = "0.2"
+
+# URL parsing for the isolated link browser (already in Tauri dependency tree).
+url = "2"

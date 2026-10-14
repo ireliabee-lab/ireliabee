@@ -1,0 +1,39 @@
+# dependencies
+node_modules/
+.venv/
+venv/
+
+# build output
+frontend/dist/
+frontend/src-tauri/target/
+frontend/src-tauri/binaries/
+/build/
+/dist/
+*.spec.bak
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+
+# keys and signing material: never commit them
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.key
+
+# user data
+sessions.db
+sessions.db.bak.*
+
+# editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

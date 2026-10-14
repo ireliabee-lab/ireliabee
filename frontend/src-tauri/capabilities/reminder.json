@@ -1,0 +1,14 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "reminder",
+  "description": "The meeting-reminder window: shows one card and reports the choice back",
+  "windows": [
+    "reminder"
+  ],
+  "permissions": [
+    "core:default",
+    "core:window:allow-start-dragging",
+    "allow-fit-reminder",
+    "allow-reminder-choice"
+  ]
+}

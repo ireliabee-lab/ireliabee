@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-relay-bridge-command"
+description = "Enables the relay_bridge_command command without any pre-configured scope."
+commands.allow = ["relay_bridge_command"]
+
+[[permission]]
+identifier = "deny-relay-bridge-command"
+description = "Denies the relay_bridge_command command without any pre-configured scope."
+commands.deny = ["relay_bridge_command"]

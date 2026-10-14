@@ -1,0 +1,102 @@
+{
+  "realms": [
+    {
+      "id": 0, "name": "The Harbour", "cefr": "Pre-A1",
+      "blurb": "Your boat has just arrived. Everyone at the harbour is friendly, and all you need are your first words.",
+      "goal": "Say hello, say who you are, and name the things around you.",
+      "can_do": [
+        "I can greet someone and say goodbye.",
+        "I can say my name, where I am from and what I do.",
+        "I can count, and say prices and times.",
+        "I can name everyday things and people around me.",
+        "I can ask someone to repeat or speak more slowly."
+      ],
+      "landmarks": ["I am / you are / it is", "this and that", "a and the", "plurals", "my, your"],
+      "exit": {"title": "Meet the Guide", "description": "A short, friendly chat with the Guide: say hello, introduce yourself and answer a few simple questions. Then a recall check on the harbour's words.", "character": "wc_guide", "writing": false}
+    },
+    {
+      "id": 1, "name": "Market Town", "cefr": "A1",
+      "blurb": "The road from the harbour leads to a busy market. To get what you need, you have to ask.",
+      "goal": "Ask for and give simple information about everyday life.",
+      "can_do": [
+        "I can talk about my daily routine.",
+        "I can ask for things in a shop and understand the price.",
+        "I can say what I like and what I can do.",
+        "I can ask and answer simple questions about people, places and things.",
+        "I can describe where things are."
+      ],
+      "landmarks": ["present simple", "can / can't", "there is / there are", "yes / no questions", "prepositions of place"],
+      "exit": {"title": "A day at the market", "description": "Buy what you need from the Shopkeeper: ask, check prices, and sort out one small problem. Then a recall check on the market's words and phrases.", "character": "wc_shopkeeper", "writing": false}
+    },
+    {
+      "id": 2, "name": "The Crossroads", "cefr": "A2",
+      "blurb": "Paths lead in every direction. Here you learn to tell people where you have been and where you are going.",
+      "goal": "Describe your past, your routines and your plans, and ask direct questions.",
+      "can_do": [
+        "I can say what I did yesterday, last week or last year.",
+        "I can describe my plans for the weekend or next year.",
+        "I can ask questions with who, what, where, when, why and how.",
+        "I can compare two things, places or people.",
+        "I can write a short message or note about everyday things."
+      ],
+      "landmarks": ["past simple", "direct wh- questions", "comparatives and superlatives", "going to", "adverbs of frequency"],
+      "exit": {"title": "Getting to know the Neighbour", "description": "Talk with the Neighbour about your life, your past and your plans, and ask questions back. Write a short message inviting them somewhere.", "character": "wc_neighbour", "writing": true}
+    },
+    {
+      "id": 3, "name": "The Bridge", "cefr": "B1",
+      "blurb": "The bridge joins everyday talk to the working world. Crossing it means telling stories and giving reasons.",
+      "goal": "Tell a story, give opinions with reasons, and handle most work and travel conversations.",
+      "can_do": [
+        "I can tell a story or describe an experience in order.",
+        "I can give my opinion and a reason for it.",
+        "I can ask polite, indirect questions.",
+        "I can explain a problem and ask for help at work.",
+        "I can write a clear email about a familiar topic."
+      ],
+      "landmarks": ["present perfect", "indirect questions", "first and second conditionals", "linking words", "past continuous"],
+      "exit": {"title": "A problem at work", "description": "Explain a problem to the Colleague, give your view with reasons, and agree the next step. Write an email that sums it up.", "character": "wc_colleague", "writing": true}
+    },
+    {
+      "id": 4, "name": "The City", "cefr": "B2",
+      "blurb": "The city is loud with opinions. To be heard, you need to argue clearly and listen well.",
+      "goal": "Argue a point of view, weigh advantages and disadvantages, and take part in meetings.",
+      "can_do": [
+        "I can argue for a view and answer objections.",
+        "I can compare the advantages and disadvantages of options.",
+        "I can report what other people said.",
+        "I can take part in a meeting: interrupt politely, agree, disagree.",
+        "I can write a clear, organised argument."
+      ],
+      "landmarks": ["reported speech", "the passive", "relative clauses", "third conditional", "phrasal verbs"],
+      "exit": {"title": "The great debate", "description": "Debate a question with the Debater: state your view, give evidence, handle the other side politely. Write a short argument.", "character": "wc_debater", "writing": true}
+    },
+    {
+      "id": 5, "name": "The Summit", "cefr": "C1",
+      "blurb": "The air is thin at the summit. Every word counts, and precision is what gets you heard.",
+      "goal": "Speak and write precisely for work and study, with clear structure and the right tone.",
+      "can_do": [
+        "I can express how sure I am, from certain to doubtful.",
+        "I can structure a talk or report so it is easy to follow.",
+        "I can change my tone for formal and informal situations.",
+        "I can answer hard questions with evidence.",
+        "I can summarise a complex text accurately."
+      ],
+      "landmarks": ["hedging", "cleft sentences for emphasis", "nominalisation", "register", "discourse markers"],
+      "exit": {"title": "The interview", "description": "A hard interview for a job you want: tell your story with evidence and handle difficult questions. Write a structured report.", "character": "wc_interviewer", "writing": true}
+    },
+    {
+      "id": 6, "name": "The Grand Hall", "cefr": "C2",
+      "blurb": "The Grand Hall is where people come to be persuaded. Here you speak to a room.",
+      "goal": "Persuade, explain between people, and adapt your language to any audience.",
+      "can_do": [
+        "I can persuade an audience with a clear message and good evidence.",
+        "I can explain a complex idea simply for people who are new to it.",
+        "I can help two people with different views understand each other.",
+        "I can use idiom, irony and nuance when they help, and avoid them when they don't.",
+        "I can write persuasively for a specific reader."
+      ],
+      "landmarks": ["rhetorical structure", "nuance and connotation", "idiom", "mediation", "concision"],
+      "exit": {"title": "Speak to the hall", "description": "Give a short talk to the Audience and take their questions. Write a persuasive piece for a named reader.", "character": "wc_audience", "writing": true}
+    }
+  ]
+}

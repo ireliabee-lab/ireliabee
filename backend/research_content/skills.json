@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "pillars": [
+    {
+      "id": "read",
+      "name": "Read",
+      "skills": [
+        {"id": "three-pass-reading", "name": "Three-pass reading", "level": 1, "description": "Read a paper in three passes of increasing depth, stopping when you have what you need."},
+        {"id": "paper-cards", "name": "Paper cards", "level": 1, "description": "Capture each paper's question, method, result with size and uncertainty, limitation and your own critique on one card."},
+        {"id": "literature-search", "name": "Literature search", "level": 1, "description": "Find the key papers on a topic using search engines, citation trails and reference lists."},
+        {"id": "field-map", "name": "Field map", "level": 1, "description": "Organise about thirty papers into groups that show the main ideas, debates and gaps in a field."},
+        {"id": "reading-figures", "name": "Reading figures and tables", "level": 1, "description": "Work out what a figure or table shows, including axes, units, error bars and sample sizes, before reading the text about it."},
+        {"id": "critical-appraisal", "name": "Critical appraisal", "level": 1, "description": "Judge whether a paper's claims are supported by its design, data and analysis."},
+        {"id": "reading-statistics", "name": "Reading statistics", "level": 3, "description": "Interpret effect sizes, confidence intervals and p-values correctly and spot common misuses."}
+      ]
+    },
+    {
+      "id": "think",
+      "name": "Think",
+      "skills": [
+        {"id": "problem-selection", "name": "Choosing important problems", "level": 0, "description": "Judge whether a problem is important, open and within reach before committing time to it."},
+        {"id": "question-framing", "name": "Framing a research question", "level": 2, "description": "Turn a broad interest into a specific question that a study could answer."},
+        {"id": "hypothesis-formulation", "name": "Forming hypotheses", "level": 2, "description": "State a testable hypothesis and the prediction that would show it to be wrong."},
+        {"id": "operationalising-constructs", "name": "Operationalising constructs", "level": 3, "description": "Choose measures that capture the concept you care about, and argue for their validity."},
+        {"id": "spotting-confounds", "name": "Spotting confounds", "level": 3, "description": "Identify third variables and alternative explanations that could produce a result."},
+        {"id": "causal-reasoning", "name": "Causal reasoning", "level": 3, "description": "Judge what kind of design is needed to support a claim about cause and effect."},
+        {"id": "reasoning-under-uncertainty", "name": "Reasoning under uncertainty", "level": 3, "description": "Weigh evidence by its strength and state conclusions with honest uncertainty."}
+      ]
+    },
+    {
+      "id": "do",
+      "name": "Do",
+      "skills": [
+        {"id": "study-design", "name": "Study design", "level": 3, "description": "Choose a design, conditions, sample and measures that can answer the research question."},
+        {"id": "baselines-and-ablations", "name": "Baselines and ablations", "level": 3, "description": "Compare against fair baselines and remove components to find out what drives a result."},
+        {"id": "sample-size-planning", "name": "Sample size planning", "level": 3, "description": "Use a power analysis or other justification to decide how much data to collect."},
+        {"id": "preregistering", "name": "Preregistering a study", "level": 3, "description": "Write down hypotheses, design and analysis plan before collecting or examining data."},
+        {"id": "data-analysis", "name": "Data analysis", "level": 3, "description": "Clean, explore and analyse data, keeping planned and exploratory analyses clearly apart."},
+        {"id": "reproducible-pipeline", "name": "Reproducible pipeline", "level": 3, "description": "Build an analysis that someone else can rerun from raw data to final figures."},
+        {"id": "running-a-project", "name": "Running a project", "level": 6, "description": "Carry a project from question to published result, adjusting plans as evidence comes in."}
+      ]
+    },
+    {
+      "id": "write",
+      "name": "Write",
+      "skills": [
+        {"id": "note-taking", "name": "Research note-taking", "level": 0, "description": "Keep dated, searchable notes on what you read, did and decided."},
+        {"id": "writing-an-abstract", "name": "Writing an abstract", "level": 4, "description": "Summarise question, method, main result with its size and conclusion in one short paragraph."},
+        {"id": "structuring-a-paper", "name": "Structuring a paper", "level": 4, "description": "Organise a paper so each section does its job and the argument is easy to follow."},
+        {"id": "writing-related-work", "name": "Writing related work", "level": 4, "description": "Place your study among prior work and make clear what is new."},
+        {"id": "hedging-claims", "name": "Hedging claims", "level": 4, "description": "Match the strength of every claim to the strength of its evidence."},
+        {"id": "figure-design", "name": "Figure design", "level": 4, "description": "Make figures with clear axes, honest scales and captions that stand on their own."},
+        {"id": "responding-to-reviewers", "name": "Responding to reviewers", "level": 4, "description": "Answer each reviewer comment politely and specifically, with changes or reasoned disagreement."},
+        {"id": "writing-a-proposal", "name": "Writing a proposal", "level": 6, "description": "Write a research or funding proposal that states the problem, approach, risks and measures of success."}
+      ]
+    },
+    {
+      "id": "speak",
+      "name": "Speak",
+      "skills": [
+        {"id": "research-vocabulary", "name": "Research vocabulary", "level": 0, "description": "Use core research terms correctly and naturally in speech."},
+        {"id": "discuss-research", "name": "Discussing research", "level": 0, "description": "Talk about research ideas and findings clearly with a supervisor or peer."},
+        {"id": "present-a-paper", "name": "Presenting a paper", "level": 1, "description": "Present someone else's paper to a group, covering its claim, evidence and weaknesses."},
+        {"id": "answering-questions", "name": "Answering questions", "level": 1, "description": "Answer questions directly, say what you do not know, and avoid defensive replies."},
+        {"id": "elevator-pitch", "name": "Research pitch", "level": 5, "description": "Explain your research and why it matters in under a minute to a non-specialist."},
+        {"id": "conference-talk", "name": "Conference talk", "level": 5, "description": "Give a timed talk on your own work with a clear take-home message."},
+        {"id": "handling-critique", "name": "Handling critique", "level": 6, "description": "Defend your work under hard questioning while conceding valid points."}
+      ]
+    },
+    {
+      "id": "operate",
+      "name": "Operate",
+      "skills": [
+        {"id": "how-research-works", "name": "How research works", "level": 0, "description": "Explain the research cycle, the roles in a lab and how work moves from idea to publication."},
+        {"id": "learning-how-to-learn", "name": "Learning how to learn", "level": 0, "description": "Use retrieval practice and spaced repetition to keep what you study."},
+        {"id": "reference-management", "name": "Reference management", "level": 0, "description": "Keep every source in a reference manager with notes and tags from the first day."},
+        {"id": "lab-notebook-keeping", "name": "Keeping a lab notebook", "level": 0, "description": "Record work, decisions and failures at the time they happen."},
+        {"id": "version-control", "name": "Version control", "level": 3, "description": "Track changes to code and text so any result can be traced to the version that made it."},
+        {"id": "data-management", "name": "Data management", "level": 3, "description": "Store, document, protect and share data according to a written plan."},
+        {"id": "ethics-process", "name": "Ethics process", "level": 3, "description": "Prepare an ethics application, consent materials and data protection measures before a study starts."},
+        {"id": "peer-reviewing", "name": "Peer reviewing", "level": 6, "description": "Write a fair, specific and useful review of another researcher's manuscript."},
+        {"id": "project-planning", "name": "Project planning", "level": 6, "description": "Plan a year of research with milestones, risks and checks on progress."}
+      ]
+    }
+  ]
+}

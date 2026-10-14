@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "id": "statistical-modelling",
+  "name": "Statistics and classic machine learning",
+  "description": "Regression, classification, validation, how models are fitted, mixed-effects models and language-model surprisal: the working toolkit of quantitative speech research.",
+  "terms": [
+    {"id": "linear-regression", "term": "Linear regression", "group": "Statistics and classic machine learning", "definition": "A model that predicts a numeric outcome as a weighted sum of predictors plus an intercept.", "example": "We used linear regression to predict log pause length from word length and frequency.", "misuse": "Linear means linear in the weights; predictors can still be curved, such as a squared term.", "when": "Use it for a numeric outcome and as the first model to try.", "related": ["coefficient", "residual", "ordinary-least-squares", "regression"]},
+    {"id": "coefficient", "term": "Coefficient", "group": "Statistics and classic machine learning", "definition": "The weight a model gives a predictor: how much the prediction changes when that predictor goes up by one unit, others held fixed.", "example": "The coefficient for surprisal was 0.08: each extra bit raised log odds of stuttering by 0.08.", "misuse": "A coefficient is not a causal effect unless the design supports one, and its size depends on the predictor's units.", "when": "Use it when you report what a model learned about one predictor.", "related": ["linear-regression", "odds-ratio"]},
+    {"id": "intercept", "term": "Intercept", "group": "Statistics and classic machine learning", "definition": "The model's prediction when every predictor is zero.", "example": "After centring word length, the intercept is the predicted pause for an average-length word.", "misuse": "If zero is impossible for a predictor, the raw intercept means little; centre the predictor first.", "when": "Use it when you read or report a fitted model.", "related": ["coefficient", "centring"]},
+    {"id": "centring", "term": "Centring", "group": "Statistics and classic machine learning", "definition": "Subtracting a predictor's mean so that zero means an average value.", "example": "We centred frequency and surprisal so the intercept describes a typical word.", "misuse": "Centring does not change the slope; it changes what the intercept means and can make interactions easier to read.", "when": "Use it before fitting models with an intercept you want to interpret, or with interactions.", "related": ["intercept", "standardising"]},
+    {"id": "standardising", "term": "Standardising", "group": "Statistics and classic machine learning", "definition": "Centring a predictor and dividing by its standard deviation, so one unit means one standard deviation.", "example": "With standardised predictors we can compare the size of the surprisal and length coefficients.", "misuse": "Fit the mean and standard deviation on training data only, or you leak test information.", "when": "Use it when predictors have very different scales.", "related": ["centring", "data-leakage"]},
+    {"id": "residual", "term": "Residual", "group": "Statistics and classic machine learning", "definition": "The difference between an observed value and the model's prediction for it.", "example": "Plotting residuals by speaker showed that two speakers were badly fitted.", "misuse": "Small residuals on training data do not mean the model will predict new data well.", "when": "Use it when you check whether a model fits and where it fails.", "related": ["linear-regression", "r-squared"]},
+    {"id": "r-squared", "term": "R-squared", "group": "Statistics and classic machine learning", "definition": "The share of the outcome's variance that a regression explains, from 0 to 1.", "example": "Word length alone explained little of the variance in pause length (R-squared 0.04).", "misuse": "A low R-squared does not make an effect unimportant, and a high one does not make a model right.", "when": "Use it to describe how much of the variation a model captures.", "related": ["residual", "linear-regression"]},
+    {"id": "ordinary-least-squares", "term": "Ordinary least squares", "group": "Statistics and classic machine learning", "definition": "Fitting a linear regression by choosing the weights that make the sum of squared residuals as small as possible.", "example": "The ordinary least squares fit and gradient descent gave the same weights to three decimals.", "misuse": "It is one way to fit, not the model itself; the same model can be fitted other ways.", "when": "Use it when you say how a linear model's weights were found.", "related": ["linear-regression", "residual", "cost-function"]},
+    {"id": "logistic-regression", "term": "Logistic regression", "group": "Statistics and classic machine learning", "definition": "A model for a yes-or-no outcome that predicts the log odds of yes as a weighted sum of predictors.", "example": "Logistic regression predicted whether each word was stuttered from its surprisal and length.", "misuse": "Despite the name it is a classification model; its coefficients are on the log-odds scale, not probabilities.", "when": "Use it for binary outcomes such as stuttered or fluent.", "related": ["log-odds", "odds-ratio", "coefficient"]},
+    {"id": "log-odds", "term": "Log odds", "group": "Statistics and classic machine learning", "definition": "The logarithm of p divided by 1 minus p; it runs from minus to plus infinity, which lets a linear model predict it.", "example": "A probability of 0.5 is log odds 0; 0.88 is about log odds 2.", "misuse": "Equal steps in log odds are not equal steps in probability; convert before you describe effects to a general audience.", "when": "Use it when you read logistic regression output.", "related": ["logistic-regression", "odds-ratio"]},
+    {"id": "odds-ratio", "term": "Odds ratio", "group": "Statistics and classic machine learning", "definition": "How much the odds of an outcome are multiplied when a predictor goes up by one unit; the exponent of a logistic coefficient.", "example": "Each extra bit of surprisal multiplied the odds of stuttering by 1.08.", "misuse": "Doubling the odds is not doubling the probability, unless the outcome is rare.", "when": "Use it to report logistic regression effects in a readable way.", "related": ["log-odds", "coefficient"]},
+    {"id": "decision-threshold", "term": "Decision threshold", "group": "Statistics and classic machine learning", "definition": "The predicted probability above which a classifier says yes.", "example": "Because stutters are rare, a 0.5 threshold labelled almost nothing as stuttered.", "misuse": "0.5 is a default, not a rule; the right threshold depends on the cost of each kind of mistake.", "when": "Use it when you turn predicted probabilities into labels.", "related": ["logistic-regression"]},
+    {"id": "k-fold-cross-validation", "term": "K-fold cross-validation", "group": "Statistics and classic machine learning", "definition": "Splitting data into k parts, training on k minus 1 and testing on the one left out, k times, then averaging.", "example": "Five-fold cross-validation gave a mean accuracy of 0.71 with a spread of 0.03.", "misuse": "If the same speaker lands in training and test folds, the score will be too optimistic.", "when": "Use it to estimate how well a model generalises when data is limited.", "related": ["cross-validation", "group-k-fold"]},
+    {"id": "group-k-fold", "term": "Grouped cross-validation", "group": "Statistics and classic machine learning", "definition": "Cross-validation that keeps every example from one group, such as one speaker, in the same fold.", "example": "With grouped cross-validation by speaker, accuracy fell from 0.81 to 0.68: the model had been recognising speakers.", "misuse": "Grouping by the wrong unit, such as recording session when speakers repeat, still leaks.", "when": "Use it whenever one person or source contributes many examples.", "related": ["k-fold-cross-validation", "held-out-data"]},
+    {"id": "cost-function", "term": "Cost function", "group": "Statistics and classic machine learning", "definition": "The number a fitting method tries to make as small as possible, such as the mean squared error.", "example": "For logistic regression the cost function is the log loss over all words.", "misuse": "The cost you optimise is not always the measure you report; say which is which.", "when": "Use it when you explain how a model is trained.", "related": ["ordinary-least-squares", "gradient-descent-step"]},
+    {"id": "gradient-descent-step", "term": "Gradient descent step", "group": "Statistics and classic machine learning", "definition": "One update that moves each weight a little in the direction that lowers the cost fastest, by the learning rate times the slope.", "example": "After 500 gradient descent steps the weights matched the least squares solution.", "misuse": "Too large a step overshoots and diverges; too small never arrives.", "when": "Use it when you explain how weights change during training.", "related": ["cost-function"]},
+    {"id": "ridge-and-lasso", "term": "Ridge and lasso", "group": "Statistics and classic machine learning", "definition": "Regression with a penalty on large weights: ridge shrinks them all, lasso can shrink some exactly to zero.", "example": "Lasso kept four of the twelve lexical predictors.", "misuse": "Penalised coefficients are shrunk on purpose, so do not read them as unbiased effect sizes.", "when": "Use them when you have many predictors or they are strongly correlated.", "related": ["overfitting", "coefficient"]},
+    {"id": "fixed-effect", "term": "Fixed effect", "group": "Statistics and classic machine learning", "definition": "A predictor whose effect you want to estimate and generalise, such as surprisal or word length.", "example": "Surprisal entered the model as a fixed effect, with word length and frequency as controls.", "misuse": "The term means different things in economics and psychology; say what you mean in your own methods.", "when": "Use it when you describe the effects a mixed model estimates.", "related": ["random-intercept", "mixed-effects-model"]},
+    {"id": "random-intercept", "term": "Random intercept", "group": "Statistics and classic machine learning", "definition": "A separate baseline for each group (each speaker, each word), drawn from a shared distribution the model also estimates.", "example": "A random intercept for speaker let some people stutter more overall without distorting the surprisal effect.", "misuse": "Leaving it out when groups repeat treats hundreds of words from one person as independent evidence.", "when": "Use it whenever observations are grouped by speaker, item or session.", "related": ["random-slope", "mixed-effects-model", "repeated-measures"]},
+    {"id": "random-slope", "term": "Random slope", "group": "Statistics and classic machine learning", "definition": "Letting the effect of a predictor vary from group to group, such as surprisal mattering more for some speakers.", "example": "We added a random slope of surprisal by speaker to test whether the effect differs between people.", "misuse": "Too many random slopes on little data make models fail to converge; simplify with a reason, not at random.", "when": "Use it when you expect or want to test that an effect differs between groups.", "related": ["random-intercept", "mixed-effects-model"]},
+    {"id": "repeated-measures", "term": "Repeated measures", "group": "Statistics and classic machine learning", "definition": "Data where the same person or item is measured many times, so observations are not independent.", "example": "Every speaker contributes hundreds of words, so this is a repeated-measures design.", "misuse": "Averaging each person to one number throws away information; a mixed model keeps it.", "when": "Use it to explain why ordinary regression is not enough for your data.", "related": ["random-intercept", "within-subjects"]},
+    {"id": "convergence-warning", "term": "Convergence warning", "group": "Statistics and classic machine learning", "definition": "A message that a fitting method did not settle on a stable answer; the numbers it printed may be wrong.", "example": "The full model gave a convergence warning, so we removed the random slope with the smallest variance and refitted.", "misuse": "Never ignore it and report the numbers anyway.", "when": "Use it when you describe problems fitting a mixed model and how you handled them.", "related": ["random-slope"]},
+    {"id": "subword-token", "term": "Subword token", "group": "Statistics and classic machine learning", "definition": "A piece of a word that a language model reads as one unit; rare words are split into several.", "example": "GPT-2 splits 'stuttering' into two tokens, so its surprisal is the sum of both.", "misuse": "A token is not a word; to get word surprisal, add up the surprisal of the word's tokens.", "when": "Use it when you compute word-level values from a language model.", "related": ["word-surprisal", "tokenisation"]},
+    {"id": "word-surprisal", "term": "Word surprisal", "group": "Statistics and classic machine learning", "definition": "Minus the log probability of a word given the words before it, from a language model; the sum over the word's tokens.", "example": "Word surprisal was computed with GPT-2 from the intended-speech transcript.", "misuse": "It depends on the model and the context given; report both.", "when": "Use it when you measure how predictable each word is in context.", "related": ["surprisal", "subword-token", "log-probability"]}
+  ],
+  "resources": [
+    {"title": "An Introduction to Statistical Learning, with Applications in Python", "by": "Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani and Jonathan Taylor", "url": "https://www.statlearning.com/", "kind": "book", "level": 3, "why": "Regression, classification and resampling explained clearly, with Python labs; free from the authors."},
+    {"title": "StatQuest", "by": "Josh Starmer", "url": "https://statquest.org/", "kind": "video", "level": 3, "why": "Short, clear videos on regression, logistic regression and cross-validation."},
+    {"title": "scikit-learn user guide", "by": "scikit-learn", "url": "https://scikit-learn.org/stable/user_guide.html", "kind": "guide", "level": 3, "why": "The standard Python library for classic machine learning."},
+    {"title": "Hands-On Machine Learning, 2nd edition (chapters 3 and 4)", "by": "Aurélien Géron", "url": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/", "kind": "book", "level": 3, "why": "Classification and how models are trained, including gradient descent and regularisation."},
+    {"title": "Practical Statistics for Data Scientists, 2nd edition (chapters 4 and 5)", "by": "Peter Bruce, Andrew Bruce and Peter Gedeck", "url": "https://www.oreilly.com/library/view/practical-statistics-for/9781492072935/", "kind": "book", "level": 3, "why": "Regression and classification from a statistician's side."},
+    {"title": "Statistics for Linguists: An Introduction Using R", "by": "Bodo Winter", "url": "https://doi.org/10.4324/9781315165547", "kind": "book", "level": 3, "why": "Regression and mixed-effects models taught on speech and language data."},
+    {"title": "Fitting Linear Mixed-Effects Models Using lme4", "by": "Douglas Bates, Martin Mächler, Ben Bolker and Steve Walker", "url": "https://www.jstatsoft.org/article/view/v067i01", "kind": "paper", "level": 3, "why": "The reference for the R package most speech science papers use."},
+    {"title": "Linear mixed effects models", "by": "statsmodels", "url": "https://www.statsmodels.org/stable/mixed_linear.html", "kind": "guide", "level": 3, "why": "Mixed models in Python, if you stay out of R."},
+    {"title": "Hugging Face course", "by": "Hugging Face", "url": "https://huggingface.co/learn/llm-course", "kind": "course", "level": 3, "why": "Loading pretrained language models and working with their tokens."},
+    {"title": "GPT-2 model card", "by": "OpenAI and Hugging Face", "url": "https://huggingface.co/openai-community/gpt2", "kind": "guide", "level": 3, "why": "The model most surprisal studies use, and its limits."}
+  ],
+  "lessons": [
+    {
+      "id": "sm-1", "level": 3, "title": "Linear regression, and reading its output", "minutes": 75, "pillar": "do",
+      "why": "Regression is the everyday tool of quantitative research, and nearly every model later is a version of it.",
+      "read": [
+        {"title": "An Introduction to Statistical Learning (Python), chapters 2 and 3", "by": "James, Witten, Hastie, Tibshirani and Taylor", "url": "https://www.statlearning.com/"},
+        {"title": "Linear regression, clearly explained", "by": "StatQuest", "url": "https://statquest.org/"}
+      ],
+      "do": "Predict log pause length before fluent words from word length and word frequency with statsmodels. Centre both predictors, then write one sentence for each coefficient and for the intercept, and plot the residuals by speaker.",
+      "speak": "Explain your model's two coefficients out loud as you would to a supervisor, including their units.",
+      "check": "Can you say what the intercept means after centring, and did the residual plot show any speaker the model fits badly?",
+      "terms": ["linear-regression", "coefficient", "intercept", "centring", "residual", "r-squared"],
+      "skills": ["data-analysis", "reading-statistics"]
+    },
+    {
+      "id": "sm-2", "level": 3, "title": "Classification and logistic regression", "minutes": 75, "pillar": "do",
+      "why": "Most questions about stuttering are yes-or-no at the word level: was this word stuttered or not?",
+      "read": [
+        {"title": "An Introduction to Statistical Learning (Python), chapter 4", "by": "James, Witten, Hastie, Tibshirani and Taylor", "url": "https://www.statlearning.com/"},
+        {"title": "Hands-On Machine Learning, 2nd edition, chapter 3", "by": "Aurélien Géron", "url": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/"}
+      ],
+      "do": "Fit a logistic regression predicting whether a word is disfluent from its length and position. Report each effect as an odds ratio, then compare accuracy at thresholds of 0.5 and at the observed disfluency rate.",
+      "speak": "Explain an odds ratio of 1.3 to someone with no statistics, and why accuracy alone misleads when disfluent words are rare.",
+      "check": "Did you report odds ratios with confidence intervals, and state the base rate of disfluent words?",
+      "terms": ["logistic-regression", "log-odds", "odds-ratio", "decision-threshold"],
+      "skills": ["data-analysis", "reading-statistics"]
+    },
+    {
+      "id": "sm-3", "level": 3, "title": "Validation without fooling yourself", "minutes": 60, "pillar": "do",
+      "why": "A model scored on data it has already seen, or on the same speakers, looks better than it is.",
+      "read": [
+        {"title": "An Introduction to Statistical Learning (Python), chapter 5", "by": "James, Witten, Hastie, Tibshirani and Taylor", "url": "https://www.statlearning.com/"},
+        {"title": "GroupKFold", "by": "scikit-learn", "url": "https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GroupKFold.html"}
+      ],
+      "do": "Score your logistic regression with ordinary five-fold cross-validation, then with five-fold cross-validation grouped by speaker. Put the two scores side by side and write three sentences on the gap.",
+      "speak": "In one minute, explain why the grouped score is the one to report.",
+      "check": "Is every preprocessing step, including standardising, fitted inside each training fold only?",
+      "terms": ["k-fold-cross-validation", "group-k-fold", "held-out-data", "standardising", "overfitting"],
+      "skills": ["study-design", "spotting-confounds"]
+    },
+    {
+      "id": "sm-4", "level": 3, "title": "How a model is fitted: cost, gradients and penalties", "minutes": 90, "pillar": "think",
+      "why": "Knowing what training does lets you read methods sections, spot failures and later understand neural networks.",
+      "read": [
+        {"title": "Hands-On Machine Learning, 2nd edition, chapter 4", "by": "Aurélien Géron", "url": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/"},
+        {"title": "An Introduction to Statistical Learning (Python), chapter 6 (ridge and lasso)", "by": "James, Witten, Hastie, Tibshirani and Taylor", "url": "https://www.statlearning.com/"}
+      ],
+      "do": "Write gradient descent for linear regression in NumPy, about 15 lines. Run it with three learning rates, plot the cost against steps for each, and check that the final weights match statsmodels.",
+      "speak": "Explain what one gradient descent step does, using the picture of walking downhill in fog.",
+      "check": "What happened with the largest learning rate, and why?",
+      "terms": ["cost-function", "gradient-descent-step", "ordinary-least-squares", "ridge-and-lasso"],
+      "skills": ["data-analysis"]
+    },
+    {
+      "id": "sm-5", "level": 3, "title": "Mixed-effects models for repeated measures", "minutes": 90, "pillar": "do",
+      "why": "Speech data has many words per speaker and many speakers per word; mixed models are how speech science handles that.",
+      "read": [
+        {"title": "Statistics for Linguists: An Introduction Using R (the mixed-models chapters)", "by": "Bodo Winter", "url": "https://doi.org/10.4324/9781315165547"},
+        {"title": "Fitting Linear Mixed-Effects Models Using lme4", "by": "Bates, Mächler, Bolker and Walker", "url": "https://www.jstatsoft.org/article/view/v067i01"}
+      ],
+      "do": "Refit your logistic model as a mixed model with random intercepts for speaker and for word (lme4 in R, or statsmodels in Python). Compare the fixed-effect estimates and their standard errors with the plain model.",
+      "speak": "Explain in two minutes why ignoring speakers made the plain model overconfident.",
+      "check": "Did the model converge without warnings, and can you say what each random effect accounts for?",
+      "terms": ["mixed-effects-model", "fixed-effect", "random-intercept", "random-slope", "repeated-measures", "convergence-warning"],
+      "skills": ["data-analysis", "reading-statistics", "study-design"]
+    },
+    {
+      "id": "sm-6", "level": 3, "title": "Word surprisal from a language model", "minutes": 90, "pillar": "do",
+      "why": "Surprisal turns a language model into a measurement tool for how predictable each word is, the predictor behind recent work on information load and stuttering.",
+      "read": [
+        {"title": "Hugging Face course, chapters 1 and 2", "by": "Hugging Face", "url": "https://huggingface.co/learn/llm-course"},
+        {"title": "GPT-2 model card", "by": "OpenAI and Hugging Face", "url": "https://huggingface.co/openai-community/gpt2"}
+      ],
+      "do": "Load GPT-2 with the transformers library on your own computer. For ten sentences, compute each token's surprisal in bits, add tokens back up into words, and print a table of word, tokens and surprisal. Check that a very predictable word scores low.",
+      "speak": "Explain why a word split into three tokens gets the sum of three surprisals, not the average.",
+      "check": "Did you give the model the preceding context, handle the first word of each segment, and run everything locally without sending data to an online service?",
+      "terms": ["word-surprisal", "subword-token", "surprisal", "log-probability", "language-model"],
+      "skills": ["data-analysis", "reproducible-pipeline"]
+    }
+  ]
+}

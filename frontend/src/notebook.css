@@ -1,0 +1,1445 @@
+/*
+ * The Notebook (specs 184/185). Two papers, each with a light and a dark face so
+ * it sits in whichever app theme is on:
+ *
+ *   .nb-paper-classic  lectures and reading notes — ruled paper, margin line,
+ *                      highlighter, term cards, example stickies (the owner's choice)
+ *   .nb-paper-modern   meetings — a dot-grid board of coloured cards
+ *
+ * The app's Paper theme is light; every other theme is dark. The user's font
+ * choice arrives as --nb-font / --nb-size / --nb-weight / --nb-italic / --nb-line
+ * (lib/notebook.ts styleVars). Colour never carries meaning alone: every block
+ * type also has an icon and a label.
+ */
+
+/* ── Palettes ──────────────────────────────────────────────────────────────── */
+.nb-paper-classic {
+  /* night paper (dark themes) */
+  --p-bg: rgb(var(--raised-rgb)); --p-ink: var(--text); --p-muted: var(--muted); --p-rule: rgba(var(--ink-rgb), 0.07);
+  --p-margin: rgba(238, 120, 120, 0.45); --p-hl: rgba(255, 200, 60, 0.30); --p-accent: var(--primary-hover);
+  --p-term-bg: rgba(90, 140, 210, 0.16); --p-term-bd: rgba(120, 165, 225, 0.45); --p-term-ink: #b9d3f2;
+  --p-ex-bg: rgba(110, 190, 110, 0.16); --p-ex-ink: #bfe6b5;
+  --p-exam-bg: rgba(230, 110, 70, 0.16); --p-exam-bar: #e0673f; --p-exam-ink: #ffc2ab;
+  --p-q-bg: rgba(150, 120, 240, 0.16); --p-q-bar: #9b7bff; --p-q-ink: #d6caff;
+  --p-unclear: var(--muted); --p-cue-bg: rgba(var(--accent-rgb), 0.07); --p-sum-bg: rgba(var(--ink-rgb), 0.05);
+  --p-note-bg: rgba(242, 155, 95, 0.14); --p-note-ink: #ffd0ad; --p-tutor-bg: rgba(var(--accent-rgb), 0.13); --p-tutor-ink: var(--primary-hover);
+  --p-back: rgb(var(--base-rgb)); --p-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+:root[data-light] .nb-paper-classic {
+  --p-bg: #fffdf6; --p-ink: #1f2a2e; --p-muted: #5d6b72; --p-rule: #dbe6ec;
+  --p-margin: #eea3a3; --p-hl: rgba(255, 212, 59, 0.55); --p-accent: #1f6f78;
+  --p-term-bg: #eaf2fb; --p-term-bd: #b9d0ea; --p-term-ink: #1f3f63;
+  --p-ex-bg: #e5f4dc; --p-ex-ink: #23511b;
+  --p-exam-bg: #fde7df; --p-exam-bar: #d9532c; --p-exam-ink: #7a2410;
+  --p-q-bg: #efe9fb; --p-q-bar: #7b5cd6; --p-q-ink: #3c2a78;
+  --p-unclear: #9aa4a8; --p-cue-bg: rgba(233, 243, 243, 0.6); --p-sum-bg: #f4efe2;
+  --p-note-bg: #fff1e3; --p-note-ink: #6b3a10; --p-tutor-bg: #e6f4f3; --p-tutor-ink: #134a50;
+  --p-back: #f6f0e2; --p-shadow: 0 18px 44px rgba(60, 48, 20, 0.2);
+}
+.nb-paper-modern {
+  /* dark dot-grid (dark themes) */
+  --p-bg: rgb(var(--base-rgb)); --p-ink: var(--text); --p-muted: var(--muted); --p-dot: rgba(var(--ink-rgb), 0.10); --p-card: rgba(var(--raised-rgb), 0.95);
+  --p-card-bd: var(--border-light); --p-hl: rgba(255, 196, 64, 0.42); --p-accent: var(--primary-hover);
+  --p-dec: #5fd08a; --p-act: var(--primary-hover); --p-q: #9b7bff; --p-risk: #ff7a5c; --p-num: #ffc440;
+  --p-term-bg: #16263a; --p-term-bd: #2f5277; --p-term-ink: #b9d3f2;
+  --p-unclear: var(--muted); --p-note-bg: rgba(242, 155, 95, 0.14); --p-note-ink: #ffd0ad;
+  --p-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+}
+:root[data-light] .nb-paper-modern {
+  --p-bg: #f7f7f2; --p-ink: #1f2a2e; --p-muted: #56646a; --p-dot: #d9dcd4; --p-card: #ffffff;
+  --p-card-bd: #e1e3dc; --p-hl: rgba(255, 196, 64, 0.5); --p-accent: #1f6f78;
+  --p-dec: #1f8a45; --p-act: #1f6f78; --p-q: #6a4fc9; --p-risk: #c9452a; --p-num: #a86a00;
+  --p-term-bg: #eaf2fb; --p-term-bd: #b9d0ea; --p-term-ink: #1f3f63;
+  --p-unclear: #9aa4a8; --p-note-bg: #fff1e3; --p-note-ink: #6b3a10;
+  --p-shadow: 0 12px 32px rgba(15, 42, 48, 0.12);
+}
+
+/* ── The page ──────────────────────────────────────────────────────────────── */
+.nb-paper {
+  color: var(--p-ink);
+  background: var(--p-bg);
+  font-family: var(--nb-font, var(--font));
+  font-size: var(--nb-size, 16px);
+  font-weight: var(--nb-weight, 400);
+  font-style: var(--nb-italic, normal);
+  line-height: var(--nb-line, 28px);
+  border-radius: 6px 14px 14px 6px;
+  box-shadow: var(--p-shadow);
+  overflow: hidden;
+}
+.nb-paper-classic {
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--nb-line, 28px) - 1px),
+    var(--p-rule) calc(var(--nb-line, 28px) - 1px), var(--p-rule) var(--nb-line, 28px));
+}
+.nb-paper-modern {
+  background-image: radial-gradient(var(--p-dot) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  border-radius: 16px;
+  padding: 28px 32px 32px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.nb-kicker { font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--p-muted); font-style: normal; }
+.nb-head { padding: 28px 40px 12px; display: flex; flex-direction: column; gap: 6px; }
+.nb-paper-modern .nb-head { padding: 0; }
+.nb-title { margin: 0; font-size: calc(var(--nb-size, 16px) * 2); line-height: 1.15; font-weight: 600; font-family: var(--nb-font); }
+.nb-paper-classic .nb-title { font-family: var(--nb-font, "Newsreader", Georgia, serif); }
+.nb-summary-text { margin: 0; }
+.nb-cornell { display: grid; grid-template-columns: minmax(180px, 26%) minmax(0, 1fr); }
+.nb-cues { padding: 16px 20px 24px 28px; background: var(--p-cue-bg); display: flex; flex-direction: column; gap: 8px; }
+.nb-cue-list { margin: 0; padding-left: 18px; font-family: "Caveat", var(--nb-font); font-size: calc(var(--nb-size, 16px) * 1.3); line-height: var(--nb-line); color: var(--p-ink); }
+.nb-cue-list.big { font-size: calc(var(--nb-size, 16px) * 1.55); line-height: 1.6; }
+/* Each question gets a marker (Look → List markers), so you can see where one ends and the next begins. */
+.nb-cue-list { padding-left: 1.4em; }
+.nb-cue-list > li { list-style-type: var(--nb-list, disc); }
+.nb-cue-list > li::marker { color: var(--p-accent); font-weight: 700; }
+.nb-main { padding: 12px 36px 28px 28px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.nb-section { display: flex; flex-direction: column; gap: 6px; }
+.nb-section-title { margin: 6px 0 2px; font-size: calc(var(--nb-size, 16px) * 1.35); line-height: 1.3; font-weight: 600; display: flex; gap: 10px; align-items: baseline; }
+.nb-section-no { color: var(--p-accent); font-weight: 700; }
+.nb-summary { padding: 18px 40px 22px; background: var(--p-sum-bg); border-top: 2px solid var(--p-rule); display: flex; flex-direction: column; gap: 6px; }
+
+/* ── Blocks ───────────────────────────────────────────────────────────────── */
+.nb-blocks { display: flex; flex-direction: column; gap: 6px; }
+.nb-b { position: relative; }
+.nb-b-point { padding-left: 18px; }
+.nb-bullet { position: absolute; left: 4px; top: calc(var(--nb-line, 28px) / 2 - 3px); width: 6px; height: 6px; border-radius: 50%; background: var(--p-accent); opacity: 0.7; }
+.nb-hl { background: linear-gradient(100deg, transparent 0%, var(--p-hl) 2%, var(--p-hl) 97%, transparent 100%); padding: 1px 5px; border-radius: 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nb-paper-modern .nb-hl { background: linear-gradient(to bottom, transparent 58%, var(--p-hl) 58%); padding: 0 2px; }
+.nb-b-key { padding-left: 2px; }
+.nb-key-star { display: inline-block; color: #c79100; vertical-align: -1px; margin-left: 4px; }
+.nb-label { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font); font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-style: normal; }
+.nb-b-definition { background: var(--p-term-bg); border: 1px solid var(--p-term-bd); border-radius: 10px; padding: 8px 14px; line-height: 1.55; }
+.nb-b-definition .nb-label { color: var(--p-term-ink); }
+.nb-b-example { background: var(--p-ex-bg); border-radius: 4px; padding: 10px 14px; line-height: 1.55; transform: rotate(-0.6deg); box-shadow: 0 6px 14px rgba(40, 80, 20, 0.14); }
+.nb-b-example .nb-label { color: var(--p-ex-ink); }
+.nb-b-exam { background: var(--p-exam-bg); border-left: 5px solid var(--p-exam-bar); border-radius: 0 12px 12px 0; padding: 8px 14px; color: var(--p-exam-ink); line-height: 1.55; }
+.nb-b-question, .nb-paper-modern .nb-card-questions .nb-b-question { background: var(--p-q-bg, transparent); border-left: 5px solid var(--p-q-bar, var(--p-q)); border-radius: 0 12px 12px 0; padding: 8px 14px; color: var(--p-q-ink, var(--p-ink)); line-height: 1.55; }
+.nb-b-quote { margin: 4px 0; padding-left: 16px; border-left: 3px solid var(--p-muted); font-family: "Caveat", var(--nb-font); font-size: calc(var(--nb-size, 16px) * 1.45); line-height: 1.35; }
+.nb-paper-modern .nb-b-quote { font-family: "Newsreader", Georgia, serif; font-style: italic; font-size: calc(var(--nb-size, 16px) * 1.2); border-left-color: var(--p-accent); }
+.nb-quote-who { font-family: var(--font); font-size: 12px; color: var(--p-muted); font-style: normal; }
+.nb-b-formula pre { margin: 4px 0; padding: 10px 14px; font-family: var(--font-mono); font-size: 0.95em; white-space: pre-wrap; border-radius: 8px; background: color-mix(in srgb, var(--p-bg) 85%, var(--p-ink)); }
+.nb-b-table table { width: 100%; border-collapse: collapse; font-size: 0.95em; line-height: 1.45; background: var(--p-bg); }
+.nb-b-table caption { text-align: left; font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--p-muted); padding-bottom: 4px; }
+.nb-b-table th, .nb-b-table td { border: 1px solid color-mix(in srgb, var(--p-ink) 16%, transparent); padding: 6px 10px; text-align: left; vertical-align: top; }
+.nb-b-table th { background: color-mix(in srgb, var(--p-ink) 6%, transparent); }
+.nb-b-unclear { border: 2px dashed var(--p-unclear); border-radius: 10px; padding: 8px 14px; color: var(--p-muted); line-height: 1.55; }
+.nb-b-decision { display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; }
+.nb-b-decision svg { color: var(--p-dec); flex-shrink: 0; margin-top: 3px; }
+.nb-b-action { display: flex; gap: 12px; align-items: flex-start; background: color-mix(in srgb, var(--p-bg) 88%, var(--p-ink)); border: 1px solid var(--p-card-bd); border-radius: 10px; padding: 10px 12px; cursor: pointer; line-height: 1.45; }
+.nb-b-action input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--p-act); flex-shrink: 0; }
+.nb-b-action.done { color: var(--p-muted); }
+.nb-b-action.done .nb-action-text { text-decoration: line-through; }
+.nb-action-body { display: flex; flex-direction: column; gap: 6px; }
+.nb-action-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-family: var(--font); font-size: 12px; font-style: normal; }
+.nb-chip { border-radius: 6px; padding: 1px 8px; background: color-mix(in srgb, var(--p-ink) 9%, transparent); font-weight: 600; }
+.nb-chip.undecided { background: transparent; border: 1px dashed var(--p-unclear); font-weight: 500; color: var(--p-muted); }
+.nb-b-risk { line-height: 1.5; }
+.nb-b-risk .nb-label { color: var(--p-risk); }
+.nb-b-number { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.nb-number { font-family: var(--font-mono); font-size: 1.25em; font-weight: 500; }
+.nb-number-what { color: var(--p-muted); font-size: 0.9em; }
+.nb-b-note { background: var(--p-note-bg); color: var(--p-note-ink); border-radius: 10px; padding: 8px 14px; line-height: 1.55; }
+.nb-b-tutor { background: var(--p-tutor-bg, var(--p-note-bg)); color: var(--p-tutor-ink, var(--p-ink)); border-radius: 10px; padding: 8px 14px; line-height: 1.55; }
+.nb-src { display: inline-flex; align-items: center; gap: 3px; font-family: var(--font-mono); font-size: 11px; font-style: normal; font-weight: 400;
+  color: var(--p-muted, var(--muted)); border: 1px solid color-mix(in srgb, currentColor 35%, transparent); border-radius: 6px; padding: 0 6px; line-height: 18px;
+  background: transparent; cursor: pointer; vertical-align: 2px; white-space: nowrap; }
+.nb-src:hover { color: var(--p-accent, var(--primary)); border-color: currentColor; }
+
+/* ── Meeting board ────────────────────────────────────────────────────────── */
+.nb-tldr { background: var(--p-card); border: 1px solid var(--p-card-bd); border-radius: 14px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px; font-size: 1.08em; }
+.nb-board { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; align-items: start; }
+.nb-card { background: var(--p-card); border: 1px solid var(--p-card-bd); border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; border-top-width: 3px; }
+.nb-card-title { margin: 0; font-family: var(--font); font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-style: normal; display: flex; gap: 10px; align-items: baseline; }
+.nb-card-count { font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--p-muted); }
+.nb-card-decisions { border-top-color: var(--p-dec); } .nb-card-decisions .nb-card-title { color: var(--p-dec); }
+.nb-card-actions { border-top-color: var(--p-act); grid-column: span 2; } .nb-card-actions .nb-card-title { color: var(--p-act); }
+.nb-card-questions { border-top-color: var(--p-q); } .nb-card-questions .nb-card-title { color: var(--p-q); }
+.nb-card-risks { border-top-color: var(--p-risk); } .nb-card-risks .nb-card-title { color: var(--p-risk); }
+.nb-card-numbers { border-top-color: var(--p-num); } .nb-card-numbers .nb-card-title { color: var(--p-num); }
+.nb-card-numbers .nb-blocks { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+.nb-topics .nb-section-title { font-size: 1.05em; }
+@media (max-width: 900px) { .nb-card-actions { grid-column: auto; } .nb-cornell { grid-template-columns: 1fr; } .nb-main { border-left: 0; } }
+
+/* ── Slide deck and the page curl ─────────────────────────────────────────── */
+.nb-deck { display: flex; flex-direction: column; gap: 16px; outline: none; }
+.nb-deck:focus-visible .nb-stage { outline: 2px solid var(--primary); outline-offset: 6px; border-radius: 14px; }
+.nb-stage { position: relative; height: clamp(420px, calc(var(--vh, 1vh) * 62), 720px); perspective: 2200px; perspective-origin: 30% 50%; }
+.nb-sheet { position: absolute; inset: 0; transform-origin: left center; transform-style: preserve-3d; transform: rotateY(0deg); }
+.nb-sheet.nb-flipped { transform: rotateY(-176deg); visibility: hidden; }
+/* Editing, the Notebook view skips laying out and painting sections that are off screen
+ * (hundreds of text boxes: it halves the time to open the editor). Reading, it isn't needed. The
+ * placeholder is a whole number of ruled lines, so what follows stays on the rules.
+ * Only where text boxes size themselves (field-sizing): elsewhere AutoText measures
+ * boxes by script, which a skipped section would defeat. When a section above the
+ * reader is drawn at its real height, scroll anchoring keeps the words in place; the
+ * Test yourself column and the column handle are tall and never move, so they must
+ * not be chosen as the anchor (they were, and the page jumped). */
+@supports (field-sizing: content) {
+  .nb-page-scroll .nb-paper.editing .nb-section { content-visibility: auto; contain-intrinsic-size: auto calc(var(--L, 28px) * 16); }
+}
+.nb-cues, .nb-cue-resizer { overflow-anchor: none; }
+/* Pages not in play (SlideDeck draws them empty): no layout, paint or layer. */
+.nb-sheet.nb-idle { visibility: hidden; content-visibility: hidden; }
+.nb-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow-y: auto; padding: 30px 44px 36px; }
+.nb-back { position: absolute; inset: 0; transform: rotateY(180deg); backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 14px 6px 6px 14px;
+  background: var(--p-back, rgb(var(--base-rgb))) repeating-linear-gradient(to bottom, transparent 0, transparent 27px, rgba(var(--ink-rgb), 0.05) 27px, rgba(var(--ink-rgb), 0.05) 28px);
+  box-shadow: inset 40px 0 50px rgba(0, 0, 0, 0.15); }
+:root[data-light] .nb-back { background-color: #f6f0e2; background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 27px, #e6e0d0 27px, #e6e0d0 28px); }
+.nb-face::after, .nb-face::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; z-index: 3; }
+.nb-face::after { background: linear-gradient(to left, rgba(40, 26, 0, 0.34) 0%, rgba(40, 26, 0, 0.10) 16%, rgba(255, 255, 255, 0.42) 30%, rgba(255, 255, 255, 0) 48%, rgba(40, 26, 0, 0.06) 100%); }
+.nb-face::before { background: linear-gradient(to right, rgba(40, 28, 6, 0.38) 0%, rgba(40, 28, 6, 0.12) 35%, rgba(40, 28, 6, 0) 65%); }
+.nb-turn-out-a { animation: nbCurlOutA 1.15s cubic-bezier(0.42, 0.02, 0.26, 1) forwards; }
+.nb-turn-out-b { animation: nbCurlOutB 1.15s cubic-bezier(0.42, 0.02, 0.26, 1) forwards; }
+.nb-turn-in-a { animation: nbCurlInA 1.15s cubic-bezier(0.42, 0.02, 0.26, 1) forwards; }
+.nb-turn-in-b { animation: nbCurlInB 1.15s cubic-bezier(0.42, 0.02, 0.26, 1) forwards; }
+.nb-turn-out-a .nb-face::after, .nb-turn-in-a .nb-face::after { animation: nbShadeA 1.15s ease-in-out forwards; }
+.nb-turn-out-b .nb-face::after, .nb-turn-in-b .nb-face::after { animation: nbShadeB 1.15s ease-in-out forwards; }
+.nb-under-a .nb-face::before { animation: nbCastA 1.15s ease-out forwards; }
+.nb-under-b .nb-face::before { animation: nbCastB 1.15s ease-out forwards; }
+@keyframes nbCurlOutA { 0% { transform: rotateY(0deg) skewY(0deg) translateZ(0); opacity: 1; } 18% { transform: rotateY(-20deg) skewY(-2.5deg) translateZ(34px) scaleX(0.985); } 48% { transform: rotateY(-88deg) skewY(-7deg) translateZ(90px) scaleX(0.96); } 76% { transform: rotateY(-142deg) skewY(-3deg) translateZ(40px) scaleX(0.985); opacity: 1; } 100% { transform: rotateY(-176deg) skewY(0deg) translateZ(0); opacity: 0; } }
+@keyframes nbCurlOutB { 0% { transform: rotateY(0deg) skewY(0deg) translateZ(0); opacity: 1; } 18% { transform: rotateY(-20deg) skewY(-2.5deg) translateZ(34px) scaleX(0.985); } 48% { transform: rotateY(-88deg) skewY(-7deg) translateZ(90px) scaleX(0.96); } 76% { transform: rotateY(-142deg) skewY(-3deg) translateZ(40px) scaleX(0.985); opacity: 1; } 100% { transform: rotateY(-176deg) skewY(0deg) translateZ(0); opacity: 0; } }
+@keyframes nbCurlInA { 0% { transform: rotateY(-176deg) skewY(0deg) translateZ(0); opacity: 0; } 24% { transform: rotateY(-142deg) skewY(-3deg) translateZ(40px) scaleX(0.985); opacity: 1; } 52% { transform: rotateY(-88deg) skewY(-7deg) translateZ(90px) scaleX(0.96); } 82% { transform: rotateY(-20deg) skewY(-2.5deg) translateZ(34px) scaleX(0.985); } 100% { transform: rotateY(0deg) skewY(0deg) translateZ(0); opacity: 1; } }
+@keyframes nbCurlInB { 0% { transform: rotateY(-176deg) skewY(0deg) translateZ(0); opacity: 0; } 24% { transform: rotateY(-142deg) skewY(-3deg) translateZ(40px) scaleX(0.985); opacity: 1; } 52% { transform: rotateY(-88deg) skewY(-7deg) translateZ(90px) scaleX(0.96); } 82% { transform: rotateY(-20deg) skewY(-2.5deg) translateZ(34px) scaleX(0.985); } 100% { transform: rotateY(0deg) skewY(0deg) translateZ(0); opacity: 1; } }
+@keyframes nbShadeA { 0% { opacity: 0; } 45% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes nbShadeB { 0% { opacity: 0; } 45% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes nbCastA { 0% { opacity: 0; } 40% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes nbCastB { 0% { opacity: 0; } 40% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes nbFadeOut { from { opacity: 1; transform: none; } to { opacity: 0; transform: none; } }
+@keyframes nbFadeIn { from { opacity: 0; transform: none; } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .nb-turn-out-a, .nb-turn-out-b { animation: nbFadeOut 0.25s forwards; }
+  .nb-turn-in-a, .nb-turn-in-b { animation: nbFadeIn 0.25s forwards; }
+  .nb-face::after, .nb-face::before { animation: none !important; opacity: 0 !important; }
+}
+.nb-slide-cover { display: flex; flex-direction: column; gap: 14px; justify-content: center; min-height: 80%; }
+.nb-slide-cover .nb-title { font-size: calc(var(--nb-size, 16px) * 2.4); }
+.nb-slide-cues { display: flex; flex-direction: column; gap: 12px; }
+.nb-deck-controls { display: flex; align-items: center; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.nb-deck-controls .btn-neutral, .nb-deck-controls .btn-primary { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 16px; }
+.nb-thumbs { display: flex; gap: 8px; max-width: min(70%, 720px); overflow-x: auto; padding: 4px; }
+.nb-thumb { flex-shrink: 0; width: 92px; height: 56px; border-radius: 8px; border: 2px solid var(--border-light); background: var(--surface); color: var(--muted);
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 6px 8px; font-size: 10.5px; text-align: left; cursor: pointer; overflow: hidden; }
+.nb-thumb.on { border-color: var(--primary); color: var(--text); box-shadow: 0 0 0 3px var(--primary-glow); }
+.nb-thumb-no { font-weight: 700; }
+.nb-thumb-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+.nb-deck-count { font-size: 12.5px; min-width: 90px; }
+
+/* ── Editor chrome (uses the app's own tokens) ────────────────────────────── */
+.nb-editor { display: flex; flex-direction: column; gap: 14px; position: relative; }
+.nb-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.nb-toolbar .btn-neutral, .nb-toolbar .btn-primary { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; font-size: 13px; }
+.nb-toolbar .btn-neutral.danger:hover { color: var(--danger); border-color: var(--danger); }
+.nb-toolbar-spacer { flex-grow: 1; }
+.nb-save-state { display: inline-flex; align-items: center; justify-content: flex-end; gap: 5px; font-size: 12px; color: var(--muted); min-width: 124px; white-space: nowrap; }
+.nb-save-state.dirty { color: var(--warning); }
+.nb-save-state.conflict { color: var(--danger); font-weight: 600; }
+.nb-segment { display: inline-flex; border: 1px solid var(--border-light); border-radius: 10px; overflow: hidden; }
+.nb-segment label { display: inline-flex; cursor: pointer; }
+.nb-segment input { position: absolute; opacity: 0; pointer-events: none; }
+.nb-segment label span { display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; min-height: 36px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.nb-segment label.active span { background: var(--primary); color: var(--on-primary); }
+.nb-segment label:focus-within span { outline: 2px solid var(--primary); outline-offset: -2px; }
+.nb-banner { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--danger); background: rgba(239, 68, 68, 0.08); font-size: 13px; }
+.nb-banner span { flex-grow: 1; }
+.nb-popover { position: absolute; top: 48px; right: 0; z-index: 40; width: min(560px, 100%); padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.nb-popover-small { width: 320px; }
+.nb-popover-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.nb-menu-item { display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; padding: 8px 10px; border-radius: 8px; background: transparent; border: 0; color: var(--text); font-size: 13px; cursor: pointer; }
+.nb-menu-item:hover { background: var(--surface-hover); }
+.nb-menu-item .muted { margin-left: auto; font-size: 11px; }
+.nb-icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 8px; border: 1px solid transparent; background: transparent; color: var(--muted); cursor: pointer; }
+.nb-icon-btn:hover:not(:disabled) { color: var(--text); border-color: var(--border-light); }
+.nb-icon-btn.danger:hover:not(:disabled) { color: var(--danger); border-color: var(--danger); }
+.nb-icon-btn:disabled { opacity: 0.35; cursor: default; }
+.nb-input { font: inherit; font-size: 14px; font-style: normal; font-weight: 400; color: var(--text); background: rgba(var(--ink-rgb), 0.05); border: 1px solid var(--border-light); border-radius: 8px; padding: 7px 10px; width: 100%; box-sizing: border-box; }
+.nb-paper .nb-input { color: var(--p-ink); background: color-mix(in srgb, var(--p-bg) 80%, var(--p-ink)); border-color: color-mix(in srgb, var(--p-ink) 20%, transparent); font-family: var(--nb-font); font-size: var(--nb-size); }
+.nb-input:focus { outline: 2px solid var(--primary); outline-offset: 0; }
+.nb-textarea { resize: vertical; line-height: 1.5; overflow: hidden; }
+.nb-textarea.mono { font-family: var(--font-mono); }
+.nb-title-input { font-size: calc(var(--nb-size, 16px) * 1.8) !important; font-weight: 600; }
+.nb-section-edit { display: flex; align-items: center; gap: 8px; }
+.nb-section-title-input { font-weight: 600; font-size: calc(var(--nb-size, 16px) * 1.2) !important; }
+.nb-blocks.editing { gap: 10px; }
+.nb-edit { border: 1px dashed color-mix(in srgb, var(--p-ink, var(--text)) 25%, transparent); border-radius: 10px; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+.nb-edit-bar { display: flex; align-items: center; gap: 4px; }
+.nb-edit-spacer { flex-grow: 1; }
+.nb-type { width: auto !important; font-family: var(--font) !important; font-size: 12.5px !important; padding: 4px 8px !important; }
+.nb-edit-row { display: flex; gap: 8px; align-items: center; }
+.nb-done { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font); font-size: 13px; white-space: nowrap; }
+.nb-table-edit table { width: 100%; border-collapse: collapse; }
+.nb-table-edit td { padding: 2px; }
+.nb-table-tools { display: flex; gap: 6px; flex-wrap: wrap; }
+.nb-table-tools .btn-neutral { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; font-size: 12px; }
+.nb-add-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.nb-add { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font); font-style: normal; font-weight: 600; font-size: 12px; padding: 5px 10px; min-height: 30px;
+  border-radius: 999px; border: 1px dashed color-mix(in srgb, var(--p-ink, var(--text)) 30%, transparent); background: transparent; color: var(--p-ink, var(--text)); cursor: pointer; align-self: flex-start; }
+.nb-add:hover { border-style: solid; }
+.nb-add-more { width: auto !important; font-size: 12px !important; padding: 4px 8px !important; font-family: var(--font) !important; }
+.nb-cue-edit { display: flex; gap: 6px; align-items: center; }
+
+/* ── Style picker, make panel, library ────────────────────────────────────── */
+.nb-style-picker { display: flex; flex-direction: column; gap: 12px; }
+.nb-style-group { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.nb-style-families { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+.nb-create .nb-style-families, .nb-popover .nb-style-families { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.nb-style-family { position: relative; display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border-light); cursor: pointer; background: var(--surface); }
+.nb-style-family input { position: absolute; opacity: 0; pointer-events: none; }
+.nb-style-family.active { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); }
+.nb-style-family:focus-within { outline: 2px solid var(--primary); outline-offset: 2px; }
+.nb-style-family-name { font-size: 18px; color: var(--text); }
+.nb-style-family-hint { font-size: 11.5px; }
+.nb-style-row { display: flex; gap: 16px; flex-wrap: wrap; }
+/* A strip of real notebook paper: no vertical padding, so the text sits between its rules. */
+.nb-style-sample { padding: 0 18px; border-radius: 10px; box-shadow: none; background-color: var(--p-bg); border: 1px solid var(--border-light); }
+.nb-style-sample .nb-body { color: var(--p-ink); font-family: var(--nb-font); font-size: var(--nb-size); font-weight: var(--nb-weight); font-style: var(--nb-italic); line-height: var(--nb-line); }
+.nb-make { display: flex; flex-direction: column; gap: 14px; padding: 20px; }
+.nb-make-head { display: flex; gap: 16px; align-items: flex-start; }
+.nb-make-head p { margin: 4px 0 0; }
+.nb-make-step { margin: 4px 0 0; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+.nb-make-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.nb-make-actions .btn-primary, .nb-make-actions .btn-neutral { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 16px; }
+.nb-toggle { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; cursor: pointer; }
+.nb-toggle input { margin-top: 3px; }
+.nb-hub-actions { display: flex; align-items: center; gap: 10px; justify-content: space-between; font-size: 12.5px; }
+.nb-hub-actions .btn-neutral { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; }
+.nb-search { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; max-width: 420px; color: var(--muted); }
+.nb-covers { align-items: stretch; }
+.nb-cover { display: flex; flex-direction: column; gap: 8px; text-align: left; padding: 18px; cursor: pointer; border-left: 4px solid var(--primary); color: var(--text); font: inherit; min-height: 150px; }
+.nb-cover:hover { background: var(--surface-hover); }
+.nb-cover-lecture { border-left-color: #f1c94b; }
+.nb-cover-meeting { border-left-color: var(--primary-hover); }
+.nb-cover-reading { border-left-color: #b39bff; }
+.nb-cover-kind { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.nb-cover-title { font-size: 20px; line-height: 1.25; font-weight: 600; }
+.nb-cover-summary { font-size: 13px; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.nb-cover-meta { margin-top: auto; display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--muted); }
+.nb-cover-meta span { display: inline-flex; align-items: center; gap: 4px; }
+.nb-create { width: min(640px, 92vw); max-height: 88vh; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.nb-source { width: min(640px, 92vw); max-height: 70vh; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 8px; }
+.nb-source-line { display: grid; grid-template-columns: auto auto 1fr; gap: 10px; align-items: baseline; padding: 6px 8px; border-radius: 8px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.nb-source-line.cited { background: var(--primary-glow); color: var(--text); }
+.nb-source-who { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.nb-open { display: flex; flex-direction: column; gap: 12px; }
+.nb-reading-page { flex: 1; min-height: 0; height: 100%; overflow-y: auto; }
+
+/* ── Print / save as PDF: only the notebook, in its light face ────────────── */
+@media print {
+  body * { visibility: hidden !important; }
+  .nb-print-root, .nb-print-root * { visibility: visible !important; }
+  .nb-print-root { position: absolute; inset: 0 auto auto 0; width: 100%; }
+  .nb-page-scroll { height: auto !important; max-height: none !important; overflow: visible !important; }
+  .nb-page-grip { display: none !important; }
+  .nb-paper { box-shadow: none !important; border-radius: 0 !important; overflow: visible !important; }
+  .nb-paper-classic, .nb-paper-modern {
+    --p-bg: #ffffff; --p-ink: #1f2a2e; --p-muted: #56646a; --p-card: #ffffff; --p-card-bd: #dddddd; --p-dot: #eeeeee;
+  }
+  .nb-src { border: 0; padding: 0; }
+  .nb-b, .nb-card, .nb-section { break-inside: avoid; }
+  .nb-print-only { display: block !important; }
+  .nbk { display: none !important; }
+}
+/* The whole-page copy of the notebook is only for printing; on screen the book is the notebook. */
+.nb-print-only { display: none; }
+.nb-coverage-chip { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px; font-size: 12.5px;
+  color: var(--muted); border: 1px solid var(--border-light); background: var(--surface); }
+
+/* ── The writing pen (PenCursor) ─────────────────────────────────────────── */
+.nb-pen {
+  --pen-body: #d9d2c3; --pen-body-hi: #f4efe4; --pen-body-lo: #a79f8f;
+  --pen-grip: #2b2f36; --pen-gold: #b8913a; --pen-gold-hi: #f0d68a; --pen-gold-lo: #8a6a22;
+  --pen-slit: #3a2a08; --pen-ink: #9ec5ff;
+  position: fixed; left: 0; top: 0; z-index: 450; width: 64px; height: 84px; pointer-events: none;
+  transition: transform 90ms ease-out; will-change: transform;
+}
+:root[data-light] .nb-pen {
+  --pen-body: #1c2c44; --pen-body-hi: #3d5578; --pen-body-lo: #0e1726;
+  --pen-grip: #11151b; --pen-ink: #1f3f8f;
+}
+.nb-pen-svg {
+  display: block; overflow: visible;
+  transform-origin: 8px 78px;
+  transform: translate(3px, -7px) rotate(5deg);               /* lifted off the paper */
+  filter: drop-shadow(8px 10px 5px rgba(0, 0, 0, 0.26));
+  transition: transform 200ms ease, filter 200ms ease;
+}
+.nb-pen.writing .nb-pen-svg {
+  filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, 0.32));       /* on the paper: shadow tucks in */
+  animation: nbPenScribble 0.26s ease-in-out infinite alternate;
+}
+@keyframes nbPenScribble {
+  0%   { transform: translate(-1px, 0.6px) rotate(-2deg); }
+  50%  { transform: translate(1.2px, -1px) rotate(1.6deg); }
+  100% { transform: translate(-0.4px, 0.9px) rotate(-0.8deg); }
+}
+.nb-pen-ink { fill: var(--pen-ink); transform-box: fill-box; transform-origin: center; animation: nbInk 0.55s ease-out forwards; }
+@keyframes nbInk { from { transform: scale(1.5); opacity: 0.85; } to { transform: scale(0.3); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .nb-pen, .nb-pen-svg { transition: none; }
+  .nb-pen.writing .nb-pen-svg { animation: none; transform: none; }
+  .nb-pen-ink { display: none; }
+}
+@media print { .nb-pen { display: none; } }
+
+/* ── Ruled paper: every line of text sits between two rules ─────────────────
+ * On the classic paper (lectures, reading notes — page, slides and editing) the
+ * rules are drawn every --L pixels. So that writing always sits in the space
+ * between two rules, like in a real exercise book:
+ *   - every line of text is exactly --L tall (the big title: two rows);
+ *   - every padding, margin and gap is a whole number of rows;
+ *   - boxes (term cards, stickies, exam tabs…) paint their colour and border on
+ *     an inset ::before layer, so a border never nudges the text off the grid;
+ *   - while editing, fields are transparent and one row per line, so you write
+ *     straight onto the ruled paper.
+ * Meetings use the dot-grid board, which has no rules, and are left as they are. */
+.nb-paper-classic { --L: var(--nb-line, 28px); line-height: var(--L); background-attachment: local; }
+.nb-paper-classic :is(p, h1, h2, h3, ol, ul, blockquote, pre, figure) { margin: 0; }
+.nb-paper-classic .nb-head { padding: var(--L) 40px var(--L); gap: 0; }
+.nb-paper-classic .nb-kicker { line-height: var(--L); }
+.nb-paper-classic .nb-title { line-height: calc(var(--L) * 2); }
+.nb-paper-classic .nb-cues { padding: 0 20px var(--L) 28px; gap: 0; }
+.nb-paper-classic .nb-cue-list, .nb-paper-classic .nb-cue-list.big { line-height: var(--L); }
+.nb-paper-classic .nb-main { padding: 0 36px var(--L) 28px; gap: var(--L); }
+.nb-paper-classic .nb-section { gap: 0; }
+.nb-paper-classic .nb-section-title { margin: 0; line-height: var(--L); }
+.nb-paper-classic .nb-summary { padding: var(--L) 40px; gap: 0; border-top: 0; box-shadow: inset 0 2px 0 var(--p-rule); }
+
+/* Slides: the same rhythm on every face; the cover starts a few rows down instead of centring. */
+.nb-face.nb-paper-classic { padding: var(--L) 44px var(--L); }
+.nb-paper-classic .nb-slide-cover { justify-content: flex-start; min-height: 0; gap: 0; padding-top: calc(var(--L) * 3); }
+.nb-paper-classic .nb-slide-cover .nb-title { line-height: calc(var(--L) * 2); }
+.nb-paper-classic .nb-slide-cover .nb-summary-text { margin-top: var(--L); }
+.nb-paper-classic .nb-slide-cues { gap: 0; }
+
+/* Blocks: one row per line, no gaps that aren't whole rows. */
+.nb-paper-classic .nb-blocks, .nb-paper-classic .nb-blocks.editing { gap: 0; }
+.nb-paper-classic .nb-b { line-height: var(--L); }
+.nb-paper-classic .nb-src { vertical-align: middle; line-height: 16px; }
+.nb-paper-classic .nb-key-star { vertical-align: middle; }
+.nb-paper-classic .nb-label { line-height: var(--L); }
+.nb-paper-classic .nb-b-quote { margin: 0; line-height: var(--L); }
+.nb-paper-classic :is(.nb-b-definition, .nb-b-example, .nb-b-exam, .nb-b-question, .nb-b-unclear, .nb-b-note, .nb-b-tutor, .nb-b-formula) {
+  position: relative; isolation: isolate; margin: 0; padding: 0 14px; line-height: var(--L);
+  background: none; border: 0; border-radius: 0; box-shadow: none; transform: none;
+}
+.nb-paper-classic :is(.nb-b-definition, .nb-b-example, .nb-b-exam, .nb-b-question, .nb-b-unclear, .nb-b-note, .nb-b-tutor, .nb-b-formula)::before {
+  content: ""; position: absolute; inset: 3px 0; z-index: -1; border-radius: 10px; pointer-events: none;
+}
+.nb-paper-classic .nb-b-definition::before { background: var(--p-term-bg); border: 1px solid var(--p-term-bd); }
+.nb-paper-classic .nb-b-example::before { background: var(--p-ex-bg); border-radius: 4px; transform: rotate(-0.6deg); box-shadow: 0 6px 14px rgba(40, 80, 20, 0.14); }
+.nb-paper-classic .nb-b-exam::before { background: var(--p-exam-bg); border-left: 5px solid var(--p-exam-bar); border-radius: 0 12px 12px 0; }
+.nb-paper-classic .nb-b-question::before { background: var(--p-q-bg); border-left: 5px solid var(--p-q-bar); border-radius: 0 12px 12px 0; }
+.nb-paper-classic .nb-b-unclear::before { border: 2px dashed var(--p-unclear); }
+.nb-paper-classic .nb-b-note::before { background: var(--p-note-bg); }
+.nb-paper-classic .nb-b-tutor::before { background: var(--p-tutor-bg); }
+.nb-paper-classic .nb-b-formula::before { background: color-mix(in srgb, var(--p-bg) 85%, var(--p-ink)); border-radius: 8px; }
+.nb-paper-classic .nb-b-formula pre { margin: 0; padding: 0; background: none; border-radius: 0; line-height: var(--L); }
+/* Tables: each row is one ruled line; the paper's own rules are the row dividers. */
+.nb-paper-classic .nb-b-table table { line-height: var(--L); background: transparent; }
+.nb-paper-classic .nb-b-table caption { line-height: var(--L); padding: 0; }
+.nb-paper-classic .nb-b-table :is(th, td) { border: 0; padding: 0 10px; box-shadow: inset -1px 0 0 color-mix(in srgb, var(--p-ink) 16%, transparent); }
+.nb-paper-classic .nb-b-table :is(th, td):last-child { box-shadow: none; }
+
+/* Writing: transparent fields on the ruled paper, one row per line. */
+.nb-paper-classic .nb-input { height: var(--L); min-height: 0; padding: 0 6px; border: 0; border-radius: 4px; line-height: var(--L); background: transparent; }
+.nb-paper-classic .nb-input:hover { background: color-mix(in srgb, var(--p-accent) 5%, transparent); }
+.nb-paper-classic .nb-input:focus { outline: none; background: color-mix(in srgb, var(--p-accent) 9%, transparent); box-shadow: inset 3px 0 0 var(--p-accent); }
+.nb-paper-classic .nb-input::placeholder { color: var(--p-muted); opacity: 0.7; }
+.nb-paper-classic .nb-textarea { height: var(--L); resize: none; line-height: var(--L); }
+/* Text boxes grow with their words (AutoText measures them where this is unsupported). */
+@supports (field-sizing: content) {
+  .nb-textarea { field-sizing: content; resize: none; }
+  .nb-paper-classic .nb-textarea { height: auto; min-height: var(--L); }
+}
+.nb-paper-classic .nb-title-input { height: calc(var(--L) * 2); line-height: calc(var(--L) * 2); }
+.nb-paper-classic .nb-section-edit { height: var(--L); gap: 6px; }
+.nb-paper-classic .nb-cue-edit { height: var(--L); gap: 4px; }
+.nb-paper-classic .nb-cue-edit .nb-input { font-family: "Caveat", var(--nb-font); font-size: calc(var(--nb-size, 16px) * 1.2); }
+.nb-paper-classic .nb-icon-btn { width: calc(var(--L) - 2px); height: calc(var(--L) - 4px); flex-shrink: 0; }
+.nb-paper-classic .nb-edit { position: relative; isolation: isolate; border: 0; border-radius: 0; padding: 0 6px; gap: 0; }
+.nb-paper-classic .nb-edit::before { content: ""; position: absolute; inset: 2px 0; z-index: -1; pointer-events: none;
+  border: 1px dashed color-mix(in srgb, var(--p-ink) 18%, transparent); border-radius: 10px; }
+.nb-paper-classic .nb-edit:focus-within::before { border-style: solid; border-color: color-mix(in srgb, var(--p-accent) 55%, transparent); }
+.nb-paper-classic .nb-edit-bar { height: var(--L); }
+.nb-paper-classic .nb-input:is(.nb-type, .nb-add-more) { height: calc(var(--L) - 6px); line-height: 1; padding: 0 6px !important;
+  background: color-mix(in srgb, var(--p-bg) 80%, var(--p-ink)); border: 1px solid color-mix(in srgb, var(--p-ink) 18%, transparent); }
+.nb-paper-classic .nb-edit-row { height: var(--L); flex-wrap: nowrap; }
+.nb-paper-classic .nb-table-edit td { padding: 0; }
+/* Rows of small buttons flow like words on a line, so wrapping adds whole rows. */
+.nb-paper-classic :is(.nb-add-row, .nb-table-tools) { display: block; line-height: var(--L); }
+.nb-paper-classic :is(.nb-add-row, .nb-table-tools) > * { vertical-align: middle; height: calc(var(--L) - 6px); min-height: 0; margin: 0 6px 0 0; }
+.nb-paper-classic :is(.nb-add-row, .nb-table-tools) > button { display: inline-flex; padding-top: 0; padding-bottom: 0; }
+.nb-paper-classic :is(.nb-cues, .nb-main) > .nb-add { height: calc(var(--L) - 6px); min-height: 0; margin: 3px 0; padding-top: 0; padding-bottom: 0; }
+/* Mixed font sizes on one line must not stretch it: small inline pieces are shorter than a row. */
+.nb-paper-classic .nb-label { display: flex; height: var(--L); align-items: center; }
+.nb-paper-classic :is(.nb-b, .nb-section-title, .nb-cue-list, .nb-summary-text) :is(span, strong, em, b, i, a, code, button, label) { line-height: 1; }
+/* Except the heading's own parts. A heading is a flex row, so its items — not
+ * its line-height — decide how tall the row is: at line-height 1 each heading
+ * came out short of a ruled row, and every section pushed the writing below it
+ * further off the rules (by the seventh section, a whole line out). Back on the
+ * paper's rhythm, a heading is one row, and two when it wraps. */
+.nb-paper-classic .nb-section-title > :is(span, strong, em, b, i, a, code, button, label) { line-height: var(--L); }
+
+/* ── Reading notes: setup, progress, source pages (spec 185) ────────────────── */
+.nb-page-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.nb-page-actions .btn-neutral, .nb-page-actions .btn-primary { display: inline-flex; align-items: center; gap: 6px; }
+.nb-read { display: flex; flex-direction: column; gap: 14px; max-width: 1240px; width: 100%; margin: 0 auto; }
+/* Steps on the left; on the right a summary that stays in view, so nothing floats over the steps. */
+.nb-read-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+.nb-read-main { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.nb-read-side { position: sticky; top: 8px; }
+.nb-read-side .nb-read-go { position: static; flex-direction: column; align-items: stretch; gap: 14px; }
+.nb-read-side .nb-read-go .btn-primary { margin-left: 0; justify-content: center; width: 100%; }
+.nb-read-card .nb-segment { align-self: flex-start; }
+@media (max-width: 1100px) {
+  .nb-read-layout { grid-template-columns: minmax(0, 1fr); }
+  /* One column: the summary is a solid bar at the bottom, never see-through. */
+  .nb-read-side { top: auto; bottom: 8px; z-index: 5; }
+  .nb-read-side .nb-read-go { flex-direction: row; align-items: center; flex-wrap: wrap; }
+  .nb-read-side .nb-read-go .btn-primary { width: auto; margin-left: auto; }
+}
+.nb-read-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.nb-read-top .btn-neutral { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; }
+.nb-read-heading h2 { margin: 0; font-size: 20px; line-height: 1.3; color: var(--text); overflow-wrap: anywhere; }
+.nb-kicker-app { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.nb-read-meta { margin: -6px 0 0; font-size: 13px; }
+.nb-read-card { padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.nb-read-step { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text); }
+.nb-step-no { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--primary); color: var(--on-primary); font-size: 12.5px; font-weight: 700; flex-shrink: 0; }
+.nb-read-hint { margin: 0; font-size: 13.5px; }
+.nb-read-decks { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; }
+.nb-chip-btn { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border-light);
+  background: var(--surface); color: var(--text); font-size: 12.5px; cursor: pointer; }
+.nb-chip-btn:hover { border-color: var(--primary); }
+
+.nb-drop { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding: 40px 24px;
+  border: 2px dashed var(--border-light); color: var(--text); transition: border-color 0.15s, background 0.15s; }
+.nb-drop.over { border-color: var(--primary); background: var(--primary-glow); }
+.nb-drop.busy { border-style: solid; }
+.nb-drop .muted { max-width: 520px; font-size: 13.5px; }
+.nb-drop-btn { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; margin-top: 4px; }
+.nb-lib-list { display: flex; flex-direction: column; gap: 4px; max-height: 280px; overflow-y: auto; }
+.nb-lib-item { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px; border: 1px solid transparent;
+  background: transparent; color: var(--text); text-align: left; font: inherit; font-size: 13.5px; cursor: pointer; }
+.nb-lib-item:hover, .nb-lib-item:focus-visible { background: var(--surface-hover); border-color: var(--border-light); }
+.nb-lib-item .muted { margin-left: auto; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 45%; }
+
+.nb-progress-card { align-items: center; text-align: center; padding: 36px 24px; color: var(--text); }
+.nb-progress-card .muted { max-width: 560px; font-size: 13.5px; }
+.nb-progress-card .btn-neutral, .nb-progress-card .btn-primary { display: inline-flex; align-items: center; gap: 6px; }
+.nb-bar { width: min(460px, 100%); height: 8px; border-radius: 999px; background: var(--border-light); overflow: hidden; }
+.nb-bar span { display: block; height: 100%; border-radius: inherit; background: var(--primary); transition: width 0.4s ease; }
+@media (prefers-reduced-motion: reduce) { .nb-bar span { transition: none; } }
+
+.nb-chapters { display: flex; flex-direction: column; gap: 2px; max-height: 340px; overflow-y: auto; padding-right: 4px; }
+.nb-chapter { display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 8px; cursor: pointer; font-size: 13.5px; color: var(--text); }
+.nb-chapter:hover { background: var(--surface-hover); }
+.nb-chapter.on { background: color-mix(in srgb, var(--primary) 10%, transparent); }
+.nb-chapter.lvl-2 { padding-left: 34px; font-size: 13px; }
+.nb-chapter input { accent-color: var(--primary); width: 16px; height: 16px; flex-shrink: 0; }
+.nb-chapter-title { min-width: 0; overflow-wrap: anywhere; }
+.nb-chapter-tag { font-size: 11px; padding: 1px 7px; border-radius: 999px; border: 1px dashed var(--border-light); color: var(--muted); white-space: nowrap; }
+.nb-chapter-pages { margin-left: auto; font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.nb-chapter-tools { display: flex; gap: 8px; align-items: center; font-size: 12.5px; }
+.nb-pages-field { display: flex; flex-direction: column; gap: 6px; max-width: 420px; font-size: 12.5px; }
+.nb-field-error { color: var(--danger); font-size: 12.5px; }
+.nb-auto-note { margin: 8px 0 0; font-size: 13px; line-height: 1.5; display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+
+.nb-templates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 640px) { .nb-templates { grid-template-columns: minmax(0, 1fr); } }
+.nb-template { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px;
+  border: 1px solid var(--border-light); background: var(--surface); cursor: pointer; color: var(--text); }
+.nb-template input { position: absolute; opacity: 0; pointer-events: none; }
+.nb-template.active { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); }
+.nb-template:focus-within { outline: 2px solid var(--primary); outline-offset: 2px; }
+.nb-template-name { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; }
+.nb-template-for { font-size: 12.5px; }
+.nb-template-slides { font-size: 12px; line-height: 1.5; color: var(--muted); }
+
+.nb-read-go { background: rgba(var(--raised-rgb), 0.98); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); position: sticky; bottom: 8px; z-index: 5; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 18px; }
+.nb-read-go .btn-primary { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 18px; margin-left: auto; }
+.nb-estimate { display: flex; flex-direction: column; gap: 2px; font-size: 13px; color: var(--text); min-width: 0; }
+.nb-estimate .muted { font-size: 12.5px; display: inline-flex; align-items: center; gap: 6px; }
+.nb-estimate-cost { font-size: 12.5px; font-weight: 600; color: var(--text); }
+
+.nb-cover-template { font-weight: 600; letter-spacing: 0.04em; margin-left: 2px; }
+.nb-cover-scope { font-size: 12.5px; }
+.persona-choice:disabled { opacity: 0.45; cursor: not-allowed; }
+.cv-page-slot { max-width: 100%; border-radius: 6px; background: rgba(255, 255, 255, 0.06); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 12px; }
+
+/* The original PDF beside the notes. */
+.nb-pdf-overlay { justify-content: flex-end; padding: 16px; }
+.nb-pdf { position: relative; width: min(640px, 100%); max-width: 100%; height: 100%; display: flex; flex-direction: column; padding: 0; overflow: hidden; outline: none; }
+/* The left edge drags the panel wider: a zoomed-in page needs the room. */
+.nb-pdf-resize { position: absolute; left: 0; top: 0; bottom: 0; width: 8px; cursor: ew-resize; z-index: 2; touch-action: none; }
+.nb-pdf-resize::after { content: ""; position: absolute; left: 2px; top: 50%; width: 3px; height: 44px; margin-top: -22px; border-radius: 3px; background: rgba(var(--ink-rgb), 0.18); transition: background 0.15s; }
+.nb-pdf-resize:hover::after, .nb-pdf-resize:focus-visible::after { background: rgb(var(--accent-rgb)); }
+.nb-pdf-resize:focus-visible { outline: none; }
+.nb-pdf-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--border-light); flex-wrap: wrap; }
+.nb-pdf-title { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; color: var(--text); }
+.nb-pdf-title .muted { font-size: 12px; }
+.nb-pdf-tools { display: flex; align-items: center; gap: 6px; }
+.nb-pdf-tools .nb-segment label span { min-height: 30px; font-size: 12.5px; }
+.nb-pdf-body { flex: 1; overflow: auto; padding: 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+/* Centred with auto margins, not the flex box: a zoomed page wider than the panel then starts at the
+   left edge and scrolls, instead of overflowing both sides with its left part out of reach. */
+.nb-pdf-body > .nb-pdf-msg { align-self: center; }
+.nb-pdf-canvas { max-width: none; margin-inline: auto; flex-shrink: 0; border-radius: 4px; background: #fff; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35); }
+.nb-pdf-canvas.cited { box-shadow: 0 0 0 3px var(--primary), 0 8px 30px rgba(0, 0, 0, 0.35); }
+.nb-pdf-msg { display: flex; align-items: center; gap: 8px; margin: 24px 0; font-size: 13.5px; color: var(--muted); text-align: center; }
+.nb-pdf-text { width: 100%; margin: 0; font-family: var(--font); font-size: 13.5px; line-height: 1.65; color: var(--text); }
+/* One paragraph per line of the saved text; a line that starts "— " is a new speaker's turn. */
+.nb-pdf-text p { margin: 0 0 0.85em; overflow-wrap: anywhere; }
+.nb-pdf-text.printed p { margin: 0; }
+.nb-pdf-text .nb-pdf-turn { padding-left: 12px; border-left: 2px solid rgba(var(--accent-rgb), 0.55); }
+.nb-pdf-speaker { display: block; font-size: 0.82em; font-weight: 700; letter-spacing: 0.02em; color: var(--primary-hover); margin-bottom: 2px; }
+/* Spread across the page: the panel takes the window, and each band of about a screen's
+   text is laid out in columns, read across, then on to the next band below. */
+.nb-pdf.wide { width: 100%; }
+.nb-pdf.wide .nb-pdf-body { padding: 24px clamp(16px, 3vw, 48px); }
+.nb-pdf.columns .nb-pdf-text { font-size: 15px; line-height: 1.7; }
+.nb-pdf.columns .nb-pdf-band { columns: 30em; column-gap: 48px; column-rule: 1px solid var(--border); orphans: 2; widows: 2; }
+.nb-pdf.columns .nb-pdf-band + .nb-pdf-band { margin-top: 8px; padding-top: 22px; border-top: 1px solid var(--border); }
+.nb-pdf-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 14px; border-top: 1px solid var(--border-light); }
+.nb-pdf-foot .btn-neutral { display: inline-flex; align-items: center; gap: 4px; min-height: 34px; }
+.nb-pdf-page { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.nb-pdf-page.cited { color: var(--primary); font-weight: 600; }
+
+/* The Coverage slide, on the ruled paper's rhythm. */
+.nb-paper-classic .nb-slide-coverage { display: flex; flex-direction: column; gap: 0; }
+.nb-paper-classic :is(.nb-coverage-list, .nb-sources-list) { padding-left: 22px; line-height: var(--L); }
+.nb-paper-classic .nb-coverage-list { margin-bottom: var(--L); }
+.nb-paper-classic .nb-sources-list li { display: flex; gap: 10px; align-items: center; justify-content: space-between; height: var(--L); }
+.nb-paper-classic .nb-sources-list li > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nb-paper-classic :is(.nb-coverage-list, .nb-sources-list) :is(span, button) { line-height: 1; }
+.nb-sources-list { list-style: decimal; }
+
+/* ── The cover: a leather ring binder (a deck's first slide) ──────────────────
+ * The leather is mixed from the theme's accent, so it is brown in Ember, navy in
+ * Midnight, green in Sage and so on. Everything is sized from the slide (container
+ * units), so it fits the full page and the session window alike. */
+.nb-deck {
+  --nb-leather: color-mix(in srgb, rgb(var(--accent-rgb)) 22%, #1a1511);
+  --nb-leather-in: color-mix(in srgb, var(--nb-leather) 78%, #000);
+  --nb-foil: #efe5d2;
+  --nb-foil-dim: color-mix(in srgb, #efe5d2 70%, transparent);
+  --nb-backdrop: #0b0a09;
+  --nb-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.15' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+:root[data-light] .nb-deck {
+  --nb-leather: color-mix(in srgb, rgb(var(--accent-rgb)) 28%, #33281f);
+  --nb-backdrop: color-mix(in srgb, rgb(var(--accent-rgb)) 6%, #e7e1d5);
+}
+.nb-face.nb-face-cover { padding: 0; border-left: 0; background: transparent; overflow: hidden; container-type: size; }
+/* Every slide sits stacked under the one on top; a drop shadow on each built a dark halo
+   around the deck 30-odd layers deep. The pages lie flat on the stage instead. */
+.nb-stage .nb-face { box-shadow: none; border-radius: 12px; }   /* same corners as the cover, so nothing peeks past them */
+.nb-back.nb-back-cover { background: var(--nb-grain), var(--nb-leather-in); box-shadow: inset -30px 0 40px rgba(0, 0, 0, 0.35); }
+
+/* The binding is on the left, like the spine the pages turn around: page edges, rail and rings, then the cover. */
+/* Edge to edge: the cover is the slide, with no backdrop around it. */
+.nb-binder { position: absolute; inset: 0; display: flex; flex-direction: row-reverse; }
+.nb-binder-cover {
+  position: relative; z-index: 2; flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column;
+  padding: 4.5cqh 4cqw; border-radius: 5px 12px 12px 5px; color: var(--nb-foil); margin-left: -0.8cqw;
+  background:
+    var(--nb-grain),
+    radial-gradient(120% 90% at 28% 18%, rgba(255, 255, 255, 0.08), transparent 60%),
+    radial-gradient(140% 120% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.38)),
+    var(--nb-leather);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), inset 1.8cqw 0 2.4cqw rgba(0, 0, 0, 0.38), -0.8cqw 0 1.6cqw rgba(0, 0, 0, 0.45);
+}
+.nb-cover-stitch { position: absolute; inset: 2.4cqh 2cqw; pointer-events: none; border-radius: 6px;
+  border: 1.5px dashed color-mix(in srgb, var(--nb-foil) 34%, transparent);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(0, 0, 0, 0.35); }
+.nb-cover-row { position: relative; display: flex; justify-content: space-between; gap: 2cqw; padding: 0 2cqw;
+  font-family: "Newsreader", Georgia, serif; font-size: clamp(8px, 1.55cqh, 12px); letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--nb-foil-dim); white-space: nowrap; }
+.nb-cover-row span { overflow: hidden; text-overflow: ellipsis; }
+.nb-cover-main { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2.2cqh; text-align: center; padding: 1cqh 4cqw; overflow: hidden; }
+/* Scoped to the binder: the shelf cards use .nb-cover-title and .nb-cover-summary too. */
+.nb-binder .nb-cover-title { margin: 0; max-width: 92%; color: var(--nb-foil); font-family: var(--nb-font, "Newsreader", Georgia, serif);
+  font-weight: 500; font-style: normal; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.04; text-wrap: balance;
+  font-size: calc(clamp(20px, 10cqh, 80px) * var(--nb-title-scale, 1));
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55), 0 -1px 0 rgba(255, 255, 255, 0.08); overflow-wrap: anywhere; }
+.nb-binder[data-family="hand"] .nb-cover-title { text-transform: none; letter-spacing: 0; line-height: 1.1; }
+.nb-cover-author { margin-top: -0.8cqh; font-family: "Newsreader", Georgia, serif; font-style: italic; color: var(--nb-foil-dim);
+  font-size: clamp(11px, 2.5cqh, 19px); max-width: 80%; }
+.nb-cover-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2cqh 1.2cqw; max-width: 80%; }
+.nb-cover-tags li { border: 1px solid color-mix(in srgb, var(--nb-foil) 55%, transparent); border-radius: 999px; padding: 0.35em 1.1em;
+  font-family: "Newsreader", Georgia, serif; font-size: clamp(9px, 1.75cqh, 13px); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+.nb-binder .nb-cover-summary { margin: 0; max-width: 64%; color: color-mix(in srgb, var(--nb-foil) 86%, transparent);
+  font-family: "Newsreader", Georgia, serif; font-size: clamp(10px, 2.1cqh, 15.5px); line-height: 1.45;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.nb-cover-ornament { width: clamp(26px, 8.5cqh, 64px); height: auto; color: var(--nb-foil); flex-shrink: 0;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.5)); }
+.nb-cover-fine { font-family: "Newsreader", Georgia, serif; font-size: clamp(7px, 1.3cqh, 10px); letter-spacing: 0.14em; text-transform: uppercase;
+  line-height: 1.7; color: var(--nb-foil-dim); max-width: 80%; }
+
+/* A slim binding: page edges, rail and rings in about 7% of the width. */
+.nb-binder-inside { position: relative; z-index: 3; flex: 0 0 clamp(44px, 7cqw, 96px); border-radius: 12px 0 0 12px;
+  background: var(--nb-grain), var(--nb-leather-in); box-shadow: inset -1.2cqw 0 2cqw rgba(0, 0, 0, 0.5); }
+.nb-binder-defs { position: absolute; }
+.nb-binder-pages { position: absolute; top: 1.5%; bottom: 1.5%; left: 5%; right: 44%; border-radius: 6px 2px 2px 6px;
+  background: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 3px) left / 10px 100% no-repeat, #ece5d7;
+  box-shadow: -2px 0 0 #dcd3c2, -4px 0 0 #cdc4b2, -6px 0 0 #bfb6a4, inset -0.8cqw 0 1.2cqw rgba(0, 0, 0, 0.2); }
+.nb-binder-rail { position: absolute; top: 3%; bottom: 3%; right: 38%; width: clamp(5px, 1.3cqh, 9px); border-radius: 5px;
+  background: linear-gradient(90deg, #4f514e, #f2f2f0 42%, #9a9c99 68%, #3f403e);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45), 2px 0 6px rgba(0, 0, 0, 0.5); }
+.nb-binder-ring { position: absolute; left: 22%; width: 96%; transform: translateY(-50%); z-index: 4; }
+.nb-ring { display: block; width: 100%; height: auto; filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.45)); }
+.nb-byline { font-style: italic; color: var(--p-muted); }
+.nb-author-input { font-style: italic; }
+.nb-paper-classic .nb-byline { line-height: var(--L); }
+
+/* ── Big text spans the ruled lines (classic paper) ───────────────────────────
+ * Titles are two ruled lines tall, so the rule at their midpoint would strike
+ * through the letters. Like large handwriting on ruled paper, big text spans
+ * two lines and sits on the lower one: each 2-line band is painted in the
+ * paper colour except its last pixel, so the line in between disappears and
+ * the baseline under every wrapped line stays. The band bleeds out to the
+ * page edges (--nb-bleed, the page's side padding) so the hidden line goes
+ * edge to edge instead of leaving stubs in the margins; the text stays put.
+ * Measured in --L, so it follows the Look size. The input's hover and focus
+ * tints sit on a second layer clipped to where you type. */
+.nb-paper-classic { --nb-bleed: 40px; }
+.nb-paper-classic .nb-face, .nb-face.nb-paper-classic { --nb-bleed: 44px; }
+.nb-paper-classic .nb-title {
+  margin-inline: calc(var(--nb-bleed) * -1);
+  padding-inline: var(--nb-bleed);
+}
+.nb-paper-classic .nb-title-input {
+  width: calc(100% + var(--nb-bleed) * 2);
+  margin-inline: calc(var(--nb-bleed) * -1);
+  padding-inline: calc(var(--nb-bleed) + 6px);
+}
+.nb-paper-classic :is(.nb-title, .nb-title-input),
+.nb-paper-classic .nb-title-input:is(:hover, :focus) {
+  --nb-tint: transparent;
+  background:
+    linear-gradient(to right, var(--nb-bar, transparent) 3px, var(--nb-tint) 3px) content-box no-repeat,
+    repeating-linear-gradient(to bottom,
+      var(--p-bg) 0, var(--p-bg) calc(var(--L) * 2 - 1px),
+      transparent calc(var(--L) * 2 - 1px), transparent calc(var(--L) * 2)) border-box;
+  box-shadow: none;
+}
+.nb-paper-classic .nb-title-input:hover { --nb-tint: color-mix(in srgb, var(--p-accent) 5%, transparent); }
+.nb-paper-classic .nb-title-input:focus { --nb-tint: color-mix(in srgb, var(--p-accent) 9%, transparent); --nb-bar: var(--p-accent); }
+
+/* The Notebook view: its own scrolling card, resizable with the grip below it. */
+.nb-page-scroll { height: clamp(360px, calc(var(--vh, 1vh) * 70), 1100px); overflow-y: auto; overscroll-behavior: contain;
+  border-radius: 6px 14px 14px 6px; scroll-padding: 48px 0; }
+.nb-page-scroll:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.nb-page-scroll > .nb-paper { min-height: 100%; }
+.nb-page-grip { margin: -6px 0 -8px; }
+
+/* ── Resizable "Test yourself" column ─────────────────────────────────────────
+ * The red margin line is the handle (NotebookPage's CueResizer). Its width is a
+ * percentage of the page (--nb-cue-w) with a 120px floor so questions stay
+ * readable. The hit area is wider than the line; the line thickens and shows a
+ * grip on hover, drag and keyboard focus. One column (and no handle) on narrow
+ * windows and in print. */
+.nb-cornell { grid-template-columns: minmax(120px, var(--nb-cue-w, 26%)) minmax(0, 1fr); }
+.nb-main { position: relative; }
+.nb-cue-resizer {
+  position: absolute; top: 0; bottom: 0; left: -8px; width: 14px; z-index: 2;
+  cursor: col-resize; touch-action: none; outline: none;
+}
+.nb-cue-resizer::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 6px; width: 2px;
+  background: var(--p-accent); opacity: 0; transition: opacity 0.15s, width 0.15s, left 0.15s;
+}
+.nb-cue-resizer::after {
+  content: ""; position: absolute; top: 50%; left: 3px; width: 8px; height: 36px; margin-top: -18px;
+  border-radius: 4px; background: var(--p-accent); opacity: 0; transition: opacity 0.15s;
+  box-shadow: 0 0 0 2px var(--p-bg);
+}
+.nb-cue-resizer:hover::before, .nb-cue-resizer:focus-visible::before, .nb-resizing .nb-cue-resizer::before {
+  opacity: 1; left: 5px; width: 4px;
+}
+.nb-cue-resizer:hover::after, .nb-cue-resizer:focus-visible::after, .nb-resizing .nb-cue-resizer::after { opacity: 1; }
+.nb-cue-resizer:focus-visible::after { box-shadow: 0 0 0 2px var(--p-bg), 0 0 0 4px var(--p-accent); }
+.nb-resizing, .nb-resizing * { cursor: col-resize !important; user-select: none !important; }
+@media (max-width: 900px) {
+  .nb-cornell { grid-template-columns: 1fr; }
+  .nb-cue-resizer { display: none; }
+}
+@media print { .nb-cue-resizer { display: none; } }
+@media (prefers-reduced-motion: reduce) { .nb-cue-resizer::before, .nb-cue-resizer::after { transition: none; } }
+
+/* ── Resizable meeting cards ───────────────────────────────────────────────────
+ * Each card's right edge is a handle (NotebookPage's CardResizer) that snaps the
+ * card to 1–3 board columns; "dense" lets smaller cards fill the gap a widened
+ * card leaves. No handle when the board is a single column, or in print. */
+.nb-board { grid-auto-flow: row dense; }
+.nb-card { position: relative; }
+.nb-card-resizer {
+  position: absolute; top: 12px; bottom: 12px; right: -8px; width: 14px; z-index: 2;
+  cursor: col-resize; touch-action: none; outline: none;
+}
+.nb-card-resizer::after {
+  content: ""; position: absolute; top: 50%; left: 4px; width: 6px; height: 34px; margin-top: -17px;
+  border-radius: 3px; background: var(--p-muted); opacity: 0; transition: opacity 0.15s;
+  box-shadow: 0 0 0 2px var(--p-bg);
+}
+.nb-card:hover > .nb-card-resizer::after { opacity: 0.45; }
+.nb-card-resizer:hover::after, .nb-card-resizer:focus-visible::after, .nb-resizing .nb-card-resizer:active::after { opacity: 1; background: var(--p-accent); }
+.nb-card-resizer:focus-visible::after { box-shadow: 0 0 0 2px var(--p-bg), 0 0 0 4px var(--p-accent); }
+@media print { .nb-card-resizer { display: none; } }
+@media (prefers-reduced-motion: reduce) { .nb-card-resizer::after { transition: none; } }
+
+/* ── Your highlights (HighlightBar): select words, choose a colour ─────────────
+ * Translucent over the paper, so the ink keeps its colour and every theme reads. */
+.nb-mark { color: inherit; background: var(--nb-mark); border-radius: 3px; padding: 0 1px;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.nb-mark-yellow { --nb-mark: rgba(255, 210, 0, 0.42); }
+.nb-mark-green  { --nb-mark: rgba(52, 199, 89, 0.36); }
+.nb-mark-blue   { --nb-mark: rgba(64, 156, 255, 0.38); }
+.nb-mark-pink   { --nb-mark: rgba(255, 64, 150, 0.34); }
+.nb-mark-orange { --nb-mark: rgba(255, 149, 0, 0.42); }
+.nb-hl-bar { position: fixed; z-index: 1000; transform: translateX(-50%); display: flex; align-items: center; gap: 6px;
+  padding: 6px 8px; border-radius: 999px; background: rgb(var(--raised-rgb)); border: 1px solid var(--border-light);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35); animation: nb-hl-in 0.12s ease-out; }
+@keyframes nb-hl-in { from { opacity: 0; transform: translate(-50%, 4px); } }
+.nb-hl-swatch { width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(var(--ink-rgb), 0.18); cursor: pointer;
+  background: var(--nb-mark); padding: 0; transition: transform 0.1s; }
+.nb-hl-swatch:hover, .nb-hl-swatch:focus-visible { transform: scale(1.15); outline: none; border-color: var(--text); }
+.nb-hl-clear { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: none; background: none;
+  color: var(--muted); cursor: pointer; }
+.nb-hl-clear:hover, .nb-hl-clear:focus-visible { color: var(--text); background: rgba(var(--ink-rgb), 0.08); outline: none; }
+@media (prefers-reduced-motion: reduce) { .nb-hl-bar { animation: none; } }
+@media print { .nb-mark { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+/* The app turns text selection off everywhere (buttons and labels shouldn't select on a
+   click); a notebook's words are for selecting: to highlight them, or to copy. */
+.nb-paper, .nb-paper *, .nb-binder-cover, .nb-binder-cover * { -webkit-user-select: text; user-select: text; }
+.nb-paper :is(button, input[type="checkbox"], .nb-src, .nb-label svg) { -webkit-user-select: none; user-select: none; }
+.nb-fmt-btn { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; border: none; background: none;
+  color: var(--muted); cursor: pointer; }
+.nb-fmt-btn:hover, .nb-fmt-btn:focus-visible { color: var(--text); background: rgba(var(--ink-rgb), 0.08); outline: none; }
+.nb-fmt-btn.on { color: var(--primary-hover); background: rgba(var(--accent-rgb), 0.16); }
+.nb-hl-sep { width: 1px; height: 20px; background: var(--border-light); margin: 0 2px; }
+.nb-paper :is(u, s) { text-decoration-thickness: 1.5px; }
+
+/* ── Compact chrome: the toolbar above a notebook and the page controls below it
+ * take as little room as they can, so the notebook gets the space. */
+.nb-editor { gap: 8px; }
+.nb-deck { gap: 8px; }
+.nb-toolbar { gap: 5px; }
+.nb-toolbar .btn-neutral, .nb-toolbar .btn-primary { min-height: 28px; padding: 0 9px; font-size: 12px; gap: 5px; border-radius: 8px; }
+.nb-toolbar svg { width: 13px; height: 13px; }
+.nb-toolbar .nb-segment { border-radius: 8px; }
+.nb-toolbar .nb-segment label span { min-height: 28px; padding: 0 10px; font-size: 12px; gap: 5px; }
+.nb-deck-controls { gap: 8px; }
+.nb-deck-controls .btn-neutral, .nb-deck-controls .btn-primary { min-height: 30px; padding: 0 11px; font-size: 12px; gap: 4px; border-radius: 8px; }
+.nb-deck-controls svg { width: 13px; height: 13px; }
+.nb-thumbs { gap: 6px; padding: 3px; }
+.nb-thumb { width: 78px; height: 38px; padding: 4px 7px; font-size: 10px; gap: 0; border-width: 1.5px; border-radius: 7px; }
+.nb-thumb.on { box-shadow: 0 0 0 2px var(--primary-glow); }
+.nb-deck-count { font-size: 11.5px; min-width: 0; }
+
+/* ── Text colours (the bar's "A"): the letters themselves. Lighter on the dark
+ * themes, deeper on Paper, so a coloured word reads on either ground. The cover
+ * is dark leather in every theme, so it keeps the light set. */
+.nb-paper, .nb-hl-bar, .nb-binder-cover {
+  --nb-ink-red: #ff8f85; --nb-ink-orange: #ffb570; --nb-ink-green: #7fe0a2; --nb-ink-blue: #8fbaff; --nb-ink-purple: #cba8ff;
+}
+:root[data-light] :is(.nb-paper, .nb-hl-bar) {
+  --nb-ink-red: #c62828; --nb-ink-orange: #b85300; --nb-ink-green: #1b7a3a; --nb-ink-blue: #1d5bbf; --nb-ink-purple: #6a3dbd;
+}
+.nb-ink-red { color: var(--nb-ink-red); }
+.nb-ink-orange { color: var(--nb-ink-orange); }
+.nb-ink-green { color: var(--nb-ink-green); }
+.nb-ink-blue { color: var(--nb-ink-blue); }
+.nb-ink-purple { color: var(--nb-ink-purple); }
+.nb-ink-swatch { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; padding: 0; cursor: pointer;
+  border: 1.5px solid var(--border-light); background: rgba(var(--ink-rgb), 0.04);
+  font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 14px; line-height: 1; transition: transform 0.1s; }
+.nb-ink-swatch:hover, .nb-ink-swatch:focus-visible { transform: scale(1.12); outline: none; border-color: currentColor; }
+.nb-ink-default { color: var(--muted); }
+@media print { .nb-ink { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+/* The page strip scrolls (wheel, drag on a touchpad, keeping the current page in
+ * view) with no scrollbar; faded edges say there are more pages that way. */
+.nb-thumbs { scrollbar-width: none; overscroll-behavior-x: contain; --nb-fade-l: 0px; --nb-fade-r: 0px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--nb-fade-l), #000 calc(100% - var(--nb-fade-r)), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 var(--nb-fade-l), #000 calc(100% - var(--nb-fade-r)), transparent); }
+.nb-thumbs::-webkit-scrollbar { display: none; }
+.nb-thumbs.more-start { --nb-fade-l: 36px; }
+.nb-thumbs.more-end { --nb-fade-r: 36px; }
+
+/* ── The notebook as a book (Nkɔmmɔ engine) ─────────────────────────────────
+   The book is drawn on a canvas and fills as much of the window as it can; the
+   paper and cover themes restyle the book itself. The controls around it use
+   the app's own colours. */
+.nbk { display: flex; flex-direction: column; gap: 6px; }
+/* The height is worked out in NotebookBook (down to the window's bottom edge); this is the first guess. */
+.nbk-book { position: relative; height: max(460px, calc(100vh - 150px)); }
+.nbk-stage { position: absolute; inset: 0; }
+.nbk-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: text; }
+/* Over a source tag on the page: what a click does (lib/book/notebookApp.ts, tagHint). */
+.nbk-tag-tip { position: absolute; z-index: 5; pointer-events: none; max-width: 260px; padding: 5px 9px; border-radius: 7px;
+  font-size: 12px; line-height: 1.35; color: #fff; background: rgba(20, 22, 30, 0.92); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); white-space: nowrap; }
+/* The real input is invisible: the book draws the text, cursor and selection. */
+.nbk-input {
+  position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%);
+  width: min(420px, 80%); height: 1.8em; overflow: hidden;
+  opacity: 0; pointer-events: none; caret-color: transparent; color: transparent;
+  font: 16px/1.6 "EB Garamond", Georgia, serif; white-space: pre-wrap; outline: none;
+}
+/* Page arrows sit at the book's sides, over the space the book leaves free. */
+.nbk-round {
+  position: absolute; top: 50%; z-index: 2; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
+  border: 1px solid var(--border-light); background: var(--surface); color: var(--text);
+  backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
+}
+.nbk-round.prev { left: 4px; }
+.nbk-round.next { right: 4px; }
+.nbk-round:disabled { opacity: 0.3; cursor: default; }
+.nbk-sound {
+  position: absolute; top: 10px; right: 8px; z-index: 3; display: grid; place-items: center; width: 32px; height: 32px;
+  border: 1px solid var(--border-light); border-radius: 50%; background: var(--surface-solid); color: var(--text); cursor: pointer; opacity: 0.8;
+}
+.nbk-sound:hover, .nbk-sound:focus-visible { opacity: 1; }
+.nbk-sound[aria-pressed="true"] { color: var(--muted); }
+.nbk-under { position: relative; display: flex; align-items: center; justify-content: center; gap: 8px 12px; flex-wrap: wrap; }
+.nbk-where { font: italic 14px "EB Garamond", Georgia, serif; color: var(--muted); white-space: nowrap; }
+.nbk-title {
+  width: 190px; padding: 5px 10px; border-radius: 8px; border: 1px solid var(--border-light); background: var(--surface);
+  color: var(--text); font: 500 15px "EB Garamond", Georgia, serif; text-align: center;
+}
+.nbk-title:focus-visible, .nbk-round:focus-visible, .nbk-pill:focus-visible, .nbk-tool:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.nbk-pill {
+  display: inline-flex; align-items: center; gap: 5px; height: 32px; padding: 0 12px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--border-light); background: var(--surface); color: var(--text); font-size: 13px; white-space: nowrap;
+}
+.nbk-words { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.nbk-bar {
+  /* Never a scroll box: that would clip the colour, insert and paper menus that open above it. */
+  position: relative; display: flex; align-items: center; gap: 1px; flex-wrap: wrap; justify-content: center; max-width: 100%; overflow: visible;
+  padding: 3px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border);
+  backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur)); scrollbar-width: none;
+}
+.nbk-bar::-webkit-scrollbar { display: none; }
+.nbk-sep { flex: none; width: 1px; height: 20px; margin: 0 3px; background: var(--border-light); }
+.nbk-tool {
+  position: relative; flex: none; width: 30px; height: 32px; border-radius: 8px; display: inline-grid; place-items: center;
+  border: 0; background: transparent; color: var(--text); cursor: pointer;
+}
+.nbk-tool:hover:not(:disabled) { background: rgba(var(--ink-rgb), 0.08); }
+.nbk-tool[aria-pressed="true"] { background: rgba(var(--accent-rgb), 0.18); color: var(--primary); }
+.nbk-tool:disabled { opacity: 0.35; cursor: default; }
+.nbk-swatch-bar { position: absolute; left: 8px; right: 8px; bottom: 4px; height: 3px; border-radius: 2px; }
+.nbk-menu { position: static; display: inline-flex; }
+.nbk-palette {
+  position: absolute; z-index: 6; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  display: grid; grid-template-columns: repeat(6, 30px); gap: 6px; padding: 10px;
+  background: var(--surface-solid); border: 1px solid var(--border-light); border-radius: 12px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+.nbk-swatch { width: 30px; height: 30px; border-radius: 50%; padding: 0; cursor: pointer; border: 2px solid var(--border-light); }
+.nbk-swatch.hl { background: linear-gradient(var(--swatch), var(--swatch)), #F0E6D2; }
+.nbk-swatch.none { background: linear-gradient(135deg, #F0E6D2 44%, #8A1F2D 44% 56%, #F0E6D2 56%); }
+.nbk-swatch:hover { border-color: var(--primary); }
+.nbk-list { grid-template-columns: 1fr; gap: 2px; padding: 6px; min-width: 200px; }
+.nbk-list button {
+  display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 12px; border: 0; border-radius: 8px; cursor: pointer;
+  background: transparent; color: var(--text); text-align: left; font-size: 13.5px;
+}
+.nbk-list button:hover, .nbk-list button[aria-checked="true"] { background: rgba(var(--ink-rgb), 0.08); }
+.nbk-list button[aria-checked="true"]::after { content: "✓"; margin-left: auto; color: var(--primary); }
+.nbk-list small { color: var(--muted); }
+@media (max-width: 560px) {
+  .nbk-book { height: calc(100vh - 230px); }
+  .nbk-palette { position: fixed; left: 12px; right: 12px; bottom: auto; top: 30%; transform: none; grid-template-columns: repeat(6, 1fr); justify-items: center; }
+}
+
+/* ── The shelf (A5): every notebook as a bound book, its cover its paper theme ─ */
+.nb-shelf {
+  --shelf-row: 262px; --book-h: 214px;
+  --shelf-top: #b88d5f; --shelf-front: #8e6a45; --shelf-shadow: rgba(40, 24, 10, 0.35);
+  list-style: none; margin: 8px 0 0; padding: 0 12px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(146px, 1fr)); grid-auto-rows: var(--shelf-row); column-gap: 18px;
+  /* A plank under every row: the books stand on it. */
+  background-image: linear-gradient(to bottom,
+    transparent calc(var(--book-h) + 8px), var(--shelf-top) calc(var(--book-h) + 8px),
+    var(--shelf-top) calc(var(--book-h) + 13px), var(--shelf-front) calc(var(--book-h) + 13px),
+    var(--shelf-front) calc(var(--book-h) + 27px), var(--shelf-shadow) calc(var(--book-h) + 27px), transparent calc(var(--book-h) + 40px));
+  background-size: 100% var(--shelf-row);
+  border-radius: 10px;
+}
+:root[data-theme="dark"] .nb-shelf, .theme-dark .nb-shelf { --shelf-top: #6b4f33; --shelf-front: #4a3522; --shelf-shadow: rgba(0, 0, 0, 0.5); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .nb-shelf { --shelf-top: #6b4f33; --shelf-front: #4a3522; --shelf-shadow: rgba(0, 0, 0, 0.5); } }
+.nb-shelf li { display: flex; align-items: flex-start; justify-content: center; padding-top: 8px; }
+.nb-book {
+  position: relative; width: min(100%, 164px); height: var(--book-h); padding: 0; border: 0; cursor: pointer;
+  border-radius: 3px 8px 8px 3px; color: #f6ecd9; font: inherit; text-align: left;
+  background: linear-gradient(135deg, var(--cv-light), var(--cv-base) 45%, var(--cv-dark));
+  box-shadow: 0 10px 14px -8px rgba(0, 0, 0, 0.55), inset -2px 0 0 rgba(255, 255, 255, 0.06), inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+  transform-origin: bottom center; transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.nb-book:hover { transform: translateY(-6px) rotate(-1deg); box-shadow: 0 18px 20px -10px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(0, 0, 0, 0.25); }
+.nb-book:focus-visible { outline: 3px solid var(--primary); outline-offset: 4px; transform: translateY(-6px); }
+@media (prefers-reduced-motion: reduce) { .nb-book, .nb-book:hover, .nb-book:focus-visible { transition: none; transform: none; } }
+/* Leather is grained, cloth is woven, card is plain. */
+.nb-book-leather { background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1.4px), linear-gradient(135deg, var(--cv-light), var(--cv-base) 45%, var(--cv-dark)); background-size: 5px 5px, 100% 100%; }
+.nb-book-cloth { background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.07) 0 1px, transparent 1px 3px), linear-gradient(135deg, var(--cv-light), var(--cv-base) 45%, var(--cv-dark)); }
+.nb-book-spine { position: absolute; left: 0; top: 0; bottom: 0; width: 13px; border-radius: 3px 0 0 3px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.08) 60%, rgba(0, 0, 0, 0.25)); }
+.nb-book-face { position: absolute; inset: 9px 9px 9px 21px; display: flex; flex-direction: column; gap: 7px; padding: 12px 10px;
+  border: 1px dashed var(--cv-stitch); border-radius: 4px; overflow: hidden; }
+.nb-book-kind { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.78; }
+.nb-book-title { font-family: Georgia, "Times New Roman", serif; font-size: 16px; line-height: 1.25; font-weight: 600;
+  text-shadow: 0 1px 0 var(--cv-emboss), 0 -1px 0 var(--cv-hi); display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
+  overflow-wrap: break-word; hyphens: auto; }
+/* A title with a long word gets smaller type, so the word fits on its line whole. */
+.nb-book-title.long-word { font-size: 14px; }
+.nb-book-title.longer-word { font-size: 12.5px; }
+.nb-book-scope { font-size: 11px; opacity: 0.75; }
+.nb-book-meta { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; font-size: 10.5px; opacity: 0.82; }
+.nb-book-meta span { display: inline-flex; align-items: center; gap: 3px; }
+/* A light cover (Light, Clean white) takes dark lettering: cream on white could not be read.
+   The title is pressed in, a soft highlight under it, not raised with a dark shadow. */
+.nb-book-light { color: #23201c; }
+.nb-book-light .nb-book-title { text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7); }
+.nb-book-light .nb-book-kind, .nb-book-light .nb-book-scope, .nb-book-light .nb-book-meta { opacity: 0.85; }
+.nb-book-light .nb-book-spine { background: linear-gradient(90deg, rgba(0, 0, 0, 0.18), rgba(255, 255, 255, 0.35) 60%, rgba(0, 0, 0, 0.12)); }
+/* The exercise book's card is a strong blue: white lettering, and the title on
+   a white label as on the real cover, in plain ink (no emboss, which doubled
+   every letter on the blue). */
+.nb-book-card { color: #ffffff; }
+.nb-book-card .nb-book-kind, .nb-book-card .nb-book-scope, .nb-book-card .nb-book-meta { opacity: 0.95; }
+.nb-book-card .nb-book-title {
+  /* A white border, not padding, frames it: the clamped lines are clipped at
+     the padding edge, so padding would show the top of the next line. */
+  background: #ffffff; color: var(--cv-emboss); text-shadow: none; padding: 0;
+  border: solid #ffffff; border-width: 6px 8px; border-radius: 6px;
+  box-shadow: 0 0 0 1.5px var(--cv-base), 0 1px 3px rgba(0, 0, 0, 0.25); -webkit-line-clamp: 4;
+}
+@media (max-width: 520px) { .nb-shelf { --shelf-row: 232px; --book-h: 186px; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); column-gap: 12px; } .nb-book-title { font-size: 14px; } }
+/* Read by screen readers, not shown. */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* A narrow window (A5): the formatting bar wraps instead of scrolling out of sight. */
+@media (max-width: 720px) {
+  .nbk-bar { flex-wrap: wrap; justify-content: center; overflow: visible; row-gap: 4px; }
+  /* The page arrows sit over the writing on one page: smaller, and faint until wanted. */
+  .nbk-round { width: 30px; height: 30px; opacity: 0.45; }
+  .nbk-round:hover, .nbk-round:focus-visible { opacity: 1; }
+}
+/* The formatting bar hidden (Ctrl + .): one small pill brings it back. */
+.nbk-show-bar {
+  position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%); z-index: 3;
+  display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--border-light); background: var(--surface); color: var(--muted); font-size: 12.5px; opacity: 0.7;
+  backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
+}
+.nbk-show-bar:hover, .nbk-show-bar:focus-visible { opacity: 1; color: var(--text); }
+.nbk-show-bar span { font: italic 13px "EB Garamond", Georgia, serif; }
+.nbk kbd { font: 11px ui-monospace, SFMono-Regular, Consolas, monospace; padding: 1px 5px; border-radius: 4px;
+  border: 1px solid var(--border-light); color: var(--muted); }
+.nbk-hide-bar { gap: 6px; padding: 0 10px; }
+.nbk-under[hidden] { display: none; }
+.nbk-size { font-size: 11px; color: var(--muted); min-width: 64px; text-align: center; white-space: nowrap; }
+
+/* Deep read: how much the reader knows. */
+.nb-levels { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+.nb-level { min-height: 0; }
+.nb-level-note { margin: 0; font-size: 12.5px; line-height: 1.5; max-width: 70ch; }
+
+/* Help while reading (Deep Read, B3): a term's meaning, or a paragraph in plainer words, over the book's foot. */
+.nbk-help {
+  position: absolute; left: 50%; bottom: 44px; transform: translateX(-50%); z-index: 4; width: min(520px, 92%);
+  display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 12px;
+  background: var(--surface-solid); border: 1px solid var(--border-light); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  color: var(--text); font-size: 13.5px; line-height: 1.5;
+}
+.nbk-help p { margin: 0; }
+.nbk-help-head { display: flex; align-items: center; gap: 8px; }
+.nbk-help-head .nb-icon-btn { margin-left: auto; }
+.nbk-help-head svg { color: var(--primary); }
+.nbk-help-src { border: 0; background: none; padding: 0; color: var(--primary); font: inherit; font-size: 12px; cursor: pointer; text-decoration: underline dotted; }
+.nbk-help .nbk-pill { align-self: flex-start; }
+
+/* Explain (select any words): a button over the book's foot, then the card in the help card's place. */
+.nbk-explain-pill { position: absolute; left: 50%; bottom: 44px; transform: translateX(-50%); z-index: 4; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+.nbk-explain-card { max-height: 60%; overflow-y: auto; }
+.nbk-explain-words { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1; }
+.nbk-depth { display: inline-flex; align-self: flex-start; padding: 2px; gap: 2px; border-radius: 999px; background: rgba(var(--ink-rgb), 0.06); }
+.nbk-depth button { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 12px; padding: 3px 12px; border-radius: 999px; cursor: pointer; }
+.nbk-depth button[aria-checked="true"] { background: var(--primary); color: #fff; }
+.nbk-explain-example { font-size: 13px; }
+.nbk-explain-from { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0; }
+.nbk-explain-from .nbk-help-src { display: inline-flex; align-items: center; gap: 3px; }
+.nbk-explain-unsure { color: var(--warning, #d97706); }
+.nbk-explain-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.nbk-explain-cost { font-size: 11.5px; margin: 0; }
+/* The Simplify menu's card: the ways to explain, then the answer. */
+.nbk-modes { display: flex; flex-wrap: wrap; gap: 4px; }
+.nbk-modes button { border: 1px solid var(--border-light); background: transparent; color: var(--muted); font: inherit; font-size: 12px; padding: 3px 10px; border-radius: 999px; cursor: pointer; }
+.nbk-modes button[aria-checked="true"] { background: var(--primary); border-color: var(--primary); color: #fff; }
+.nbk-understand-text { white-space: pre-line; }
+.nbk-terms { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+.nbk-terms .nb-icon-btn { width: 22px; height: 22px; vertical-align: middle; }
+.nbk-level { font-size: 12px; color: var(--muted); align-self: center; }
+.nbk-glossary { gap: 8px; }
+.nbk-glossary li { line-height: 1.45; }
+.nbk-glossary .nbk-explain-from { margin-top: 2px; }
+/* Follow-up questions under an explanation. */
+.nbk-followup { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--border-light); padding-top: 8px; }
+.nbk-turn { display: flex; flex-direction: column; gap: 3px; }
+.nbk-turn-q { margin: 0; font-weight: 600; font-size: 13px; }
+.nbk-turn-a { margin: 0; }
+.nbk-starters { display: flex; flex-wrap: wrap; gap: 4px; }
+.nbk-starter { border: 1px dashed var(--border-light); background: transparent; color: var(--muted); font: inherit; font-size: 12px; padding: 3px 10px; border-radius: 999px; cursor: pointer; }
+.nbk-starter:hover:not(:disabled) { color: var(--text); border-style: solid; }
+.nbk-ask { display: flex; gap: 6px; align-items: center; }
+.nbk-ask .nb-input { flex: 1; min-width: 0; }
+/* Check your understanding. */
+.nbk-menu-split { border-top: 1px solid var(--border-light) !important; }
+.nbk-check-q { margin: 0; font-weight: 600; }
+.nbk-check-form { display: flex; flex-direction: column; gap: 6px; }
+.nbk-check-form textarea { resize: vertical; font: inherit; }
+.nbk-check-result { display: flex; flex-direction: column; gap: 6px; }
+.nbk-check-verdict { margin: 0; }
+.nbk-check-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+.nbk-check-points li { display: flex; gap: 6px; align-items: flex-start; }
+.nbk-check-points li svg { flex-shrink: 0; margin-top: 2px; }
+.nbk-check-points li.got svg { color: var(--success, #16a34a); }
+.nbk-check-points li.missed { color: var(--muted); }
+.nbk-check-wrong { margin: 0; font-size: 13px; display: flex; gap: 6px; align-items: flex-start; flex-wrap: wrap; }
+.nbk-check-wrong svg { color: var(--danger, #dc2626); flex-shrink: 0; margin-top: 2px; }
+
+/* Editing the cover: a button over the front cover, and the form in the help card's place. */
+.nbk-cover-edit { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 4; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); }
+.nbk-cover-form { width: min(420px, 92%); }
+.nbk-cover-row { display: grid; grid-template-columns: 52px 1fr; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
+.nbk-cover-row .nb-input { min-width: 0; }
+
+/* Explain it back (Deep Read, B4): over the book, like the help card, with room to write. */
+.nbk-explain {
+  position: absolute; left: 50%; bottom: 44px; transform: translateX(-50%); z-index: 5; width: min(620px, 94%);
+  max-height: calc(100% - 60px); overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding: 14px 16px;
+  border-radius: 12px; background: var(--surface-solid); border: 1px solid var(--border-light); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  color: var(--text); font-size: 13.5px; line-height: 1.5;
+}
+.nbk-explain p { margin: 0; }
+.nbk-explain-text { width: 100%; resize: vertical; font: inherit; line-height: 1.5; }
+.nbk-explain-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.nbk-explain-score { display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap; }
+.nbk-explain-score strong { font-size: 28px; line-height: 1; color: var(--primary); font-variant-numeric: tabular-nums; }
+.nbk-explain-score p { flex-basis: 100%; }
+.nbk-explain-result section h4 { margin: 6px 0 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.nbk-explain-result ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+.nbk-explain-result li.got::marker { content: "✓  "; color: #3aa76d; }
+.nbk-explain-result li.missed::marker { content: "○  "; color: #d9a23b; }
+.nbk-explain-result li.wrong::marker { content: "✕  "; color: #d9534f; }
+/* The map of ideas. */
+.nb-ideas {
+  width: min(960px, 96vw); max-height: 88vh; display: flex; flex-direction: column; gap: 8px; padding: 18px 20px;
+  border-radius: 18px; background: var(--surface-solid); border: 1px solid var(--border-light);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+.nb-ideas .nb-popover-head strong { display: inline-flex; align-items: center; gap: 6px; }
+.nb-ideas-lede { margin: 0; font-size: 13px; }
+.nb-ideas-scroll { overflow: auto; border-radius: 10px; background: rgba(var(--ink-rgb), 0.03); }
+.nb-ideas-node { fill: var(--surface-solid); stroke: var(--border-light); }
+.nb-ideas-label { fill: var(--text); font-size: 12.5px; }
+.nb-ideas-edge { fill: none; stroke: var(--primary); stroke-opacity: 0.55; stroke-width: 1.5; }
+
+/* The look menu: paper and cover, page colour, text size (owner, 27 Sep 2026). */
+.nbk-look { grid-template-columns: 1fr; gap: 6px; padding: 12px; width: 280px; }
+.nbk-look-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.nbk-look-papers { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.nbk-look-papers button, .nbk-look-sizes button {
+  height: 32px; border: 1px solid var(--border-light); border-radius: 8px; background: transparent; color: var(--text); cursor: pointer; font-size: 12.5px;
+}
+.nbk-look-papers button[aria-checked="true"], .nbk-look-sizes button[aria-checked="true"] { border-color: var(--primary); background: rgba(var(--accent-rgb), 0.15); color: var(--primary); }
+.nbk-look-colours { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.nbk-page-swatch { height: 34px; border-radius: 8px; border: 2px solid var(--border-light); cursor: pointer; font: 600 13px Georgia, serif; }
+.nbk-page-swatch[aria-checked="true"] { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.35); }
+.nbk-page-swatch.none { background: linear-gradient(135deg, #F0E6D2 45%, #2C2521 45% 55%, #F0E6D2 55%); }
+.nbk-look-sizes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.nbk-look-sizes button { font-family: Georgia, serif; font-weight: 600; }
+.nbk-look button:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+/* The notebook's header, out of the book's way (owner, 27 Sep 2026): the page starts under the title bar, and on
+   a wide window the two ends of the header float at the top corners, in the space beside the book. */
+.nb-open:has(.nb-editor) { padding-top: 4px; }
+.nb-toolbar-start, .nb-toolbar-end { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+/* Only when the book leaves room beside it (NotebookEditor measures it): otherwise the header is an ordinary row. */
+.nb-editor[data-float-header="true"] > .nb-toolbar {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 6; pointer-events: none; align-items: flex-start;
+}
+.nb-editor[data-float-header="true"] > .nb-toolbar > * { pointer-events: auto; }
+.nb-editor[data-float-header="true"] > .nb-toolbar .nb-toolbar-start { flex-direction: column; align-items: flex-start; max-width: 190px; }
+.nb-editor[data-float-header="true"] > .nb-toolbar .nb-toolbar-end { flex-direction: row; justify-content: flex-end; max-width: 210px; }
+
+
+/* Making a deck (components/notebook/JobProgress): stages, a chip per part, who is working. */
+.nb-job { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 32px 28px; text-align: center; max-width: 760px; width: 100%; margin: 0 auto; color: var(--text); }
+.nb-job-stages { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 0; width: 100%; max-width: 560px; }
+.nb-job-stages li { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative; font-size: 12px; color: var(--muted); }
+.nb-job-stages li + li::before { content: ""; position: absolute; top: 13px; right: 50%; width: 100%; height: 2px; background: var(--border-light); z-index: 0; }
+.nb-job-stages li.done + li::before, .nb-job-stages li.done + li.now::before { background: var(--primary); transition: background .4s ease; }
+.nb-job-dot { position: relative; z-index: 1; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font-size: 12px; font-weight: 700;
+  background: rgba(var(--raised-rgb), 1); border: 2px solid var(--border-light); color: var(--muted); transition: all .35s ease; }
+.nb-job-stages li.done .nb-job-dot { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+.nb-job-stages li.now .nb-job-dot { border-color: var(--primary); color: var(--primary); animation: nb-job-ring 1.8s ease-out infinite; }
+.nb-job-stages li.now .nb-job-label, .nb-job-stages li.done .nb-job-label { color: var(--text); font-weight: 600; }
+@keyframes nb-job-ring { 0% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), .45); } 100% { box-shadow: 0 0 0 12px rgba(var(--accent-rgb), 0); } }
+
+.nb-job-now { display: inline-flex; align-items: center; gap: 10px; font-size: 16px; }
+.nb-job-now svg { color: var(--primary); }
+.nb-job-bar { position: relative; width: 100%; max-width: 560px; height: 8px; border-radius: 999px; background: rgba(var(--accent-rgb), .12); overflow: hidden; }
+.nb-job-bar > span { position: relative; display: block; height: 100%; border-radius: inherit; background: var(--primary); transition: width .6s cubic-bezier(.22, 1, .36, 1); overflow: hidden; }
+.nb-job-bar > span::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .35), transparent);
+  transform: translateX(-100%); animation: nb-job-shimmer 1.6s ease-in-out infinite; }
+@keyframes nb-job-shimmer { to { transform: translateX(100%); } }
+
+.nb-job-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 560px; }
+.nb-job-chips span { width: 22px; height: 8px; border-radius: 4px; background: rgba(var(--accent-rgb), .14); transition: background .4s ease, transform .4s ease; }
+.nb-job-chips span.done { background: var(--primary); }
+.nb-job-chips span.now { background: rgba(var(--accent-rgb), .45); animation: nb-job-breathe 1.2s ease-in-out infinite; }
+@keyframes nb-job-breathe { 50% { transform: scaleY(1.6); background: rgba(var(--accent-rgb), .7); } }
+
+.nb-job-who { display: inline-flex; align-items: center; gap: 10px; margin: 0; max-width: 560px; font-size: 13.5px; color: var(--text); flex-wrap: wrap; justify-content: center; }
+.nb-job-pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--primary); animation: nb-job-ring 1.8s ease-out infinite; flex: none; }
+.nb-job-note { margin: 0; max-width: 560px; font-size: 13px; }
+.nb-job .btn-neutral { display: inline-flex; align-items: center; gap: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nb-job-stages li.now .nb-job-dot, .nb-job-pulse, .nb-job-chips span.now, .nb-job-bar > span::after { animation: none; }
+  .nb-job-bar > span, .nb-job-dot, .nb-job-chips span { transition: none; }
+}
+
+/* "Choose Always allow" (components/notebook/ApprovalHint): a replay of the assistant's permission prompt. */
+.nb-approve { display: flex; align-items: center; gap: 18px; width: 100%; max-width: 620px; padding: 14px 16px; border-radius: 14px; text-align: left;
+  background: rgba(var(--accent-rgb), .08); border: 1px solid rgba(var(--accent-rgb), .35); animation: nb-approve-in .5s cubic-bezier(.22, 1, .36, 1) both; }
+@keyframes nb-approve-in { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+.nb-approve-demo { position: relative; flex: none; width: 250px; padding: 10px 10px 8px; border-radius: 10px; background: #0f1115; color: #d7dbe0;
+  font: 11px/1.35 ui-monospace, "JetBrains Mono", Consolas, monospace; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06); overflow: hidden; }
+.nb-approve-q { margin-bottom: 6px; color: #f2f4f6; }
+.nb-approve-opts { list-style: none; margin: 0; padding: 0; position: relative; z-index: 1; }
+.nb-approve-opts li { height: 19px; display: flex; align-items: center; gap: 6px; padding: 0 6px; }
+.nb-approve-opts li span { color: #8b939c; }
+.nb-approve-opts li.target { animation: nb-approve-pick 4.8s ease-in-out infinite; }
+/* The highlight row: starts on option 1, glides to "Always allow" (3rd row), is clicked, holds, loops. */
+.nb-approve-hl { position: absolute; left: 10px; right: 10px; top: calc(10px + 2.7em + 6px); height: 19px; border-radius: 4px; background: rgba(var(--accent-rgb), .28);
+  animation: nb-approve-move 4.8s cubic-bezier(.65, 0, .35, 1) infinite; }
+@keyframes nb-approve-move { 0%, 12% { transform: translateY(0); } 38%, 100% { transform: translateY(38px); } }
+.nb-approve-cursor { position: absolute; z-index: 2; left: 150px; top: 112px; color: #fff; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .6));
+  animation: nb-approve-cursor 4.8s cubic-bezier(.65, 0, .35, 1) infinite; }
+@keyframes nb-approve-cursor { 0%, 15% { transform: translate(30px, 30px); opacity: 0; } 25% { opacity: 1; } 42% { transform: translate(-40px, -46px); }
+  48% { transform: translate(-40px, -44px) scale(.88); } 54%, 88% { transform: translate(-40px, -46px) scale(1); opacity: 1; } 100% { transform: translate(-40px, -46px); opacity: 0; } }
+.nb-approve-ripple { position: absolute; z-index: 1; left: 110px; top: calc(10px + 2.7em + 6px + 38px + 9px); width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%;
+  border: 2px solid var(--primary); opacity: 0; animation: nb-approve-ripple 4.8s ease-out infinite; }
+@keyframes nb-approve-ripple { 0%, 47% { opacity: 0; transform: scale(.4); } 50% { opacity: 1; } 66%, 100% { opacity: 0; transform: scale(5); } }
+@keyframes nb-approve-pick { 0%, 47% { color: inherit; } 52%, 92% { color: #fff; font-weight: 700; } }
+.nb-approve-text { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--text); }
+.nb-approve-text code { font-size: 12px; padding: 0 4px; border-radius: 4px; background: rgba(var(--accent-rgb), .14); }
+@media (max-width: 640px) { .nb-approve { flex-direction: column; align-items: stretch; } .nb-approve-demo { width: auto; } }
+@media (prefers-reduced-motion: reduce) {
+  .nb-approve, .nb-approve-hl, .nb-approve-cursor, .nb-approve-ripple, .nb-approve-opts li.target { animation: none; }
+  .nb-approve-hl { transform: translateY(38px); }
+  .nb-approve-cursor { transform: translate(-40px, -46px); }
+}
+
+/* A key term shown in its source: every mention marked, the first one pulsing once. */
+.nb-pdf-term { color: var(--primary); }
+.nb-pdf-steps { display: inline-flex; align-items: center; gap: 4px; }
+.nb-pdf-mark {
+  background: rgba(255, 190, 40, 0.38);
+  color: inherit; border-radius: 3px; padding: 0 2px;
+  box-shadow: 0 0 0 1px rgba(230, 160, 20, 0.75);
+}
+.nb-pdf-mark:first-of-type { animation: nb-mark-pulse 1.4s ease-out 2; }
+@keyframes nb-mark-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 190, 40, 0.8); }
+  100% { box-shadow: 0 0 0 10px transparent; }
+}
+@media (prefers-reduced-motion: reduce) { .nb-pdf-mark:first-of-type { animation: none; } }
+
+/* ── Mind map: a highlighted passage drawn as a radial map, with motion ── */
+.mm-overlay { z-index: 60; }
+.mm-card {
+  --mm-ink: var(--text); --mm-paper: rgba(255, 255, 255, 0.96); --mm-glow: rgba(255, 196, 120, 0.22);
+  width: min(1180px, calc(100vw - 48px)); max-height: calc(100vh - 48px);
+  display: flex; flex-direction: column; padding: 14px 16px 16px; gap: 10px; overflow: hidden;
+}
+.mm-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.mm-title { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.mm-title strong { white-space: nowrap; }
+.mm-passage { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12.5px; }
+.mm-tools { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+
+.mm-start { display: grid; justify-items: center; gap: 18px; padding: 40px 16px 48px; text-align: center; }
+.mm-status { max-width: 460px; display: grid; gap: 8px; justify-items: center; }
+.mm-status p { margin: 0; }
+.mm-actions { display: flex; gap: 8px; margin-top: 6px; }
+.mm-go { font-size: 14px; padding: 8px 16px; }
+
+/* The seed: six coloured petals round a dot, breathing; growing while the map is made. */
+.mm-seed { position: relative; width: 120px; height: 120px; }
+.mm-seed i { position: absolute; inset: 48px; border-radius: 50%; background: var(--text); }
+.mm-seed span {
+  position: absolute; left: 54px; top: 54px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--c, #E0663F);
+  transform: rotate(calc(var(--i) * 60deg)) translateX(34px);
+  animation: mm-breathe 2.4s ease-in-out infinite; animation-delay: calc(var(--i) * 0.12s);
+}
+.mm-seed span:nth-child(1) { --c: #E0663F; } .mm-seed span:nth-child(2) { --c: #2F9E8F; }
+.mm-seed span:nth-child(3) { --c: #7B61D1; } .mm-seed span:nth-child(4) { --c: #D79A1E; }
+.mm-seed span:nth-child(5) { --c: #3C82D6; } .mm-seed span:nth-child(6) { --c: #C2477E; }
+.mm-seed.growing span { animation: mm-orbit 1.6s cubic-bezier(.5, 0, .5, 1) infinite; animation-delay: calc(var(--i) * 0.08s); }
+@keyframes mm-breathe {
+  50% { transform: rotate(calc(var(--i) * 60deg)) translateX(40px) scale(1.25); }
+}
+@keyframes mm-orbit {
+  0% { transform: rotate(calc(var(--i) * 60deg)) translateX(20px) scale(.6); opacity: .5; }
+  50% { transform: rotate(calc(var(--i) * 60deg + 60deg)) translateX(46px) scale(1.3); opacity: 1; }
+  100% { transform: rotate(calc(var(--i) * 60deg + 120deg)) translateX(20px) scale(.6); opacity: .5; }
+}
+
+.mm-body { position: relative; flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 260px; gap: 12px; }
+.mm-svg { width: 100%; height: 100%; max-height: calc(100vh - 140px); display: block; overflow: visible; }
+.mm-halo { animation: mm-halo 1.2s ease-out both; }
+@keyframes mm-halo { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: scale(1); } }
+
+/* Branches draw out like ink. */
+.mm-path { fill: none; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1;
+  animation: mm-ink .75s cubic-bezier(.6, .05, .3, 1) forwards; transition: opacity .25s, stroke-width .25s; }
+.mm-path.trunk { stroke-width: 5; opacity: .9; }
+.mm-path.twig { stroke-width: 2.5; opacity: .6; }
+.mm-path.dim { opacity: .14; }
+.mm-path.lit { stroke-width: 7; filter: drop-shadow(0 0 6px currentColor); }
+.mm-path.twig.lit { stroke-width: 3.5; opacity: 1; }
+@keyframes mm-ink { to { stroke-dashoffset: 0; } }
+
+/* Ideas pop in, a little past full size, and settle. */
+.mm-pop { transform-box: fill-box; transform-origin: center; opacity: 0; animation: mm-pop .55s cubic-bezier(.34, 1.56, .64, 1) forwards; }
+@keyframes mm-pop { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: scale(1); } }
+.mm-node { cursor: pointer; outline: none; transition: opacity .25s; }
+.mm-node.dim { opacity: .3; }
+.mm-node rect { stroke: var(--c); stroke-width: 2; transition: transform .2s; }
+.mm-node.branch rect { fill: var(--c); }
+.mm-node.branch text { fill: #fff; font-size: 17px; font-weight: 600; }
+.mm-node.leaf rect { fill: var(--mm-paper); }
+.mm-node.leaf text { fill: #2A2622; font-size: 13.5px; font-weight: 500; }
+.mm-node:hover .mm-pop, .mm-node:focus-visible .mm-pop { filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .3)); }
+.mm-node:focus-visible rect, .mm-node.picked rect { stroke: var(--text); stroke-width: 3; }
+.mm-center rect { fill: var(--text); }
+.mm-center text { fill: rgb(var(--base-rgb, 17, 17, 17)); font-size: 22px; font-weight: 700; }
+.mm-ring { fill: none; stroke: var(--text); stroke-opacity: .25; stroke-width: 1.5; stroke-dasharray: 4 6;
+  transform-box: fill-box; transform-origin: center; animation: mm-spin 24s linear infinite; }
+@keyframes mm-spin { to { transform: rotate(360deg); } }
+
+.mm-note { align-self: center; display: grid; gap: 8px; padding: 14px; border-radius: 12px;
+  border: 1px solid var(--border-light); background: rgba(var(--ink-rgb, 0, 0, 0), 0.03); }
+.mm-note p { margin: 0; line-height: 1.5; }
+.mm-note.open { animation: mm-note .3s ease-out; }
+.mm-note-dot { width: 10px; height: 10px; border-radius: 50%; }
+.mm-note-src { font-size: 12px; }
+@keyframes mm-note { from { opacity: 0; transform: translateY(6px); } }
+
+@media (max-width: 820px) {
+  .mm-body { grid-template-columns: 1fr; }
+}
+/* Holds still: everything is drawn at once. */
+@media (prefers-reduced-motion: reduce) {
+  .mm-path, .mm-pop, .mm-halo, .mm-note.open { animation: none; opacity: 1; stroke-dashoffset: 0; transform: none; }
+  .mm-path.twig { opacity: .6; } .mm-path.dim { opacity: .14; }
+  .mm-ring, .mm-seed span, .mm-seed.growing span { animation: none; }
+}
+.nbk-sel-pills { display: flex; gap: 8px; box-shadow: none; }
+.nbk-sel-pills .nbk-pill { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+.nbk-map-pill { position: relative; overflow: hidden; }
+.nbk-map-pill::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-100%); animation: nbk-shimmer 2.8s ease-in-out .4s infinite;
+}
+@keyframes nbk-shimmer { 40%, 100% { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { .nbk-map-pill::after { animation: none; display: none; } }
+.mm-scroll { min-width: 0; min-height: 0; overflow: auto; max-height: calc(100vh - 140px); }
+.mm-zoom { background: none; border: 0; color: var(--muted); font-size: 12px; min-width: 42px; cursor: pointer; font-variant-numeric: tabular-nums; }
+.mm-scroll .mm-svg { overflow: hidden; }
+
+/* ── Study mode: reviews ── */
+.nbk-check-kept { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 12.5px; }
+.nbk-check-kept .btn-link { background: none; border: 0; padding: 0; color: var(--primary); text-decoration: underline; cursor: pointer; font: inherit; }
+.study-due-pill { animation: study-pulse 2.4s ease-in-out 3; }
+@keyframes study-pulse { 50% { box-shadow: 0 0 0 6px rgba(var(--accent-rgb, 255, 150, 80), 0.18); } }
+.study-review { width: min(620px, calc(100vw - 32px)); max-height: calc(100vh - 48px); overflow: auto; padding: 18px 20px; display: grid; gap: 10px; outline: none; }
+.study-head { display: flex; align-items: center; gap: 10px; }
+.study-head strong { display: inline-flex; align-items: center; gap: 6px; }
+.study-head .nb-icon-btn { margin-left: auto; }
+.study-from { margin: 0; font-size: 12.5px; }
+.study-done { display: grid; justify-items: center; gap: 6px; text-align: center; padding: 18px 0; }
+.study-done p { margin: 0; }
+@media (prefers-reduced-motion: reduce) { .study-due-pill { animation: none; } }
+.study-step { margin: 4px 0 0; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.study-step span { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; font-size: 11.5px;
+  background: rgba(var(--accent-rgb, 255, 150, 80), 0.18); color: var(--primary); }
+.study-survey, .study-qs { margin: 0; padding-left: 20px; display: grid; gap: 4px; line-height: 1.45; }
+.study-survey { list-style: disc; }
+.study-qs { list-style: decimal; }
+.study-survey li { font-size: 13px; }
+.study-qs li { font-weight: 500; }
+.nbk-help.study-pinned { position: absolute; left: auto; right: 14px; top: 56px; bottom: auto; transform: none; width: min(300px, 34%); max-height: calc(100% - 80px); overflow: auto; z-index: 5; display: grid; align-content: start; gap: 8px; }
+.study-feynman { margin: 0; font-size: 13px; }
+/* Study mode S3: speaking answers, and Explain it twice. */
+.study-mic { display: inline-flex; align-items: center; gap: 6px; }
+.study-mic-btn.on { background: rgba(220, 60, 60, 0.18); border-color: rgba(220, 60, 60, 0.6); animation: study-rec 1.4s ease-in-out infinite; }
+@keyframes study-rec { 50% { box-shadow: 0 0 0 5px rgba(220, 60, 60, 0.15); } }
+.study-mic-err { font-size: 12px; }
+.study-explain { width: min(860px, calc(100vw - 32px)); }
+.study-sides { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.study-side { border: 1px solid var(--border-light); border-radius: 12px; padding: 12px 14px; display: grid; gap: 6px; align-content: start; }
+.study-side h4 { margin: 0; }
+.study-side p { margin: 0; }
+.study-score strong { font-size: 18px; font-variant-numeric: tabular-nums; }
+.study-delivery { font-size: 12px; }
+@media (prefers-reduced-motion: reduce) { .study-mic-btn.on { animation: none; } }
+/* Talk at work (Practice). */
+.talk-view { display: grid; gap: 12px; max-width: 760px; align-content: start; }
+.talk-parts { justify-self: start; }
+.talk-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.talk-chip { border: 1px solid var(--border-light); background: transparent; color: var(--text); border-radius: 999px; padding: 5px 12px; font-size: 12.5px; cursor: pointer; }
+.talk-chip[aria-checked="true"] { border-color: var(--primary); background: rgba(var(--accent-rgb, 255, 150, 80), 0.14); }
+.talk-card { padding: 16px 18px; display: grid; gap: 10px; }
+.talk-situation { margin: 0; line-height: 1.5; }
+.talk-card p { margin: 0; }
+.talk-timer { display: inline-flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; font-size: 13px; }
+.talk-feedback { display: grid; gap: 8px; }
+.talk-score strong { font-size: 22px; font-variant-numeric: tabular-nums; }
+.talk-label { font-weight: 600; font-size: 12.5px; letter-spacing: 0.02em; }
+.talk-fixes { margin: 0; padding-left: 20px; display: grid; gap: 4px; list-style: decimal; }
+ul.talk-fixes { list-style: disc; }
+.talk-better { margin: 0; padding: 10px 12px; border-left: 3px solid var(--primary); background: rgba(var(--accent-rgb, 255, 150, 80), 0.07); border-radius: 0 8px 8px 0; line-height: 1.5; }
+.talk-delivery { font-size: 12px; }
+.talk-view .btn-link { background: none; border: 0; padding: 0; color: var(--primary); cursor: pointer; font: inherit; display: inline-flex; align-items: center; gap: 3px; }
+.talk-card .nbk-depth { justify-self: start; }
+/* Wordcraft's dictionary. */
+.dict { display: grid; gap: 12px; max-width: 820px; align-content: start; }
+.dict-search { display: flex; align-items: center; gap: 8px; }
+.dict-search input { flex: 1; }
+.dict-setup { display: grid; justify-items: start; gap: 10px; padding: 20px 22px; max-width: 640px; }
+.dict-setup h3, .dict-setup p { margin: 0; }
+.dict-progress { position: relative; width: 100%; height: 10px; border-radius: 999px; background: rgba(var(--ink-rgb, 0, 0, 0), 0.08); }
+.dict-progress span { position: absolute; inset: 0 auto 0 0; border-radius: inherit; background: var(--primary); transition: width .3s; }
+.dict-progress-label { font-size: 12px; font-variant-numeric: tabular-nums; }
+.dict-error { color: #d9534f; margin: 0; }
+.dict-credits { font-size: 12px; margin: 0; }
+.dict-entry { padding: 18px 20px; display: grid; gap: 14px; }
+.dict-word { margin: 0; font-size: 26px; }
+.dict-pos-name { margin: 0 0 4px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--primary); }
+.dict-pos ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; list-style: decimal; }
+.dict-pos li { line-height: 1.5; }
+.dict-pos li > * + * { margin-left: 6px; }
+.dict-example { display: block; margin: 2px 0 0 !important; color: var(--muted); }
+.dict-syn { display: block; margin: 2px 0 0 !important; font-size: 13px; }
+.dict-keep { font-size: 11.5px; padding: 2px 8px; margin-top: 4px !important; }
+.dict-phrase-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.dict-phrase-cols > div { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.dict-phrase-cols small { width: 100%; color: var(--muted); }
+.dict-sentences { margin: 0; padding-left: 20px; display: grid; gap: 4px; list-style: disc; }

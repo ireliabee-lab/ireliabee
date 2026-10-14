@@ -1,0 +1,24 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+websockets>=14.0            # `additional_headers`: the asyncio client, not the legacy one
+pydantic>=2.0
+python-multipart>=0.0.9
+pypdf>=6.0
+mss>=9.0                  # cross-platform screenshot (Windows/mac/Linux)
+Pillow>=10.0              # PNG encoding for mss frames
+sounddevice>=0.5.0        # microphone capture
+PyAudioWPatch>=0.2.12; sys_platform == "win32"   # Windows system audio (WASAPI loopback)
+comtypes>=1.4; sys_platform == "win32"          # browser tab list/switch via UI Automation
+numpy>=1.24
+soundfile>=0.12         # WAV encoding for batch STT providers
+anthropic>=0.30           # LLM providers
+openai>=1.0
+google-genai>=0.3
+requests>=2.31            # deepgram batch fallback + misc
+cryptography>=42.0        # Ed25519 signature check for licence tokens
+pyinstaller>=6.0          # for Windows build (dev-time only)
+fpdf2>=2.8               # debrief PDF export
+uharfbuzz>=0.39          # PDF text shaping for Arabic and Hindi debriefs
+icalendar>=6.0           # calendar invites and iCal links (roadmap 3.2)
+recurring-ical-events>=3.0   # repeating meetings
+tzdata>=2024.1           # time zones on Windows (zoneinfo has no system database there)

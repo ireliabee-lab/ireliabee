@@ -1,0 +1,18 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "link-capture",
+  "description": "External social/web browser: only explicit text capture, no app secrets or plugins",
+  "local": false,
+  "windows": [
+    "link-capture"
+  ],
+  "remote": {
+    "urls": [
+      "http://*",
+      "https://*"
+    ]
+  },
+  "permissions": [
+    "allow-capture-link-text"
+  ]
+}
